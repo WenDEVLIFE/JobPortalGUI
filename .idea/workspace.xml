@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="039a69c7-22f7-43ff-9108-b213d023ee06" name="Changes" comment="Done designing the Login Form 👌">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="039a69c7-22f7-43ff-9108-b213d023ee06" name="Changes" comment="Added connection to the MYSQL 👌">
+      <change beforePath="$PROJECT_DIR$/bin/ui/Login.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/Login.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/Login.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,12 +77,21 @@
       <option name="project" value="LOCAL" />
       <updated>1750859399734</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Added connection to the MYSQL 👌">
+      <option name="closed" value="true" />
+      <created>1750859899398</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1750859899398</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="commit" />
     <MESSAGE value="Done designing the Login Form " />
-    <option name="LAST_COMMIT_MESSAGE" value="Done designing the Login Form " />
+    <MESSAGE value="Added connection to the MYSQL " />
+    <option name="LAST_COMMIT_MESSAGE" value="Added connection to the MYSQL " />
   </component>
 </project>

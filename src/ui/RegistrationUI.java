@@ -4,19 +4,17 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
-
-import com.formdev.flatlaf.FlatIntelliJLaf;
+import java.awt.Color;
 import javax.swing.JLabel;
 import java.awt.Font;
-import java.awt.Color;
 import javax.swing.JButton;
-import javax.swing.ImageIcon;
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
+import javax.swing.ImageIcon;
+import javax.swing.JComboBox;
 
-public class Login extends JFrame {
+public class RegistrationUI extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -30,8 +28,7 @@ public class Login extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					UIManager.setLookAndFeel(new com.formdev.flatlaf.FlatDarkLaf());
-					Login frame = new Login();
+					RegistrationUI frame = new RegistrationUI();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -43,73 +40,83 @@ public class Login extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Login() {
+	public RegistrationUI() {
 		setResizable(false);
-		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-		setBounds(100, 100, 1114, 576);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 1114, 597);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		JPanel panel = new JPanel();
-		panel.setBackground(new Color(234, 128, 252));
-		panel.setBounds(710, 0, 386, 537);
-		contentPane.add(panel);
 		panel.setLayout(null);
+		panel.setBackground(new Color(234, 128, 252));
+		panel.setBounds(712, 0, 386, 558);
+		contentPane.add(panel);
 		
-		JLabel lblNewLabel = new JLabel("Login");
-		lblNewLabel.setForeground(new Color(255, 255, 255));
-		lblNewLabel.setFont(new Font("Verdana", Font.BOLD, 30));
-		lblNewLabel.setBounds(162, 24, 117, 73);
-		panel.add(lblNewLabel);
+		JLabel lblSignUp = new JLabel("Sign Up");
+		lblSignUp.setForeground(Color.WHITE);
+		lblSignUp.setFont(new Font("Verdana", Font.BOLD, 30));
+		lblSignUp.setBounds(117, 11, 160, 73);
+		panel.add(lblSignUp);
 		
-		JButton btnNewButton = new JButton("Sign In");
+		JButton btnNewButton = new JButton("Sign Up");
 		btnNewButton.setForeground(new Color(255, 255, 255));
 		btnNewButton.setFont(new Font("Verdana", Font.BOLD, 11));
 		btnNewButton.setBackground(new Color(195, 143, 255));
-		btnNewButton.setBounds(119, 356, 158, 46);
+		btnNewButton.setBounds(108, 396, 158, 46);
 		panel.add(btnNewButton);
 		
 		JLabel lblUsername = new JLabel("Username");
 		lblUsername.setForeground(Color.WHITE);
 		lblUsername.setFont(new Font("Verdana", Font.BOLD, 20));
-		lblUsername.setBounds(22, 103, 117, 32);
+		lblUsername.setBounds(22, 95, 117, 32);
 		panel.add(lblUsername);
 		
 		JLabel lblUsername_1 = new JLabel("Password");
 		lblUsername_1.setForeground(Color.WHITE);
 		lblUsername_1.setFont(new Font("Verdana", Font.BOLD, 20));
-		lblUsername_1.setBounds(22, 215, 117, 32);
+		lblUsername_1.setBounds(22, 195, 117, 32);
 		panel.add(lblUsername_1);
 		
 		textField = new JTextField();
-		textField.setBounds(22, 146, 354, 46);
-		panel.add(textField);
 		textField.setColumns(10);
+		textField.setBounds(22, 138, 354, 46);
+		panel.add(textField);
 		
 		passwordField = new JPasswordField();
-		passwordField.setBounds(21, 258, 355, 46);
+		passwordField.setBounds(21, 232, 355, 46);
 		panel.add(passwordField);
 		
-		JLabel lblUsername_1_1 = new JLabel("Dont have an account? Sign Up Here");
+		JLabel lblUsername_1_1 = new JLabel("Already have an account? Sign In Here");
 		lblUsername_1_1.setForeground(Color.WHITE);
 		lblUsername_1_1.setFont(new Font("Verdana", Font.BOLD, 16));
-		lblUsername_1_1.setBounds(49, 413, 327, 32);
+		lblUsername_1_1.setBounds(22, 458, 354, 32);
 		panel.add(lblUsername_1_1);
 		
-		JButton btnSignUp = new JButton("Sign Up");
+		JButton btnSignUp = new JButton("Sign In");
 		btnSignUp.setForeground(new Color(255, 255, 255));
 		btnSignUp.setFont(new Font("Verdana", Font.BOLD, 11));
 		btnSignUp.setBackground(new Color(195, 143, 255));
-		btnSignUp.setBounds(119, 456, 158, 46);
+		btnSignUp.setBounds(108, 501, 158, 46);
 		panel.add(btnSignUp);
 		
-		JLabel lblNewLabel_1 = new JLabel("JOB PORTAL SYSTEM");
-		lblNewLabel_1.setIcon(new ImageIcon(Login.class.getResource("/pictures/busines.svg")));
+		JComboBox comboBox = new JComboBox();
+		comboBox.setBounds(22, 336, 354, 49);
+		panel.add(comboBox);
+		
+		JLabel lblUsername_1_2 = new JLabel("Select a user type");
+		lblUsername_1_2.setForeground(Color.WHITE);
+		lblUsername_1_2.setFont(new Font("Verdana", Font.BOLD, 20));
+		lblUsername_1_2.setBounds(22, 289, 210, 32);
+		panel.add(lblUsername_1_2);
+		
+		JLabel lblNewLabel_1 = new JLabel("JOB PORTAL SYSTEM ");
+		lblNewLabel_1.setIcon(new ImageIcon(RegistrationUI.class.getResource("/pictures/busines.svg")));
 		lblNewLabel_1.setForeground(Color.WHITE);
 		lblNewLabel_1.setFont(new Font("Verdana", Font.BOLD, 30));
-		lblNewLabel_1.setBounds(186, 137, 381, 146);
+		lblNewLabel_1.setBounds(188, 137, 381, 146);
 		contentPane.add(lblNewLabel_1);
 
 	}
