@@ -5,8 +5,15 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import org.mindrot.jbcrypt.BCrypt;
+
+import database.RegistrationService;
+
 import java.awt.Color;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import javax.swing.JButton;
 import javax.swing.JTextField;
@@ -16,7 +23,9 @@ import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
 import java.awt.event.ActionListener;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 
@@ -150,11 +159,31 @@ public class RegistrationUI extends JFrame {
 				
 				if (username.isEmpty() || password.isEmpty() || role == null) {
 					System.out.println("Please fill in all fields.");
+					JOptionPane.showMessageDialog(null, "Please fill in all fields.", "Error", JOptionPane.ERROR_MESSAGE);
+				} 
+				
+				if(RegistrationService.getInstance().isUserExists(username)) {
+					System.out.println("Username already exists. Please choose a different username.");
+					JOptionPane.showMessageDialog(null, "Username already exists. Please choose a different username.", "Error", JOptionPane.ERROR_MESSAGE);
 				} else {
-					// Here you would typically call a method to save the user data to the database
-					System.out.println("Registration successful for user: " + username + " with role: " + role);
-					// Optionally, you can redirect to the login page or another page after registration
+					// Create a map to hold user details
+					
+					String hashedPassword = BCrypt.hashpw(password, BCrypt.gensalt());
+					
+					Map<String, Object> userDetails = new HashMap<>();
+					userDetails.put("username", username);
+					userDetails.put("password", hashedPassword);
+					userDetails.put("role", role);
+					
+					
+					
+					// Call the registration method
+					RegistrationService.getInstance().RegisterUser(userDetails);
+					textField.setText("");
+					passwordField.setText("");
+					roleComboBox.setSelectedIndex(-1); // Reset the combo box selection
 				}
+				
 			}
 		});
 		btnNewButton.setForeground(new Color(255, 255, 255));
