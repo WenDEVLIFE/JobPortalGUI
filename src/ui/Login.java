@@ -15,6 +15,8 @@ import javax.swing.JButton;
 import javax.swing.ImageIcon;
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Login extends JFrame {
 
@@ -65,6 +67,20 @@ public class Login extends JFrame {
 		panel.add(lblNewLabel);
 		
 		JButton btnNewButton = new JButton("Sign In");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				String username = textField.getText();
+				String password = new String(passwordField.getPassword());
+		
+				
+				if (username.isEmpty() || password.isEmpty()) {
+					System.out.println("Username or Password cannot be empty.");
+				} else {
+					System.out.println("Login successful for user: " + username);
+				}
+			}
+		});
 		btnNewButton.setForeground(new Color(255, 255, 255));
 		btnNewButton.setFont(new Font("Verdana", Font.BOLD, 11));
 		btnNewButton.setBackground(new Color(195, 143, 255));
@@ -99,6 +115,14 @@ public class Login extends JFrame {
 		panel.add(lblUsername_1_1);
 		
 		JButton btnSignUp = new JButton("Sign Up");
+		btnSignUp.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				// Open the registration UI
+				RegistrationUI registrationUI = new RegistrationUI();
+				registrationUI.setVisible(true);
+				dispose(); // Close the login window
+			}
+		});
 		btnSignUp.setForeground(new Color(255, 255, 255));
 		btnSignUp.setFont(new Font("Verdana", Font.BOLD, 11));
 		btnSignUp.setBackground(new Color(195, 143, 255));
