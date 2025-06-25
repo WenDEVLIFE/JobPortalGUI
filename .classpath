@@ -6,5 +6,7 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="lib" path="D:/eclipseProject/JavaGUI_Job_Portal/flatlaf-3.6.jar"/>
+	<classpathentry kind="lib" path="D:/eclipseProject/JavaGUI_Job_Portal/mysql-connector-j-9.2.0.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
