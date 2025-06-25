@@ -106,7 +106,15 @@
       <option name="project" value="LOCAL" />
       <updated>1750863309612</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Added a function where user can now register and added hashing to the password 👌">
+      <option name="closed" value="true" />
+      <created>1750863739308</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1750863739308</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
