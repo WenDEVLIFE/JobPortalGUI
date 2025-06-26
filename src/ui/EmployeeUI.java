@@ -213,8 +213,14 @@ public class EmployeeUI extends JFrame {
 		JButton btnViewApplicant_2 = new JButton("Create a Job");
 		btnViewApplicant_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				AddCreateJobDialog createJobDialog = new AddCreateJobDialog(EmployeeUI.this);
+				AddCreateJobDialog createJobDialog = new AddCreateJobDialog(EmployeeUI.this, employeeId);
 				createJobDialog.setVisible(true);
+				if (createJobDialog.isSucceeded()) {
+					// Refresh the job table or perform any other necessary actions
+					JOptionPane.showMessageDialog(EmployeeUI.this, "Job created successfully!");
+				} else {
+					JOptionPane.showMessageDialog(EmployeeUI.this, "Failed to create job.");
+				}
 			}
 		});
 		btnViewApplicant_2.setForeground(Color.WHITE);

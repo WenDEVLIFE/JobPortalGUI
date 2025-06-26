@@ -4,20 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="039a69c7-22f7-43ff-9108-b213d023ee06" name="Changes" comment="Added a function where it wont delete its own account 👌">
+    <list default="true" id="039a69c7-22f7-43ff-9108-b213d023ee06" name="Changes" comment="Added filter the user on the AdminUI 👌">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/ui/AdminUI$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/AdminUI$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/ui/AdminUI$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/AdminUI$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/ui/AdminUI$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/AdminUI$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/ui/AdminUI$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/AdminUI$4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/ui/AdminUI$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/AdminUI$5.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/ui/AdminUI$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/AdminUI$6.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/ui/AdminUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/AdminUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/ui/EmployeeUI$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/EmployeeUI$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/ui/EmployeeUI$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/EmployeeUI$2.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/ui/EmployeeUI$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/EmployeeUI$3.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/ui/EmployeeUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/EmployeeUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ui/AdminUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/AdminUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/database/savepw.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/savepw.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ui/EmployeeUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/EmployeeUI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -345,11 +337,18 @@
       <option name="project" value="LOCAL" />
       <updated>1750956280997</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="Added filter the user on the AdminUI 👌">
+      <option name="closed" value="true" />
+      <created>1750957442985</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1750957442985</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added navigations on each screens " />
     <MESSAGE value="Added a function where user can now register and added hashing to the password " />
     <MESSAGE value="Added skeletn UI" />
     <MESSAGE value="Done designing the Home page and Find a job page on the JobSeekerUI " />
@@ -374,6 +373,7 @@
     <MESSAGE value="Added a function where user can now login " />
     <MESSAGE value="Added a function where it will save the password " />
     <MESSAGE value="Added a function where it wont delete its own account " />
-    <option name="LAST_COMMIT_MESSAGE" value="Added a function where it wont delete its own account " />
+    <MESSAGE value="Added filter the user on the AdminUI " />
+    <option name="LAST_COMMIT_MESSAGE" value="Added filter the user on the AdminUI " />
   </component>
 </project>
