@@ -113,4 +113,45 @@ public class RegistrationService {
 	    return users;
 	}
 
+	public boolean updateUser(Map<String, String> updatedDetails) {
+		String userId = updatedDetails.get("userId");
+		String username = updatedDetails.get("username");
+		String password = updatedDetails.get("password");
+		String role = updatedDetails.get("role");
+		String status = updatedDetails.get("status");
+		
+		String sql = "UPDATE users SET username = ?, password = ?, role = ?, status = ? WHERE user_id = ?";
+		 try (Connection connection = MYSQL.getConnection();
+			 PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+			
+			preparedStatement.setString(1, username);
+			preparedStatement.setString(2, password);
+			preparedStatement.setString(3, role);
+			preparedStatement.setString(4, status);
+			preparedStatement.setString(5, userId);
+			
+			int rowsAffected = preparedStatement.executeUpdate();
+			return rowsAffected > 0;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		 
+		return false;
+	}
+	
+
+	public boolean deleteUser(String userIds) {
+		String sql = "DELETE FROM users WHERE user_id = ?";
+		try (Connection connection = MYSQL.getConnection();
+			 PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+			
+			preparedStatement.setString(1, userIds);
+			int rowsAffected = preparedStatement.executeUpdate();
+			return rowsAffected > 0;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+
 }

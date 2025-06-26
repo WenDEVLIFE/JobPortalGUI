@@ -4,9 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="039a69c7-22f7-43ff-9108-b213d023ee06" name="Changes" comment="Added set the id from EmployeeUI and to JobSeekerUI 👌">
+    <list default="true" id="039a69c7-22f7-43ff-9108-b213d023ee06" name="Changes" comment="Added a functioon where it will display the user data 👌">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/database/RegistrationService.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/database/RegistrationService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ui/AdminUI$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/AdminUI$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ui/AdminUI$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/AdminUI$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ui/AdminUI$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/AdminUI$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ui/AdminUI$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/AdminUI$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ui/AdminUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/AdminUI.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/database/RegistrationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/RegistrationService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/AdminUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/AdminUI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -277,7 +284,15 @@
       <option name="project" value="LOCAL" />
       <updated>1750943891223</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="Added a functioon where it will display the user data 👌">
+      <option name="closed" value="true" />
+      <created>1750945474456</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1750945474456</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -304,6 +319,7 @@
     <MESSAGE value="Added savepw.txt" />
     <MESSAGE value="Added a function where the Admin can now add users " />
     <MESSAGE value="Added set the id from EmployeeUI and to JobSeekerUI " />
-    <option name="LAST_COMMIT_MESSAGE" value="Added set the id from EmployeeUI and to JobSeekerUI " />
+    <MESSAGE value="Added a functioon where it will display the user data " />
+    <option name="LAST_COMMIT_MESSAGE" value="Added a functioon where it will display the user data " />
   </component>
 </project>

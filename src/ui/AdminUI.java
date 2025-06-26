@@ -22,9 +22,12 @@ import javax.swing.table.DefaultTableModel;
 import database.RegistrationService;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import functions.AddUserDialog;
+import functions.EditUserDialog;
 import model.UserModel;
 
 import javax.swing.JTextField;
@@ -236,6 +239,37 @@ public class AdminUI extends JFrame {
 		panel_1.add(btnAddUser);
 		
 		JButton btnEditUser = new JButton("Edit User");
+		btnEditUser.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				 int selectedRow = userTable.getSelectedRow();
+			        if (selectedRow == -1) {
+			            JOptionPane.showMessageDialog(AdminUI.this, "Please select a user to edit.", "Error", JOptionPane.ERROR_MESSAGE);
+			            return;
+			        }
+			        UserModel selectedUser = userList.get(selectedRow);
+			        String userId = selectedUser.getId();
+			        String username = selectedUser.getUsername();
+			        String password = selectedUser.getPassword(); // Get password here
+			        String role = selectedUser.getRole();
+			        String status = selectedUser.getStatus();
+			        
+			        Map<String, String> userDetails = new HashMap<>();
+			        userDetails.put("id", userId);
+			        userDetails.put("username", username);
+			        userDetails.put("password", password); // Include password in the details
+			        userDetails.put("role", role);
+			        userDetails.put("status", status);
+			        
+
+			        EditUserDialog dialog = new EditUserDialog(AdminUI.this, userDetails);
+			        dialog.setVisible(true);
+			        if (dialog.isSucceeded()) {
+			            loadUserData();
+			        }
+				
+			}
+		});
 		btnEditUser.setForeground(Color.WHITE);
 		btnEditUser.setFont(new Font("Verdana", Font.BOLD, 11));
 		btnEditUser.setBackground(new Color(195, 143, 255));
@@ -243,6 +277,32 @@ public class AdminUI extends JFrame {
 		panel_1.add(btnEditUser);
 		
 		JButton btnDeleteUser = new JButton("Delete User");
+		btnDeleteUser.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				int selectedRow = userTable.getSelectedRow();
+				if (selectedRow == -1) {
+					JOptionPane.showMessageDialog(AdminUI.this, "Please select a user to delete.", "Error", JOptionPane.ERROR_MESSAGE);
+					return;
+				}
+				
+				int confirm = JOptionPane.showConfirmDialog(AdminUI.this, "Are you sure you want to delete this user?", "Confirm Delete", JOptionPane.YES_NO_OPTION);
+				if (confirm == JOptionPane.YES_OPTION) {
+					UserModel selectedUser = userList.get(selectedRow);
+					String userIds = selectedUser.getId();
+					
+	
+					boolean success = RegistrationService.getInstance().deleteUser(userIds);
+					
+					if (success) {
+						JOptionPane.showMessageDialog(AdminUI.this, "User deleted successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
+						loadUserData(); // Refresh the user table
+					} else {
+						JOptionPane.showMessageDialog(AdminUI.this, "Failed to delete user.", "Error", JOptionPane.ERROR_MESSAGE);
+					}
+				}
+			}
+		});
 		btnDeleteUser.setForeground(Color.WHITE);
 		btnDeleteUser.setFont(new Font("Verdana", Font.BOLD, 11));
 		btnDeleteUser.setBackground(new Color(195, 143, 255));
