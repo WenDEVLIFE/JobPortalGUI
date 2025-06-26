@@ -7,11 +7,14 @@ import javax.swing.JPanel;
 import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 
 import model.JobModel;
 
 import javax.swing.JTabbedPane;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,17 +22,26 @@ import java.awt.Color;
 import javax.swing.JButton;
 import javax.swing.SwingConstants;
 import javax.swing.JTextField;
+import javax.swing.RowFilter;
 import javax.swing.JTable;
 import javax.swing.border.LineBorder;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 
 public class JobSeekerUI extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-	private JTextField textField;
+	private JTextField searchJobField;
 	private JTable jobTable;
 	DefaultTableModel tableModel;
 	List<JobModel> jobList = new ArrayList<>();
+	DefaultTableModel savedTableModel;
+	List<JobModel> savedJobList = new ArrayList<>();
+	private JTextField searchSavedJobField;
+	private JTable saveJobTable;
+	private JTextField textField;
+	private JTable table;
 	
 
 	/**
@@ -176,10 +188,11 @@ public class JobSeekerUI extends JFrame {
 		lblWelcomeBack_1_2.setBounds(10, 25, 172, 38);
 		panel.add(lblWelcomeBack_1_2);
 		
-		textField = new JTextField();
-		textField.setBounds(192, 28, 863, 38);
-		panel.add(textField);
-		textField.setColumns(10);
+		searchJobField = new JTextField();
+		searchJobField.setBounds(192, 28, 863, 38);
+		panel.add(searchJobField);
+		searchJobField.setColumns(10);
+		
 		
 		jobTable = new JTable();
 		jobTable.setBorder(new LineBorder(new Color(0, 0, 0)));
@@ -195,9 +208,71 @@ public class JobSeekerUI extends JFrame {
 		
 		JPanel panel_4 = new JPanel();
 		tabbedPane.addTab("Saved Job", null, panel_4, null);
+		panel_4.setLayout(null);
+		
+		JLabel lblWelcomeBack_1_2_1 = new JLabel("Saved Jobs");
+		lblWelcomeBack_1_2_1.setForeground(Color.WHITE);
+		lblWelcomeBack_1_2_1.setFont(new Font("Verdana", Font.BOLD, 30));
+		lblWelcomeBack_1_2_1.setBounds(10, 11, 189, 38);
+		panel_4.add(lblWelcomeBack_1_2_1);
+		
+		searchSavedJobField = new JTextField();
+		searchSavedJobField.setColumns(10);
+		searchSavedJobField.setBounds(206, 11, 863, 38);
+		panel_4.add(searchSavedJobField);
+		
+		saveJobTable = new JTable();
+		saveJobTable.setBorder(new LineBorder(new Color(0, 0, 0)));
+		saveJobTable.setBounds(39, 60, 1046, 360);
+		panel_4.add(saveJobTable);
+		
+		JButton btnViewJob_1 = new JButton("View Job");
+		btnViewJob_1.setForeground(Color.WHITE);
+		btnViewJob_1.setFont(new Font("Verdana", Font.BOLD, 11));
+		btnViewJob_1.setBackground(new Color(195, 143, 255));
+		btnViewJob_1.setBounds(130, 431, 337, 53);
+		panel_4.add(btnViewJob_1);
+		
+		JButton btnViewJob_1_1 = new JButton("Delete");
+		btnViewJob_1_1.setForeground(Color.WHITE);
+		btnViewJob_1_1.setFont(new Font("Verdana", Font.BOLD, 11));
+		btnViewJob_1_1.setBackground(new Color(195, 143, 255));
+		btnViewJob_1_1.setBounds(628, 431, 337, 53);
+		panel_4.add(btnViewJob_1_1);
 		
 		JPanel panel_2 = new JPanel();
 		tabbedPane.addTab("My Application", null, panel_2, null);
+		panel_2.setLayout(null);
+		
+		JLabel lblWelcomeBack_1_2_1_1 = new JLabel("My Application");
+		lblWelcomeBack_1_2_1_1.setForeground(Color.WHITE);
+		lblWelcomeBack_1_2_1_1.setFont(new Font("Verdana", Font.BOLD, 30));
+		lblWelcomeBack_1_2_1_1.setBounds(10, 25, 250, 38);
+		panel_2.add(lblWelcomeBack_1_2_1_1);
+		
+		textField = new JTextField();
+		textField.setColumns(10);
+		textField.setBounds(260, 25, 863, 38);
+		panel_2.add(textField);
+		
+		table = new JTable();
+		table.setBorder(new LineBorder(new Color(0, 0, 0)));
+		table.setBounds(53, 74, 1046, 360);
+		panel_2.add(table);
+		
+		JButton btnViewJob_1_2 = new JButton("View Application");
+		btnViewJob_1_2.setForeground(Color.WHITE);
+		btnViewJob_1_2.setFont(new Font("Verdana", Font.BOLD, 11));
+		btnViewJob_1_2.setBackground(new Color(195, 143, 255));
+		btnViewJob_1_2.setBounds(144, 445, 337, 53);
+		panel_2.add(btnViewJob_1_2);
+		
+		JButton btnViewJob_1_1_1 = new JButton("Delete Application");
+		btnViewJob_1_1_1.setForeground(Color.WHITE);
+		btnViewJob_1_1_1.setFont(new Font("Verdana", Font.BOLD, 11));
+		btnViewJob_1_1_1.setBackground(new Color(195, 143, 255));
+		btnViewJob_1_1_1.setBounds(642, 445, 337, 53);
+		panel_2.add(btnViewJob_1_1_1);
 		
 		JPanel panel_1_1_1 = new JPanel();
 		tabbedPane.addTab("My Profile", null, panel_1_1_1, null);
@@ -231,17 +306,62 @@ public class JobSeekerUI extends JFrame {
 		
 		String [] columnNames = {"Job ID", "Job Title", "Company Name", "Posted Date", "Status", "Expiration Date"};
 		tableModel = new DefaultTableModel(columnNames, 0);
+		savedTableModel = new DefaultTableModel(columnNames, 0);
 		jobTable.setModel(tableModel);
+		saveJobTable.setModel(savedTableModel);
 		
 		LoadJobData();
+		LoadSavedJobData();
+		
+		
+		// This is for the search functionality
+		TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<>(tableModel);
+		jobTable.setRowSorter(sorter);
+
+		searchJobField.getDocument().addDocumentListener(new DocumentListener() {
+		    public void insertUpdate(DocumentEvent e) { filter(); }
+		    public void removeUpdate(DocumentEvent e) { filter(); }
+		    public void changedUpdate(DocumentEvent e) { filter(); }
+		    private void filter() {
+		        String text = searchJobField.getText();
+		        if (text.trim().length() == 0) {
+		        	LoadJobData(); // Reload all data if search field is empty
+		        	JOptionPane.showMessageDialog(null, "No jobs found.", "Info", JOptionPane.INFORMATION_MESSAGE);
+		        } else {
+		            sorter.setRowFilter(RowFilter.regexFilter("(?i)" + text));
+		        }
+		    }
+		});
+		
+		TableRowSorter<DefaultTableModel> savedSorter = new TableRowSorter<>(savedTableModel);
+		saveJobTable.setRowSorter(savedSorter);
+		searchSavedJobField.getDocument().addDocumentListener(new DocumentListener() {
+		    public void insertUpdate(DocumentEvent e) { filterSaved(); }
+		    public void removeUpdate(DocumentEvent e) { filterSaved(); }
+		    public void changedUpdate(DocumentEvent e) { filterSaved(); }
+		    private void filterSaved() {
+		        String text = searchSavedJobField.getText();
+		        if (text.trim().length() == 0) {
+		        	LoadSavedJobData(); // Reload all data if search field is empty
+		        	JOptionPane.showMessageDialog(null, "No saved jobs found.", "Info", JOptionPane.INFORMATION_MESSAGE);
+		        } else {
+		            savedSorter.setRowFilter(RowFilter.regexFilter("(?i)" + text));
+		        }
+		    }
+		});
+		
+		
+
 	 
 
 	}
 	
+	// This will load the job
 	void LoadJobData() {
-		// This method can be used to load job data from a database or any other source
-		// For now, we are using hardcoded data in the constructor
-		// In a real application, you would fetch this data from a database or an API
+		jobList.clear();
+		
+		tableModel.setRowCount(0); // Clear existing rows in the table model
+	
 	 		jobList.add(new JobModel("1", "Software Engineer", "Tech Company", "Develop software applications", "Remote", "Java, Spring Boot", "Full-time", "50000", "70000", "2023-10-01", "2024-01-01", "Open"));
 		
 		for (JobModel job : jobList) {
@@ -254,6 +374,28 @@ public class JobSeekerUI extends JFrame {
 				job.getExpirationDate()
 			};
 			tableModel.addRow(rowData);
+		}
+	}
+	
+	// This will load the saved job
+	void LoadSavedJobData() {
+		savedJobList.clear();
+		
+		DefaultTableModel savedTableModel = (DefaultTableModel) saveJobTable.getModel();
+		savedTableModel.setRowCount(0); // Clear existing rows in the table model
+		
+		savedJobList.add(new JobModel("1", "Software Engineer", "Tech Company", "Develop software applications", "Remote", "Java, Spring Boot", "Full-time", "50000", "70000", "2023-10-01", "2024-01-01", "Open"));
+		
+		for (JobModel job : savedJobList) {
+			Object[] rowData = {
+				job.getJobId(),
+				job.getJobTitle(),
+				job.getCompanyName(),
+				job.getPostedDate(),
+				job.getStatus(),
+				job.getExpirationDate()
+			};
+			savedTableModel.addRow(rowData);
 		}
 	}
 }

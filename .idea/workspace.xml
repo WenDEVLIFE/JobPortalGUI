@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="039a69c7-22f7-43ff-9108-b213d023ee06" name="Changes" comment="Done designing the Home page and Find a job page on the JobSeekerUI 👌">
+    <list default="true" id="039a69c7-22f7-43ff-9108-b213d023ee06" name="Changes" comment="Added JobModel and apply it on the Table 👌">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/ui/JobSeekerUI$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/JobSeekerUI$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/ui/JobSeekerUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/JobSeekerUI.class" afterDir="false" />
@@ -135,7 +135,15 @@
       <option name="project" value="LOCAL" />
       <updated>1750901911596</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Added JobModel and apply it on the Table 👌">
+      <option name="closed" value="true" />
+      <created>1750903332500</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1750903332500</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -147,6 +155,7 @@
     <MESSAGE value="Added a function where user can now register and added hashing to the password " />
     <MESSAGE value="Added skeletn UI" />
     <MESSAGE value="Done designing the Home page and Find a job page on the JobSeekerUI " />
-    <option name="LAST_COMMIT_MESSAGE" value="Done designing the Home page and Find a job page on the JobSeekerUI " />
+    <MESSAGE value="Added JobModel and apply it on the Table " />
+    <option name="LAST_COMMIT_MESSAGE" value="Added JobModel and apply it on the Table " />
   </component>
 </project>
