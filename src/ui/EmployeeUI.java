@@ -15,6 +15,9 @@ import java.awt.Color;
 import javax.swing.JTextField;
 import javax.swing.JTable;
 import javax.swing.border.LineBorder;
+
+import functions.AddCreateJobDialog;
+
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -206,7 +209,14 @@ public class EmployeeUI extends JFrame {
 		table_1.setBounds(39, 60, 1046, 360);
 		panel_2.add(table_1);
 		
+		
 		JButton btnViewApplicant_2 = new JButton("Create a Job");
+		btnViewApplicant_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				AddCreateJobDialog createJobDialog = new AddCreateJobDialog(EmployeeUI.this);
+				createJobDialog.setVisible(true);
+			}
+		});
 		btnViewApplicant_2.setForeground(Color.WHITE);
 		btnViewApplicant_2.setFont(new Font("Verdana", Font.BOLD, 11));
 		btnViewApplicant_2.setBackground(new Color(195, 143, 255));

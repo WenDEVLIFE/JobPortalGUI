@@ -18,6 +18,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.JTable;
 import javax.swing.border.LineBorder;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 
 import database.AuditLogService;
 import database.RegistrationService;
@@ -40,7 +41,7 @@ public class AdminUI extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTable userTable;
-	private JTextField textField;
+	private JTextField searchUserField;
 	private JTable table_1;
 	private JTextField textField_1;
 	private JTable table_2;
@@ -220,10 +221,10 @@ public class AdminUI extends JFrame {
 		userTable.setBounds(25, 60, 1046, 360);
 		panel_1.add(userTable);
 		
-		textField = new JTextField();
-		textField.setColumns(10);
-		textField.setBounds(208, 11, 863, 38);
-		panel_1.add(textField);
+		searchUserField = new JTextField();
+		searchUserField.setColumns(10);
+		searchUserField.setBounds(208, 11, 863, 38);
+		panel_1.add(searchUserField);
 		
 		JButton btnAddUser = new JButton("Add User");
 		btnAddUser.addActionListener(new ActionListener() {
@@ -496,6 +497,38 @@ public class AdminUI extends JFrame {
 		
 		loadUserData();
 		loadAuditData();
+		
+		TableRowSorter<DefaultTableModel> userSorter = new TableRowSorter<>(userTableModel);
+		userTable.setRowSorter(userSorter);
+		
+		searchUserField.getDocument().addDocumentListener(new javax.swing.event.DocumentListener() {
+			
+			@Override
+			public void insertUpdate(javax.swing.event.DocumentEvent e) {
+				filterUserTable();
+			}
+
+			@Override
+			public void removeUpdate(javax.swing.event.DocumentEvent e) {
+				filterUserTable();
+			}
+
+			@Override
+			public void changedUpdate(javax.swing.event.DocumentEvent e) {
+				filterUserTable();
+			}
+			
+			private void filterUserTable() {
+				String searchText = searchUserField.getText().toLowerCase();
+				if (searchText.trim().isEmpty()) {
+					loadUserData(); // Reload all data if search text is empty
+				} else {
+					userSorter.setRowFilter(javax.swing.RowFilter.regexFilter("(?i)" + searchText));
+				}
+			}
+		});
+		
+		
 		
 
 	}
