@@ -7,14 +7,20 @@ import javax.swing.JPanel;
 import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
+
+import model.JobModel;
+
 import javax.swing.JTabbedPane;
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.util.ArrayList;
+import java.util.List;
 import java.awt.Color;
 import javax.swing.JButton;
 import javax.swing.SwingConstants;
 import javax.swing.JTextField;
 import javax.swing.JTable;
+import javax.swing.border.LineBorder;
 
 public class JobSeekerUI extends JFrame {
 
@@ -23,6 +29,7 @@ public class JobSeekerUI extends JFrame {
 	private JTextField textField;
 	private JTable jobTable;
 	DefaultTableModel tableModel;
+	List<JobModel> jobList = new ArrayList<>();
 	
 
 	/**
@@ -166,7 +173,7 @@ public class JobSeekerUI extends JFrame {
 		JLabel lblWelcomeBack_1_2 = new JLabel("Find a job");
 		lblWelcomeBack_1_2.setForeground(Color.WHITE);
 		lblWelcomeBack_1_2.setFont(new Font("Verdana", Font.BOLD, 30));
-		lblWelcomeBack_1_2.setBounds(10, 25, 462, 38);
+		lblWelcomeBack_1_2.setBounds(10, 25, 172, 38);
 		panel.add(lblWelcomeBack_1_2);
 		
 		textField = new JTextField();
@@ -175,6 +182,7 @@ public class JobSeekerUI extends JFrame {
 		textField.setColumns(10);
 		
 		jobTable = new JTable();
+		jobTable.setBorder(new LineBorder(new Color(0, 0, 0)));
 		jobTable.setBounds(39, 74, 1046, 360);
 		panel.add(jobTable);
 		
@@ -182,7 +190,7 @@ public class JobSeekerUI extends JFrame {
 		btnViewJob.setForeground(Color.WHITE);
 		btnViewJob.setFont(new Font("Verdana", Font.BOLD, 11));
 		btnViewJob.setBackground(new Color(195, 143, 255));
-		btnViewJob.setBounds(353, 445, 337, 53);
+		btnViewJob.setBounds(375, 445, 337, 53);
 		panel.add(btnViewJob);
 		
 		JPanel panel_4 = new JPanel();
@@ -221,18 +229,31 @@ public class JobSeekerUI extends JFrame {
 		btnNo.setBounds(438, 301, 301, 53);
 		panel_1_1_2.add(btnNo);
 		
-		String [] columnNames = {"Job ID", "Job Title", "Company", "Location", "Salary", "Posted Date"};
+		String [] columnNames = {"Job ID", "Job Title", "Company Name", "Posted Date", "Status", "Expiration Date"};
 		tableModel = new DefaultTableModel(columnNames, 0);
 		jobTable.setModel(tableModel);
-	     Object[][] data = {
-	            {"1", "Software Engineer", "Tech Corp", "New York", "$100,000", "2023-10-01"},
-	            {"2", "Data Analyst", "Data Inc.", "San Francisco", "$90,000", "2023-10-02"},
-	            {"3", "Web Developer", "Web Solutions", "Los Angeles", "$80,000", "2023-10-03"}
-	            };
-	     for (Object[] row : data) {
-	    	 
-	    	 tableModel.addRow(row);
-	     }
+		
+		LoadJobData();
+	 
 
+	}
+	
+	void LoadJobData() {
+		// This method can be used to load job data from a database or any other source
+		// For now, we are using hardcoded data in the constructor
+		// In a real application, you would fetch this data from a database or an API
+	 		jobList.add(new JobModel("1", "Software Engineer", "Tech Company", "Develop software applications", "Remote", "Java, Spring Boot", "Full-time", "50000", "70000", "2023-10-01", "2024-01-01", "Open"));
+		
+		for (JobModel job : jobList) {
+  			Object[] rowData = {
+				job.getJobId(),
+				job.getJobTitle(),
+				job.getCompanyName(),
+				job.getPostedDate(),
+				job.getStatus(),
+				job.getExpirationDate()
+			};
+			tableModel.addRow(rowData);
+		}
 	}
 }
