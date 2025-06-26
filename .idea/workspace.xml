@@ -4,19 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="039a69c7-22f7-43ff-9108-b213d023ee06" name="Changes" comment="Added Logout tabs and function on the EmployeeUI 👌">
+    <list default="true" id="039a69c7-22f7-43ff-9108-b213d023ee06" name="Changes" comment="Added Recruiter in RegistrationUI 👌">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/ui/EmployeeUI$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/EmployeeUI$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/ui/EmployeeUI$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/EmployeeUI$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/ui/EmployeeUI$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/EmployeeUI$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/ui/EmployeeUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/EmployeeUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/ui/JobSeekerUI$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/JobSeekerUI$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/ui/JobSeekerUI$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/JobSeekerUI$4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/ui/JobSeekerUI$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/JobSeekerUI$5.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/ui/JobSeekerUI$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/JobSeekerUI$6.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/ui/JobSeekerUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/JobSeekerUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ui/EmployeeUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/EmployeeUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ui/JobSeekerUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/JobSeekerUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ui/AdminUI$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/AdminUI$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ui/AdminUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/AdminUI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/AdminUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/AdminUI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -207,7 +199,23 @@
       <option name="project" value="LOCAL" />
       <updated>1750919786052</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Done designing the My profile in EmployeeUI 👌">
+      <option name="closed" value="true" />
+      <created>1750921139328</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1750921139328</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Added Recruiter in RegistrationUI 👌">
+      <option name="closed" value="true" />
+      <created>1750921198631</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1750921198631</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -225,6 +233,8 @@
     <MESSAGE value="Done designing the applicant and Home page foor Employee " />
     <MESSAGE value="Done created the UI for Jobs " />
     <MESSAGE value="Added Logout tabs and function on the EmployeeUI " />
-    <option name="LAST_COMMIT_MESSAGE" value="Added Logout tabs and function on the EmployeeUI " />
+    <MESSAGE value="Done designing the My profile in EmployeeUI " />
+    <MESSAGE value="Added Recruiter in RegistrationUI " />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Recruiter in RegistrationUI " />
   </component>
 </project>
