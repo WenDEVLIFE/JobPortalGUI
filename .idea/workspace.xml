@@ -4,13 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="039a69c7-22f7-43ff-9108-b213d023ee06" name="Changes" comment="Added a functioon where it will display the user data 👌">
+    <list default="true" id="039a69c7-22f7-43ff-9108-b213d023ee06" name="Changes" comment="Added a function where user can delete, edit and add 👌">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/database/RegistrationService.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/database/RegistrationService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/ui/AdminUI$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/AdminUI$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/ui/AdminUI$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/AdminUI$2.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/ui/AdminUI$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/AdminUI$3.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/ui/AdminUI$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/AdminUI$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ui/AdminUI$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/AdminUI$5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ui/AdminUI$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/AdminUI$6.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/ui/AdminUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/AdminUI.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/database/RegistrationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/RegistrationService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ui/AdminUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/AdminUI.java" afterDir="false" />
@@ -292,7 +294,15 @@
       <option name="project" value="LOCAL" />
       <updated>1750945474456</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="Added a function where user can delete, edit and add 👌">
+      <option name="closed" value="true" />
+      <created>1750946908165</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1750946908165</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -320,6 +330,7 @@
     <MESSAGE value="Added a function where the Admin can now add users " />
     <MESSAGE value="Added set the id from EmployeeUI and to JobSeekerUI " />
     <MESSAGE value="Added a functioon where it will display the user data " />
-    <option name="LAST_COMMIT_MESSAGE" value="Added a functioon where it will display the user data " />
+    <MESSAGE value="Added a function where user can delete, edit and add " />
+    <option name="LAST_COMMIT_MESSAGE" value="Added a function where user can delete, edit and add " />
   </component>
 </project>

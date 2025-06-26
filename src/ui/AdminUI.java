@@ -19,6 +19,7 @@ import javax.swing.JTable;
 import javax.swing.border.LineBorder;
 import javax.swing.table.DefaultTableModel;
 
+import database.AuditLogService;
 import database.RegistrationService;
 
 import java.util.ArrayList;
@@ -28,6 +29,7 @@ import java.util.Map;
 
 import functions.AddUserDialog;
 import functions.EditUserDialog;
+import model.AuditModel;
 import model.UserModel;
 
 import javax.swing.JTextField;
@@ -43,12 +45,14 @@ public class AdminUI extends JFrame {
 	private JTextField textField_1;
 	private JTable table_2;
 	private JTextField textField_2;
-	private JTable table_3;
+	private JTable auditTable;
 	private JPasswordField passwordField;
 	private JPasswordField passwordField_1;
+	private int adminID;
 	
-	DefaultTableModel userTableModel;
+	DefaultTableModel userTableModel, auditTableModel, pendingJobTableModel, approvedJobTableModel;
 	List<UserModel> userList = new ArrayList<>();
+	List<AuditModel> auditList = new ArrayList<>();
  
 	/**
 	 * Launch the application.
@@ -292,7 +296,8 @@ public class AdminUI extends JFrame {
 					String userIds = selectedUser.getId();
 					
 	
-					boolean success = RegistrationService.getInstance().deleteUser(userIds);
+	
+					boolean success = RegistrationService.getInstance().deleteUser(userIds, adminID);	
 					
 					if (success) {
 						JOptionPane.showMessageDialog(AdminUI.this, "User deleted successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
@@ -388,10 +393,10 @@ public class AdminUI extends JFrame {
 		btnDeleteAuditLogs.setBounds(354, 445, 301, 53);
 		panel_2.add(btnDeleteAuditLogs);
 		
-		table_3 = new JTable();
-		table_3.setBorder(new LineBorder(new Color(0, 0, 0)));
-		table_3.setBounds(34, 61, 1046, 360);
-		panel_2.add(table_3);
+		auditTable = new JTable();
+		auditTable.setBorder(new LineBorder(new Color(0, 0, 0)));
+		auditTable.setBounds(34, 61, 1046, 360);
+		panel_2.add(auditTable);
 		
 		JLabel lblWelcomeBack_1_2_3_1_1_1_1 = new JLabel("Audit Logs");
 		lblWelcomeBack_1_2_3_1_1_1_1.setForeground(Color.WHITE);
@@ -476,10 +481,14 @@ public class AdminUI extends JFrame {
 		panel_1_1_2.add(btnNo);
 		
 		String [] columnNames = {"ID", "Username", "Role", "Status", "Created At"};
+		String [] columnNamesAudit = {"ID", "Username", "Action Type", "Resources Type", "Timestamp"};
 		userTableModel = new DefaultTableModel(columnNames, 0);
+		auditTableModel = new DefaultTableModel(columnNamesAudit, 0);
 		userTable.setModel(userTableModel);
+		auditTable.setModel(auditTableModel);
 		
 		loadUserData();
+		loadAuditData();
 		
 
 	}
@@ -511,5 +520,41 @@ public class AdminUI extends JFrame {
 			JOptionPane.showMessageDialog(this, "Failed to load user data.", "Error", JOptionPane.ERROR_MESSAGE);
 			return;
 		}
+	}
+	
+	void loadAuditData() {
+		auditList.clear();
+		auditTableModel.setRowCount(0);
+		
+		try {
+			auditList = AuditLogService.getInstance().getAllAudits();
+			
+			for (AuditModel log : auditList) {
+				Object[] row = {
+					log.getAuditId(),
+					log.getUsername(),
+					log.getActionType(),
+					log.getResourceType(),
+					log.getTimestamp()
+				};
+				auditTableModel.addRow(row);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			JOptionPane.showMessageDialog(this, "Failed to load audit logs.", "Error", JOptionPane.ERROR_MESSAGE);
+		}
+	}
+	
+	void setData(int adminId) {
+		this.adminID = adminId;
+	
+		// You can use the adminID to fetch and display admin-specific data if needed
+		// For example, you might want to load admin-specific information or settings here
+		// This is just a placeholder for demonstration purposes
+		System.out.println("Admin ID set: " + adminID);
+		
+		// Optionally, you can load user data or perform other actions based on the admin ID
+		loadUserData();
+		
 	}
 }

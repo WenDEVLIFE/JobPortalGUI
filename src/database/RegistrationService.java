@@ -27,41 +27,45 @@ public class RegistrationService {
 		return instance;
 	}
 	
-	public void  RegisterUser(Map<String, Object> userDetails) {
-		String username = (String) userDetails.get("username");
-		String password = (String) userDetails.get("password");
-		String role = (String) userDetails.get("role");
-		
-		try {
-			Connection connection = MYSQL.getConnection();
-			if (connection != null) {
-				String query = "INSERT INTO users (username, password, role, status, createdAt) VALUES (?, ?, ?, ?, ?)";
-				
-				LocalDateTime now = LocalDateTime.now();
-				PreparedStatement preparedStatement = connection.prepareStatement(query);
-				preparedStatement.setString(1, username);
-				preparedStatement.setString(2, password);
-				preparedStatement.setString(3, role);
-				 preparedStatement.setString(4, "offline");
-				 preparedStatement.setObject(5, now.toString());
-				
-				
-				int rowsAffected = preparedStatement.executeUpdate();
-				if (rowsAffected > 0) {
-					System.out.println("User registered successfully!");
-					JOptionPane.showMessageDialog(null, "Registration successful! You can now log in.", "Success", JOptionPane.INFORMATION_MESSAGE);
-				} else {
-					System.out.println("Failed to register user.");
-					JOptionPane.showMessageDialog(null, "Registration failed. Please try again.", "Error", JOptionPane.ERROR_MESSAGE);
-				}
-			} else {
-				System.out.println("Database connection failed.");
-				JOptionPane.showMessageDialog(null, "Database connection failed. Please check your connection settings.", "Error", JOptionPane.ERROR_MESSAGE);
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+	public void RegisterUser(Map<String, Object> userDetails) {
+	    String username = (String) userDetails.get("username");
+	    String password = (String) userDetails.get("password");
+	    String role = (String) userDetails.get("role");
+	    String generatedId = null;
+	    try {
+	        Connection connection = MYSQL.getConnection();
+	        if (connection != null) {
+	            String query = "INSERT INTO users (username, password, role, status, createdAt) VALUES (?, ?, ?, ?, ?)";
+	            LocalDateTime now = LocalDateTime.now();
+	            PreparedStatement preparedStatement = connection.prepareStatement(query, PreparedStatement.RETURN_GENERATED_KEYS);
+	            preparedStatement.setString(1, username);
+	            preparedStatement.setString(2, password);
+	            preparedStatement.setString(3, role);
+	            preparedStatement.setString(4, "Active");
+	            preparedStatement.setObject(5, now.toString());
+
+	            int rowsAffected = preparedStatement.executeUpdate();
+	            if (rowsAffected > 0) {
+	                ResultSet rs = preparedStatement.getGeneratedKeys();
+	                if (rs.next()) {
+	                    generatedId = rs.getString(1);
+	                }
+	                System.out.println("User registered successfully!");
+	                JOptionPane.showMessageDialog(null, "Registration successful! You can now log in.", "Success", JOptionPane.INFORMATION_MESSAGE);
+	                AuditLogService.getInstance().InsertAuditLog(generatedId, "Register User", "User registered with username: " + username);
+	            } else {
+	                System.out.println("Failed to register user.");
+	                JOptionPane.showMessageDialog(null, "Registration failed. Please try again.", "Error", JOptionPane.ERROR_MESSAGE);
+	            }
+	        } else {
+	            System.out.println("Database connection failed.");
+	            JOptionPane.showMessageDialog(null, "Database connection failed. Please check your connection settings.", "Error", JOptionPane.ERROR_MESSAGE);
+	        }
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
 	}
+
 	
 	public boolean isUserExists(String username) {
 		try {
@@ -131,6 +135,7 @@ public class RegistrationService {
 			preparedStatement.setString(5, userId);
 			
 			int rowsAffected = preparedStatement.executeUpdate();
+			AuditLogService.getInstance().InsertAuditLog(userId, "Update User", "User details updated for user ID: " + userId);
 			return rowsAffected > 0;
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -140,13 +145,16 @@ public class RegistrationService {
 	}
 	
 
-	public boolean deleteUser(String userIds) {
+	public boolean deleteUser(String userIds, int adminId) {
 		String sql = "DELETE FROM users WHERE user_id = ?";
 		try (Connection connection = MYSQL.getConnection();
 			 PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
 			
 			preparedStatement.setString(1, userIds);
 			int rowsAffected = preparedStatement.executeUpdate();
+			
+			String adminIds = String.valueOf(adminId);
+			 AuditLogService.getInstance().InsertAuditLog(adminIds, "Delete User", "User deleted with ID: " + userIds);
 			return rowsAffected > 0;
 		} catch (SQLException e) {
 			e.printStackTrace();
