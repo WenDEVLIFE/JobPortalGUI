@@ -8,6 +8,9 @@ import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 
 import com.formdev.flatlaf.FlatIntelliJLaf;
+
+import database.LoginService;
+
 import javax.swing.JLabel;
 import java.awt.Font;
 import java.awt.Color;
@@ -17,6 +20,7 @@ import javax.swing.JTextField;
 import javax.swing.JPasswordField;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JCheckBox;
 
 public class Login extends JFrame {
 
@@ -79,7 +83,7 @@ public class Login extends JFrame {
 				if (username.isEmpty() || password.isEmpty()) {
 					System.out.println("Username or Password cannot be empty.");
 				} else {
-					System.out.println("Login successful for user: " + username);
+					LoginService.getInstance().validateLogin(username, password, Login.this);
 				}
 			}
 		});
@@ -130,6 +134,13 @@ public class Login extends JFrame {
 		btnSignUp.setBackground(new Color(195, 143, 255));
 		btnSignUp.setBounds(119, 456, 158, 46);
 		panel.add(btnSignUp);
+		
+		JCheckBox chckbxNewCheckBox = new JCheckBox("Remember me");
+		chckbxNewCheckBox.setForeground(new Color(255, 255, 255));
+		chckbxNewCheckBox.setFont(new Font("Verdana", Font.BOLD, 11));
+		chckbxNewCheckBox.setBackground(new Color(234, 128, 252));
+		chckbxNewCheckBox.setBounds(31, 311, 227, 23);
+		panel.add(chckbxNewCheckBox);
 		
 		JLabel lblNewLabel_1 = new JLabel("JOB PORTAL SYSTEM");
 		lblNewLabel_1.setIcon(new ImageIcon(Login.class.getResource("/pictures/busines.svg")));

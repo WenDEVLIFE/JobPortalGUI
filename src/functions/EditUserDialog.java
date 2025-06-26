@@ -79,7 +79,7 @@ public class EditUserDialog extends JDialog {
             	Map<String, String> updatedDetails = new HashMap<>();
             	updatedDetails.put("username", usernameField.getText());
             	
-            	String hashedPassword = BCrypt.hashpw(password, BCrypt.gensalt());
+            	String hashedPassword = BCrypt.hashpw(newPassword, BCrypt.gensalt());
             	updatedDetails.put("password", hashedPassword);
             	updatedDetails.put("role", newRole);
             	updatedDetails.put("status", newStatus);
@@ -88,6 +88,7 @@ public class EditUserDialog extends JDialog {
                 if (updated) {
                     succeeded = true;
                     dispose();
+                    JOptionPane.showMessageDialog(this, "User updated successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
                 } else {
                     JOptionPane.showMessageDialog(this, "Failed to update user.", "Error", JOptionPane.ERROR_MESSAGE);
                 }

@@ -545,7 +545,7 @@ public class AdminUI extends JFrame {
 		}
 	}
 	
-	void setData(int adminId) {
+	public void setData(int adminId) {
 		this.adminID = adminId;
 	
 		// You can use the adminID to fetch and display admin-specific data if needed

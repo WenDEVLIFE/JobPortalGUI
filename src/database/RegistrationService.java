@@ -123,6 +123,12 @@ public class RegistrationService {
 		String password = updatedDetails.get("password");
 		String role = updatedDetails.get("role");
 		String status = updatedDetails.get("status");
+	     System.out.println("Updating user with ID: " + userId);
+	     System.out.println("New Username: " + username);
+	     System.out.println("New Password: " + password);
+	     System.out.println("New Role: " + role);
+	     System.out.println("New Status: " + status);
+	     
 		
 		String sql = "UPDATE users SET username = ?, password = ?, role = ?, status = ? WHERE user_id = ?";
 		 try (Connection connection = MYSQL.getConnection();

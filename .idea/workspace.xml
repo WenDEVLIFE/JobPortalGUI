@@ -4,18 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="039a69c7-22f7-43ff-9108-b213d023ee06" name="Changes" comment="Added a function where user can delete, edit and add 👌">
+    <list default="true" id="039a69c7-22f7-43ff-9108-b213d023ee06" name="Changes" comment="Added a function it will display the AuditLogs 👌">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/database/RegistrationService.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/database/RegistrationService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/ui/AdminUI$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/AdminUI$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/ui/AdminUI$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/AdminUI$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/ui/AdminUI$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/AdminUI$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/ui/AdminUI$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/AdminUI$4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/ui/AdminUI$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/AdminUI$5.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/ui/AdminUI$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/AdminUI$6.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/functions/EditUserDialog.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/functions/EditUserDialog.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/ui/AdminUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/AdminUI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ui/Login$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/Login$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ui/Login$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/Login$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ui/Login$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/Login$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ui/Login.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/Login.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/database/RegistrationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/RegistrationService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/functions/EditUserDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/functions/EditUserDialog.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ui/AdminUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/AdminUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/Login.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -302,11 +303,26 @@
       <option name="project" value="LOCAL" />
       <updated>1750946908165</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="Added a function it will display the AuditLogs 👌">
+      <option name="closed" value="true" />
+      <created>1750948665362</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1750948665362</updated>
+    </task>
+    <task id="LOCAL-00032" summary="Added a function it will display the AuditLogs 👌">
+      <option name="closed" value="true" />
+      <created>1750948671462</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1750948671462</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="commit" />
     <MESSAGE value="Done designing the Login Form " />
     <MESSAGE value="Added connection to the MYSQL " />
     <MESSAGE value="Done designing the Registration Form " />
@@ -331,6 +347,7 @@
     <MESSAGE value="Added set the id from EmployeeUI and to JobSeekerUI " />
     <MESSAGE value="Added a functioon where it will display the user data " />
     <MESSAGE value="Added a function where user can delete, edit and add " />
-    <option name="LAST_COMMIT_MESSAGE" value="Added a function where user can delete, edit and add " />
+    <MESSAGE value="Added a function it will display the AuditLogs " />
+    <option name="LAST_COMMIT_MESSAGE" value="Added a function it will display the AuditLogs " />
   </component>
 </project>
