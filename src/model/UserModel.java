@@ -36,5 +36,9 @@ public class UserModel {
  		return role;
  	}
  	
+ 	public String getStatus() {
+ 		return status;
+ 	}
+ 	
  	
 }

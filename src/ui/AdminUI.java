@@ -15,11 +15,16 @@ import java.awt.Color;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JTable;
+import javax.swing.border.LineBorder;
+import javax.swing.JTextField;
 
 public class AdminUI extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
+	private JTable table;
+	private JTextField textField;
 
 	/**
 	 * Launch the application.
@@ -175,6 +180,43 @@ public class AdminUI extends JFrame {
 		JPanel panel_1 = new JPanel();
 		panel_1.setLayout(null);
 		tabbedPane.addTab("Users", null, panel_1, null);
+		
+		JLabel lblWelcomeBack_1_2_3 = new JLabel("Users");
+		lblWelcomeBack_1_2_3.setForeground(Color.WHITE);
+		lblWelcomeBack_1_2_3.setFont(new Font("Verdana", Font.BOLD, 30));
+		lblWelcomeBack_1_2_3.setBounds(74, 11, 104, 38);
+		panel_1.add(lblWelcomeBack_1_2_3);
+		
+		table = new JTable();
+		table.setBorder(new LineBorder(new Color(0, 0, 0)));
+		table.setBounds(25, 60, 1046, 360);
+		panel_1.add(table);
+		
+		textField = new JTextField();
+		textField.setColumns(10);
+		textField.setBounds(208, 11, 863, 38);
+		panel_1.add(textField);
+		
+		JButton btnAddUser = new JButton("Add User");
+		btnAddUser.setForeground(Color.WHITE);
+		btnAddUser.setFont(new Font("Verdana", Font.BOLD, 11));
+		btnAddUser.setBackground(new Color(195, 143, 255));
+		btnAddUser.setBounds(66, 445, 301, 53);
+		panel_1.add(btnAddUser);
+		
+		JButton btnEditUser = new JButton("Edit User");
+		btnEditUser.setForeground(Color.WHITE);
+		btnEditUser.setFont(new Font("Verdana", Font.BOLD, 11));
+		btnEditUser.setBackground(new Color(195, 143, 255));
+		btnEditUser.setBounds(405, 445, 301, 53);
+		panel_1.add(btnEditUser);
+		
+		JButton btnDeleteUser = new JButton("Delete User");
+		btnDeleteUser.setForeground(Color.WHITE);
+		btnDeleteUser.setFont(new Font("Verdana", Font.BOLD, 11));
+		btnDeleteUser.setBackground(new Color(195, 143, 255));
+		btnDeleteUser.setBounds(733, 445, 301, 53);
+		panel_1.add(btnDeleteUser);
 		
 		JPanel panel_3 = new JPanel();
 		panel_3.setLayout(null);
