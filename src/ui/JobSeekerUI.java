@@ -378,6 +378,13 @@ public class JobSeekerUI extends JFrame {
 		panel_1_1_2.add(lblWelcomeBack);
 		
 		JButton btnNewButton = new JButton("Yes");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Login login = new Login();
+				login.setVisible(true);
+				dispose(); // Close the current window
+			}
+		});
 		btnNewButton.setForeground(Color.WHITE);
 		btnNewButton.setFont(new Font("Verdana", Font.BOLD, 11));
 		btnNewButton.setBackground(new Color(195, 143, 255));
@@ -385,6 +392,13 @@ public class JobSeekerUI extends JFrame {
 		panel_1_1_2.add(btnNewButton);
 		
 		JButton btnNo = new JButton("No");
+		btnNo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+		
+				JOptionPane.showMessageDialog(null, "Logout cancelled.", "Info", JOptionPane.INFORMATION_MESSAGE);
+				   tabbedPane.setSelectedIndex(0); // Switch to the Home tab
+			}
+		});
 		btnNo.setForeground(Color.WHITE);
 		btnNo.setFont(new Font("Verdana", Font.BOLD, 11));
 		btnNo.setBackground(new Color(195, 143, 255));
