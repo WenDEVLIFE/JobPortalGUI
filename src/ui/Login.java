@@ -10,6 +10,7 @@ import javax.swing.border.EmptyBorder;
 import com.formdev.flatlaf.FlatIntelliJLaf;
 
 import database.LoginService;
+import functions.SaveCredentials;
 
 import javax.swing.JLabel;
 import java.awt.Font;
@@ -19,15 +20,23 @@ import javax.swing.ImageIcon;
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
 import java.awt.event.ActionListener;
+import java.util.List;
 import java.awt.event.ActionEvent;
 import javax.swing.JCheckBox;
+import java.util.ArrayList;
+ 
 
 public class Login extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-	private JTextField textField;
+	private JTextField usernameField;
 	private JPasswordField passwordField;
+	
+	private boolean rememberMe = false; // Variable to store remember me state
+	private String savedUsername;
+	private String savedPassword;
+	List<String> savedCredentials = new ArrayList<>();
 
 	/**
 	 * Launch the application.
@@ -76,7 +85,7 @@ public class Login extends JFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				String username = textField.getText();
+				String username = usernameField.getText();
 				String password = new String(passwordField.getPassword());
 		
 				
@@ -84,6 +93,14 @@ public class Login extends JFrame {
 					System.out.println("Username or Password cannot be empty.");
 				} else {
 					LoginService.getInstance().validateLogin(username, password, Login.this);
+					
+					if (rememberMe) {
+						// Save credentials if remember me is checked
+						SaveCredentials.getInstance().saveCredentials(username, password);
+					} else {
+						// Clear saved credentials if remember me is not checked
+						SaveCredentials.getInstance().ClearCredentials();
+					}
 				}
 			}
 		});
@@ -105,10 +122,10 @@ public class Login extends JFrame {
 		lblUsername_1.setBounds(22, 215, 117, 32);
 		panel.add(lblUsername_1);
 		
-		textField = new JTextField();
-		textField.setBounds(22, 146, 354, 46);
-		panel.add(textField);
-		textField.setColumns(10);
+		usernameField = new JTextField();
+		usernameField.setBounds(22, 146, 354, 46);
+		panel.add(usernameField);
+		usernameField.setColumns(10);
 		
 		passwordField = new JPasswordField();
 		passwordField.setBounds(21, 258, 355, 46);
@@ -136,6 +153,25 @@ public class Login extends JFrame {
 		panel.add(btnSignUp);
 		
 		JCheckBox chckbxNewCheckBox = new JCheckBox("Remember me");
+		chckbxNewCheckBox.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				// Handle the remember me functionality here
+				if (chckbxNewCheckBox.isSelected()) {
+					System.out.println("Remember me selected.");
+					 rememberMe = true; // Set remember me to true
+					 SaveCredentials.getInstance().saveCredentials(
+							usernameField.getText(), 
+							new String(passwordField.getPassword())
+						);
+					// Logic to remember user credential
+				} else {
+					System.out.println("Remember me deselected.");
+					// Logic to clear remembered credentials
+					rememberMe = false; // Set remember me to false
+					SaveCredentials.getInstance().ClearCredentials();// Clear saved credentials
+				}
+			}
+		});
 		chckbxNewCheckBox.setForeground(new Color(255, 255, 255));
 		chckbxNewCheckBox.setFont(new Font("Verdana", Font.BOLD, 11));
 		chckbxNewCheckBox.setBackground(new Color(234, 128, 252));
@@ -148,6 +184,21 @@ public class Login extends JFrame {
 		lblNewLabel_1.setFont(new Font("Verdana", Font.BOLD, 30));
 		lblNewLabel_1.setBounds(186, 137, 381, 146);
 		contentPane.add(lblNewLabel_1);
+		
+		// Load saved credentials if available
+		List<String> savedCredentials = SaveCredentials.getInstance().loadAllCredentials();
+		if (!savedCredentials.isEmpty()) {
+			String[] credentials = savedCredentials.get(0).split(":");
+			if (credentials.length == 2) {
+				savedUsername = credentials[0];
+				savedPassword = credentials[1];
+				usernameField.setText(savedUsername);
+				passwordField.setText(savedPassword);
+				rememberMe = true; // Set remember me to true if credentials are loaded
+				chckbxNewCheckBox.setSelected(true); // Check the remember me checkbox
+			}
+		}
+		
 
 	}
 }

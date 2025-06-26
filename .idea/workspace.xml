@@ -4,18 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="039a69c7-22f7-43ff-9108-b213d023ee06" name="Changes" comment="Added a function it will display the AuditLogs 👌">
+    <list default="true" id="039a69c7-22f7-43ff-9108-b213d023ee06" name="Changes" comment="Added a function where user can now login 👌">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/database/RegistrationService.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/database/RegistrationService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/functions/EditUserDialog.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/functions/EditUserDialog.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/ui/AdminUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/AdminUI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/database/savepw.txt" beforeDir="false" afterPath="$PROJECT_DIR$/bin/database/savepw.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/ui/Login$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/Login$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/ui/Login$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/Login$2.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/ui/Login$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/Login$3.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/ui/Login.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/Login.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/database/RegistrationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/RegistrationService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/functions/EditUserDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/functions/EditUserDialog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ui/AdminUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/AdminUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/database/savepw.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/savepw.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ui/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/Login.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -319,11 +315,18 @@
       <option name="project" value="LOCAL" />
       <updated>1750948671462</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="Added a function where user can now login 👌">
+      <option name="closed" value="true" />
+      <created>1750953613859</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1750953613859</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Done designing the Login Form " />
     <MESSAGE value="Added connection to the MYSQL " />
     <MESSAGE value="Done designing the Registration Form " />
     <MESSAGE value="Added navigations on each screens " />
@@ -348,6 +351,7 @@
     <MESSAGE value="Added a functioon where it will display the user data " />
     <MESSAGE value="Added a function where user can delete, edit and add " />
     <MESSAGE value="Added a function it will display the AuditLogs " />
-    <option name="LAST_COMMIT_MESSAGE" value="Added a function it will display the AuditLogs " />
+    <MESSAGE value="Added a function where user can now login " />
+    <option name="LAST_COMMIT_MESSAGE" value="Added a function where user can now login " />
   </component>
 </project>
