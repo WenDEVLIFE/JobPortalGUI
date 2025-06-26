@@ -71,6 +71,7 @@ public class JobSeekerUI extends JFrame {
 	 * Create the frame.
 	 */
 	public JobSeekerUI() {
+		setTitle("Job Portal System Job Seeker Portal");
 		setResizable(false);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
