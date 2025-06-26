@@ -4,7 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="039a69c7-22f7-43ff-9108-b213d023ee06" name="Changes" comment="Added a function where user can now register and added hashing to the password 👌" />
+    <list default="true" id="039a69c7-22f7-43ff-9108-b213d023ee06" name="Changes" comment="Added skeletn UI">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ui/JobSeekerUI$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/JobSeekerUI$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ui/JobSeekerUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/JobSeekerUI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ui/Login$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/Login$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ui/Login$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/Login$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ui/Login.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/Login.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ui/RegistrationUI$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/RegistrationUI$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ui/RegistrationUI$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/RegistrationUI$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ui/RegistrationUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/RegistrationUI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/JobSeekerUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/JobSeekerUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/Login.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/RegistrationUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/RegistrationUI.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -114,7 +127,15 @@
       <option name="project" value="LOCAL" />
       <updated>1750863739308</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Added skeletn UI">
+      <option name="closed" value="true" />
+      <created>1750864135201</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1750864135201</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -124,6 +145,7 @@
     <MESSAGE value="Done designing the Registration Form " />
     <MESSAGE value="Added navigations on each screens " />
     <MESSAGE value="Added a function where user can now register and added hashing to the password " />
-    <option name="LAST_COMMIT_MESSAGE" value="Added a function where user can now register and added hashing to the password " />
+    <MESSAGE value="Added skeletn UI" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added skeletn UI" />
   </component>
 </project>
