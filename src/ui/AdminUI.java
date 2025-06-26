@@ -18,6 +18,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.JTable;
 import javax.swing.border.LineBorder;
 import javax.swing.JTextField;
+import javax.swing.JPasswordField;
 
 public class AdminUI extends JFrame {
 
@@ -25,6 +26,13 @@ public class AdminUI extends JFrame {
 	private JPanel contentPane;
 	private JTable table;
 	private JTextField textField;
+	private JTable table_1;
+	private JTextField textField_1;
+	private JTable table_2;
+	private JTextField textField_2;
+	private JTable table_3;
+	private JPasswordField passwordField;
+	private JPasswordField passwordField_1;
 
 	/**
 	 * Launch the application.
@@ -222,17 +230,128 @@ public class AdminUI extends JFrame {
 		panel_3.setLayout(null);
 		tabbedPane.addTab("Job Posting Pending", null, panel_3, null);
 		
+		table_1 = new JTable();
+		table_1.setBorder(new LineBorder(new Color(0, 0, 0)));
+		table_1.setBounds(41, 61, 1046, 360);
+		panel_3.add(table_1);
+		
+		textField_1 = new JTextField();
+		textField_1.setColumns(10);
+		textField_1.setBounds(434, 11, 648, 38);
+		panel_3.add(textField_1);
+		
+		JButton btnApproved = new JButton("Approved");
+		btnApproved.setForeground(Color.WHITE);
+		btnApproved.setFont(new Font("Verdana", Font.BOLD, 11));
+		btnApproved.setBackground(new Color(195, 143, 255));
+		btnApproved.setBounds(194, 445, 301, 53);
+		panel_3.add(btnApproved);
+		
+		JButton btnDelete = new JButton("Delete");
+		btnDelete.setForeground(Color.WHITE);
+		btnDelete.setFont(new Font("Verdana", Font.BOLD, 11));
+		btnDelete.setBackground(new Color(195, 143, 255));
+		btnDelete.setBounds(589, 445, 301, 53);
+		panel_3.add(btnDelete);
+		
+		JLabel lblWelcomeBack_1_2_3_1_1_1 = new JLabel("Search Title, Company & etc");
+		lblWelcomeBack_1_2_3_1_1_1.setForeground(Color.WHITE);
+		lblWelcomeBack_1_2_3_1_1_1.setFont(new Font("Verdana", Font.BOLD, 24));
+		lblWelcomeBack_1_2_3_1_1_1.setBounds(41, 11, 402, 38);
+		panel_3.add(lblWelcomeBack_1_2_3_1_1_1);
+		
 		JPanel panel_4 = new JPanel();
 		panel_4.setLayout(null);
 		tabbedPane.addTab("Job Posting Approved", null, panel_4, null);
+		
+		JButton btnApproved_1 = new JButton("Approved");
+		btnApproved_1.setForeground(Color.WHITE);
+		btnApproved_1.setFont(new Font("Verdana", Font.BOLD, 11));
+		btnApproved_1.setBackground(new Color(195, 143, 255));
+		btnApproved_1.setBounds(194, 445, 301, 53);
+		panel_4.add(btnApproved_1);
+		
+		JButton btnDelete_1 = new JButton("Delete");
+		btnDelete_1.setForeground(Color.WHITE);
+		btnDelete_1.setFont(new Font("Verdana", Font.BOLD, 11));
+		btnDelete_1.setBackground(new Color(195, 143, 255));
+		btnDelete_1.setBounds(589, 445, 301, 53);
+		panel_4.add(btnDelete_1);
+		
+		table_2 = new JTable();
+		table_2.setBorder(new LineBorder(new Color(0, 0, 0)));
+		table_2.setBounds(41, 61, 1046, 360);
+		panel_4.add(table_2);
+		
+		JLabel lblWelcomeBack_1_2_3_1_1 = new JLabel("Search Title, Company & etc");
+		lblWelcomeBack_1_2_3_1_1.setForeground(Color.WHITE);
+		lblWelcomeBack_1_2_3_1_1.setFont(new Font("Verdana", Font.BOLD, 24));
+		lblWelcomeBack_1_2_3_1_1.setBounds(33, 12, 402, 38);
+		panel_4.add(lblWelcomeBack_1_2_3_1_1);
+		
+		textField_2 = new JTextField();
+		textField_2.setColumns(10);
+		textField_2.setBounds(445, 12, 642, 38);
+		panel_4.add(textField_2);
 		
 		JPanel panel_2 = new JPanel();
 		panel_2.setLayout(null);
 		tabbedPane.addTab("Audit Logs", null, panel_2, null);
 		
+		JButton btnDeleteAuditLogs = new JButton("Delete Audit Logs");
+		btnDeleteAuditLogs.setForeground(Color.WHITE);
+		btnDeleteAuditLogs.setFont(new Font("Verdana", Font.BOLD, 11));
+		btnDeleteAuditLogs.setBackground(new Color(195, 143, 255));
+		btnDeleteAuditLogs.setBounds(354, 445, 301, 53);
+		panel_2.add(btnDeleteAuditLogs);
+		
+		table_3 = new JTable();
+		table_3.setBorder(new LineBorder(new Color(0, 0, 0)));
+		table_3.setBounds(34, 61, 1046, 360);
+		panel_2.add(table_3);
+		
+		JLabel lblWelcomeBack_1_2_3_1_1_1_1 = new JLabel("Audit Logs");
+		lblWelcomeBack_1_2_3_1_1_1_1.setForeground(Color.WHITE);
+		lblWelcomeBack_1_2_3_1_1_1_1.setFont(new Font("Verdana", Font.BOLD, 24));
+		lblWelcomeBack_1_2_3_1_1_1_1.setBounds(34, 11, 402, 38);
+		panel_2.add(lblWelcomeBack_1_2_3_1_1_1_1);
+		
 		JPanel panel_5 = new JPanel();
 		panel_5.setLayout(null);
 		tabbedPane.addTab("Change Password", null, panel_5, null);
+		
+		JButton btnUpdatePassword = new JButton("Update Password");
+		btnUpdatePassword.setForeground(Color.WHITE);
+		btnUpdatePassword.setFont(new Font("Verdana", Font.BOLD, 11));
+		btnUpdatePassword.setBackground(new Color(195, 143, 255));
+		btnUpdatePassword.setBounds(251, 413, 301, 53);
+		panel_5.add(btnUpdatePassword);
+		
+		JLabel lblWelcomeBack_1_2_3_1_1_1_2 = new JLabel("Change Password");
+		lblWelcomeBack_1_2_3_1_1_1_2.setForeground(Color.WHITE);
+		lblWelcomeBack_1_2_3_1_1_1_2.setFont(new Font("Verdana", Font.BOLD, 24));
+		lblWelcomeBack_1_2_3_1_1_1_2.setBounds(53, 22, 402, 38);
+		panel_5.add(lblWelcomeBack_1_2_3_1_1_1_2);
+		
+		JLabel lblWelcomeBack_1_2_3_1_1_1_2_1 = new JLabel("Enter Your Old Password");
+		lblWelcomeBack_1_2_3_1_1_1_2_1.setForeground(Color.WHITE);
+		lblWelcomeBack_1_2_3_1_1_1_2_1.setFont(new Font("Verdana", Font.BOLD, 20));
+		lblWelcomeBack_1_2_3_1_1_1_2_1.setBounds(132, 117, 402, 38);
+		panel_5.add(lblWelcomeBack_1_2_3_1_1_1_2_1);
+		
+		passwordField = new JPasswordField();
+		passwordField.setBounds(134, 176, 617, 53);
+		panel_5.add(passwordField);
+		
+		passwordField_1 = new JPasswordField();
+		passwordField_1.setBounds(134, 303, 617, 53);
+		panel_5.add(passwordField_1);
+		
+		JLabel lblWelcomeBack_1_2_3_1_1_1_2_1_1 = new JLabel("Enter Your New Password");
+		lblWelcomeBack_1_2_3_1_1_1_2_1_1.setForeground(Color.WHITE);
+		lblWelcomeBack_1_2_3_1_1_1_2_1_1.setFont(new Font("Verdana", Font.BOLD, 20));
+		lblWelcomeBack_1_2_3_1_1_1_2_1_1.setBounds(132, 254, 402, 38);
+		panel_5.add(lblWelcomeBack_1_2_3_1_1_1_2_1_1);
 		
 		JPanel panel_1_1_2 = new JPanel();
 		panel_1_1_2.setLayout(null);
@@ -274,5 +393,4 @@ public class AdminUI extends JFrame {
 		panel_1_1_2.add(btnNo);
 
 	}
-
 }
