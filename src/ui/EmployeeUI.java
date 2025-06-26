@@ -8,12 +8,16 @@ import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JTabbedPane;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import java.awt.Color;
 import javax.swing.JTextField;
 import javax.swing.JTable;
 import javax.swing.border.LineBorder;
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class EmployeeUI extends JFrame {
 
@@ -187,12 +191,12 @@ public class EmployeeUI extends JFrame {
 		JLabel lblWelcomeBack_1_2_3 = new JLabel("Jobs");
 		lblWelcomeBack_1_2_3.setForeground(Color.WHITE);
 		lblWelcomeBack_1_2_3.setFont(new Font("Verdana", Font.BOLD, 30));
-		lblWelcomeBack_1_2_3.setBounds(30, 11, 172, 38);
+		lblWelcomeBack_1_2_3.setBounds(104, 11, 88, 38);
 		panel_2.add(lblWelcomeBack_1_2_3);
 		
 		textField_2 = new JTextField();
 		textField_2.setColumns(10);
-		textField_2.setBounds(223, 11, 863, 38);
+		textField_2.setBounds(222, 11, 863, 38);
 		panel_2.add(textField_2);
 		
 		table_1 = new JTable();
@@ -289,6 +293,45 @@ public class EmployeeUI extends JFrame {
 		alertTable.setBorder(new LineBorder(new Color(0, 0, 0)));
 		alertTable.setBounds(56, 60, 1046, 360);
 		panel_1_2.add(alertTable);
+		
+		JPanel panel_1_1_2_1 = new JPanel();
+		panel_1_1_2_1.setLayout(null);
+		tabbedPane.addTab("Logout", null, panel_1_1_2_1, null);
+		
+		JLabel lblWelcomeBack_2 = new JLabel("Are you sure you want to logout?");
+		lblWelcomeBack_2.setForeground(Color.WHITE);
+		lblWelcomeBack_2.setFont(new Font("Verdana", Font.BOLD, 30));
+		lblWelcomeBack_2.setBounds(301, 36, 633, 38);
+		panel_1_1_2_1.add(lblWelcomeBack_2);
+		
+		JButton btnNewButton_1 = new JButton("Yes");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Login loginFrame = new Login();
+				loginFrame.setVisible(true);
+				dispose(); // Close the current frame
+				JOptionPane.showMessageDialog(null, "You have successfully logged out.", "Logout Successful", JOptionPane.INFORMATION_MESSAGE);
+			}
+		});
+		btnNewButton_1.setForeground(Color.WHITE);
+		btnNewButton_1.setFont(new Font("Verdana", Font.BOLD, 11));
+		btnNewButton_1.setBackground(new Color(195, 143, 255));
+		btnNewButton_1.setBounds(438, 197, 301, 53);
+		panel_1_1_2_1.add(btnNewButton_1);
+		
+		JButton btnNo_1 = new JButton("No");
+		btnNo_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				// Close the logout confirmation panel and return to the previous tab
+				JOptionPane.showMessageDialog(null, "Logout cancelled.", "Cancelled", JOptionPane.INFORMATION_MESSAGE);
+				tabbedPane.setSelectedIndex(0); // Assuming 0 is the index of the Home tab
+			}
+		});
+		btnNo_1.setForeground(Color.WHITE);
+		btnNo_1.setFont(new Font("Verdana", Font.BOLD, 11));
+		btnNo_1.setBackground(new Color(195, 143, 255));
+		btnNo_1.setBounds(438, 301, 301, 53);
+		panel_1_1_2_1.add(btnNo_1);
 
 	}
 }
