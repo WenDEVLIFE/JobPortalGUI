@@ -31,6 +31,7 @@ public class EmployeeUI extends JFrame {
 	private JTable alertTable;
 	private JTextField textField_2;
 	private JTable table_1;
+	private int employeeId;
 
 	/**
 	 * Launch the application.
@@ -416,5 +417,11 @@ public class EmployeeUI extends JFrame {
 		btnNo_1.setBounds(438, 301, 301, 53);
 		panel_1_1_2_1.add(btnNo_1);
 
+	}
+	
+	
+	public void setData(int employeeId) {
+		this.employeeId = employeeId;
+		System.out.println("Employee ID set to: " + employeeId);
 	}
 }

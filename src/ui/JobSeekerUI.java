@@ -48,6 +48,7 @@ public class JobSeekerUI extends JFrame {
 	private JTextField textField;
 	private JTable table;
 	private JTable alertTable;
+	private int userId;
 	
 
 	/**
@@ -527,5 +528,10 @@ public class JobSeekerUI extends JFrame {
 			};
 			alertTableModel.addRow(rowData);
 		}
+	}
+	
+	public void setData(int userId) {
+		this.userId = userId;
+		System.out.println("User ID set to: " + userId);
 	}
 }
