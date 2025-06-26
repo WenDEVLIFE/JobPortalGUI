@@ -4,12 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="039a69c7-22f7-43ff-9108-b213d023ee06" name="Changes" comment="Added Recruiter in RegistrationUI 👌">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/ui/AdminUI$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/AdminUI$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/ui/AdminUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/AdminUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ui/AdminUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/AdminUI.java" afterDir="false" />
-    </list>
+    <list default="true" id="039a69c7-22f7-43ff-9108-b213d023ee06" name="Changes" comment="Done designing the Home on AdminUI 👌" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -215,7 +210,15 @@
       <option name="project" value="LOCAL" />
       <updated>1750921198631</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="Done designing the Home on AdminUI 👌">
+      <option name="closed" value="true" />
+      <created>1750939413819</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1750939413819</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -235,6 +238,7 @@
     <MESSAGE value="Added Logout tabs and function on the EmployeeUI " />
     <MESSAGE value="Done designing the My profile in EmployeeUI " />
     <MESSAGE value="Added Recruiter in RegistrationUI " />
-    <option name="LAST_COMMIT_MESSAGE" value="Added Recruiter in RegistrationUI " />
+    <MESSAGE value="Done designing the Home on AdminUI " />
+    <option name="LAST_COMMIT_MESSAGE" value="Done designing the Home on AdminUI " />
   </component>
 </project>
