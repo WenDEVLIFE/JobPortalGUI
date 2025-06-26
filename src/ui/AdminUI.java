@@ -17,6 +17,9 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JTable;
 import javax.swing.border.LineBorder;
+
+import functions.AddUserDialog;
+
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
 
@@ -206,6 +209,16 @@ public class AdminUI extends JFrame {
 		panel_1.add(textField);
 		
 		JButton btnAddUser = new JButton("Add User");
+		btnAddUser.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				 
+				   AddUserDialog dialog = new AddUserDialog(AdminUI.this);
+			        dialog.setVisible(true);
+			        if (dialog.isSucceeded()) {
+			          
+			        }
+			}
+		});
 		btnAddUser.setForeground(Color.WHITE);
 		btnAddUser.setFont(new Font("Verdana", Font.BOLD, 11));
 		btnAddUser.setBackground(new Color(195, 143, 255));
