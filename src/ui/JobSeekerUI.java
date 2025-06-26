@@ -9,6 +9,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 
+import model.AlertModel;
 import model.JobModel;
 
 import javax.swing.JTabbedPane;
@@ -27,6 +28,8 @@ import javax.swing.JTable;
 import javax.swing.border.LineBorder;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class JobSeekerUI extends JFrame {
 
@@ -38,10 +41,13 @@ public class JobSeekerUI extends JFrame {
 	List<JobModel> jobList = new ArrayList<>();
 	DefaultTableModel savedTableModel;
 	List<JobModel> savedJobList = new ArrayList<>();
+	DefaultTableModel alertTableModel;
+	List<AlertModel> alertList = new ArrayList<>();
 	private JTextField searchSavedJobField;
 	private JTable saveJobTable;
 	private JTextField textField;
 	private JTable table;
+	private JTable alertTable;
 	
 
 	/**
@@ -274,11 +280,92 @@ public class JobSeekerUI extends JFrame {
 		btnViewJob_1_1_1.setBounds(642, 445, 337, 53);
 		panel_2.add(btnViewJob_1_1_1);
 		
-		JPanel panel_1_1_1 = new JPanel();
-		tabbedPane.addTab("My Profile", null, panel_1_1_1, null);
-		
 		JPanel panel_1_1 = new JPanel();
 		tabbedPane.addTab("Alert", null, panel_1_1, null);
+		panel_1_1.setLayout(null);
+		
+		JLabel lblWelcomeBack_1_2_1_1_1 = new JLabel("Alerts");
+		lblWelcomeBack_1_2_1_1_1.setForeground(Color.WHITE);
+		lblWelcomeBack_1_2_1_1_1.setFont(new Font("Verdana", Font.BOLD, 30));
+		lblWelcomeBack_1_2_1_1_1.setBounds(10, 11, 250, 38);
+		panel_1_1.add(lblWelcomeBack_1_2_1_1_1);
+		
+		alertTable = new JTable();
+		alertTable.setBorder(new LineBorder(new Color(0, 0, 0)));
+		alertTable.setBounds(20, 60, 1103, 422);
+		panel_1_1.add(alertTable);
+		
+		JPanel panel_1_1_1 = new JPanel();
+		tabbedPane.addTab("My Profile", null, panel_1_1_1, null);
+		panel_1_1_1.setLayout(null);
+		
+		JLabel lblWelcomeBack_1_2_1_1_2 = new JLabel("My Profile");
+		lblWelcomeBack_1_2_1_1_2.setForeground(Color.WHITE);
+		lblWelcomeBack_1_2_1_1_2.setFont(new Font("Verdana", Font.BOLD, 30));
+		lblWelcomeBack_1_2_1_1_2.setBounds(25, 21, 250, 38);
+		panel_1_1_1.add(lblWelcomeBack_1_2_1_1_2);
+		
+		JLabel lblWelcomeBack_1_2_1_1_2_1_1 = new JLabel("Full Name:");
+		lblWelcomeBack_1_2_1_1_2_1_1.setForeground(Color.WHITE);
+		lblWelcomeBack_1_2_1_1_2_1_1.setFont(new Font("Verdana", Font.BOLD, 20));
+		lblWelcomeBack_1_2_1_1_2_1_1.setBounds(25, 114, 179, 38);
+		panel_1_1_1.add(lblWelcomeBack_1_2_1_1_2_1_1);
+		
+		// This will update the profile details
+		JButton btnUpdateProfileDetails = new JButton("Update Profile Details");
+		btnUpdateProfileDetails.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnUpdateProfileDetails.setForeground(Color.WHITE);
+		btnUpdateProfileDetails.setFont(new Font("Verdana", Font.BOLD, 11));
+		btnUpdateProfileDetails.setBackground(new Color(195, 143, 255));
+		btnUpdateProfileDetails.setBounds(774, 113, 276, 46);
+		panel_1_1_1.add(btnUpdateProfileDetails);
+		
+		JLabel lblWelcomeBack_1_2_1_1_2_1_1_1 = new JLabel("Contact Info");
+		lblWelcomeBack_1_2_1_1_2_1_1_1.setForeground(Color.WHITE);
+		lblWelcomeBack_1_2_1_1_2_1_1_1.setFont(new Font("Verdana", Font.BOLD, 20));
+		lblWelcomeBack_1_2_1_1_2_1_1_1.setBounds(25, 227, 467, 38);
+		panel_1_1_1.add(lblWelcomeBack_1_2_1_1_2_1_1_1);
+		
+		JLabel lblWelcomeBack_1_2_1_1_2_1_1_1_1 = new JLabel("Location:");
+		lblWelcomeBack_1_2_1_1_2_1_1_1_1.setForeground(Color.WHITE);
+		lblWelcomeBack_1_2_1_1_2_1_1_1_1.setFont(new Font("Verdana", Font.BOLD, 20));
+		lblWelcomeBack_1_2_1_1_2_1_1_1_1.setBounds(25, 344, 122, 38);
+		panel_1_1_1.add(lblWelcomeBack_1_2_1_1_2_1_1_1_1);
+		
+		JLabel lblWelcomeBack_1_2_1_1_2_1_1_1_1_1 = new JLabel("TestAddress City");
+		lblWelcomeBack_1_2_1_1_2_1_1_1_1_1.setForeground(Color.WHITE);
+		lblWelcomeBack_1_2_1_1_2_1_1_1_1_1.setFont(new Font("Verdana", Font.BOLD, 20));
+		lblWelcomeBack_1_2_1_1_2_1_1_1_1_1.setBounds(25, 393, 450, 38);
+		panel_1_1_1.add(lblWelcomeBack_1_2_1_1_2_1_1_1_1_1);
+		
+		JLabel lblWelcomeBack_1_2_1_1_2_1_1_1_1_1_1 = new JLabel("09912455343");
+		lblWelcomeBack_1_2_1_1_2_1_1_1_1_1_1.setForeground(Color.WHITE);
+		lblWelcomeBack_1_2_1_1_2_1_1_1_1_1_1.setFont(new Font("Verdana", Font.BOLD, 20));
+		lblWelcomeBack_1_2_1_1_2_1_1_1_1_1_1.setBounds(25, 276, 450, 38);
+		panel_1_1_1.add(lblWelcomeBack_1_2_1_1_2_1_1_1_1_1_1);
+		
+		JLabel lblWelcomeBack_1_2_1_1_2_1_1_1_1_1_1_1 = new JLabel("John Doe");
+		lblWelcomeBack_1_2_1_1_2_1_1_1_1_1_1_1.setForeground(Color.WHITE);
+		lblWelcomeBack_1_2_1_1_2_1_1_1_1_1_1_1.setFont(new Font("Verdana", Font.BOLD, 20));
+		lblWelcomeBack_1_2_1_1_2_1_1_1_1_1_1_1.setBounds(25, 164, 450, 38);
+		panel_1_1_1.add(lblWelcomeBack_1_2_1_1_2_1_1_1_1_1_1_1);
+		
+		JButton btnViewMyResume = new JButton("View My Resume");
+		btnViewMyResume.setForeground(Color.WHITE);
+		btnViewMyResume.setFont(new Font("Verdana", Font.BOLD, 11));
+		btnViewMyResume.setBackground(new Color(195, 143, 255));
+		btnViewMyResume.setBounds(774, 192, 276, 46);
+		panel_1_1_1.add(btnViewMyResume);
+		
+		JButton btnViewMySkills = new JButton("View My Skills");
+		btnViewMySkills.setForeground(Color.WHITE);
+		btnViewMySkills.setFont(new Font("Verdana", Font.BOLD, 11));
+		btnViewMySkills.setBackground(new Color(195, 143, 255));
+		btnViewMySkills.setBounds(774, 266, 276, 46);
+		panel_1_1_1.add(btnViewMySkills);
 		
 		JPanel panel_1_1_2 = new JPanel();
 		tabbedPane.addTab("Logout", null, panel_1_1_2, null);
@@ -305,10 +392,14 @@ public class JobSeekerUI extends JFrame {
 		panel_1_1_2.add(btnNo);
 		
 		String [] columnNames = {"Job ID", "Job Title", "Company Name", "Posted Date", "Status", "Expiration Date"};
+		String [] alertColumnNames = {"Alert ID", "Description", "Timestamp",};
 		tableModel = new DefaultTableModel(columnNames, 0);
 		savedTableModel = new DefaultTableModel(columnNames, 0);
+		alertTableModel = new DefaultTableModel(alertColumnNames, 0);
 		jobTable.setModel(tableModel);
 		saveJobTable.setModel(savedTableModel);
+		alertTable.setModel(alertTableModel);
+		
 		
 		LoadJobData();
 		LoadSavedJobData();
@@ -351,7 +442,7 @@ public class JobSeekerUI extends JFrame {
 		});
 		
 		
-
+		LoadAlertData();
 	 
 
 	}
@@ -396,6 +487,23 @@ public class JobSeekerUI extends JFrame {
 				job.getExpirationDate()
 			};
 			savedTableModel.addRow(rowData);
+		}
+	}
+	
+	void LoadAlertData() {
+		alertList.clear();
+		
+		alertTableModel.setRowCount(0); // Clear existing rows in the table model
+		
+		alertList.add(new AlertModel("1", "New job posted: Software Engineer at Tech Company", "2023-10-01 10:00:00"));
+		
+		for (AlertModel alert : alertList) {
+			Object[] rowData = {
+				alert.getAlertId(),
+				alert.getDescription(),
+				alert.getTimestamp()
+			};
+			alertTableModel.addRow(rowData);
 		}
 	}
 }
