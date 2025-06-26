@@ -294,17 +294,24 @@ public class AdminUI extends JFrame {
 				if (confirm == JOptionPane.YES_OPTION) {
 					UserModel selectedUser = userList.get(selectedRow);
 					String userIds = selectedUser.getId();
+					String adminIDs = String.valueOf(AdminUI.this.adminID); // Get the admin ID from the AdminUI instance
 					
-	
-	
-					boolean success = RegistrationService.getInstance().deleteUser(userIds, adminID);	
 					
-					if (success) {
-						JOptionPane.showMessageDialog(AdminUI.this, "User deleted successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
-						loadUserData(); // Refresh the user table
-					} else {
-						JOptionPane.showMessageDialog(AdminUI.this, "Failed to delete user.", "Error", JOptionPane.ERROR_MESSAGE);
-					}
+                      if (adminIDs.equals(userIds)) {
+						  JOptionPane.showMessageDialog(AdminUI.this, "You cannot delete your own account.", "Error", JOptionPane.ERROR_MESSAGE);
+						  return;
+					  }
+                      
+
+                  	
+  					boolean success = RegistrationService.getInstance().deleteUser(userIds, adminID);	
+  					
+  					if (success) {
+  						JOptionPane.showMessageDialog(AdminUI.this, "User deleted successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
+  						loadUserData(); // Refresh the user table
+  					} else {
+  						JOptionPane.showMessageDialog(AdminUI.this, "Failed to delete user.", "Error", JOptionPane.ERROR_MESSAGE);
+  					}
 				}
 			}
 		});
