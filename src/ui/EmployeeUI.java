@@ -21,6 +21,11 @@ public class EmployeeUI extends JFrame {
 	private JPanel contentPane;
 	private JTextField textField;
 	private JTable applicantTable;
+	private JTextField textField_1;
+	private JTable table;
+	private JTable alertTable;
+	private JTextField textField_2;
+	private JTable table_1;
 
 	/**
 	 * Launch the application.
@@ -175,6 +180,47 @@ public class EmployeeUI extends JFrame {
 		lblWelcomeBack_1_1_1_2_1_1_1.setBounds(139, 89, 130, 38);
 		panel_3_2_1_1_1.add(lblWelcomeBack_1_1_1_2_1_1_1);
 		
+		JPanel panel_2 = new JPanel();
+		tabbedPane.addTab("Jobs", null, panel_2, null);
+		panel_2.setLayout(null);
+		
+		JLabel lblWelcomeBack_1_2_3 = new JLabel("Jobs");
+		lblWelcomeBack_1_2_3.setForeground(Color.WHITE);
+		lblWelcomeBack_1_2_3.setFont(new Font("Verdana", Font.BOLD, 30));
+		lblWelcomeBack_1_2_3.setBounds(30, 11, 172, 38);
+		panel_2.add(lblWelcomeBack_1_2_3);
+		
+		textField_2 = new JTextField();
+		textField_2.setColumns(10);
+		textField_2.setBounds(223, 11, 863, 38);
+		panel_2.add(textField_2);
+		
+		table_1 = new JTable();
+		table_1.setBorder(new LineBorder(new Color(0, 0, 0)));
+		table_1.setBounds(39, 60, 1046, 360);
+		panel_2.add(table_1);
+		
+		JButton btnViewApplicant_2 = new JButton("Create a Job");
+		btnViewApplicant_2.setForeground(Color.WHITE);
+		btnViewApplicant_2.setFont(new Font("Verdana", Font.BOLD, 11));
+		btnViewApplicant_2.setBackground(new Color(195, 143, 255));
+		btnViewApplicant_2.setBounds(92, 431, 229, 53);
+		panel_2.add(btnViewApplicant_2);
+		
+		JButton btnViewApplicant_2_1 = new JButton("Update Job");
+		btnViewApplicant_2_1.setForeground(Color.WHITE);
+		btnViewApplicant_2_1.setFont(new Font("Verdana", Font.BOLD, 11));
+		btnViewApplicant_2_1.setBackground(new Color(195, 143, 255));
+		btnViewApplicant_2_1.setBounds(436, 431, 229, 53);
+		panel_2.add(btnViewApplicant_2_1);
+		
+		JButton btnViewApplicant_2_1_1 = new JButton("Delete Job");
+		btnViewApplicant_2_1_1.setForeground(Color.WHITE);
+		btnViewApplicant_2_1_1.setFont(new Font("Verdana", Font.BOLD, 11));
+		btnViewApplicant_2_1_1.setBackground(new Color(195, 143, 255));
+		btnViewApplicant_2_1_1.setBounds(800, 431, 229, 53);
+		panel_2.add(btnViewApplicant_2_1_1);
+		
 		JPanel panel_1 = new JPanel();
 		tabbedPane.addTab("Applicants", null, panel_1, null);
 		panel_1.setLayout(null);
@@ -201,6 +247,48 @@ public class EmployeeUI extends JFrame {
 		btnViewApplicant.setBackground(new Color(195, 143, 255));
 		btnViewApplicant.setBounds(392, 431, 337, 53);
 		panel_1.add(btnViewApplicant);
+		
+		JPanel panel_1_1 = new JPanel();
+		panel_1_1.setLayout(null);
+		tabbedPane.addTab("Denied Applicants", null, panel_1_1, null);
+		
+		JLabel lblWelcomeBack_1_2_1 = new JLabel("Denied Applicants");
+		lblWelcomeBack_1_2_1.setForeground(Color.WHITE);
+		lblWelcomeBack_1_2_1.setFont(new Font("Verdana", Font.BOLD, 30));
+		lblWelcomeBack_1_2_1.setBounds(10, 11, 303, 38);
+		panel_1_1.add(lblWelcomeBack_1_2_1);
+		
+		textField_1 = new JTextField();
+		textField_1.setColumns(10);
+		textField_1.setBounds(323, 11, 748, 38);
+		panel_1_1.add(textField_1);
+		
+		table = new JTable();
+		table.setBorder(new LineBorder(new Color(0, 0, 0)));
+		table.setBounds(56, 60, 1046, 360);
+		panel_1_1.add(table);
+		
+		JButton btnDeleteApplication = new JButton("Delete Application");
+		btnDeleteApplication.setForeground(Color.WHITE);
+		btnDeleteApplication.setFont(new Font("Verdana", Font.BOLD, 11));
+		btnDeleteApplication.setBackground(new Color(195, 143, 255));
+		btnDeleteApplication.setBounds(392, 431, 337, 53);
+		panel_1_1.add(btnDeleteApplication);
+		
+		JPanel panel_1_2 = new JPanel();
+		panel_1_2.setLayout(null);
+		tabbedPane.addTab("Alerts", null, panel_1_2, null);
+		
+		JLabel lblWelcomeBack_1_2_2 = new JLabel("Alerts");
+		lblWelcomeBack_1_2_2.setForeground(Color.WHITE);
+		lblWelcomeBack_1_2_2.setFont(new Font("Verdana", Font.BOLD, 30));
+		lblWelcomeBack_1_2_2.setBounds(27, 11, 202, 38);
+		panel_1_2.add(lblWelcomeBack_1_2_2);
+		
+		alertTable = new JTable();
+		alertTable.setBorder(new LineBorder(new Color(0, 0, 0)));
+		alertTable.setBounds(56, 60, 1046, 360);
+		panel_1_2.add(alertTable);
 
 	}
 }
