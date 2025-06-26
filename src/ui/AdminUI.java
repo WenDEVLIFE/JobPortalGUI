@@ -417,6 +417,36 @@ public class AdminUI extends JFrame {
 		tabbedPane.addTab("Change Password", null, panel_5, null);
 		
 		JButton btnUpdatePassword = new JButton("Update Password");
+		btnUpdatePassword.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				String oldPassword = new String(passwordField.getPassword());
+				String newPassword = new String(passwordField_1.getPassword());
+				
+				if (oldPassword.isEmpty() || newPassword.isEmpty()) {
+					JOptionPane.showMessageDialog(AdminUI.this, "Please fill in both fields.", "Error", JOptionPane.ERROR_MESSAGE);
+					return;
+				}
+				
+				if (oldPassword.equals(newPassword)) {
+					JOptionPane.showMessageDialog(AdminUI.this, "New password cannot be the same as old password.", "Error", JOptionPane.ERROR_MESSAGE);
+					return;
+				}
+				
+				// Call the service to update the password
+				String employeeIdStr = String.valueOf(adminID);
+				boolean success = RegistrationService.getInstance().updatePassword(employeeIdStr, oldPassword, newPassword);
+				
+				if (success) {
+					JOptionPane.showMessageDialog(AdminUI.this, "Password updated successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
+					passwordField.setText("");
+					passwordField_1.setText("");
+					tabbedPane.setSelectedIndex(0); // Switch back to the Home tab
+				} else {
+					JOptionPane.showMessageDialog(AdminUI.this, "Failed to update password. Please try again.", "Error", JOptionPane.ERROR_MESSAGE);
+				}
+			}
+		});
 		btnUpdatePassword.setForeground(Color.WHITE);
 		btnUpdatePassword.setFont(new Font("Verdana", Font.BOLD, 11));
 		btnUpdatePassword.setBackground(new Color(195, 143, 255));

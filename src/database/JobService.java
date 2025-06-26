@@ -1,7 +1,11 @@
 package database;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+
+import model.JobModel;
 
 public class JobService {
 
@@ -58,6 +62,40 @@ public class JobService {
 	        e.printStackTrace();
 	        return false;
 	    }
+	}
+	
+	public List<JobModel> getAllJobs() {
+	    List<JobModel> jobs = new ArrayList<>();
+	    String query = "SELECT * FROM jobs";
+
+	    try (java.sql.Connection conn = MYSQL.getConnection();
+	         java.sql.PreparedStatement pstmt = conn.prepareStatement(query);
+	         java.sql.ResultSet rs = pstmt.executeQuery()) {
+
+	        while (rs.next()) {
+	            String jobId = rs.getString("job_id");
+	            String employeeId = rs.getString("employee_id");
+	            String jobTitle = rs.getString("job_title");
+	            String companyName = rs.getString("company_name");
+	            String jobDescription = rs.getString("description");
+	            String jobLocation = rs.getString("location");
+	            String requirements = rs.getString("requirements");
+	            String jobType = rs.getString("job_type");
+	            String salaryMin = rs.getString("salary_min");
+	            String salaryMax = rs.getString("salary_max");
+	            String postedDate = rs.getString("posted_at");
+	            String expirationDate = rs.getString("expires_at");
+	            String status = rs.getString("status");
+
+	            JobModel job = new JobModel(jobId, jobTitle, companyName, jobDescription, jobLocation,
+	                    requirements, jobType, salaryMin, salaryMax, postedDate, expirationDate, status);
+	            jobs.add(job);
+	        }
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+	    
+	    	return jobs;
 	}
 
 }

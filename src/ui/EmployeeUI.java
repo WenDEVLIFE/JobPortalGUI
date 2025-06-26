@@ -15,11 +15,16 @@ import java.awt.Color;
 import javax.swing.JTextField;
 import javax.swing.JTable;
 import javax.swing.border.LineBorder;
+import javax.swing.table.DefaultTableModel;
 
+import database.UpdatePasswordDialog;
 import functions.AddCreateJobDialog;
+import model.JobModel;
 
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextArea;
 
@@ -35,6 +40,8 @@ public class EmployeeUI extends JFrame {
 	private JTextField textField_2;
 	private JTable table_1;
 	private int employeeId;
+	DefaultTableModel jobTableModel;
+	List<JobModel> jobList = new ArrayList<>();
 
 	/**
 	 * Launch the application.
@@ -351,6 +358,20 @@ public class EmployeeUI extends JFrame {
 		panel_1_1_1.add(lblWelcomeBack_1_2_1_1_2_1_1_1_1_1_1_1);
 		
 		JButton btnUpdateMyPassword = new JButton("Update My Password");
+		btnUpdateMyPassword.addActionListener(new ActionListener() {
+		    public void actionPerformed(ActionEvent e) {
+		        UpdatePasswordDialog dialog = new UpdatePasswordDialog(EmployeeUI.this, employeeId);
+		        dialog.setVisible(true);
+		        if (dialog.isSucceeded()) {
+		            JOptionPane.showMessageDialog(EmployeeUI.this, "Password updated successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
+		        }
+		        else {
+		            JOptionPane.showMessageDialog(EmployeeUI.this, "Password update failed", "Error", JOptionPane.ERROR_MESSAGE);
+		        }
+		    }
+		});
+		
+
 		btnUpdateMyPassword.setForeground(Color.WHITE);
 		btnUpdateMyPassword.setFont(new Font("Verdana", Font.BOLD, 11));
 		btnUpdateMyPassword.setBackground(new Color(195, 143, 255));
@@ -433,6 +454,12 @@ public class EmployeeUI extends JFrame {
 		btnNo_1.setBounds(438, 301, 301, 53);
 		panel_1_1_2_1.add(btnNo_1);
 
+		 String [] columnNames = {"Job ID", "Job Title", "Company Name", "Posted Date", "Status", "Expiration Date"};
+		 jobTableModel = new DefaultTableModel(columnNames, 0);
+		 table_1.setModel(jobTableModel);
+		 
+		
+	 LoadJobData();
 	}
 	
 	
@@ -440,4 +467,26 @@ public class EmployeeUI extends JFrame {
 		this.employeeId = employeeId;
 		System.out.println("Employee ID set to: " + employeeId);
 	}
+	
+	// This will load the job
+		void LoadJobData() {
+			jobList.clear();
+			
+			jobTableModel.setRowCount(0); // Clear existing rows in the table model
+		
+		 		jobList.add(new JobModel("1", "Software Engineer", "Tech Company", "Develop software applications", "Remote", "Java, Spring Boot", "Full-time", "50000", "70000", "2023-10-01", "2024-01-01", "Open"));
+			
+			for (JobModel job : jobList) {
+	  			Object[] rowData = {
+					job.getJobId(),
+					job.getJobTitle(),
+					job.getCompanyName(),
+					job.getPostedDate(),
+					job.getStatus(),
+					job.getExpirationDate()
+				};
+	  			jobTableModel.addRow(rowData);
+			}
+		}
+		
 }

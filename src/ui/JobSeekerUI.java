@@ -9,6 +9,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 
+import database.UpdatePasswordDialog;
 import model.AlertModel;
 import model.JobModel;
 
@@ -370,6 +371,18 @@ public class JobSeekerUI extends JFrame {
 		panel_1_1_1.add(btnViewMySkills);
 		
 		JButton btnUpdateMyPassword = new JButton("Update My Password");
+		btnUpdateMyPassword.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				 UpdatePasswordDialog dialog = new UpdatePasswordDialog(JobSeekerUI.this, userId);
+			        dialog.setVisible(true);
+			        if (dialog.isSucceeded()) {
+			            JOptionPane.showMessageDialog(JobSeekerUI.this, "Password updated successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
+			        }
+			        else {
+			            JOptionPane.showMessageDialog(JobSeekerUI.this, "Password update failed", "Error", JOptionPane.ERROR_MESSAGE);
+			        }
+			}
+		});
 		btnUpdateMyPassword.setForeground(Color.WHITE);
 		btnUpdateMyPassword.setFont(new Font("Verdana", Font.BOLD, 11));
 		btnUpdateMyPassword.setBackground(new Color(195, 143, 255));

@@ -10,6 +10,8 @@ import java.util.Map;
 
 import javax.swing.JOptionPane;
 
+import org.mindrot.bcrypt.BCrypt;
+
 import model.UserModel;
 
 public class RegistrationService {
@@ -167,5 +169,45 @@ public class RegistrationService {
 		}
 		return false;
 	}
+
+	/**
+	 * Updates the password for a user.
+	 * 
+	 * @param userId The ID of the user whose password is to be updated.
+	 * @param oldPassword The current password of the user.
+	 * @param newPassword The new password to set for the user.
+	 * @return true if the password was successfully updated, false otherwise.
+	 */
+	public boolean updatePassword(String userId, String oldPassword, String newPassword) {
+	    String selectSql = "SELECT password FROM users WHERE user_id = ?";
+	    String updateSql = "UPDATE users SET password = ? WHERE user_id = ?";
+	    try (Connection connection = MYSQL.getConnection();
+	         PreparedStatement selectStmt = connection.prepareStatement(selectSql)) {
+
+	        selectStmt.setString(1, userId);
+	        ResultSet rs = selectStmt.executeQuery();
+	        if (rs.next()) {
+	            String hashedPassword = rs.getString("password");
+	            if (!BCrypt.checkpw(oldPassword, hashedPassword)) {
+	                JOptionPane.showMessageDialog(null, "Old password is incorrect.", "Error", JOptionPane.ERROR_MESSAGE);
+	                return false;
+	            }
+	            String newHashedPassword = BCrypt.hashpw(newPassword, BCrypt.gensalt());
+	            try (PreparedStatement updateStmt = connection.prepareStatement(updateSql)) {
+	                updateStmt.setString(1, newHashedPassword);
+	                updateStmt.setString(2, userId);
+	                int rowsAffected = updateStmt.executeUpdate();
+	                if (rowsAffected > 0) {
+	                    AuditLogService.getInstance().InsertAuditLog(userId, "Update Password", "Password updated for user ID: " + userId);
+	                    return true;
+	                }
+	            }
+	        }
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+	    return false;
+	}
+
 
 }
