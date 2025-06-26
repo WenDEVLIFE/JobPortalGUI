@@ -63,6 +63,7 @@ public class RegistrationUI extends JFrame {
 		// Initialize roles
 		roles.add("Job Seeker");
 		roles.add("Employer");
+		roles.add("Recruiter");
 		
 		setResizable(false);
 		setLocationRelativeTo(null);
