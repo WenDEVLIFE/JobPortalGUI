@@ -368,6 +368,13 @@ public class JobSeekerUI extends JFrame {
 		btnViewMySkills.setBounds(774, 266, 276, 46);
 		panel_1_1_1.add(btnViewMySkills);
 		
+		JButton btnUpdateMyPassword = new JButton("Update My Password");
+		btnUpdateMyPassword.setForeground(Color.WHITE);
+		btnUpdateMyPassword.setFont(new Font("Verdana", Font.BOLD, 11));
+		btnUpdateMyPassword.setBackground(new Color(195, 143, 255));
+		btnUpdateMyPassword.setBounds(774, 336, 276, 46);
+		panel_1_1_1.add(btnUpdateMyPassword);
+		
 		JPanel panel_1_1_2 = new JPanel();
 		tabbedPane.addTab("Logout", null, panel_1_1_2, null);
 		panel_1_1_2.setLayout(null);

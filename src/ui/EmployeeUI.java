@@ -18,6 +18,7 @@ import javax.swing.border.LineBorder;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JTextArea;
 
 public class EmployeeUI extends JFrame {
 
@@ -278,6 +279,88 @@ public class EmployeeUI extends JFrame {
 		btnDeleteApplication.setBackground(new Color(195, 143, 255));
 		btnDeleteApplication.setBounds(392, 431, 337, 53);
 		panel_1_1.add(btnDeleteApplication);
+		
+		JPanel panel_1_1_1 = new JPanel();
+		panel_1_1_1.setLayout(null);
+		tabbedPane.addTab("My Profile", null, panel_1_1_1, null);
+		
+		JLabel lblWelcomeBack_1_2_1_1_2 = new JLabel("My Profile");
+		lblWelcomeBack_1_2_1_1_2.setForeground(Color.WHITE);
+		lblWelcomeBack_1_2_1_1_2.setFont(new Font("Verdana", Font.BOLD, 30));
+		lblWelcomeBack_1_2_1_1_2.setBounds(25, 21, 250, 38);
+		panel_1_1_1.add(lblWelcomeBack_1_2_1_1_2);
+		
+		JLabel lblWelcomeBack_1_2_1_1_2_1_1 = new JLabel("Employee Name:");
+		lblWelcomeBack_1_2_1_1_2_1_1.setForeground(Color.WHITE);
+		lblWelcomeBack_1_2_1_1_2_1_1.setFont(new Font("Verdana", Font.BOLD, 20));
+		lblWelcomeBack_1_2_1_1_2_1_1.setBounds(25, 84, 250, 38);
+		panel_1_1_1.add(lblWelcomeBack_1_2_1_1_2_1_1);
+		
+		JButton btnUpdateProfileDetails = new JButton("Update Profile Details");
+		btnUpdateProfileDetails.setForeground(Color.WHITE);
+		btnUpdateProfileDetails.setFont(new Font("Verdana", Font.BOLD, 11));
+		btnUpdateProfileDetails.setBackground(new Color(195, 143, 255));
+		btnUpdateProfileDetails.setBounds(190, 435, 276, 46);
+		panel_1_1_1.add(btnUpdateProfileDetails);
+		
+		JLabel lblWelcomeBack_1_2_1_1_2_1_1_1 = new JLabel("Company Name:");
+		lblWelcomeBack_1_2_1_1_2_1_1_1.setForeground(Color.WHITE);
+		lblWelcomeBack_1_2_1_1_2_1_1_1.setFont(new Font("Verdana", Font.BOLD, 20));
+		lblWelcomeBack_1_2_1_1_2_1_1_1.setBounds(25, 190, 467, 38);
+		panel_1_1_1.add(lblWelcomeBack_1_2_1_1_2_1_1_1);
+		
+		JLabel lblWelcomeBack_1_2_1_1_2_1_1_1_1 = new JLabel("Description:");
+		lblWelcomeBack_1_2_1_1_2_1_1_1_1.setForeground(Color.WHITE);
+		lblWelcomeBack_1_2_1_1_2_1_1_1_1.setFont(new Font("Verdana", Font.BOLD, 20));
+		lblWelcomeBack_1_2_1_1_2_1_1_1_1.setBounds(25, 288, 169, 38);
+		panel_1_1_1.add(lblWelcomeBack_1_2_1_1_2_1_1_1_1);
+		
+		JLabel lblWelcomeBack_1_2_1_1_2_1_1_1_1_1 = new JLabel("Location:");
+		lblWelcomeBack_1_2_1_1_2_1_1_1_1_1.setForeground(Color.WHITE);
+		lblWelcomeBack_1_2_1_1_2_1_1_1_1_1.setFont(new Font("Verdana", Font.BOLD, 20));
+		lblWelcomeBack_1_2_1_1_2_1_1_1_1_1.setBounds(485, 182, 450, 38);
+		panel_1_1_1.add(lblWelcomeBack_1_2_1_1_2_1_1_1_1_1);
+		
+		JLabel lblWelcomeBack_1_2_1_1_2_1_1_1_1_1_1 = new JLabel("09912455343");
+		lblWelcomeBack_1_2_1_1_2_1_1_1_1_1_1.setForeground(Color.WHITE);
+		lblWelcomeBack_1_2_1_1_2_1_1_1_1_1_1.setFont(new Font("Verdana", Font.BOLD, 20));
+		lblWelcomeBack_1_2_1_1_2_1_1_1_1_1_1.setBounds(25, 239, 450, 38);
+		panel_1_1_1.add(lblWelcomeBack_1_2_1_1_2_1_1_1_1_1_1);
+		
+		JLabel lblWelcomeBack_1_2_1_1_2_1_1_1_1_1_1_1 = new JLabel("John Doe");
+		lblWelcomeBack_1_2_1_1_2_1_1_1_1_1_1_1.setForeground(Color.WHITE);
+		lblWelcomeBack_1_2_1_1_2_1_1_1_1_1_1_1.setFont(new Font("Verdana", Font.BOLD, 20));
+		lblWelcomeBack_1_2_1_1_2_1_1_1_1_1_1_1.setBounds(25, 133, 450, 38);
+		panel_1_1_1.add(lblWelcomeBack_1_2_1_1_2_1_1_1_1_1_1_1);
+		
+		JButton btnUpdateMyPassword = new JButton("Update My Password");
+		btnUpdateMyPassword.setForeground(Color.WHITE);
+		btnUpdateMyPassword.setFont(new Font("Verdana", Font.BOLD, 11));
+		btnUpdateMyPassword.setBackground(new Color(195, 143, 255));
+		btnUpdateMyPassword.setBounds(582, 435, 276, 46);
+		panel_1_1_1.add(btnUpdateMyPassword);
+		
+		JLabel lblWelcomeBack_1_2_1_1_2_1_1_1_1_1_2 = new JLabel("TESTADDRESS");
+		lblWelcomeBack_1_2_1_1_2_1_1_1_1_1_2.setForeground(Color.WHITE);
+		lblWelcomeBack_1_2_1_1_2_1_1_1_1_1_2.setFont(new Font("Verdana", Font.BOLD, 20));
+		lblWelcomeBack_1_2_1_1_2_1_1_1_1_1_2.setBounds(485, 239, 450, 38);
+		panel_1_1_1.add(lblWelcomeBack_1_2_1_1_2_1_1_1_1_1_2);
+		
+		JLabel lblWelcomeBack_1_2_1_1_2_1_1_1_1_1_3 = new JLabel("Industry:");
+		lblWelcomeBack_1_2_1_1_2_1_1_1_1_1_3.setForeground(Color.WHITE);
+		lblWelcomeBack_1_2_1_1_2_1_1_1_1_1_3.setFont(new Font("Verdana", Font.BOLD, 20));
+		lblWelcomeBack_1_2_1_1_2_1_1_1_1_1_3.setBounds(485, 84, 450, 38);
+		panel_1_1_1.add(lblWelcomeBack_1_2_1_1_2_1_1_1_1_1_3);
+		
+		JLabel lblWelcomeBack_1_2_1_1_2_1_1_1_1_1_3_1 = new JLabel("Industry");
+		lblWelcomeBack_1_2_1_1_2_1_1_1_1_1_3_1.setForeground(Color.WHITE);
+		lblWelcomeBack_1_2_1_1_2_1_1_1_1_1_3_1.setFont(new Font("Verdana", Font.BOLD, 20));
+		lblWelcomeBack_1_2_1_1_2_1_1_1_1_1_3_1.setBounds(485, 133, 450, 38);
+		panel_1_1_1.add(lblWelcomeBack_1_2_1_1_2_1_1_1_1_1_3_1);
+		
+		JTextArea textArea = new JTextArea();
+		textArea.setBounds(25, 337, 434, 68);
+		panel_1_1_1.add(textArea);
 		
 		JPanel panel_1_2 = new JPanel();
 		panel_1_2.setLayout(null);
