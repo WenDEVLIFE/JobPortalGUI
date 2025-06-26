@@ -17,8 +17,15 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JTable;
 import javax.swing.border.LineBorder;
+import javax.swing.table.DefaultTableModel;
+
+import database.RegistrationService;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import functions.AddUserDialog;
+import model.UserModel;
 
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
@@ -27,7 +34,7 @@ public class AdminUI extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-	private JTable table;
+	private JTable userTable;
 	private JTextField textField;
 	private JTable table_1;
 	private JTextField textField_1;
@@ -36,7 +43,10 @@ public class AdminUI extends JFrame {
 	private JTable table_3;
 	private JPasswordField passwordField;
 	private JPasswordField passwordField_1;
-
+	
+	DefaultTableModel userTableModel;
+	List<UserModel> userList = new ArrayList<>();
+ 
 	/**
 	 * Launch the application.
 	 */
@@ -198,10 +208,10 @@ public class AdminUI extends JFrame {
 		lblWelcomeBack_1_2_3.setBounds(74, 11, 104, 38);
 		panel_1.add(lblWelcomeBack_1_2_3);
 		
-		table = new JTable();
-		table.setBorder(new LineBorder(new Color(0, 0, 0)));
-		table.setBounds(25, 60, 1046, 360);
-		panel_1.add(table);
+		userTable = new JTable();
+		userTable.setBorder(new LineBorder(new Color(0, 0, 0)));
+		userTable.setBounds(25, 60, 1046, 360);
+		panel_1.add(userTable);
 		
 		textField = new JTextField();
 		textField.setColumns(10);
@@ -404,6 +414,42 @@ public class AdminUI extends JFrame {
 		btnNo.setBackground(new Color(195, 143, 255));
 		btnNo.setBounds(438, 301, 301, 53);
 		panel_1_1_2.add(btnNo);
+		
+		String [] columnNames = {"ID", "Username", "Role", "Status", "Created At"};
+		userTableModel = new DefaultTableModel(columnNames, 0);
+		userTable.setModel(userTableModel);
+		
+		loadUserData();
+		
 
+	}
+	
+	
+	void loadUserData() {
+		userList.clear();
+		
+		userTableModel.setRowCount(0);
+		
+		
+		try {
+			 
+			userList = RegistrationService.getInstance().getAllUser();
+			
+		       			for (UserModel user : userList) {
+				Object[] row = {
+					user.getId(),
+					user.getUsername(),
+					user.getRole(),
+					user.getStatus(),
+					user.getCreatedAt()
+				};
+				userTableModel.addRow(row);
+			}
+		} 
+		catch (Exception e) {
+			e.printStackTrace();
+			JOptionPane.showMessageDialog(this, "Failed to load user data.", "Error", JOptionPane.ERROR_MESSAGE);
+			return;
+		}
 	}
 }

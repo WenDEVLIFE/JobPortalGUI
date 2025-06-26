@@ -5,9 +5,12 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Map;
 
 import javax.swing.JOptionPane;
+
+import model.UserModel;
 
 public class RegistrationService {
 
@@ -81,4 +84,33 @@ public class RegistrationService {
 		}
 		return false;
 	}
+	
+
+	public List<UserModel> getAllUser() {
+	    List<UserModel> users = new java.util.ArrayList<>();
+	    String sql = "SELECT * FROM users";
+
+	    try (Connection connection = MYSQL.getConnection();
+	         PreparedStatement preparedStatement = connection.prepareStatement(sql);
+	         ResultSet resultSet = preparedStatement.executeQuery()) {
+
+	        while (resultSet.next()) {
+	            String userId = resultSet.getString("user_id");
+	            String username = resultSet.getString("username");
+	            String password = resultSet.getString("password");
+	            String role = resultSet.getString("role");
+	            String status = resultSet.getString("status");
+	            String createdAt = resultSet.getString("createdAt");
+
+	            UserModel user = new UserModel(userId, username, password, role, status, createdAt);
+	            users.add(user);
+	        }
+
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+
+	    return users;
+	}
+
 }

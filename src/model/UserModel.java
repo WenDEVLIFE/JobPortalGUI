@@ -2,22 +2,24 @@ package model;
 
 public class UserModel {
 
-	private String id;
+	 String id;
 	
-	private String username;
+	 String username;
 	
-	private String password;
+	 String password;
+	 String role;
 	
-	private String role;
-	
- 	private String status;
+ 	 String status;
  	
- 	public UserModel(String id, String username, String password, String role, String status) {
+ 	 String createdAt;
+ 	
+ 	public UserModel(String id, String username, String password, String role, String status, String createdAt) {
  		this.id = id;
  		this.username = username;
  		this.password = password;
  		this.role = role;
  		this.status = status;
+ 		this.createdAt = createdAt;
  	}
  	
  	public String getId() {
@@ -38,6 +40,10 @@ public class UserModel {
  	
  	public String getStatus() {
  		return status;
+ 	}
+ 	
+ 	public String getCreatedAt() {
+ 		return createdAt;
  	}
  	
  	
