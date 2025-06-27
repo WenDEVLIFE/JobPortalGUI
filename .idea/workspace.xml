@@ -4,23 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="039a69c7-22f7-43ff-9108-b213d023ee06" name="Changes" comment="Added ApplicationService and AlertService 👌">
+    <list default="true" id="039a69c7-22f7-43ff-9108-b213d023ee06" name="Changes" comment="Added a function where user will delete the job 👌">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/database/JobService.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/database/JobService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/database/LoginService.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/database/LoginService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/functions/AddCreateJobDialog$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/functions/AddCreateJobDialog$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/functions/AddCreateJobDialog.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/functions/AddCreateJobDialog.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/ui/EmployeeUI$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/EmployeeUI$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/ui/EmployeeUI$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/EmployeeUI$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/ui/EmployeeUI$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/EmployeeUI$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/ui/EmployeeUI$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/EmployeeUI$4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/ui/EmployeeUI$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/EmployeeUI$5.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/ui/EmployeeUI$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/EmployeeUI$6.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/ui/EmployeeUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/EmployeeUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/database/JobService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/JobService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/database/LoginService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/LoginService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/functions/AddCreateJobDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/functions/AddCreateJobDialog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ui/EmployeeUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/EmployeeUI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,30 +51,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1750820923469</updated>
-    </task>
-    <task id="LOCAL-00001" summary="commit">
-      <option name="closed" value="true" />
-      <created>1750821390759</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1750821390759</updated>
-    </task>
-    <task id="LOCAL-00002" summary="Done designing the Login Form 👌">
-      <option name="closed" value="true" />
-      <created>1750858831690</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1750858831690</updated>
-    </task>
-    <task id="LOCAL-00003" summary="Done designing the Login Form 👌">
-      <option name="closed" value="true" />
-      <created>1750859399734</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1750859399734</updated>
     </task>
     <task id="LOCAL-00004" summary="Added connection to the MYSQL 👌">
       <option name="closed" value="true" />
@@ -459,12 +420,34 @@
       <option name="project" value="LOCAL" />
       <updated>1751021158387</updated>
     </task>
-    <option name="localTasksCounter" value="50" />
+    <task id="LOCAL-00050" summary="Load The Job created by the EmployeeUI">
+      <option name="closed" value="true" />
+      <created>1751029082859</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1751029082860</updated>
+    </task>
+    <task id="LOCAL-00051" summary="Load The Job created by the EmployeeUI">
+      <option name="closed" value="true" />
+      <created>1751029247153</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1751029247153</updated>
+    </task>
+    <task id="LOCAL-00052" summary="Added a function where user will delete the job 👌">
+      <option name="closed" value="true" />
+      <created>1751029471770</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1751029471770</updated>
+    </task>
+    <option name="localTasksCounter" value="53" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added UserModel" />
-    <MESSAGE value="Done designing the User on the AdminUI " />
     <MESSAGE value="Done designing the Audit logs and Change password for AdminUI " />
     <MESSAGE value="Added savepw.txt" />
     <MESSAGE value="Added a function where the Admin can now add users " />
@@ -488,6 +471,8 @@
     <MESSAGE value="Revise the dialog" />
     <MESSAGE value="Added a function where it will get the employeeId to the database " />
     <MESSAGE value="Added ApplicationService and AlertService " />
-    <option name="LAST_COMMIT_MESSAGE" value="Added ApplicationService and AlertService " />
+    <MESSAGE value="Load The Job created by the EmployeeUI" />
+    <MESSAGE value="Added a function where user will delete the job " />
+    <option name="LAST_COMMIT_MESSAGE" value="Added a function where user will delete the job " />
   </component>
 </project>

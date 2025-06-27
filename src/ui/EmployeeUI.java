@@ -279,6 +279,7 @@ public class EmployeeUI extends JFrame {
 				updateJobDialog.setVisible(true);
 				if (updateJobDialog.isSucceeded()) {
 					JOptionPane.showMessageDialog(EmployeeUI.this, "Job updated successfully!");
+					LoadJobData(); // Refresh the job data after update
 					// Optionally, refresh the job table or perform any other necessary actions
 				} 
 			}
@@ -290,6 +291,35 @@ public class EmployeeUI extends JFrame {
 		panel_2.add(btnViewApplicant_2_1);
 		
 		JButton btnViewApplicant_2_1_1 = new JButton("Delete Job");
+		btnViewApplicant_2_1_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				int selectedRow = table_1.getSelectedRow();
+				
+				if (selectedRow == -1) {
+					JOptionPane.showMessageDialog(EmployeeUI.this, "Please select a job to delete.", "No Job Selected", JOptionPane.WARNING_MESSAGE);
+					return;
+				}
+				
+				JobModel selectedJob = jobList.get(selectedRow);
+				if (selectedJob == null) {
+					JOptionPane.showMessageDialog(EmployeeUI.this, "No job data available for the selected row.", "Error", JOptionPane.ERROR_MESSAGE);
+					return;
+				}
+				
+				int confirm = JOptionPane.showConfirmDialog(EmployeeUI.this, "Are you sure you want to delete this job?", "Confirm Delete", JOptionPane.YES_NO_OPTION);
+				if (confirm == JOptionPane.YES_OPTION) {
+					JobService jobService = JobService.getInstance();
+					boolean success = jobService.deleteJob(selectedJob.getJobId());
+					if (success) {
+						JOptionPane.showMessageDialog(EmployeeUI.this, "Job deleted successfully!");
+						LoadJobData(); // Refresh the job data after deletion
+					} else {
+						JOptionPane.showMessageDialog(EmployeeUI.this, "Failed to delete job.", "Error", JOptionPane.ERROR_MESSAGE);
+					}
+				}
+			}
+		});
 		btnViewApplicant_2_1_1.setForeground(Color.WHITE);
 		btnViewApplicant_2_1_1.setFont(new Font("Verdana", Font.BOLD, 11));
 		btnViewApplicant_2_1_1.setBackground(new Color(195, 143, 255));
