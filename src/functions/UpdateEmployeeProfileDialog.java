@@ -21,13 +21,22 @@ public class UpdateEmployeeProfileDialog extends JDialog {
         super(parent, "Update Profile", true);
     	this.employeeId =  employeeId;
         setLayout(null);
+        
+    	String employeeName1 = ProfileService.getInstance().getEmployeeName(String.valueOf(employeeId));
+		String companyName1 = ProfileService.getInstance().getCompanyName(String.valueOf(employeeId));
+		String description1 = ProfileService.getInstance().getDescription(String.valueOf(employeeId));
+		String industry1 = ProfileService.getInstance().getIndustry(String.valueOf(employeeId));
+		String location1 = ProfileService.getInstance().getLocation(String.valueOf(employeeId));
 
         JLabel lblEmployeeName = new JLabel("Employee Name:");
         lblEmployeeName.setBounds(20, 20, 120, 25);
         add(lblEmployeeName);
+        
+    
 
         txtEmployeeName = new JTextField(20);
         txtEmployeeName.setBounds(150, 20, 200, 25);
+        txtEmployeeName.setText(employeeName1 != null ? employeeName1 : "");
         add(txtEmployeeName);
 
         JLabel lblCompanyName = new JLabel("Company Name:");
@@ -36,6 +45,7 @@ public class UpdateEmployeeProfileDialog extends JDialog {
 
         txtCompanyName = new JTextField(20);
         txtCompanyName.setBounds(150, 60, 200, 25);
+        txtCompanyName.setText(companyName1 != null ? companyName1 : "");
         add(txtCompanyName);
 
         JLabel lblDescription = new JLabel("Description:");
@@ -43,6 +53,9 @@ public class UpdateEmployeeProfileDialog extends JDialog {
         add(lblDescription);
 
         txtDescription = new JTextArea();
+        txtDescription.setLineWrap(true);
+        txtDescription.setWrapStyleWord(true);
+        txtDescription.setText(description1 != null ? description1 : "");
         JScrollPane scroll = new JScrollPane(txtDescription);
         scroll.setBounds(150, 100, 200, 60);
         add(scroll);
@@ -52,6 +65,7 @@ public class UpdateEmployeeProfileDialog extends JDialog {
         add(lblIndustry);
 
         txtIndustry = new JTextField(20);
+         txtIndustry.setText(industry1 != null ? industry1 : "");
         txtIndustry.setBounds(150, 180, 200, 25);
         add(txtIndustry);
 
@@ -60,6 +74,7 @@ public class UpdateEmployeeProfileDialog extends JDialog {
         add(lblLocation);
 
         txtLocation = new JTextField(20);
+        txtLocation.setText(location1 != null ? location1 : "");
         txtLocation.setBounds(150, 220, 200, 25);
         add(txtLocation);
 

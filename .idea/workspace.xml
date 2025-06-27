@@ -4,16 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="039a69c7-22f7-43ff-9108-b213d023ee06" name="Changes" comment="Added UpdateEmployeeProfileDialog 👌">
+    <list default="true" id="039a69c7-22f7-43ff-9108-b213d023ee06" name="Changes" comment="Added a function where it will update the profile of the EmployeeUI 👌">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/functions/UpdateEmployeeProfileDialog.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/functions/UpdateEmployeeProfileDialog.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/database/LoginService.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/database/LoginService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/ui/EmployeeUI$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/EmployeeUI$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/ui/EmployeeUI$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/EmployeeUI$2.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/ui/EmployeeUI$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/EmployeeUI$3.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/ui/EmployeeUI$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/EmployeeUI$4.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/ui/EmployeeUI$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/EmployeeUI$5.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/ui/EmployeeUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/EmployeeUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/functions/UpdateEmployeeProfileDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/functions/UpdateEmployeeProfileDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/database/LoginService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/LoginService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ui/EmployeeUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/EmployeeUI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -373,11 +373,18 @@
       <option name="project" value="LOCAL" />
       <updated>1750983922052</updated>
     </task>
-    <option name="localTasksCounter" value="40" />
+    <task id="LOCAL-00040" summary="Added a function where it will update the profile of the EmployeeUI 👌">
+      <option name="closed" value="true" />
+      <created>1750998328482</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1750998328482</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Done designing the Home page and Find a job page on the JobSeekerUI " />
     <MESSAGE value="Added JobModel and apply it on the Table " />
     <MESSAGE value="Done designing the My Application on JobSeekerUI " />
     <MESSAGE value="Done designing the My Profile in the user " />
@@ -402,6 +409,7 @@
     <MESSAGE value="Added filter the user on the AdminUI " />
     <MESSAGE value="Added a function where Employee can create Jobs on EmployeeUI " />
     <MESSAGE value="Added UpdateEmployeeProfileDialog " />
-    <option name="LAST_COMMIT_MESSAGE" value="Added UpdateEmployeeProfileDialog " />
+    <MESSAGE value="Added a function where it will update the profile of the EmployeeUI " />
+    <option name="LAST_COMMIT_MESSAGE" value="Added a function where it will update the profile of the EmployeeUI " />
   </component>
 </project>

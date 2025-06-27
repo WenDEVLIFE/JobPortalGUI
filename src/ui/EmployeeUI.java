@@ -17,6 +17,7 @@ import javax.swing.JTable;
 import javax.swing.border.LineBorder;
 import javax.swing.table.DefaultTableModel;
 
+import database.ProfileService;
 import database.UpdatePasswordDialog;
 import functions.AddCreateJobDialog;
 import functions.UpdateEmployeeProfileDialog;
@@ -39,8 +40,15 @@ public class EmployeeUI extends JFrame {
 	private JTable table;
 	private JTable alertTable;
 	private JTextField textField_2;
+	private JLabel employeeText;
+	private JLabel companyText;
+	private JLabel locationText;
+	 private JLabel industryText;
+	 private JTextArea descriptionArea;
 	private JTable table_1;
 	private int employeeId;
+	
+
 	DefaultTableModel jobTableModel;
 	List<JobModel> jobList = new ArrayList<>();
 
@@ -328,6 +336,7 @@ public class EmployeeUI extends JFrame {
 				updateProfileDialog.setVisible(true);
 				if (updateProfileDialog.isSucceeded()) {
 					JOptionPane.showMessageDialog(EmployeeUI.this, "Profile updated successfully!");
+					LoadEmployeeProfile();
 					// Optionally, refresh the profile data displayed in the UI
 				} 
 			}
@@ -356,17 +365,17 @@ public class EmployeeUI extends JFrame {
 		lblWelcomeBack_1_2_1_1_2_1_1_1_1_1.setBounds(485, 182, 450, 38);
 		panel_1_1_1.add(lblWelcomeBack_1_2_1_1_2_1_1_1_1_1);
 		
-		JLabel lblWelcomeBack_1_2_1_1_2_1_1_1_1_1_1 = new JLabel("09912455343");
-		lblWelcomeBack_1_2_1_1_2_1_1_1_1_1_1.setForeground(Color.WHITE);
-		lblWelcomeBack_1_2_1_1_2_1_1_1_1_1_1.setFont(new Font("Verdana", Font.BOLD, 20));
-		lblWelcomeBack_1_2_1_1_2_1_1_1_1_1_1.setBounds(25, 239, 450, 38);
-		panel_1_1_1.add(lblWelcomeBack_1_2_1_1_2_1_1_1_1_1_1);
+		companyText = new JLabel("09912455343");
+		companyText.setForeground(Color.WHITE);
+		companyText.setFont(new Font("Verdana", Font.BOLD, 20));
+		companyText.setBounds(25, 239, 450, 38);
+		panel_1_1_1.add(companyText);
 		
-		JLabel lblWelcomeBack_1_2_1_1_2_1_1_1_1_1_1_1 = new JLabel("John Doe");
-		lblWelcomeBack_1_2_1_1_2_1_1_1_1_1_1_1.setForeground(Color.WHITE);
-		lblWelcomeBack_1_2_1_1_2_1_1_1_1_1_1_1.setFont(new Font("Verdana", Font.BOLD, 20));
-		lblWelcomeBack_1_2_1_1_2_1_1_1_1_1_1_1.setBounds(25, 133, 450, 38);
-		panel_1_1_1.add(lblWelcomeBack_1_2_1_1_2_1_1_1_1_1_1_1);
+		employeeText = new JLabel("John Doe");
+		employeeText.setForeground(Color.WHITE);
+		employeeText.setFont(new Font("Verdana", Font.BOLD, 20));
+		employeeText.setBounds(25, 133, 450, 38);
+		panel_1_1_1.add(employeeText);
 		
 		JButton btnUpdateMyPassword = new JButton("Update My Password");
 		btnUpdateMyPassword.addActionListener(new ActionListener() {
@@ -389,11 +398,11 @@ public class EmployeeUI extends JFrame {
 		btnUpdateMyPassword.setBounds(582, 435, 276, 46);
 		panel_1_1_1.add(btnUpdateMyPassword);
 		
-		JLabel lblWelcomeBack_1_2_1_1_2_1_1_1_1_1_2 = new JLabel("TESTADDRESS");
-		lblWelcomeBack_1_2_1_1_2_1_1_1_1_1_2.setForeground(Color.WHITE);
-		lblWelcomeBack_1_2_1_1_2_1_1_1_1_1_2.setFont(new Font("Verdana", Font.BOLD, 20));
-		lblWelcomeBack_1_2_1_1_2_1_1_1_1_1_2.setBounds(485, 239, 450, 38);
-		panel_1_1_1.add(lblWelcomeBack_1_2_1_1_2_1_1_1_1_1_2);
+		locationText = new JLabel("TESTADDRESS");
+		locationText.setForeground(Color.WHITE);
+		locationText.setFont(new Font("Verdana", Font.BOLD, 20));
+		locationText.setBounds(485, 239, 450, 38);
+		panel_1_1_1.add(locationText);
 		
 		JLabel lblWelcomeBack_1_2_1_1_2_1_1_1_1_1_3 = new JLabel("Industry:");
 		lblWelcomeBack_1_2_1_1_2_1_1_1_1_1_3.setForeground(Color.WHITE);
@@ -401,15 +410,16 @@ public class EmployeeUI extends JFrame {
 		lblWelcomeBack_1_2_1_1_2_1_1_1_1_1_3.setBounds(485, 84, 450, 38);
 		panel_1_1_1.add(lblWelcomeBack_1_2_1_1_2_1_1_1_1_1_3);
 		
-		JLabel lblWelcomeBack_1_2_1_1_2_1_1_1_1_1_3_1 = new JLabel("Industry");
-		lblWelcomeBack_1_2_1_1_2_1_1_1_1_1_3_1.setForeground(Color.WHITE);
-		lblWelcomeBack_1_2_1_1_2_1_1_1_1_1_3_1.setFont(new Font("Verdana", Font.BOLD, 20));
-		lblWelcomeBack_1_2_1_1_2_1_1_1_1_1_3_1.setBounds(485, 133, 450, 38);
-		panel_1_1_1.add(lblWelcomeBack_1_2_1_1_2_1_1_1_1_1_3_1);
+		industryText = new JLabel("Industry");
+		industryText.setForeground(Color.WHITE);
+		industryText.setFont(new Font("Verdana", Font.BOLD, 20));
+		industryText.setBounds(485, 133, 450, 38);
+		panel_1_1_1.add(industryText);
 		
-		JTextArea textArea = new JTextArea();
-		textArea.setBounds(25, 337, 434, 68);
-		panel_1_1_1.add(textArea);
+		descriptionArea = new JTextArea();
+		descriptionArea.setFont(new Font("Verdana", Font.BOLD, 14));
+		descriptionArea.setBounds(25, 337, 434, 68);
+		panel_1_1_1.add(descriptionArea);
 		
 		JPanel panel_1_2 = new JPanel();
 		panel_1_2.setLayout(null);
@@ -471,6 +481,7 @@ public class EmployeeUI extends JFrame {
 		 
 		
 	 LoadJobData();
+	 LoadEmployeeProfile();
 	}
 	
 	
@@ -499,5 +510,24 @@ public class EmployeeUI extends JFrame {
 	  			jobTableModel.addRow(rowData);
 			}
 		}
+		
+		
+		public void LoadEmployeeProfile() {
+			System.out.println("Loading employee profile for userId: " + employeeId);
+
+			String employeeName = ProfileService.getInstance().getEmployeeName(String.valueOf(employeeId));
+			String companyName = ProfileService.getInstance().getCompanyName(String.valueOf(employeeId));
+			String description = ProfileService.getInstance().getDescription(String.valueOf(employeeId));
+			String industry = ProfileService.getInstance().getIndustry(String.valueOf(employeeId));
+			String location = ProfileService.getInstance().getLocation(String.valueOf(employeeId));
+
+		    employeeText.setText(employeeName != null ? employeeName : "N/A");
+		    companyText.setText(companyName != null ? companyName : "N/A");
+		    descriptionArea.setText(description != null ? description : "N/A");
+		    descriptionArea.setEditable(false); // Make JTextArea uneditable
+		    industryText.setText(industry != null ? industry : "N/A");
+		    locationText.setText(location != null ? location : "N/A");
+		}
+
 		
 }
