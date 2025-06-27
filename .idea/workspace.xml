@@ -4,17 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="039a69c7-22f7-43ff-9108-b213d023ee06" name="Changes" comment="Added a function it will store the seekerId">
+    <list default="true" id="039a69c7-22f7-43ff-9108-b213d023ee06" name="Changes" comment="Added a function where it will save the file to the database">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/ui/JobSeekerUI$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/JobSeekerUI$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/ui/JobSeekerUI$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/JobSeekerUI$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/ui/JobSeekerUI$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/JobSeekerUI$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/ui/JobSeekerUI$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/JobSeekerUI$4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/ui/JobSeekerUI$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/JobSeekerUI$5.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/ui/JobSeekerUI$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/JobSeekerUI$6.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/ui/JobSeekerUI$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/JobSeekerUI$7.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/ui/JobSeekerUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/JobSeekerUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ui/JobSeekerUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/JobSeekerUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/database/ResumeService.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/database/ResumeService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/functions/ViewResumeDialog.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/functions/ViewResumeDialog.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/database/ResumeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/ResumeService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/functions/ViewResumeDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/functions/ViewResumeDialog.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -413,11 +408,18 @@
       <option name="project" value="LOCAL" />
       <updated>1751004951704</updated>
     </task>
-    <option name="localTasksCounter" value="45" />
+    <task id="LOCAL-00045" summary="Added a function where it will save the file to the database">
+      <option name="closed" value="true" />
+      <created>1751006623153</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1751006623153</updated>
+    </task>
+    <option name="localTasksCounter" value="46" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Done created the UI for Jobs " />
     <MESSAGE value="Added Logout tabs and function on the EmployeeUI " />
     <MESSAGE value="Done designing the My profile in EmployeeUI " />
     <MESSAGE value="Added Recruiter in RegistrationUI " />
@@ -442,6 +444,7 @@
     <MESSAGE value="Added a function where the user can now update the profile in JobSeekerUI " />
     <MESSAGE value="Added a function where it will load the profile of the user " />
     <MESSAGE value="Added a function it will store the seekerId" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added a function it will store the seekerId" />
+    <MESSAGE value="Added a function where it will save the file to the database" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added a function where it will save the file to the database" />
   </component>
 </project>
