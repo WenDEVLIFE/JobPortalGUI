@@ -60,6 +60,7 @@ public class LoginService {
                         employerUI.setVisible(true);
                         employerUI.setData(userIdInt);
                         employerUI.LoadEmployeeProfile();
+                        employerUI.LoadJobData();
                   
                     } else {
                         JOptionPane.showMessageDialog(login, "Unknown role: " + role, "Login Error", JOptionPane.ERROR_MESSAGE);

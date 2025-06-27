@@ -35,6 +35,7 @@ public class JobService {
 	    String expiresAt = String.valueOf(jobDetails.get("expiresAt"));
 	    String status = String.valueOf(jobDetails.get("status"));
 	    String employeeId = String.valueOf(jobDetails.get("employeeId"));
+	    String userId = String.valueOf(jobDetails.get("userId"));
 
 	    String query = "INSERT INTO jobs (employee_id, job_title, description, requirements, location, job_type, salary_min, salary_max, posted_at, expires_at, status) VALUES (?,?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
@@ -66,7 +67,8 @@ public class JobService {
 	
 	public List<JobModel> getAllJobs() {
 	    List<JobModel> jobs = new ArrayList<>();
-	    String query = "SELECT * FROM jobs";
+	    String query = "SELECT j.*, e.company_name FROM jobs j " +
+	                   "JOIN employee_profile e ON j.employee_id = e.employee_id";
 
 	    try (java.sql.Connection conn = MYSQL.getConnection();
 	         java.sql.PreparedStatement pstmt = conn.prepareStatement(query);
@@ -74,7 +76,6 @@ public class JobService {
 
 	        while (rs.next()) {
 	            String jobId = rs.getString("job_id");
-	            String employeeId = rs.getString("employee_id");
 	            String jobTitle = rs.getString("job_title");
 	            String companyName = rs.getString("company_name");
 	            String jobDescription = rs.getString("description");
@@ -94,8 +95,84 @@ public class JobService {
 	    } catch (Exception e) {
 	        e.printStackTrace();
 	    }
-	    
-	    	return jobs;
+	    return jobs;
 	}
+
+	
+	public List<JobModel> getAllJobsByEmployeeId(int employeeId) {
+	    List<JobModel> jobs = new ArrayList<>();
+	    String query = "SELECT j.*, e.company_name FROM jobs j " +
+	                   "JOIN employee_profile e ON j.employee_id = e.employee_id " +
+	                   "WHERE j.employee_id = ?";
+
+	    try (java.sql.Connection conn = MYSQL.getConnection();
+	         java.sql.PreparedStatement pstmt = conn.prepareStatement(query)) {
+
+	        pstmt.setInt(1, employeeId);
+	        try (java.sql.ResultSet rs = pstmt.executeQuery()) {
+	            while (rs.next()) {
+	                String jobId = rs.getString("job_id");
+	                String jobTitle = rs.getString("job_title");
+	                String companyName = rs.getString("company_name");
+	                String jobDescription = rs.getString("description");
+	                String jobLocation = rs.getString("location");
+	                String requirements = rs.getString("requirements");
+	                String jobType = rs.getString("job_type");
+	                String salaryMin = rs.getString("salary_min");
+	                String salaryMax = rs.getString("salary_max");
+	                String postedDate = rs.getString("posted_at");
+	                String expirationDate = rs.getString("expires_at");
+	                String status = rs.getString("status");
+
+	                JobModel job = new JobModel(jobId, jobTitle, companyName, jobDescription, jobLocation,
+	                        requirements, jobType, salaryMin, salaryMax, postedDate, expirationDate, status);
+	                jobs.add(job);
+	            }
+	        }
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+	    return jobs;
+	}
+
+	
+	public boolean updateJob(Map<String, Object> jobDetails) {
+	    String jobId = String.valueOf(jobDetails.get("jobId"));
+	    String jobTitle = String.valueOf(jobDetails.get("jobTitle"));
+	    String jobDescription = String.valueOf(jobDetails.get("jobDescription"));
+	    String requirements = String.valueOf(jobDetails.get("requirements"));
+	    String jobLocation = String.valueOf(jobDetails.get("jobLocation"));
+	    String jobType = String.valueOf(jobDetails.get("jobType"));
+	    String salaryMin = String.valueOf(jobDetails.get("salaryMin"));
+	    String salaryMax = String.valueOf(jobDetails.get("salaryMax"));
+	    String postedAt = String.valueOf(jobDetails.get("postedAt"));
+	    String expiresAt = String.valueOf(jobDetails.get("expiresAt"));
+	    String status = String.valueOf(jobDetails.get("status"));
+
+	    String query = "UPDATE jobs SET job_title=?, description=?, requirements=?, location=?, job_type=?, salary_min=?, salary_max=?, posted_at=?, expires_at=?, status=? WHERE job_id=?";
+
+	    try (java.sql.Connection conn = MYSQL.getConnection();
+	         java.sql.PreparedStatement pstmt = conn.prepareStatement(query)) {
+
+	        pstmt.setString(1, jobTitle);
+	        pstmt.setString(2, jobDescription);
+	        pstmt.setString(3, requirements);
+	        pstmt.setString(4, jobLocation);
+	        pstmt.setString(5, jobType);
+	        pstmt.setInt(6, Integer.parseInt(salaryMin));
+	        pstmt.setInt(7, Integer.parseInt(salaryMax));
+	        pstmt.setString(8, postedAt);
+	        pstmt.setString(9, expiresAt);
+	        pstmt.setString(10, status);
+	        pstmt.setString(11, jobId);
+
+	        int rowsAffected = pstmt.executeUpdate();
+	        return rowsAffected > 0;
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	        return false;
+	    }
+	}
+
 
 }

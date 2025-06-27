@@ -13,11 +13,12 @@ public class AddCreateJobDialog extends JDialog {
     private JFormattedTextField postedAtField, expiresAtField;
     private SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
      private boolean succeeded = false;
-     private int employeeId;
+     private int userId, employeeId;
 
-    public AddCreateJobDialog(JFrame parent, int employeeId) {
+    public AddCreateJobDialog(JFrame parent,int userId, int employeeId) {
         super(parent, "Create Job", true);
         this.employeeId = employeeId;
+        this.userId = userId;
         setLayout(null);
         setSize(400, 500);
         setLocationRelativeTo(parent);
@@ -163,6 +164,7 @@ public class AddCreateJobDialog extends JDialog {
                 jobDetails.put("expiresAt", dateFormat.format(expiresAt));
                 jobDetails.put("status", "Pending"); // Default status
                 jobDetails.put("employeeId", employeeId);
+                jobDetails.put("userId", userId);
                 
                 boolean success = JobService.getInstance().addJob(jobDetails);
                  if (success) {

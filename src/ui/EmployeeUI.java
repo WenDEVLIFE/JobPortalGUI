@@ -17,10 +17,12 @@ import javax.swing.JTable;
 import javax.swing.border.LineBorder;
 import javax.swing.table.DefaultTableModel;
 
+import database.JobService;
 import database.ProfileService;
 import database.UpdatePasswordDialog;
 import functions.AddCreateJobDialog;
 import functions.UpdateEmployeeProfileDialog;
+import functions.UpdateJobDialog;
 import model.JobModel;
 
 import javax.swing.JButton;
@@ -229,14 +231,19 @@ public class EmployeeUI extends JFrame {
 		JButton btnViewApplicant_2 = new JButton("Create a Job");
 		btnViewApplicant_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				AddCreateJobDialog createJobDialog = new AddCreateJobDialog(EmployeeUI.this, userId);
-				createJobDialog.setVisible(true);
-				if (createJobDialog.isSucceeded()) {
-					// Refresh the job table or perform any other necessary actions
-					JOptionPane.showMessageDialog(EmployeeUI.this, "Job created successfully!");
-				} else {
-					JOptionPane.showMessageDialog(EmployeeUI.this, "Failed to create job.");
-				}
+				 if(employeeId <= 0) {
+					 JOptionPane.showMessageDialog(EmployeeUI.this, "Please update your profile to create jobs.", "Profile Required", JOptionPane.WARNING_MESSAGE);
+					 return;
+				 }
+				 
+				 AddCreateJobDialog createJobDialog = new AddCreateJobDialog(EmployeeUI.this, userId, employeeId);
+					createJobDialog.setVisible(true);
+					if (createJobDialog.isSucceeded()) {
+						// Refresh the job table or perform any other necessary actions
+						JOptionPane.showMessageDialog(EmployeeUI.this, "Job created successfully!");
+					} else {
+						JOptionPane.showMessageDialog(EmployeeUI.this, "Failed to create job.");
+					}
 			}
 		});
 		btnViewApplicant_2.setForeground(Color.WHITE);
@@ -245,7 +252,37 @@ public class EmployeeUI extends JFrame {
 		btnViewApplicant_2.setBounds(92, 431, 229, 53);
 		panel_2.add(btnViewApplicant_2);
 		
+		// update the job
 		JButton btnViewApplicant_2_1 = new JButton("Update Job");
+		btnViewApplicant_2_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				int selectedRow = table_1.getSelectedRow();
+				
+				if (selectedRow == -1) {
+					JOptionPane.showMessageDialog(EmployeeUI.this, "Please select a job to update.", "No Job Selected", JOptionPane.WARNING_MESSAGE);
+					return;
+				}
+				
+				if (employeeId <= 0) {
+					JOptionPane.showMessageDialog(EmployeeUI.this, "Please update your profile to manage jobs.", "Profile Required", JOptionPane.WARNING_MESSAGE);
+					return;
+				}
+				
+				JobModel selectedJob = jobList.get(selectedRow);
+				if (selectedJob == null) {
+					JOptionPane.showMessageDialog(EmployeeUI.this, "No job data available for the selected row.", "Error", JOptionPane.ERROR_MESSAGE);
+					return;
+				}
+				
+				UpdateJobDialog updateJobDialog = new UpdateJobDialog(EmployeeUI.this, selectedJob);
+				updateJobDialog.setVisible(true);
+				if (updateJobDialog.isSucceeded()) {
+					JOptionPane.showMessageDialog(EmployeeUI.this, "Job updated successfully!");
+					// Optionally, refresh the job table or perform any other necessary actions
+				} 
+			}
+		});
 		btnViewApplicant_2_1.setForeground(Color.WHITE);
 		btnViewApplicant_2_1.setFont(new Font("Verdana", Font.BOLD, 11));
 		btnViewApplicant_2_1.setBackground(new Color(195, 143, 255));
@@ -491,12 +528,12 @@ public class EmployeeUI extends JFrame {
 	}
 	
 	// This will load the job
-		void LoadJobData() {
+		public void LoadJobData() {
 			jobList.clear();
 			
 			jobTableModel.setRowCount(0); // Clear existing rows in the table model
 		
-		 		jobList.add(new JobModel("1", "Software Engineer", "Tech Company", "Develop software applications", "Remote", "Java, Spring Boot", "Full-time", "50000", "70000", "2023-10-01", "2024-01-01", "Open"));
+		 	jobList = JobService.getInstance().getAllJobsByEmployeeId(employeeId);
 			
 			for (JobModel job : jobList) {
 	  			Object[] rowData = {
