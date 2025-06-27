@@ -454,13 +454,6 @@ public class AdminUI extends JFrame {
 		panel_2.setLayout(null);
 		tabbedPane.addTab("Audit Logs", null, panel_2, null);
 		
-		JButton btnDeleteAuditLogs = new JButton("Delete Audit Logs");
-		btnDeleteAuditLogs.setForeground(Color.WHITE);
-		btnDeleteAuditLogs.setFont(new Font("Verdana", Font.BOLD, 11));
-		btnDeleteAuditLogs.setBackground(new Color(195, 143, 255));
-		btnDeleteAuditLogs.setBounds(354, 445, 301, 53);
-		panel_2.add(btnDeleteAuditLogs);
-		
 		auditTable = new JTable();
 		auditTable.setBorder(new LineBorder(new Color(0, 0, 0)));
 		auditTable.setBounds(34, 61, 1046, 360);
