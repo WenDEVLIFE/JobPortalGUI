@@ -1,7 +1,12 @@
 package functions;
 
 import javax.swing.*;
+
+import database.ProfileService;
+
 import java.awt.*;
+import java.util.HashMap;
+import java.util.Map;
 
 public class UpdateEmployeeProfileDialog extends JDialog {
     private JTextField txtEmployeeName;
@@ -9,10 +14,12 @@ public class UpdateEmployeeProfileDialog extends JDialog {
     private JTextArea txtDescription;
     private JTextField txtIndustry;
     private JTextField txtLocation;
+    private int employeeId;
     private boolean succeeded;
 
-    public UpdateEmployeeProfileDialog(Frame parent) {
+    public UpdateEmployeeProfileDialog(Frame parent, int employeeId) {
         super(parent, "Update Profile", true);
+    	this.employeeId =  employeeId;
         setLayout(null);
 
         JLabel lblEmployeeName = new JLabel("Employee Name:");
@@ -65,8 +72,29 @@ public class UpdateEmployeeProfileDialog extends JDialog {
         add(btnCancel);
 
         btnOK.addActionListener(e -> {
-            succeeded = true;
-            dispose();
+              String employeeName = txtEmployeeName.getText();
+              String companyName = txtCompanyName.getText();
+              String description = txtDescription.getText();
+              String industry = txtIndustry.getText();
+              String location = txtLocation.getText();
+               if (employeeName.isEmpty() || companyName.isEmpty() || description.isEmpty() || industry.isEmpty() || location.isEmpty()) {
+				  JOptionPane.showMessageDialog(this, "All fields must be filled out.", "Error", JOptionPane.ERROR_MESSAGE);
+			  } else {
+				  // Here you would typically call a service to update the employee data
+				  Map <String, Object> employeeData = new HashMap<>();
+				  String employeeIds = String.valueOf(this.employeeId);
+				  employeeData.put("employeeId", employeeIds);
+				  employeeData.put("employeeName", employeeName);
+				  employeeData.put("companyName", companyName);
+				  employeeData.put("description", description);
+				  employeeData.put("industry", industry);
+				  employeeData.put("location", location);
+				 
+				  
+				  ProfileService.getInstance().updateEmployeeData(employeeData);
+				  succeeded = true;
+				  dispose();
+			  }
         });
 
         btnCancel.addActionListener(e -> {

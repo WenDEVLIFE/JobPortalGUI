@@ -19,6 +19,7 @@ import javax.swing.table.DefaultTableModel;
 
 import database.UpdatePasswordDialog;
 import functions.AddCreateJobDialog;
+import functions.UpdateEmployeeProfileDialog;
 import model.JobModel;
 
 import javax.swing.JButton;
@@ -321,6 +322,16 @@ public class EmployeeUI extends JFrame {
 		panel_1_1_1.add(lblWelcomeBack_1_2_1_1_2_1_1);
 		
 		JButton btnUpdateProfileDetails = new JButton("Update Profile Details");
+		btnUpdateProfileDetails.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				UpdateEmployeeProfileDialog updateProfileDialog = new UpdateEmployeeProfileDialog(EmployeeUI.this, employeeId);
+				updateProfileDialog.setVisible(true);
+				if (updateProfileDialog.isSucceeded()) {
+					JOptionPane.showMessageDialog(EmployeeUI.this, "Profile updated successfully!");
+					// Optionally, refresh the profile data displayed in the UI
+				} 
+			}
+		});
 		btnUpdateProfileDetails.setForeground(Color.WHITE);
 		btnUpdateProfileDetails.setFont(new Font("Verdana", Font.BOLD, 11));
 		btnUpdateProfileDetails.setBackground(new Color(195, 143, 255));
