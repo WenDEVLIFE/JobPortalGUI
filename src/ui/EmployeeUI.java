@@ -46,7 +46,7 @@ public class EmployeeUI extends JFrame {
 	 private JLabel industryText;
 	 private JTextArea descriptionArea;
 	private JTable table_1;
-	private int employeeId;
+	private int userId, employeeId;
 	
 
 	DefaultTableModel jobTableModel;
@@ -229,7 +229,7 @@ public class EmployeeUI extends JFrame {
 		JButton btnViewApplicant_2 = new JButton("Create a Job");
 		btnViewApplicant_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				AddCreateJobDialog createJobDialog = new AddCreateJobDialog(EmployeeUI.this, employeeId);
+				AddCreateJobDialog createJobDialog = new AddCreateJobDialog(EmployeeUI.this, userId);
 				createJobDialog.setVisible(true);
 				if (createJobDialog.isSucceeded()) {
 					// Refresh the job table or perform any other necessary actions
@@ -332,7 +332,7 @@ public class EmployeeUI extends JFrame {
 		JButton btnUpdateProfileDetails = new JButton("Update Profile Details");
 		btnUpdateProfileDetails.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				UpdateEmployeeProfileDialog updateProfileDialog = new UpdateEmployeeProfileDialog(EmployeeUI.this, employeeId);
+				UpdateEmployeeProfileDialog updateProfileDialog = new UpdateEmployeeProfileDialog(EmployeeUI.this, userId);
 				updateProfileDialog.setVisible(true);
 				if (updateProfileDialog.isSucceeded()) {
 					JOptionPane.showMessageDialog(EmployeeUI.this, "Profile updated successfully!");
@@ -380,7 +380,7 @@ public class EmployeeUI extends JFrame {
 		JButton btnUpdateMyPassword = new JButton("Update My Password");
 		btnUpdateMyPassword.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
-		        UpdatePasswordDialog dialog = new UpdatePasswordDialog(EmployeeUI.this, employeeId);
+		        UpdatePasswordDialog dialog = new UpdatePasswordDialog(EmployeeUI.this, userId);
 		        dialog.setVisible(true);
 		        if (dialog.isSucceeded()) {
 		            JOptionPane.showMessageDialog(EmployeeUI.this, "Password updated successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
@@ -485,9 +485,9 @@ public class EmployeeUI extends JFrame {
 	}
 	
 	
-	public void setData(int employeeId) {
-		this.employeeId = employeeId;
-		System.out.println("Employee ID set to: " + employeeId);
+	public void setData(int userId) {
+		this.userId = userId;
+		System.out.println("Employee ID set to: " + userId);
 	}
 	
 	// This will load the job
@@ -513,13 +513,15 @@ public class EmployeeUI extends JFrame {
 		
 		
 		public void LoadEmployeeProfile() {
-			System.out.println("Loading employee profile for userId: " + employeeId);
+			System.out.println("Loading employee profile for userId: " + userId);
 
-			String employeeName = ProfileService.getInstance().getEmployeeName(String.valueOf(employeeId));
-			String companyName = ProfileService.getInstance().getCompanyName(String.valueOf(employeeId));
-			String description = ProfileService.getInstance().getDescription(String.valueOf(employeeId));
-			String industry = ProfileService.getInstance().getIndustry(String.valueOf(employeeId));
-			String location = ProfileService.getInstance().getLocation(String.valueOf(employeeId));
+			String employeeName = ProfileService.getInstance().getEmployeeName(String.valueOf(userId));
+			String companyName = ProfileService.getInstance().getCompanyName(String.valueOf(userId));
+			String description = ProfileService.getInstance().getDescription(String.valueOf(userId));
+			String industry = ProfileService.getInstance().getIndustry(String.valueOf(userId));
+			String location = ProfileService.getInstance().getLocation(String.valueOf(userId));
+			
+			employeeId = ProfileService.getInstance().getEmployeeId(String.valueOf(userId));
 		
 
 		    employeeText.setText(employeeName != null ? employeeName : "N/A");

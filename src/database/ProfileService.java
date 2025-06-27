@@ -196,6 +196,22 @@ public class ProfileService {
 	return -1; // Return -1 if not found
 	}
 
+	public int getEmployeeId(String userId) {
+	    String sql = "SELECT employee_id FROM employee_profile WHERE user_id = ?";
+	    try (Connection conn = MYSQL.getConnection();
+	         PreparedStatement stmt = conn.prepareStatement(sql)) {
+	        stmt.setString(1, userId);
+	        ResultSet rs = stmt.executeQuery();
+	        if (rs.next()) {
+	            return rs.getInt("employee_id");
+	        }
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+	    return -1; // Return -1 if not found
+	}
+
+
 
 
 }
