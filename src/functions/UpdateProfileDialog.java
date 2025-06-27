@@ -21,13 +21,18 @@ public class UpdateProfileDialog extends JDialog {
         this.userId = userId;
         setLayout(null);
         setSize(350, 250);
+        
+        String fullname1 = ProfileService.getInstance().getFullName(userId);
+		String location1 = ProfileService.getInstance().getLocation(userId);
+		String contactInfo1 = ProfileService.getInstance().getContactInfo(userId);
+		
 
         JLabel nameLabel = new JLabel("Full Name:");
         nameLabel.setBounds(30, 30, 80, 25);
         add(nameLabel);
 
         fullNameField = new JTextField(20);
-       // fullNameField.setText(fullName);
+       fullNameField.setText(fullname1 != null ? fullname1 : "N/A");
         fullNameField.setBounds(120, 30, 180, 25);
         add(fullNameField);
 
@@ -36,7 +41,7 @@ public class UpdateProfileDialog extends JDialog {
         add(contactLabel);
 
         contactInfoField = new JTextField(20);
-        ///contactInfoField.setText(contactInfo);
+        contactInfoField.setText(contactInfo1 != null ? contactInfo1 : "N/A");
         contactInfoField.setBounds(120, 70, 180, 25);
         add(contactInfoField);
 
@@ -45,7 +50,7 @@ public class UpdateProfileDialog extends JDialog {
         add(locationLabel);
 
         locationField = new JTextField(20);
-       // locationField.setText(location);
+        locationField.setText(location1 != null ? location1 : "N/A");
         locationField.setBounds(120, 110, 180, 25);
         add(locationField);
 

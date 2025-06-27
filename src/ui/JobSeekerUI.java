@@ -9,6 +9,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 
+import database.ProfileService;
 import database.UpdatePasswordDialog;
 import functions.UpdateProfileDialog;
 import model.AlertModel;
@@ -23,7 +24,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.awt.Color;
 import javax.swing.JButton;
-import javax.swing.SwingConstants;
 import javax.swing.JTextField;
 import javax.swing.RowFilter;
 import javax.swing.JTable;
@@ -50,6 +50,9 @@ public class JobSeekerUI extends JFrame {
 	private JTextField textField;
 	private JTable table;
 	private JTable alertTable;
+	private JLabel FullnameText;
+	private JLabel LocationText;
+	private JLabel ContactInfoText;
 	private int userId;
 	
 
@@ -323,6 +326,7 @@ public class JobSeekerUI extends JFrame {
 				dialog.setVisible(true);
 				 if (dialog.isSucceeded()) {
 					JOptionPane.showMessageDialog(JobSeekerUI.this, "Profile updated successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
+					LoadProfile();
 				}
 			}
 		});
@@ -344,23 +348,23 @@ public class JobSeekerUI extends JFrame {
 		lblWelcomeBack_1_2_1_1_2_1_1_1_1.setBounds(25, 344, 122, 38);
 		panel_1_1_1.add(lblWelcomeBack_1_2_1_1_2_1_1_1_1);
 		
-		JLabel lblWelcomeBack_1_2_1_1_2_1_1_1_1_1 = new JLabel("TestAddress City");
-		lblWelcomeBack_1_2_1_1_2_1_1_1_1_1.setForeground(Color.WHITE);
-		lblWelcomeBack_1_2_1_1_2_1_1_1_1_1.setFont(new Font("Verdana", Font.BOLD, 20));
-		lblWelcomeBack_1_2_1_1_2_1_1_1_1_1.setBounds(25, 393, 450, 38);
-		panel_1_1_1.add(lblWelcomeBack_1_2_1_1_2_1_1_1_1_1);
+	    LocationText = new JLabel("TestAddress City");
+		LocationText.setForeground(Color.WHITE);
+		LocationText.setFont(new Font("Verdana", Font.BOLD, 20));
+		LocationText.setBounds(25, 393, 450, 38);
+		panel_1_1_1.add(LocationText);
 		
-		JLabel lblWelcomeBack_1_2_1_1_2_1_1_1_1_1_1 = new JLabel("09912455343");
-		lblWelcomeBack_1_2_1_1_2_1_1_1_1_1_1.setForeground(Color.WHITE);
-		lblWelcomeBack_1_2_1_1_2_1_1_1_1_1_1.setFont(new Font("Verdana", Font.BOLD, 20));
-		lblWelcomeBack_1_2_1_1_2_1_1_1_1_1_1.setBounds(25, 276, 450, 38);
-		panel_1_1_1.add(lblWelcomeBack_1_2_1_1_2_1_1_1_1_1_1);
+		ContactInfoText = new JLabel("09912455343");
+		ContactInfoText.setForeground(Color.WHITE);
+		ContactInfoText.setFont(new Font("Verdana", Font.BOLD, 20));
+		ContactInfoText.setBounds(25, 276, 450, 38);
+		panel_1_1_1.add(ContactInfoText);
 		
-		JLabel lblWelcomeBack_1_2_1_1_2_1_1_1_1_1_1_1 = new JLabel("John Doe");
-		lblWelcomeBack_1_2_1_1_2_1_1_1_1_1_1_1.setForeground(Color.WHITE);
-		lblWelcomeBack_1_2_1_1_2_1_1_1_1_1_1_1.setFont(new Font("Verdana", Font.BOLD, 20));
-		lblWelcomeBack_1_2_1_1_2_1_1_1_1_1_1_1.setBounds(25, 164, 450, 38);
-		panel_1_1_1.add(lblWelcomeBack_1_2_1_1_2_1_1_1_1_1_1_1);
+		FullnameText = new JLabel("John Doe");
+		FullnameText.setForeground(Color.WHITE);
+		FullnameText.setFont(new Font("Verdana", Font.BOLD, 20));
+		FullnameText.setBounds(25, 164, 450, 38);
+		panel_1_1_1.add(FullnameText);
 		
 		JButton btnViewMyResume = new JButton("View My Resume");
 		btnViewMyResume.setForeground(Color.WHITE);
@@ -547,6 +551,18 @@ public class JobSeekerUI extends JFrame {
 			};
 			alertTableModel.addRow(rowData);
 		}
+	}
+	
+	
+	public void LoadProfile() {
+		
+		String fullname = ProfileService.getInstance().getFullName(userId);
+		String location = ProfileService.getInstance().getLocation(userId);
+		String contactInfo = ProfileService.getInstance().getContactInfo(userId);
+		
+		FullnameText.setText(fullname != null ? fullname : "N/A");
+		LocationText.setText(location != null ? location : "N/A");
+		ContactInfoText.setText(contactInfo != null ? contactInfo : "N/A");
 	}
 	
 	public void setData(int userId) {

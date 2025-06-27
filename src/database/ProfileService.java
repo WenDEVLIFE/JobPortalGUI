@@ -138,6 +138,48 @@ public class ProfileService {
             return false;
         }
     }
+    
+    public String getFullName(int userId) {
+		return getProfileFieldByUserId(userId, "fullname");
+	}
+    
+    public String getContactInfo(int userId) {
+		return getProfileFieldByUserId(userId, "contact_info");
+	}
+
+	public String getLocation(int userId) {
+		return getProfileFieldByUserId(userId, "location");
+	}
+
+	public boolean isProfileVisible(int userId) {
+		String sql = "SELECT visibility FROM seeker_profile WHERE user_id = ?";
+		try (Connection conn = MYSQL.getConnection();
+			 PreparedStatement stmt = conn.prepareStatement(sql)) {
+			stmt.setInt(1, userId);
+			ResultSet rs = stmt.executeQuery();
+			if (rs.next()) {
+				return rs.getBoolean("visibility");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+
+	private String getProfileFieldByUserId(int userId, String FieldName) {
+		String sql = "SELECT " + FieldName + " FROM seeker_profile WHERE user_id = ?";
+		try (Connection conn = MYSQL.getConnection();
+			 PreparedStatement stmt = conn.prepareStatement(sql)) {
+			stmt.setInt(1, userId);
+			ResultSet rs = stmt.executeQuery();
+			if (rs.next()) {
+				return rs.getString(FieldName);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
 
 
 

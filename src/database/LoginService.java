@@ -53,6 +53,7 @@ public class LoginService {
                         JobSeekerUI jobSeekerUI = new JobSeekerUI();
                         jobSeekerUI.setVisible(true);
                         jobSeekerUI.setData(userIdInt);
+                        jobSeekerUI.LoadProfile();
                     } else if (role.equalsIgnoreCase("employer") || role.equalsIgnoreCase("recruiter")) {
                         login.dispose();
                         EmployeeUI employerUI = new EmployeeUI();
