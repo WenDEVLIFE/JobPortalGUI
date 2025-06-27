@@ -12,6 +12,7 @@ import javax.swing.table.TableRowSorter;
 import database.ProfileService;
 import database.UpdatePasswordDialog;
 import functions.UpdateProfileDialog;
+import functions.ViewResumeDialog;
 import model.AlertModel;
 import model.JobModel;
 
@@ -367,6 +368,12 @@ public class JobSeekerUI extends JFrame {
 		panel_1_1_1.add(FullnameText);
 		
 		JButton btnViewMyResume = new JButton("View My Resume");
+		btnViewMyResume.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ViewResumeDialog dialog = new ViewResumeDialog(JobSeekerUI.this, seekerId);
+				dialog.setVisible(true);
+			}
+		});
 		btnViewMyResume.setForeground(Color.WHITE);
 		btnViewMyResume.setFont(new Font("Verdana", Font.BOLD, 11));
 		btnViewMyResume.setBackground(new Color(195, 143, 255));
