@@ -135,28 +135,10 @@ public class EmployeeUI extends JFrame {
 		lblWelcomeBack_1_1_1_1.setBounds(139, 89, 130, 38);
 		panel_3_1.add(lblWelcomeBack_1_1_1_1);
 		
-		JPanel panel_3_2 = new JPanel();
-		panel_3_2.setLayout(null);
-		panel_3_2.setBackground(new Color(255, 128, 255));
-		panel_3_2.setBounds(756, 79, 331, 172);
-		panel.add(panel_3_2);
-		
-		JLabel lblWelcomeBack_1_1_3 = new JLabel("Total Job Denied");
-		lblWelcomeBack_1_1_3.setForeground(Color.WHITE);
-		lblWelcomeBack_1_1_3.setFont(new Font("Verdana", Font.BOLD, 20));
-		lblWelcomeBack_1_1_3.setBounds(63, 40, 206, 38);
-		panel_3_2.add(lblWelcomeBack_1_1_3);
-		
-		JLabel lblWelcomeBack_1_1_1_2 = new JLabel("0");
-		lblWelcomeBack_1_1_1_2.setForeground(Color.WHITE);
-		lblWelcomeBack_1_1_1_2.setFont(new Font("Verdana", Font.BOLD, 20));
-		lblWelcomeBack_1_1_1_2.setBounds(139, 89, 130, 38);
-		panel_3_2.add(lblWelcomeBack_1_1_1_2);
-		
 		JPanel panel_3_2_1 = new JPanel();
 		panel_3_2_1.setLayout(null);
 		panel_3_2_1.setBackground(new Color(255, 128, 255));
-		panel_3_2_1.setBounds(41, 306, 331, 172);
+		panel_3_2_1.setBounds(756, 79, 331, 172);
 		panel.add(panel_3_2_1);
 		
 		JLabel lblWelcomeBack_1_1_3_1 = new JLabel("Total Job Pending");
@@ -174,7 +156,7 @@ public class EmployeeUI extends JFrame {
 		JPanel panel_3_2_1_1 = new JPanel();
 		panel_3_2_1_1.setLayout(null);
 		panel_3_2_1_1.setBackground(new Color(255, 128, 255));
-		panel_3_2_1_1.setBounds(396, 306, 331, 172);
+		panel_3_2_1_1.setBounds(264, 306, 331, 172);
 		panel.add(panel_3_2_1_1);
 		
 		JLabel lblWelcomeBack_1_1_3_1_1 = new JLabel("Total Job Open");
@@ -192,7 +174,7 @@ public class EmployeeUI extends JFrame {
 		JPanel panel_3_2_1_1_1 = new JPanel();
 		panel_3_2_1_1_1.setLayout(null);
 		panel_3_2_1_1_1.setBackground(new Color(255, 128, 255));
-		panel_3_2_1_1_1.setBounds(756, 306, 331, 172);
+		panel_3_2_1_1_1.setBounds(627, 306, 331, 172);
 		panel.add(panel_3_2_1_1_1);
 		
 		JLabel lblWelcomeBack_1_1_3_1_1_1 = new JLabel("Total Job Closed");

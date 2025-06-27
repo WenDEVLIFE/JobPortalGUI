@@ -191,4 +191,165 @@ public class JobService {
 	}
 
 
+	public List<JobModel> getAllPendingJobs() {
+		List<JobModel> jobs = new ArrayList<>();
+		String query = "SELECT j.*, e.company_name FROM jobs j " +
+		               "JOIN employee_profile e ON j.employee_id = e.employee_id " +
+		               "WHERE j.status = 'Pending'";
+		try (java.sql.Connection conn = MYSQL.getConnection();
+						     java.sql.PreparedStatement pstmt = conn.prepareStatement(query);
+		     java.sql.ResultSet rs = pstmt.executeQuery()) {
+
+			while (rs.next()) {
+				String jobId = rs.getString("job_id");
+				String jobTitle = rs.getString("job_title");
+				String companyName = rs.getString("company_name");
+				String jobDescription = rs.getString("description");
+				String jobLocation = rs.getString("location");
+				String requirements = rs.getString("requirements");
+				String jobType = rs.getString("job_type");
+				String salaryMin = rs.getString("salary_min");
+				String salaryMax = rs.getString("salary_max");
+				String postedDate = rs.getString("posted_at");
+				String expirationDate = rs.getString("expires_at");
+				String status = rs.getString("status");
+
+				JobModel job = new JobModel(jobId, jobTitle, companyName, jobDescription, jobLocation,
+						requirements, jobType, salaryMin, salaryMax, postedDate, expirationDate, status);
+				jobs.add(job);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return jobs;
+	}
+	
+	public List<JobModel> getAllApprovedJobs() {
+		List<JobModel> jobs = new ArrayList<>();
+		String query = "SELECT j.*, e.company_name FROM jobs j " +
+		               "JOIN employee_profile e ON j.employee_id = e.employee_id " +
+		               "WHERE j.status = 'Open'";
+		try (java.sql.Connection conn = MYSQL.getConnection();
+						     java.sql.PreparedStatement pstmt = conn.prepareStatement(query);
+		     java.sql.ResultSet rs = pstmt.executeQuery()) {
+
+			while (rs.next()) {
+				String jobId = rs.getString("job_id");
+				String jobTitle = rs.getString("job_title");
+				String companyName = rs.getString("company_name");
+				String jobDescription = rs.getString("description");
+				String jobLocation = rs.getString("location");
+				String requirements = rs.getString("requirements");
+				String jobType = rs.getString("job_type");
+				String salaryMin = rs.getString("salary_min");
+				String salaryMax = rs.getString("salary_max");
+				String postedDate = rs.getString("posted_at");
+				String expirationDate = rs.getString("expires_at");
+				String status = rs.getString("status");
+
+				JobModel job = new JobModel(jobId, jobTitle, companyName, jobDescription, jobLocation,
+						requirements, jobType, salaryMin, salaryMax, postedDate, expirationDate, status);
+				jobs.add(job);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return jobs;
+	}
+
+
+	public boolean approveJobPosting(String jobId, int adminID) {
+	    String getEmployeeQuery = "SELECT employee_id FROM jobs WHERE job_id = ?";
+	    String getUserQuery = "SELECT user_id FROM employee_profile WHERE employee_id = ?";
+	    String updateJobQuery = "UPDATE jobs SET status = 'Open' WHERE job_id = ?";
+	    try (java.sql.Connection conn = MYSQL.getConnection()) {
+	        // Get employee_id from jobs
+	        int employeeId = -1;
+	        try (java.sql.PreparedStatement pstmt = conn.prepareStatement(getEmployeeQuery)) {
+	            pstmt.setString(1, jobId);
+	            try (java.sql.ResultSet rs = pstmt.executeQuery()) {
+	                if (rs.next()) {
+	                    employeeId = rs.getInt("employee_id");
+	                }
+	            }
+	        }
+	        if (employeeId == -1) return false;
+
+	        // Get user_id from employee_profile
+	        int userId = -1;
+	        try (java.sql.PreparedStatement pstmt = conn.prepareStatement(getUserQuery)) {
+	            pstmt.setInt(1, employeeId);
+	            try (java.sql.ResultSet rs = pstmt.executeQuery()) {
+	                if (rs.next()) {
+	                    userId = rs.getInt("user_id");
+	                }
+	            }
+	        }
+	        if (userId == -1) return false;
+
+	        // Approve the job
+	        try (java.sql.PreparedStatement pstmt = conn.prepareStatement(updateJobQuery)) {
+	            pstmt.setString(1, jobId);
+	            int rowsAffected = pstmt.executeUpdate();
+	            if (rowsAffected > 0) {
+	                AuditLogService.getInstance().InsertAuditLog(String.valueOf(adminID), "Job Approval", "Job ID: " + jobId + " approved.");
+	                AlertService.getInstance().insertAlert("Your job posting (ID: " + jobId + ") has been approved.", userId);
+	                return true;
+	            }
+	        }
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+	    return false;
+	}
+
+
+	public boolean deleteJobPosting(String jobId, int adminID) {
+	  		String getEmployeeQuery = "SELECT employee_id FROM jobs WHERE job_id = ?";
+		String getUserQuery = "SELECT user_id FROM employee_profile WHERE employee_id = ?";
+		String deleteJobQuery = "DELETE FROM jobs WHERE job_id = ?";
+		try (java.sql.Connection conn = MYSQL.getConnection()) {
+			// Get employee_id from jobs
+			int employeeId = -1;
+			try (java.sql.PreparedStatement pstmt = conn.prepareStatement(getEmployeeQuery)) {
+				pstmt.setString(1, jobId);
+				try (java.sql.ResultSet rs = pstmt.executeQuery()) {
+					if (rs.next()) {
+						employeeId = rs.getInt("employee_id");
+					}
+				}
+			}
+			if (employeeId == -1) return false;
+
+			// Get user_id from employee_profile
+			int userId = -1;
+			try (java.sql.PreparedStatement pstmt = conn.prepareStatement(getUserQuery)) {
+				pstmt.setInt(1, employeeId);
+				try (java.sql.ResultSet rs = pstmt.executeQuery()) {
+					if (rs.next()) {
+						userId = rs.getInt("user_id");
+					}
+				}
+			}
+			if (userId == -1) return false;
+
+			// Delete the job
+			try (java.sql.PreparedStatement pstmt = conn.prepareStatement(deleteJobQuery)) {
+				pstmt.setString(1, jobId);
+				int rowsAffected = pstmt.executeUpdate();
+				if (rowsAffected > 0) {
+					AuditLogService.getInstance().InsertAuditLog(String.valueOf(adminID), "Job Deletion", "Job ID: " + jobId + " deleted.");
+					AlertService.getInstance().insertAlert("Your job posting (ID: " + jobId + ") has been deleted.", userId);
+					return true;
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+	
+
 }

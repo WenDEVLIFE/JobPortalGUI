@@ -48,6 +48,9 @@ public class LoginService {
                         AdminUI adminUI = new AdminUI();
                         adminUI.setVisible(true);
                         adminUI.setData(userIdInt);
+                        adminUI.LoadJobDataApproved();
+                        adminUI.LoadJobDataPending();
+                
                     } else if (role.equalsIgnoreCase("job seeker")) {
                         login.dispose();
                         JobSeekerUI jobSeekerUI = new JobSeekerUI();
@@ -61,6 +64,8 @@ public class LoginService {
                         employerUI.setData(userIdInt);
                         employerUI.LoadEmployeeProfile();
                         employerUI.LoadJobData();
+                    
+                         
                   
                     } else {
                         JOptionPane.showMessageDialog(login, "Unknown role: " + role, "Login Error", JOptionPane.ERROR_MESSAGE);

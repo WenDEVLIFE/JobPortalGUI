@@ -6,6 +6,32 @@
   <component name="ChangeListManager">
     <list default="true" id="039a69c7-22f7-43ff-9108-b213d023ee06" name="Changes" comment="Added a function where user will delete the job 👌">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/database/AlertService.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/database/AlertService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/database/JobService.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/database/JobService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/database/LoginService.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/database/LoginService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ui/AdminUI$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/AdminUI$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ui/AdminUI$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/AdminUI$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ui/AdminUI$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/AdminUI$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ui/AdminUI$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/AdminUI$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ui/AdminUI$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/AdminUI$5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ui/AdminUI$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/AdminUI$6.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ui/AdminUI$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/AdminUI$7.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ui/AdminUI$8.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/AdminUI$8.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ui/AdminUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/AdminUI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ui/EmployeeUI$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/EmployeeUI$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ui/EmployeeUI$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/EmployeeUI$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ui/EmployeeUI$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/EmployeeUI$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ui/EmployeeUI$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/EmployeeUI$5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ui/EmployeeUI$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/EmployeeUI$6.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ui/EmployeeUI$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/EmployeeUI$7.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ui/EmployeeUI$8.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/EmployeeUI$8.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ui/EmployeeUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/EmployeeUI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/database/AlertService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/AlertService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/database/JobService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/JobService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/database/LoginService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/LoginService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/database/savepw.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/savepw.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/AdminUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/AdminUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/EmployeeUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/EmployeeUI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,14 +77,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1750820923469</updated>
-    </task>
-    <task id="LOCAL-00004" summary="Added connection to the MYSQL 👌">
-      <option name="closed" value="true" />
-      <created>1750859899398</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1750859899398</updated>
     </task>
     <task id="LOCAL-00005" summary="Done designing the Registration Form 👌">
       <option name="closed" value="true" />
@@ -444,7 +462,15 @@
       <option name="project" value="LOCAL" />
       <updated>1751029471770</updated>
     </task>
-    <option name="localTasksCounter" value="53" />
+    <task id="LOCAL-00053" summary="Added a function where user will delete the job 👌">
+      <option name="closed" value="true" />
+      <created>1751030088369</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1751030088369</updated>
+    </task>
+    <option name="localTasksCounter" value="54" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">

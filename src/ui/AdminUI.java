@@ -21,6 +21,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 
 import database.AuditLogService;
+import database.JobService;
 import database.RegistrationService;
 
 import java.util.ArrayList;
@@ -31,6 +32,7 @@ import java.util.Map;
 import functions.AddUserDialog;
 import functions.EditUserDialog;
 import model.AuditModel;
+import model.JobModel;
 import model.UserModel;
 
 import javax.swing.JTextField;
@@ -42,10 +44,10 @@ public class AdminUI extends JFrame {
 	private JPanel contentPane;
 	private JTable userTable;
 	private JTextField searchUserField;
-	private JTable table_1;
-	private JTextField textField_1;
-	private JTable table_2;
-	private JTextField textField_2;
+	private JTable PendingJobTable;
+	private JTextField searchPendingJob;
+	private JTable ApprovedTable;
+	private JTextField searchApproveJob;
 	private JTable auditTable;
 	private JPasswordField passwordField;
 	private JPasswordField passwordField_1;
@@ -54,6 +56,8 @@ public class AdminUI extends JFrame {
 	DefaultTableModel userTableModel, auditTableModel, pendingJobTableModel, approvedJobTableModel;
 	List<UserModel> userList = new ArrayList<>();
 	List<AuditModel> auditList = new ArrayList<>();
+	private List<JobModel> pendingJobList = new ArrayList<>();
+	private List<JobModel> approvedJobList = new ArrayList<>();
  
 	/**
 	 * Launch the application.
@@ -95,7 +99,7 @@ public class AdminUI extends JFrame {
 		JPanel panel_3_1 = new JPanel();
 		panel_3_1.setLayout(null);
 		panel_3_1.setBackground(new Color(255, 128, 255));
-		panel_3_1.setBounds(30, 290, 331, 172);
+		panel_3_1.setBounds(213, 290, 331, 172);
 		panel.add(panel_3_1);
 		
 		JLabel lblWelcomeBack_1_1 = new JLabel("Peding Job Posting");
@@ -173,7 +177,7 @@ public class AdminUI extends JFrame {
 		JPanel panel_3_1_2 = new JPanel();
 		panel_3_1_2.setLayout(null);
 		panel_3_1_2.setBackground(new Color(255, 128, 255));
-		panel_3_1_2.setBounds(394, 290, 331, 172);
+		panel_3_1_2.setBounds(581, 290, 331, 172);
 		panel.add(panel_3_1_2);
 		
 		JLabel lblWelcomeBack_1_1_3 = new JLabel("Approved Job Listing");
@@ -187,24 +191,6 @@ public class AdminUI extends JFrame {
 		lblWelcomeBack_1_1_1_2.setFont(new Font("Verdana", Font.BOLD, 20));
 		lblWelcomeBack_1_1_1_2.setBounds(139, 89, 130, 38);
 		panel_3_1_2.add(lblWelcomeBack_1_1_1_2);
-		
-		JPanel panel_3_1_2_1 = new JPanel();
-		panel_3_1_2_1.setLayout(null);
-		panel_3_1_2_1.setBackground(new Color(255, 128, 255));
-		panel_3_1_2_1.setBounds(751, 290, 331, 172);
-		panel.add(panel_3_1_2_1);
-		
-		JLabel lblWelcomeBack_1_1_3_1 = new JLabel("Denied Job Listing");
-		lblWelcomeBack_1_1_3_1.setForeground(Color.WHITE);
-		lblWelcomeBack_1_1_3_1.setFont(new Font("Verdana", Font.BOLD, 20));
-		lblWelcomeBack_1_1_3_1.setBounds(41, 38, 267, 38);
-		panel_3_1_2_1.add(lblWelcomeBack_1_1_3_1);
-		
-		JLabel lblWelcomeBack_1_1_1_2_1 = new JLabel("0");
-		lblWelcomeBack_1_1_1_2_1.setForeground(Color.WHITE);
-		lblWelcomeBack_1_1_1_2_1.setFont(new Font("Verdana", Font.BOLD, 20));
-		lblWelcomeBack_1_1_1_2_1.setBounds(139, 89, 130, 38);
-		panel_3_1_2_1.add(lblWelcomeBack_1_1_1_2_1);
 		
 		JPanel panel_1 = new JPanel();
 		panel_1.setLayout(null);
@@ -326,17 +312,48 @@ public class AdminUI extends JFrame {
 		panel_3.setLayout(null);
 		tabbedPane.addTab("Job Posting Pending", null, panel_3, null);
 		
-		table_1 = new JTable();
-		table_1.setBorder(new LineBorder(new Color(0, 0, 0)));
-		table_1.setBounds(41, 61, 1046, 360);
-		panel_3.add(table_1);
+		PendingJobTable = new JTable();
+		PendingJobTable.setBorder(new LineBorder(new Color(0, 0, 0)));
+		PendingJobTable.setBounds(41, 61, 1046, 360);
+		panel_3.add(PendingJobTable);
 		
-		textField_1 = new JTextField();
-		textField_1.setColumns(10);
-		textField_1.setBounds(434, 11, 648, 38);
-		panel_3.add(textField_1);
+		searchPendingJob = new JTextField();
+		searchPendingJob.setColumns(10);
+		searchPendingJob.setBounds(434, 11, 648, 38);
+		panel_3.add(searchPendingJob);
 		
 		JButton btnApproved = new JButton("Approved");
+		btnApproved.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				int selectedRow = PendingJobTable.getSelectedRow();
+				
+				if (selectedRow == -1) {
+					JOptionPane.showMessageDialog(AdminUI.this, "Please select a job posting to approve.", "Error", JOptionPane.ERROR_MESSAGE);
+					return;
+				}
+				
+				JobModel selectedJob = pendingJobList.get(selectedRow);
+				
+				String jobId = selectedJob.getJobId();
+				
+		        int confirm = JOptionPane.showConfirmDialog(AdminUI.this, "Are you sure you want to approve this job posting?", "Confirm Approval", JOptionPane.YES_NO_OPTION);
+		        if (confirm == JOptionPane.YES_OPTION) {
+		        					
+		         boolean success = JobService.getInstance().approveJobPosting(jobId, adminID);
+		         
+		         if (success) {
+		        	 JOptionPane.showMessageDialog(AdminUI.this, "Job posting approved successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
+		        		LoadJobDataPending();
+		        		LoadJobDataApproved();
+		        		
+		         } else {
+		        	 JOptionPane.showMessageDialog(AdminUI.this, "Failed to approve job posting.", "Error", JOptionPane.ERROR_MESSAGE);
+		         }
+		        					
+		        }
+			}
+		});
 		btnApproved.setForeground(Color.WHITE);
 		btnApproved.setFont(new Font("Verdana", Font.BOLD, 11));
 		btnApproved.setBackground(new Color(195, 143, 255));
@@ -344,6 +361,31 @@ public class AdminUI extends JFrame {
 		panel_3.add(btnApproved);
 		
 		JButton btnDelete = new JButton("Delete");
+		btnDelete.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int selectedRow = PendingJobTable.getSelectedRow();
+				
+				if (selectedRow == -1) {
+					JOptionPane.showMessageDialog(AdminUI.this, "Please select a job posting to delete.", "Error", JOptionPane.ERROR_MESSAGE);
+					return;
+				}
+				
+				int confirm = JOptionPane.showConfirmDialog(AdminUI.this, "Are you sure you want to delete this job posting?", "Confirm Delete", JOptionPane.YES_NO_OPTION);
+				if (confirm == JOptionPane.YES_OPTION) {
+					JobModel selectedJob = pendingJobList.get(selectedRow);
+					String jobId = selectedJob.getJobId();
+					
+					boolean success = JobService.getInstance().deleteJobPosting(jobId, adminID);
+					
+					if (success) {
+						JOptionPane.showMessageDialog(AdminUI.this, "Job posting deleted successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
+						LoadJobDataPending(); // Refresh the pending job table
+					} else {
+						JOptionPane.showMessageDialog(AdminUI.this, "Failed to delete job posting.", "Error", JOptionPane.ERROR_MESSAGE);
+					}
+				}
+			}
+		});
 		btnDelete.setForeground(Color.WHITE);
 		btnDelete.setFont(new Font("Verdana", Font.BOLD, 11));
 		btnDelete.setBackground(new Color(195, 143, 255));
@@ -356,39 +398,57 @@ public class AdminUI extends JFrame {
 		lblWelcomeBack_1_2_3_1_1_1.setBounds(41, 11, 402, 38);
 		panel_3.add(lblWelcomeBack_1_2_3_1_1_1);
 		
-		JPanel panel_4 = new JPanel();
-		panel_4.setLayout(null);
-		tabbedPane.addTab("Job Posting Approved", null, panel_4, null);
-		
-		JButton btnApproved_1 = new JButton("Approved");
-		btnApproved_1.setForeground(Color.WHITE);
-		btnApproved_1.setFont(new Font("Verdana", Font.BOLD, 11));
-		btnApproved_1.setBackground(new Color(195, 143, 255));
-		btnApproved_1.setBounds(194, 445, 301, 53);
-		panel_4.add(btnApproved_1);
+		JPanel ApprovePane = new JPanel();
+		ApprovePane.setLayout(null);
+		tabbedPane.addTab("Job Posting Approved", null, ApprovePane, null);
 		
 		JButton btnDelete_1 = new JButton("Delete");
+		btnDelete_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int selectedRow = ApprovedTable.getSelectedRow();
+				
+				if (selectedRow == -1) {
+					JOptionPane.showMessageDialog(AdminUI.this, "Please select a job posting to delete.", "Error", JOptionPane.ERROR_MESSAGE);
+					return;
+				}
+				
+				int confirm = JOptionPane.showConfirmDialog(AdminUI.this, "Are you sure you want to delete this job posting?", "Confirm Delete", JOptionPane.YES_NO_OPTION);
+				if (confirm == JOptionPane.YES_OPTION) {
+					JobModel selectedJob = approvedJobList.get(selectedRow);
+					String jobId = selectedJob.getJobId();
+					
+					boolean success = JobService.getInstance().deleteJobPosting(jobId, adminID);
+					
+					if (success) {
+						JOptionPane.showMessageDialog(AdminUI.this, "Job posting deleted successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
+						LoadJobDataApproved(); // Refresh the approved job table
+					} else {
+						JOptionPane.showMessageDialog(AdminUI.this, "Failed to delete job posting.", "Error", JOptionPane.ERROR_MESSAGE);
+					}
+				}
+			}
+		});
 		btnDelete_1.setForeground(Color.WHITE);
 		btnDelete_1.setFont(new Font("Verdana", Font.BOLD, 11));
 		btnDelete_1.setBackground(new Color(195, 143, 255));
-		btnDelete_1.setBounds(589, 445, 301, 53);
-		panel_4.add(btnDelete_1);
+		btnDelete_1.setBounds(376, 445, 301, 53);
+		ApprovePane.add(btnDelete_1);
 		
-		table_2 = new JTable();
-		table_2.setBorder(new LineBorder(new Color(0, 0, 0)));
-		table_2.setBounds(41, 61, 1046, 360);
-		panel_4.add(table_2);
+		ApprovedTable = new JTable();
+		ApprovedTable.setBorder(new LineBorder(new Color(0, 0, 0)));
+		ApprovedTable.setBounds(41, 61, 1046, 360);
+		ApprovePane.add(ApprovedTable);
 		
 		JLabel lblWelcomeBack_1_2_3_1_1 = new JLabel("Search Title, Company & etc");
 		lblWelcomeBack_1_2_3_1_1.setForeground(Color.WHITE);
 		lblWelcomeBack_1_2_3_1_1.setFont(new Font("Verdana", Font.BOLD, 24));
 		lblWelcomeBack_1_2_3_1_1.setBounds(33, 12, 402, 38);
-		panel_4.add(lblWelcomeBack_1_2_3_1_1);
+		ApprovePane.add(lblWelcomeBack_1_2_3_1_1);
 		
-		textField_2 = new JTextField();
-		textField_2.setColumns(10);
-		textField_2.setBounds(445, 12, 642, 38);
-		panel_4.add(textField_2);
+		searchApproveJob = new JTextField();
+		searchApproveJob.setColumns(10);
+		searchApproveJob.setBounds(445, 12, 642, 38);
+		ApprovePane.add(searchApproveJob);
 		
 		JPanel panel_2 = new JPanel();
 		panel_2.setLayout(null);
@@ -558,9 +618,120 @@ public class AdminUI extends JFrame {
 			}
 		});
 		
+		String [] columnNamesPendingJob = {"Job ID", "Job Title", "Company Name", "Posted Date", "Status", "Expiration Date"};
+		pendingJobTableModel = new DefaultTableModel(columnNamesPendingJob, 0);
+		approvedJobTableModel = new DefaultTableModel(columnNamesPendingJob, 0);
+		PendingJobTable.setModel(pendingJobTableModel);
+		 ApprovedTable.setModel(approvedJobTableModel);
+		
+		TableRowSorter<DefaultTableModel> pendingJobSorter = new TableRowSorter<>(pendingJobTableModel);
+		PendingJobTable.setRowSorter(pendingJobSorter);
+		
+		searchPendingJob.getDocument().addDocumentListener(new javax.swing.event.DocumentListener() {
+			
+			@Override
+			public void insertUpdate(javax.swing.event.DocumentEvent e) {
+				filterPendingJobTable();
+			}
+
+			@Override
+			public void removeUpdate(javax.swing.event.DocumentEvent e) {
+				filterPendingJobTable();
+			}
+
+			@Override
+			public void changedUpdate(javax.swing.event.DocumentEvent e) {
+				filterPendingJobTable();
+			}
+			
+			private void filterPendingJobTable() {
+				String searchText = searchPendingJob.getText().toLowerCase();
+				if (searchText.trim().isEmpty()) {
+					LoadJobDataPending(); // Reload all data if search text is empty
+				} else {
+					pendingJobSorter.setRowFilter(javax.swing.RowFilter.regexFilter("(?i)" + searchText));
+				}
+			}
+		});
+		
+		
+		TableRowSorter<DefaultTableModel> approvedJobSorter = new TableRowSorter<>(approvedJobTableModel);
+		ApprovedTable.setRowSorter(approvedJobSorter);
+		searchApproveJob.getDocument().addDocumentListener(new javax.swing.event.DocumentListener() {
+			
+			@Override
+			public void insertUpdate(javax.swing.event.DocumentEvent e) {
+				filterApprovedJobTable();
+			}
+
+			@Override
+			public void removeUpdate(javax.swing.event.DocumentEvent e) {
+				filterApprovedJobTable();
+			}
+
+			@Override
+			public void changedUpdate(javax.swing.event.DocumentEvent e) {
+				filterApprovedJobTable();
+			}
+			
+			private void filterApprovedJobTable() {
+				String searchText = searchApproveJob.getText().toLowerCase();
+				if (searchText.trim().isEmpty()) {
+					LoadJobDataApproved(); // Reload all data if search text is empty
+				} else {
+					approvedJobSorter.setRowFilter(javax.swing.RowFilter.regexFilter("(?i)" + searchText));
+				}
+			}
+		});
+		
+		
+		
+		LoadJobDataPending();
+		LoadJobDataApproved();
 		
 		
 
+	}
+	
+	public void LoadJobDataPending() {
+		pendingJobList.clear();
+		
+		pendingJobTableModel.setRowCount(0); // Clear existing rows in the table model
+	
+		pendingJobList = JobService.getInstance().getAllPendingJobs();
+		
+		for (JobModel job : pendingJobList) {
+  			Object[] rowData = {
+				job.getJobId(),
+				job.getJobTitle(),
+				job.getCompanyName(),
+				job.getPostedDate(),
+				job.getStatus(),
+				job.getExpirationDate()
+			};
+  			pendingJobTableModel.addRow(rowData);
+		}
+	}
+	
+	
+	public void LoadJobDataApproved() {
+		approvedJobList.clear();
+		
+		approvedJobTableModel.setRowCount(0); // Clear existing rows in the table model
+	
+		approvedJobList = JobService.getInstance().getAllApprovedJobs();
+		
+		for (JobModel job : approvedJobList) {
+  			Object[] rowData = {
+				job.getJobId(),
+				job.getJobTitle(),
+				job.getCompanyName(),
+				job.getPostedDate(),
+				job.getStatus(),
+				job.getExpirationDate()
+			};
+  			approvedJobTableModel.addRow(rowData);
+		}
 	}
 	
 	
