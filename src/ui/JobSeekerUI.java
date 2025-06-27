@@ -53,7 +53,7 @@ public class JobSeekerUI extends JFrame {
 	private JLabel FullnameText;
 	private JLabel LocationText;
 	private JLabel ContactInfoText;
-	private int userId;
+	private int userId, seekerId;
 	
 
 	/**
@@ -563,6 +563,13 @@ public class JobSeekerUI extends JFrame {
 		FullnameText.setText(fullname != null ? fullname : "N/A");
 		LocationText.setText(location != null ? location : "N/A");
 		ContactInfoText.setText(contactInfo != null ? contactInfo : "N/A");
+		int seekerId = ProfileService.getInstance().getSeekerId(String.valueOf(userId));
+		
+		System.out.println("Profile loaded for user ID: " + userId);
+		 System.out.println("Full Name: " + FullnameText.getText());
+		 System.out.println("Location: " + LocationText.getText());
+		 System.out.println("Contact Info: " + ContactInfoText.getText());
+		  System.out.println("Seeker ID: " + seekerId);
 	}
 	
 	public void setData(int userId) {

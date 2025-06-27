@@ -181,6 +181,21 @@ public class ProfileService {
 		return null;
 	}
 
+	public int getSeekerId(String userId) {
+		 	String sql = "SELECT user_id FROM seeker_profile WHERE user_id = ?";
+	try (Connection conn = MYSQL.getConnection();
+		 PreparedStatement stmt = conn.prepareStatement(sql)) {
+		stmt.setString(1, userId);
+		ResultSet rs = stmt.executeQuery();
+		if (rs.next()) {
+			return rs.getInt("user_id");
+		}
+	} catch (SQLException e) {
+		e.printStackTrace();
+	}
+	return -1; // Return -1 if not found
+	}
+
 
 
 }

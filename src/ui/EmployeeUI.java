@@ -520,6 +520,7 @@ public class EmployeeUI extends JFrame {
 			String description = ProfileService.getInstance().getDescription(String.valueOf(employeeId));
 			String industry = ProfileService.getInstance().getIndustry(String.valueOf(employeeId));
 			String location = ProfileService.getInstance().getLocation(String.valueOf(employeeId));
+		
 
 		    employeeText.setText(employeeName != null ? employeeName : "N/A");
 		    companyText.setText(companyName != null ? companyName : "N/A");
