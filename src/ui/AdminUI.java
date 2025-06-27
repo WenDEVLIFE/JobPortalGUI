@@ -21,6 +21,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 
 import database.AuditLogService;
+import database.DashboardService;
 import database.JobService;
 import database.RegistrationService;
 
@@ -51,6 +52,11 @@ public class AdminUI extends JFrame {
 	private JTable auditTable;
 	private JPasswordField passwordField;
 	private JPasswordField passwordField_1;
+	private JLabel adminText;
+	private JLabel PendingJobText;
+	private JLabel ApprovedJobText;
+	private JLabel employeeText;
+	private JLabel jobSeekerText;
 	private int adminID;
 	
 	DefaultTableModel userTableModel, auditTableModel, pendingJobTableModel, approvedJobTableModel;
@@ -108,11 +114,11 @@ public class AdminUI extends JFrame {
 		lblWelcomeBack_1_1.setBounds(54, 38, 215, 38);
 		panel_3_1.add(lblWelcomeBack_1_1);
 		
-		JLabel lblWelcomeBack_1_1_1 = new JLabel("0");
-		lblWelcomeBack_1_1_1.setForeground(Color.WHITE);
-		lblWelcomeBack_1_1_1.setFont(new Font("Verdana", Font.BOLD, 20));
-		lblWelcomeBack_1_1_1.setBounds(139, 89, 130, 38);
-		panel_3_1.add(lblWelcomeBack_1_1_1);
+		PendingJobText = new JLabel("0");
+		PendingJobText.setForeground(Color.WHITE);
+		PendingJobText.setFont(new Font("Verdana", Font.BOLD, 20));
+		PendingJobText.setBounds(139, 89, 130, 38);
+		panel_3_1.add(PendingJobText);
 		
 		JLabel lblWelcomeBack_1 = new JLabel("Welcome Back , User");
 		lblWelcomeBack_1.setForeground(Color.WHITE);
@@ -132,11 +138,11 @@ public class AdminUI extends JFrame {
 		lblWelcomeBack_1_1_2.setBounds(94, 40, 215, 38);
 		panel_3_1_1.add(lblWelcomeBack_1_1_2);
 		
-		JLabel lblWelcomeBack_1_1_1_1 = new JLabel("0");
-		lblWelcomeBack_1_1_1_1.setForeground(Color.WHITE);
-		lblWelcomeBack_1_1_1_1.setFont(new Font("Verdana", Font.BOLD, 20));
-		lblWelcomeBack_1_1_1_1.setBounds(139, 89, 130, 38);
-		panel_3_1_1.add(lblWelcomeBack_1_1_1_1);
+		adminText = new JLabel("0");
+		adminText.setForeground(Color.WHITE);
+		adminText.setFont(new Font("Verdana", Font.BOLD, 20));
+		adminText.setBounds(139, 89, 130, 38);
+		panel_3_1_1.add(adminText);
 		
 		JPanel panel_3_1_1_1 = new JPanel();
 		panel_3_1_1_1.setLayout(null);
@@ -150,11 +156,11 @@ public class AdminUI extends JFrame {
 		lblWelcomeBack_1_1_2_1.setBounds(72, 40, 215, 38);
 		panel_3_1_1_1.add(lblWelcomeBack_1_1_2_1);
 		
-		JLabel lblWelcomeBack_1_1_1_1_1 = new JLabel("0");
-		lblWelcomeBack_1_1_1_1_1.setForeground(Color.WHITE);
-		lblWelcomeBack_1_1_1_1_1.setFont(new Font("Verdana", Font.BOLD, 20));
-		lblWelcomeBack_1_1_1_1_1.setBounds(139, 89, 130, 38);
-		panel_3_1_1_1.add(lblWelcomeBack_1_1_1_1_1);
+		jobSeekerText = new JLabel("0");
+		jobSeekerText.setForeground(Color.WHITE);
+		jobSeekerText.setFont(new Font("Verdana", Font.BOLD, 20));
+		jobSeekerText.setBounds(139, 89, 130, 38);
+		panel_3_1_1_1.add(jobSeekerText);
 		
 		JPanel panel_3_1_1_1_1 = new JPanel();
 		panel_3_1_1_1_1.setLayout(null);
@@ -168,11 +174,11 @@ public class AdminUI extends JFrame {
 		lblWelcomeBack_1_1_2_1_1.setBounds(38, 40, 311, 38);
 		panel_3_1_1_1_1.add(lblWelcomeBack_1_1_2_1_1);
 		
-		JLabel lblWelcomeBack_1_1_1_1_1_1 = new JLabel("0");
-		lblWelcomeBack_1_1_1_1_1_1.setForeground(Color.WHITE);
-		lblWelcomeBack_1_1_1_1_1_1.setFont(new Font("Verdana", Font.BOLD, 20));
-		lblWelcomeBack_1_1_1_1_1_1.setBounds(139, 89, 130, 38);
-		panel_3_1_1_1_1.add(lblWelcomeBack_1_1_1_1_1_1);
+		employeeText = new JLabel("0");
+		employeeText.setForeground(Color.WHITE);
+		employeeText.setFont(new Font("Verdana", Font.BOLD, 20));
+		employeeText.setBounds(139, 89, 130, 38);
+		panel_3_1_1_1_1.add(employeeText);
 		
 		JPanel panel_3_1_2 = new JPanel();
 		panel_3_1_2.setLayout(null);
@@ -186,11 +192,11 @@ public class AdminUI extends JFrame {
 		lblWelcomeBack_1_1_3.setBounds(41, 38, 267, 38);
 		panel_3_1_2.add(lblWelcomeBack_1_1_3);
 		
-		JLabel lblWelcomeBack_1_1_1_2 = new JLabel("0");
-		lblWelcomeBack_1_1_1_2.setForeground(Color.WHITE);
-		lblWelcomeBack_1_1_1_2.setFont(new Font("Verdana", Font.BOLD, 20));
-		lblWelcomeBack_1_1_1_2.setBounds(139, 89, 130, 38);
-		panel_3_1_2.add(lblWelcomeBack_1_1_1_2);
+		ApprovedJobText = new JLabel("0");
+		ApprovedJobText.setForeground(Color.WHITE);
+		ApprovedJobText.setFont(new Font("Verdana", Font.BOLD, 20));
+		ApprovedJobText.setBounds(139, 89, 130, 38);
+		panel_3_1_2.add(ApprovedJobText);
 		
 		JPanel panel_1 = new JPanel();
 		panel_1.setLayout(null);
@@ -219,7 +225,9 @@ public class AdminUI extends JFrame {
 				   AddUserDialog dialog = new AddUserDialog(AdminUI.this);
 			        dialog.setVisible(true);
 			        if (dialog.isSucceeded()) {
-			          
+			        	  JOptionPane.showMessageDialog(AdminUI.this, "User added successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
+			        	  LoadDashboard();
+			            loadUserData(); // Refresh the user table);
 			        }
 			}
 		});
@@ -296,6 +304,7 @@ public class AdminUI extends JFrame {
   					if (success) {
   						JOptionPane.showMessageDialog(AdminUI.this, "User deleted successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
   						loadUserData(); // Refresh the user table
+  						LoadDashboard();
   					} else {
   						JOptionPane.showMessageDialog(AdminUI.this, "Failed to delete user.", "Error", JOptionPane.ERROR_MESSAGE);
   					}
@@ -346,6 +355,7 @@ public class AdminUI extends JFrame {
 		        	 JOptionPane.showMessageDialog(AdminUI.this, "Job posting approved successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
 		        		LoadJobDataPending();
 		        		LoadJobDataApproved();
+		        		LoadDashboard();
 		        		
 		         } else {
 		        	 JOptionPane.showMessageDialog(AdminUI.this, "Failed to approve job posting.", "Error", JOptionPane.ERROR_MESSAGE);
@@ -380,6 +390,7 @@ public class AdminUI extends JFrame {
 					if (success) {
 						JOptionPane.showMessageDialog(AdminUI.this, "Job posting deleted successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
 						LoadJobDataPending(); // Refresh the pending job table
+						LoadDashboard();
 					} else {
 						JOptionPane.showMessageDialog(AdminUI.this, "Failed to delete job posting.", "Error", JOptionPane.ERROR_MESSAGE);
 					}
@@ -422,6 +433,7 @@ public class AdminUI extends JFrame {
 					if (success) {
 						JOptionPane.showMessageDialog(AdminUI.this, "Job posting deleted successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
 						LoadJobDataApproved(); // Refresh the approved job table
+						LoadDashboard();
 					} else {
 						JOptionPane.showMessageDialog(AdminUI.this, "Failed to delete job posting.", "Error", JOptionPane.ERROR_MESSAGE);
 					}
@@ -681,6 +693,7 @@ public class AdminUI extends JFrame {
 		
 		LoadJobDataPending();
 		LoadJobDataApproved();
+		LoadDashboard();
 		
 		
 
@@ -790,5 +803,20 @@ public class AdminUI extends JFrame {
 		// Optionally, you can load user data or perform other actions based on the admin ID
 		loadUserData();
 		
+	}
+	
+	public void LoadDashboard() {
+		int adminCount = DashboardService.getInstance().getAdminCount();
+		int jobSeekerCount = DashboardService.getInstance().getJobSeekerCount();
+		int employeeCount = DashboardService.getInstance().getEmployeeAndRecruiterCount();
+		int jobseekerPendingJobCount = DashboardService.getInstance().getJobSeekerCount();
+		int approvedJobCount = DashboardService.getInstance().getApprovedJobsCount();
+		int pendingJobCount = DashboardService.getInstance().getPendingJobsCount();
+		 adminText.setText(String.valueOf(adminCount));
+		 jobSeekerText.setText(String.valueOf(jobSeekerCount));
+		 employeeText.setText(String.valueOf(employeeCount));
+		 PendingJobText.setText(String.valueOf(pendingJobCount));
+		 ApprovedJobText.setText(String.valueOf(approvedJobCount));
+		 
 	}
 }

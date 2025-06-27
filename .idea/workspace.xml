@@ -4,12 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="039a69c7-22f7-43ff-9108-b213d023ee06" name="Changes" comment="Added a function where user will delete the job 👌">
+    <list default="true" id="039a69c7-22f7-43ff-9108-b213d023ee06" name="Changes" comment="Done designing all functions in the admin side 👌">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/database/AlertService.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/database/AlertService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/database/JobService.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/database/JobService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/database/LoginService.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/database/LoginService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/database/savepw.txt" beforeDir="false" afterPath="$PROJECT_DIR$/bin/database/savepw.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/ui/AdminUI$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/AdminUI$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ui/AdminUI$10.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/AdminUI$10.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ui/AdminUI$11.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/AdminUI$11.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ui/AdminUI$12.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/AdminUI$12.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ui/AdminUI$13.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/AdminUI$13.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/ui/AdminUI$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/AdminUI$2.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/ui/AdminUI$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/AdminUI$3.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/ui/AdminUI$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/AdminUI$4.class" afterDir="false" />
@@ -17,21 +19,9 @@
       <change beforePath="$PROJECT_DIR$/bin/ui/AdminUI$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/AdminUI$6.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/ui/AdminUI$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/AdminUI$7.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/ui/AdminUI$8.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/AdminUI$8.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ui/AdminUI$9.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/AdminUI$9.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/ui/AdminUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/AdminUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/ui/EmployeeUI$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/EmployeeUI$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/ui/EmployeeUI$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/EmployeeUI$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/ui/EmployeeUI$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/EmployeeUI$4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/ui/EmployeeUI$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/EmployeeUI$5.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/ui/EmployeeUI$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/EmployeeUI$6.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/ui/EmployeeUI$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/EmployeeUI$7.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/ui/EmployeeUI$8.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/EmployeeUI$8.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/ui/EmployeeUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/EmployeeUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/database/AlertService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/AlertService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/database/JobService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/JobService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/database/LoginService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/LoginService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/database/savepw.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/savepw.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ui/AdminUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/AdminUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ui/EmployeeUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/EmployeeUI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,22 +67,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1750820923469</updated>
-    </task>
-    <task id="LOCAL-00005" summary="Done designing the Registration Form 👌">
-      <option name="closed" value="true" />
-      <created>1750860496452</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1750860496452</updated>
-    </task>
-    <task id="LOCAL-00006" summary="Added navigations on each screens 👌">
-      <option name="closed" value="true" />
-      <created>1750861056558</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1750861056558</updated>
     </task>
     <task id="LOCAL-00007" summary="Added a function where user can now register and added hashing to the password 👌">
       <option name="closed" value="true" />
@@ -470,11 +444,26 @@
       <option name="project" value="LOCAL" />
       <updated>1751030088369</updated>
     </task>
-    <option name="localTasksCounter" value="54" />
+    <task id="LOCAL-00054" summary="Done designing all functions in the admin side 👌">
+      <option name="closed" value="true" />
+      <created>1751034681001</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1751034681001</updated>
+    </task>
+    <task id="LOCAL-00055" summary="Done designing all functions in the admin side 👌">
+      <option name="closed" value="true" />
+      <created>1751034686305</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1751034686305</updated>
+    </task>
+    <option name="localTasksCounter" value="56" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Done designing the Audit logs and Change password for AdminUI " />
     <MESSAGE value="Added savepw.txt" />
     <MESSAGE value="Added a function where the Admin can now add users " />
     <MESSAGE value="Added set the id from EmployeeUI and to JobSeekerUI " />
@@ -499,6 +488,7 @@
     <MESSAGE value="Added ApplicationService and AlertService " />
     <MESSAGE value="Load The Job created by the EmployeeUI" />
     <MESSAGE value="Added a function where user will delete the job " />
-    <option name="LAST_COMMIT_MESSAGE" value="Added a function where user will delete the job " />
+    <MESSAGE value="Done designing all functions in the admin side " />
+    <option name="LAST_COMMIT_MESSAGE" value="Done designing all functions in the admin side " />
   </component>
 </project>
