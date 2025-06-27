@@ -4,12 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="039a69c7-22f7-43ff-9108-b213d023ee06" name="Changes" comment="Done all the functions display the dashboard stats">
-      <change beforePath="$PROJECT_DIR$/bin/database/ApplicationService.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/database/ApplicationService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/database/JobService.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/database/JobService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/database/ApplicationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/ApplicationService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/database/JobService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/JobService.java" afterDir="false" />
-    </list>
+    <list default="true" id="039a69c7-22f7-43ff-9108-b213d023ee06" name="Changes" comment="Added a function where the user will insert the application 👌" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -54,14 +49,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1750820923469</updated>
-    </task>
-    <task id="LOCAL-00009" summary="Added skeletn UI">
-      <option name="closed" value="true" />
-      <created>1750864135201</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1750864135201</updated>
     </task>
     <task id="LOCAL-00010" summary="Done designing the Home page and Find a job page on the JobSeekerUI 👌">
       <option name="closed" value="true" />
@@ -447,11 +434,18 @@
       <option name="project" value="LOCAL" />
       <updated>1751038364784</updated>
     </task>
-    <option name="localTasksCounter" value="58" />
+    <task id="LOCAL-00058" summary="Added a function where the user will insert the application 👌">
+      <option name="closed" value="true" />
+      <created>1751039301247</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1751039301247</updated>
+    </task>
+    <option name="localTasksCounter" value="59" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added a function where the Admin can now add users " />
     <MESSAGE value="Added set the id from EmployeeUI and to JobSeekerUI " />
     <MESSAGE value="Added a functioon where it will display the user data " />
     <MESSAGE value="Added a function where user can delete, edit and add " />
@@ -476,6 +470,7 @@
     <MESSAGE value="Added a function where user will delete the job " />
     <MESSAGE value="Done designing all functions in the admin side " />
     <MESSAGE value="Done all the functions display the dashboard stats" />
-    <option name="LAST_COMMIT_MESSAGE" value="Done all the functions display the dashboard stats" />
+    <MESSAGE value="Added a function where the user will insert the application " />
+    <option name="LAST_COMMIT_MESSAGE" value="Added a function where the user will insert the application " />
   </component>
 </project>

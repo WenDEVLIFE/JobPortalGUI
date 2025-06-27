@@ -38,8 +38,6 @@ public class EmployeeUI extends JFrame {
 	private JPanel contentPane;
 	private JTextField textField;
 	private JTable applicantTable;
-	private JTextField textField_1;
-	private JTable table;
 	private JTable alertTable;
 	private JTextField textField_2;
 	private JLabel employeeText;
@@ -334,33 +332,6 @@ public class EmployeeUI extends JFrame {
 		btnViewApplicant.setBackground(new Color(195, 143, 255));
 		btnViewApplicant.setBounds(392, 431, 337, 53);
 		panel_1.add(btnViewApplicant);
-		
-		JPanel panel_1_1 = new JPanel();
-		panel_1_1.setLayout(null);
-		tabbedPane.addTab("Denied Applicants", null, panel_1_1, null);
-		
-		JLabel lblWelcomeBack_1_2_1 = new JLabel("Denied Applicants");
-		lblWelcomeBack_1_2_1.setForeground(Color.WHITE);
-		lblWelcomeBack_1_2_1.setFont(new Font("Verdana", Font.BOLD, 30));
-		lblWelcomeBack_1_2_1.setBounds(10, 11, 303, 38);
-		panel_1_1.add(lblWelcomeBack_1_2_1);
-		
-		textField_1 = new JTextField();
-		textField_1.setColumns(10);
-		textField_1.setBounds(323, 11, 748, 38);
-		panel_1_1.add(textField_1);
-		
-		table = new JTable();
-		table.setBorder(new LineBorder(new Color(0, 0, 0)));
-		table.setBounds(56, 60, 1046, 360);
-		panel_1_1.add(table);
-		
-		JButton btnDeleteApplication = new JButton("Delete Application");
-		btnDeleteApplication.setForeground(Color.WHITE);
-		btnDeleteApplication.setFont(new Font("Verdana", Font.BOLD, 11));
-		btnDeleteApplication.setBackground(new Color(195, 143, 255));
-		btnDeleteApplication.setBounds(392, 431, 337, 53);
-		panel_1_1.add(btnDeleteApplication);
 		
 		JPanel panel_1_1_1 = new JPanel();
 		panel_1_1_1.setLayout(null);
