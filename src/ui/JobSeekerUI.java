@@ -11,6 +11,7 @@ import javax.swing.table.TableRowSorter;
 
 import database.ProfileService;
 import database.UpdatePasswordDialog;
+import functions.AddSkillDialog;
 import functions.UpdateProfileDialog;
 import functions.ViewResumeDialog;
 import model.AlertModel;
@@ -370,7 +371,7 @@ public class JobSeekerUI extends JFrame {
 		JButton btnViewMyResume = new JButton("View My Resume");
 		btnViewMyResume.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ViewResumeDialog dialog = new ViewResumeDialog(JobSeekerUI.this, seekerId);
+				ViewResumeDialog dialog = new ViewResumeDialog(JobSeekerUI.this, seekerId, "Manage Resumes", true);
 				dialog.setVisible(true);
 			}
 		});
@@ -381,6 +382,12 @@ public class JobSeekerUI extends JFrame {
 		panel_1_1_1.add(btnViewMyResume);
 		
 		JButton btnViewMySkills = new JButton("View My Skills");
+		btnViewMySkills.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				AddSkillDialog skillDialog = new AddSkillDialog(JobSeekerUI.this, seekerId, "Add Skills", true);
+				skillDialog.setVisible(true);
+			}
+		});
 		btnViewMySkills.setForeground(Color.WHITE);
 		btnViewMySkills.setFont(new Font("Verdana", Font.BOLD, 11));
 		btnViewMySkills.setBackground(new Color(195, 143, 255));

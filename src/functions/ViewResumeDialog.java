@@ -16,8 +16,8 @@ public class ViewResumeDialog extends JDialog {
     private JButton btnAdd, btnRemove, btnDownload, btnClose;
     private int seekerId;
 
-    public ViewResumeDialog(Frame parent, int seekerId) {
-        super(parent, "Manage Resumes", true);
+    public ViewResumeDialog(Frame parent, int seekerId, String title, boolean visible) {
+        super(parent,title, true);
         this.seekerId = seekerId;
         setLayout(null);
         setSize(400, 350);
@@ -39,6 +39,11 @@ public class ViewResumeDialog extends JDialog {
         btnDownload = new JButton("Download Resume");
         btnDownload.setBounds(30, 240, 140, 30);
         add(btnDownload);
+        
+        if (!visible) {
+			btnAdd.setVisible(false);
+			btnRemove.setVisible(false);
+		}
 
         btnClose = new JButton("Close");
         btnClose.setBounds(310, 260, 70, 30);
