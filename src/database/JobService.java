@@ -350,6 +350,40 @@ public class JobService {
 		}
 		return false;
 	}
+
+
+	public boolean applyForJob(String jobId, int seekerId, int userId) {
+	    String checkQuery = "SELECT COUNT(*) FROM application WHERE job_id = ? AND seeker_id = ?";
+	    String insertQuery = "INSERT INTO application (job_id, seeker_id, applied_at, status, recruiter_comments) VALUES (?, ?, NOW(), 'Pending', 'n/a')";
+	    try (java.sql.Connection conn = MYSQL.getConnection()) {
+	        // Check for existing application
+	        try (java.sql.PreparedStatement checkStmt = conn.prepareStatement(checkQuery)) {
+	            checkStmt.setString(1, jobId);
+	            checkStmt.setInt(2, seekerId);
+	            try (java.sql.ResultSet rs = checkStmt.executeQuery()) {
+	                if (rs.next() && rs.getInt(1) > 0) {
+	                    // Application already exists
+	                    return false;
+	                }
+	            }
+	        }
+	        // Insert new application
+	        try (java.sql.PreparedStatement insertStmt = conn.prepareStatement(insertQuery)) {
+	            insertStmt.setString(1, jobId);
+	            insertStmt.setInt(2, seekerId);
+	            int rowsAffected = insertStmt.executeUpdate();
+	            if (rowsAffected > 0) {
+	                AlertService.getInstance().insertAlert("Applied for job ID: " + jobId, seekerId);
+	                return true;
+	            }
+	        }
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+	    return false;
+	}
+
+
 	
 
 }

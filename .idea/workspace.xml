@@ -5,19 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="039a69c7-22f7-43ff-9108-b213d023ee06" name="Changes" comment="Done all the functions display the dashboard stats">
-      <change beforePath="$PROJECT_DIR$/bin/database/savepw.txt" beforeDir="false" afterPath="$PROJECT_DIR$/bin/database/savepw.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/ui/JobSeekerUI$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/JobSeekerUI$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/ui/JobSeekerUI$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/JobSeekerUI$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/ui/JobSeekerUI$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/JobSeekerUI$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/ui/JobSeekerUI$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/JobSeekerUI$4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/ui/JobSeekerUI$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/JobSeekerUI$5.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/ui/JobSeekerUI$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/JobSeekerUI$6.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/ui/JobSeekerUI$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/JobSeekerUI$7.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/ui/JobSeekerUI$8.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/JobSeekerUI$8.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/ui/JobSeekerUI$9.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/JobSeekerUI$9.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/ui/JobSeekerUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/JobSeekerUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/database/savepw.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/savepw.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ui/JobSeekerUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/JobSeekerUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/database/ApplicationService.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/database/ApplicationService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/database/JobService.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/database/JobService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/database/ApplicationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/ApplicationService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/database/JobService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/JobService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,14 +54,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1750820923469</updated>
-    </task>
-    <task id="LOCAL-00008" summary="Added a function where user can now register and added hashing to the password 👌">
-      <option name="closed" value="true" />
-      <created>1750863739308</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1750863739308</updated>
     </task>
     <task id="LOCAL-00009" summary="Added skeletn UI">
       <option name="closed" value="true" />
@@ -456,7 +439,15 @@
       <option name="project" value="LOCAL" />
       <updated>1751036636320</updated>
     </task>
-    <option name="localTasksCounter" value="57" />
+    <task id="LOCAL-00057" summary="Done all the functions display the dashboard stats">
+      <option name="closed" value="true" />
+      <created>1751038364784</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1751038364784</updated>
+    </task>
+    <option name="localTasksCounter" value="58" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
