@@ -175,4 +175,20 @@ public class JobService {
 	}
 
 
+	public boolean deleteJob(String jobId) {
+		 	String query = "DELETE FROM jobs WHERE job_id = ?";
+
+	try (java.sql.Connection conn = MYSQL.getConnection();
+		 java.sql.PreparedStatement pstmt = conn.prepareStatement(query)) {
+
+		pstmt.setString(1, jobId);
+		int rowsAffected = pstmt.executeUpdate();
+		return rowsAffected > 0;
+	} catch (Exception e) {
+		e.printStackTrace();
+		return false;
+	}
+	}
+
+
 }
