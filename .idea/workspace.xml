@@ -4,24 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="039a69c7-22f7-43ff-9108-b213d023ee06" name="Changes" comment="Done designing all functions in the admin side 👌">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="039a69c7-22f7-43ff-9108-b213d023ee06" name="Changes" comment="Done all the functions display the dashboard stats">
       <change beforePath="$PROJECT_DIR$/bin/database/savepw.txt" beforeDir="false" afterPath="$PROJECT_DIR$/bin/database/savepw.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/ui/AdminUI$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/AdminUI$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/ui/AdminUI$10.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/AdminUI$10.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/ui/AdminUI$11.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/AdminUI$11.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/ui/AdminUI$12.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/AdminUI$12.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/ui/AdminUI$13.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/AdminUI$13.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/ui/AdminUI$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/AdminUI$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/ui/AdminUI$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/AdminUI$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/ui/AdminUI$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/AdminUI$4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/ui/AdminUI$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/AdminUI$5.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/ui/AdminUI$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/AdminUI$6.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/ui/AdminUI$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/AdminUI$7.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/ui/AdminUI$8.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/AdminUI$8.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/ui/AdminUI$9.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/AdminUI$9.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/ui/AdminUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/AdminUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ui/AdminUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/AdminUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ui/JobSeekerUI$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/JobSeekerUI$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ui/JobSeekerUI$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/JobSeekerUI$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ui/JobSeekerUI$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/JobSeekerUI$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ui/JobSeekerUI$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/JobSeekerUI$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ui/JobSeekerUI$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/JobSeekerUI$5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ui/JobSeekerUI$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/JobSeekerUI$6.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ui/JobSeekerUI$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/JobSeekerUI$7.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ui/JobSeekerUI$8.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/JobSeekerUI$8.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ui/JobSeekerUI$9.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/JobSeekerUI$9.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ui/JobSeekerUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/JobSeekerUI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/database/savepw.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/savepw.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/JobSeekerUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/JobSeekerUI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,14 +63,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1750820923469</updated>
-    </task>
-    <task id="LOCAL-00007" summary="Added a function where user can now register and added hashing to the password 👌">
-      <option name="closed" value="true" />
-      <created>1750863309612</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1750863309612</updated>
     </task>
     <task id="LOCAL-00008" summary="Added a function where user can now register and added hashing to the password 👌">
       <option name="closed" value="true" />
@@ -460,11 +448,18 @@
       <option name="project" value="LOCAL" />
       <updated>1751034686305</updated>
     </task>
-    <option name="localTasksCounter" value="56" />
+    <task id="LOCAL-00056" summary="Done all the functions display the dashboard stats">
+      <option name="closed" value="true" />
+      <created>1751036636320</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1751036636320</updated>
+    </task>
+    <option name="localTasksCounter" value="57" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added savepw.txt" />
     <MESSAGE value="Added a function where the Admin can now add users " />
     <MESSAGE value="Added set the id from EmployeeUI and to JobSeekerUI " />
     <MESSAGE value="Added a functioon where it will display the user data " />
@@ -489,6 +484,7 @@
     <MESSAGE value="Load The Job created by the EmployeeUI" />
     <MESSAGE value="Added a function where user will delete the job " />
     <MESSAGE value="Done designing all functions in the admin side " />
-    <option name="LAST_COMMIT_MESSAGE" value="Done designing all functions in the admin side " />
+    <MESSAGE value="Done all the functions display the dashboard stats" />
+    <option name="LAST_COMMIT_MESSAGE" value="Done all the functions display the dashboard stats" />
   </component>
 </project>

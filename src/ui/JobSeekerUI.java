@@ -9,8 +9,10 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 
+import database.JobService;
 import database.ProfileService;
 import database.UpdatePasswordDialog;
+import database.ViewJobDialog;
 import functions.AddSkillDialog;
 import functions.UpdateProfileDialog;
 import functions.ViewResumeDialog;
@@ -215,6 +217,24 @@ public class JobSeekerUI extends JFrame {
 		panel.add(jobTable);
 		
 		JButton btnViewJob = new JButton("View Job");
+		btnViewJob.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int selectedRow = jobTable.getSelectedRow();
+				if (selectedRow == -1) {
+					
+					JOptionPane.showMessageDialog(JobSeekerUI.this, "Please select a job to view.", "Error", JOptionPane.ERROR_MESSAGE);
+					return;
+				}
+				
+				JobModel jobModelInstance = jobList.get(selectedRow);
+				if (jobModelInstance == null) {
+					 JOptionPane.showMessageDialog(JobSeekerUI.this, "Selected job is not available.", "Error", JOptionPane.ERROR_MESSAGE);
+					return;
+				}
+				   ViewJobDialog dialog = new ViewJobDialog(JobSeekerUI.this, jobModelInstance, seekerId, userId);
+			        dialog.setVisible(true);
+			}
+		});
 		btnViewJob.setForeground(Color.WHITE);
 		btnViewJob.setFont(new Font("Verdana", Font.BOLD, 11));
 		btnViewJob.setBackground(new Color(195, 143, 255));
@@ -513,7 +533,7 @@ public class JobSeekerUI extends JFrame {
 		
 		tableModel.setRowCount(0); // Clear existing rows in the table model
 	
-	 		jobList.add(new JobModel("1", "Software Engineer", "Tech Company", "Develop software applications", "Remote", "Java, Spring Boot", "Full-time", "50000", "70000", "2023-10-01", "2024-01-01", "Open"));
+	 	jobList = JobService.getInstance().getAllJobs();	 
 		
 		for (JobModel job : jobList) {
   			Object[] rowData = {
