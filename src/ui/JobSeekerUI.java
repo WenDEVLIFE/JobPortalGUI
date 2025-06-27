@@ -10,6 +10,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 
 import database.UpdatePasswordDialog;
+import functions.UpdateProfileDialog;
 import model.AlertModel;
 import model.JobModel;
 
@@ -318,6 +319,11 @@ public class JobSeekerUI extends JFrame {
 		JButton btnUpdateProfileDetails = new JButton("Update Profile Details");
 		btnUpdateProfileDetails.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				UpdateProfileDialog dialog = new UpdateProfileDialog(JobSeekerUI.this, userId);
+				dialog.setVisible(true);
+				 if (dialog.isSucceeded()) {
+					JOptionPane.showMessageDialog(JobSeekerUI.this, "Profile updated successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
+				}
 			}
 		});
 		btnUpdateProfileDetails.setForeground(Color.WHITE);

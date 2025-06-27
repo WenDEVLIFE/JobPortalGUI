@@ -1,6 +1,8 @@
 package database;
 
 import java.sql.*;
+import java.util.HashMap;
+import java.util.Map;
 
 public class ProfileService {
 
@@ -94,4 +96,49 @@ public class ProfileService {
         }
         return null;
     }
+    
+    public boolean updateProfileData(Map<String, Object> userData) {
+        int userId = (int) userData.get("userId");
+        String fullName = (String) userData.get("fullName");
+        String contactInfo = (String) userData.get("contactInfo");
+        String location = (String) userData.get("location");
+
+        try (Connection conn = MYSQL.getConnection()) {
+            // Check if record exists
+            String checkSql = "SELECT 1 FROM seeker_profile WHERE user_id = ?";
+            try (PreparedStatement checkStmt = conn.prepareStatement(checkSql)) {
+                checkStmt.setInt(1, userId);
+                ResultSet rs = checkStmt.executeQuery();
+                if (rs.next()) {
+                    // Update if exists
+                    String updateSql = "UPDATE seeker_profile SET fullname = ?, contact_info = ?, location = ?, visibility = ? WHERE user_id = ?";
+                    try (PreparedStatement updateStmt = conn.prepareStatement(updateSql)) {
+                        updateStmt.setString(1, fullName);
+                        updateStmt.setString(2, contactInfo);
+                        updateStmt.setString(3, location);
+                        updateStmt.setBoolean(4, true); // Assuming visibility is always true for updates
+                        updateStmt.setInt(5, userId);
+                        return updateStmt.executeUpdate() > 0;
+                    }
+                } else {
+                    // Insert if not exists (fixed: 5 placeholders)
+                    String insertSql = "INSERT INTO seeker_profile (user_id, fullname, contact_info, location, visibility) VALUES (?, ?, ?, ?, ?)";
+                    try (PreparedStatement insertStmt = conn.prepareStatement(insertSql)) {
+                        insertStmt.setInt(1, userId);
+                        insertStmt.setString(2, fullName);
+                        insertStmt.setString(3, contactInfo);
+                        insertStmt.setString(4, location);
+                        insertStmt.setBoolean(5, true); 
+                        return insertStmt.executeUpdate() > 0;
+                    }
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+
+
 }
