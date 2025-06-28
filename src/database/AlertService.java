@@ -64,7 +64,7 @@ public class AlertService {
 		try (Connection conn = MYSQL.getConnection();
 			 PreparedStatement pstmt = conn.prepareStatement(query)) {
 			pstmt.setInt(1, seekerId);
-			pstmt.setString(2, string);
+			pstmt.setString(2, string2);
 			pstmt.setTimestamp(3, new Timestamp(System.currentTimeMillis()));
 			pstmt.setBoolean(4, false); // isNotify default to false
 			pstmt.executeUpdate();

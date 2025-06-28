@@ -4,25 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="039a69c7-22f7-43ff-9108-b213d023ee06" name="Changes" comment="Load the dashboard stats in JobSeekerUI 👌">
+    <list default="true" id="039a69c7-22f7-43ff-9108-b213d023ee06" name="Changes" comment="Added a function where it will approve the user applicant 👌">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/database/AlertService.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/database/AlertService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/database/ApplicationService.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/database/ApplicationService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/database/ProfileService.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/database/ProfileService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/ui/EmployeeUI$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/EmployeeUI$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/ui/EmployeeUI$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/EmployeeUI$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/ui/EmployeeUI$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/EmployeeUI$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/ui/EmployeeUI$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/EmployeeUI$4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/ui/EmployeeUI$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/EmployeeUI$5.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/ui/EmployeeUI$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/EmployeeUI$6.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/ui/EmployeeUI$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/EmployeeUI$7.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/ui/EmployeeUI$8.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/EmployeeUI$8.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/ui/EmployeeUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/EmployeeUI.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/database/AlertService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/AlertService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/database/ApplicationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/ApplicationService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/database/ProfileService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/ProfileService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/database/savepw.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/savepw.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ui/EmployeeUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/EmployeeUI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,14 +56,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1750820923469</updated>
-    </task>
-    <task id="LOCAL-00017" summary="Done created the UI for Jobs 👌">
-      <option name="closed" value="true" />
-      <created>1750918860629</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1750918860629</updated>
     </task>
     <task id="LOCAL-00018" summary="Added Logout tabs and function on the EmployeeUI 👌">
       <option name="closed" value="true" />
@@ -461,11 +441,18 @@
       <option name="project" value="LOCAL" />
       <updated>1751078706543</updated>
     </task>
-    <option name="localTasksCounter" value="66" />
+    <task id="LOCAL-00066" summary="Added a function where it will approve the user applicant 👌">
+      <option name="closed" value="true" />
+      <created>1751084946224</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1751084946224</updated>
+    </task>
+    <option name="localTasksCounter" value="67" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added a function where it will save the password " />
     <MESSAGE value="Added a function where it wont delete its own account " />
     <MESSAGE value="Added filter the user on the AdminUI " />
     <MESSAGE value="Added a function where Employee can create Jobs on EmployeeUI " />
@@ -490,6 +477,7 @@
     <MESSAGE value="Added a function it will save the jobs " />
     <MESSAGE value="Added a function it will display the dashboard stats in Employee " />
     <MESSAGE value="Load the dashboard stats in JobSeekerUI " />
-    <option name="LAST_COMMIT_MESSAGE" value="Load the dashboard stats in JobSeekerUI " />
+    <MESSAGE value="Added a function where it will approve the user applicant " />
+    <option name="LAST_COMMIT_MESSAGE" value="Added a function where it will approve the user applicant " />
   </component>
 </project>

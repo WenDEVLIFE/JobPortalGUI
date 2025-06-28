@@ -164,13 +164,35 @@ public class ApplicationService {
 			pstmt.setString(2, jobId);
 			pstmt.setInt(3, seekerId);
 			int rowsAffected = pstmt.executeUpdate();
-			AlertService.getInstance().InsertAlert(seekerId, "Application Status Updated", "Your application for job ID: " + jobId + " has been updated to: " + string);
+			
+			int userId = getUserIdByJobAndSeeker(jobId, seekerId);
+			AlertService.getInstance().InsertAlert(userId, "Application Status Updated", "Your application for job ID: " + jobId + " has been updated to: " + string);
 			return rowsAffected > 0;
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return false;
 		}
 	}
+	
+	// Retrieves the user_id from seeker_profile for a given job_id and seeker_id (application).
+	public Integer getUserIdByJobAndSeeker(String jobId, int seekerId) {
+	    String query = "SELECT sp.user_id FROM application a " +
+	                   "JOIN seeker_profile sp ON a.seeker_id = sp.seeker_id " +
+	                   "WHERE a.job_id = ? AND a.seeker_id = ?";
+	    try (Connection conn = MYSQL.getConnection();
+	         PreparedStatement pstmt = conn.prepareStatement(query)) {
+	        pstmt.setString(1, jobId);
+	        pstmt.setInt(2, seekerId);
+	        ResultSet rs = pstmt.executeQuery();
+	        if (rs.next()) {
+	            return rs.getInt("user_id");
+	        }
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+	    return null;
+	}
+
 
 
 
