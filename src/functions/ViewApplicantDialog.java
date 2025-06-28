@@ -40,8 +40,7 @@ public class ViewApplicantDialog extends JDialog {
         JButton btnViewResume = new JButton("View Resume");
         btnViewResume.setBounds(30, 180, 150, 30);
         btnViewResume.addActionListener(e -> {
-            // TODO: Implement resume viewing logic
-            JOptionPane.showMessageDialog(this, "Resume viewing not implemented.");
+    
             ViewResumeDialog dialog = new ViewResumeDialog(parent, seekerId, "Applicant Resumes", false);
 			dialog.setVisible(true);
         });
@@ -50,8 +49,7 @@ public class ViewApplicantDialog extends JDialog {
         JButton btnViewSkills = new JButton("View Skills");
         btnViewSkills.setBounds(220, 180, 150, 30);
         btnViewSkills.addActionListener(e -> {
-            // TODO: Implement skills viewing logic
-            JOptionPane.showMessageDialog(this, "Skills viewing not implemented.");
+         
             AddSkillDialog skillDialog = new AddSkillDialog(parent, seekerId, "Applicant Skills", false);
 			skillDialog.setVisible(true);
         });

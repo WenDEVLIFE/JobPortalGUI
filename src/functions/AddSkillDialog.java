@@ -21,16 +21,15 @@ public class AddSkillDialog extends JDialog {
         setLayout(new BorderLayout());
 
         JPanel inputPanel = new JPanel(new GridLayout(3, 2));
-        if (!visible) {
-        	 inputPanel.add(new JLabel("Skill Name:"));
-		}
+        if (visible) {
+            inputPanel.add(new JLabel("Skill Name:"));
+        }
         skillNameField = new JTextField();
         inputPanel.add(skillNameField);
 
-        if (!visible) {
-        inputPanel.add(new JLabel("Proficiency Level:"));
-		}
- 
+        if (visible) {
+            inputPanel.add(new JLabel("Proficiency Level:"));
+        }
         proficiencyLevelField = new JTextField();
         inputPanel.add(proficiencyLevelField);
 
@@ -43,16 +42,15 @@ public class AddSkillDialog extends JDialog {
         inputPanel.add(deleteButton);
 
         add(inputPanel, BorderLayout.NORTH);
-        
-        if(!visible) {
-			 addButton.setVisible(false);
-			 deleteButton.setVisible(false);
-			 skillNameField.setEditable(false);
-			 proficiencyLevelField.setEditable(false);
-			 skillNameField.setVisible(false);
-			 proficiencyLevelField.setVisible(false);
-			 
-		}
+
+        if (!visible) {
+            addButton.setVisible(false);
+            deleteButton.setVisible(false);
+            skillNameField.setEditable(false);
+            proficiencyLevelField.setEditable(false);
+            skillNameField.setVisible(false);
+            proficiencyLevelField.setVisible(false);
+        }
 
         skillsTable = new JTable();
         refreshSkillsTable();
@@ -61,6 +59,7 @@ public class AddSkillDialog extends JDialog {
         setSize(400, 300);
         setLocationRelativeTo(parent);
     }
+
 
     private void addSkill() {
         String skillName = skillNameField.getText();
