@@ -18,6 +18,7 @@ import javax.swing.border.LineBorder;
 import javax.swing.table.DefaultTableModel;
 
 import database.AlertService;
+import database.ApplicationService;
 import database.JobService;
 import database.ProfileService;
 import database.UpdatePasswordDialog;
@@ -25,6 +26,7 @@ import functions.AddCreateJobDialog;
 import functions.UpdateEmployeeProfileDialog;
 import functions.UpdateJobDialog;
 import model.AlertModel;
+import model.ApplicationModel;
 import model.JobModel;
 
 import javax.swing.JButton;
@@ -54,6 +56,7 @@ public class EmployeeUI extends JFrame {
 	DefaultTableModel jobTableModel, alertTableModel, applicantTableModel;
 	List<JobModel> jobList = new ArrayList<>();
 	List <AlertModel> alertList = new ArrayList<>();
+	List <ApplicationModel> applicationList = new ArrayList<>();
 
 	/**
 	 * Launch the application.
@@ -499,12 +502,19 @@ public class EmployeeUI extends JFrame {
 		panel_1_1_2_1.add(btnNo_1);
 
 		 String [] columnNames = {"Job ID", "Job Title", "Company Name", "Posted Date", "Status", "Expiration Date"};
+		 String [] alertColumnNames = {"Alert ID", "Description", "Timestamp"};
+		 String [] applicantColumnNames = {"Application ID", "Job Title", "Company Name", "Status", "Applied At"};
 		 jobTableModel = new DefaultTableModel(columnNames, 0);
+		 alertTableModel = new DefaultTableModel(alertColumnNames, 0);
+		 applicantTableModel = new DefaultTableModel(applicantColumnNames, 0);
 		 table_1.setModel(jobTableModel);
+		 alertTable.setModel(alertTableModel);
+		 applicantTable.setModel(applicantTableModel);
 		 
 		
 	 LoadJobData();
 	 LoadEmployeeProfile();
+	 LoadJobData();
 	}
 	
 	
@@ -550,6 +560,25 @@ public class EmployeeUI extends JFrame {
 			}
 		}
 		
+		public void LoadApplicationData() {
+			 applicationList.clear();
+			
+			 applicantTableModel.setRowCount(0); // Clear existing rows in the table model
+			 
+			 applicationList = ApplicationService.getInstance().getApplicationByEmployee(employeeId);
+			 
+			 for (ApplicationModel application : applicationList) {
+				 Object[] rowData = {
+					 application.getApplicationId(),
+					 application.getJobTitle(),
+					 application.getCompanyName(),
+					 application.getStatus(),
+					 application.getAppliedAt()
+				 };
+				 applicantTableModel.addRow(rowData);
+			 }
+		}
+		
 		
 		public void LoadEmployeeProfile() {
 			System.out.println("Loading employee profile for userId: " + userId);
@@ -560,7 +589,7 @@ public class EmployeeUI extends JFrame {
 			String industry = ProfileService.getInstance().getIndustry(String.valueOf(userId));
 			String location = ProfileService.getInstance().getLocation(String.valueOf(userId));
 			
-			employeeId = ProfileService.getInstance().getEmployeeId(String.valueOf(userId));
+			this.employeeId = ProfileService.getInstance().getEmployeeId(String.valueOf(userId));
 		
 
 		    employeeText.setText(employeeName != null ? employeeName : "N/A");
@@ -570,6 +599,9 @@ public class EmployeeUI extends JFrame {
 		    industryText.setText(industry != null ? industry : "N/A");
 		    locationText.setText(location != null ? location : "N/A");
 		}
+		
+	
+		
 
 		
 }

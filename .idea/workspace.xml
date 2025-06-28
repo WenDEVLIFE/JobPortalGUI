@@ -4,22 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="039a69c7-22f7-43ff-9108-b213d023ee06" name="Changes" comment="Added cancel application and display the application in JobSeekerUI 👌">
-      <change beforePath="$PROJECT_DIR$/bin/database/AlertService.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/database/AlertService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/ui/JobSeekerUI$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/JobSeekerUI$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/ui/JobSeekerUI$10.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/JobSeekerUI$10.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/ui/JobSeekerUI$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/JobSeekerUI$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/ui/JobSeekerUI$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/JobSeekerUI$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/ui/JobSeekerUI$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/JobSeekerUI$4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/ui/JobSeekerUI$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/JobSeekerUI$5.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/ui/JobSeekerUI$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/JobSeekerUI$6.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/ui/JobSeekerUI$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/JobSeekerUI$7.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/ui/JobSeekerUI$8.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/JobSeekerUI$8.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/ui/JobSeekerUI$9.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/JobSeekerUI$9.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/ui/JobSeekerUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/JobSeekerUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/database/AlertService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/AlertService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ui/JobSeekerUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/JobSeekerUI.java" afterDir="false" />
-    </list>
+    <list default="true" id="039a69c7-22f7-43ff-9108-b213d023ee06" name="Changes" comment="Added a function where it will load the alerts" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -64,14 +49,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1750820923469</updated>
-    </task>
-    <task id="LOCAL-00011" summary="Added JobModel and apply it on the Table 👌">
-      <option name="closed" value="true" />
-      <created>1750903332500</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1750903332500</updated>
     </task>
     <task id="LOCAL-00012" summary="Done designing the My Application on JobSeekerUI 👌">
       <option name="closed" value="true" />
@@ -457,11 +434,18 @@
       <option name="project" value="LOCAL" />
       <updated>1751071784210</updated>
     </task>
-    <option name="localTasksCounter" value="60" />
+    <task id="LOCAL-00060" summary="Added a function where it will load the alerts">
+      <option name="closed" value="true" />
+      <created>1751072485025</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1751072485025</updated>
+    </task>
+    <option name="localTasksCounter" value="61" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added a functioon where it will display the user data " />
     <MESSAGE value="Added a function where user can delete, edit and add " />
     <MESSAGE value="Added a function it will display the AuditLogs " />
     <MESSAGE value="Added a function where user can now login " />
@@ -486,6 +470,7 @@
     <MESSAGE value="Done all the functions display the dashboard stats" />
     <MESSAGE value="Added a function where the user will insert the application " />
     <MESSAGE value="Added cancel application and display the application in JobSeekerUI " />
-    <option name="LAST_COMMIT_MESSAGE" value="Added cancel application and display the application in JobSeekerUI " />
+    <MESSAGE value="Added a function where it will load the alerts" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added a function where it will load the alerts" />
   </component>
 </project>

@@ -65,6 +65,7 @@ public class LoginService {
                         employerUI.setData(userIdInt);
                         employerUI.LoadEmployeeProfile();
                         employerUI.LoadJobData();
+                        employerUI.LoadApplicationData();
                     
                          
                   
