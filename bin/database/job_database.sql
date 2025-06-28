@@ -1,0 +1,536 @@
+-- phpMyAdmin SQL Dump
+-- version 5.2.1
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: Jun 28, 2025 at 08:03 AM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.0.30
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `job_database`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `alerts`
+--
+
+CREATE TABLE `alerts` (
+  `alert_id` int(255) NOT NULL,
+  `description` varchar(255) NOT NULL,
+  `timestamp` timestamp(6) NOT NULL DEFAULT current_timestamp(6) ON UPDATE current_timestamp(6),
+  `isNotify` tinyint(1) NOT NULL,
+  `user_id` int(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `alerts`
+--
+
+INSERT INTO `alerts` (`alert_id`, `description`, `timestamp`, `isNotify`, `user_id`) VALUES
+(1, 'Your job posting (ID: 1) has been approved.', '2025-06-28 05:25:21.983828', 1, 2),
+(2, 'Applied for job ID: 1', '2025-06-28 05:25:22.872907', 1, 2),
+(3, 'Applied for job: Test', '2025-06-28 05:37:08.688076', 1, 0),
+(4, 'Application Status Updated', '2025-06-28 05:25:23.664013', 1, 2),
+(5, 'Your application for job ID: 1 has been updated to: Approved', '2025-06-28 05:05:43.487099', 1, 1),
+(6, 'Your job posting (ID: 1) has been approved.', '2025-06-28 05:25:24.145367', 1, 2),
+(7, 'Your job posting (ID: 1) has been approved.', '2025-06-28 05:25:24.680250', 1, 2),
+(8, 'New job approved: 1 for job: Test', '2025-06-28 05:25:56.350382', 1, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `application`
+--
+
+CREATE TABLE `application` (
+  `application_id` int(255) NOT NULL,
+  `seeker_id` varchar(255) NOT NULL,
+  `job_id` int(255) NOT NULL,
+  `applied_at` timestamp(6) NOT NULL DEFAULT current_timestamp(6) ON UPDATE current_timestamp(6),
+  `status` varchar(255) NOT NULL,
+  `recruiter_comments` varchar(255) NOT NULL,
+  `employee_id` int(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `application`
+--
+
+INSERT INTO `application` (`application_id`, `seeker_id`, `job_id`, `applied_at`, `status`, `recruiter_comments`, `employee_id`) VALUES
+(1, '1', 1, '2025-06-28 04:49:28.088643', 'Approved', 'n/a', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `audit_logs`
+--
+
+CREATE TABLE `audit_logs` (
+  `log_id` int(255) NOT NULL,
+  `user_id` int(255) NOT NULL,
+  `action_type` varchar(255) NOT NULL,
+  `resource_type` varchar(255) NOT NULL,
+  `timestamp` timestamp(6) NOT NULL DEFAULT current_timestamp(6) ON UPDATE current_timestamp(6)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `audit_logs`
+--
+
+INSERT INTO `audit_logs` (`log_id`, `user_id`, `action_type`, `resource_type`, `timestamp`) VALUES
+(1, 5, 'Register User', 'User registered with username: Testing', '2025-06-26 14:25:10.000000'),
+(2, 3, 'Update User', 'User details updated for user ID: 3', '2025-06-26 15:42:03.000000'),
+(3, 1, 'Update User', 'User details updated for user ID: 1', '2025-06-26 15:42:23.000000'),
+(4, 3, 'Update User', 'User details updated for user ID: 3', '2025-06-26 15:46:09.000000'),
+(5, 3, 'Update User', 'User details updated for user ID: 3', '2025-06-26 15:50:42.000000'),
+(6, 3, 'Update User', 'User details updated for user ID: 3', '2025-06-26 15:53:26.000000'),
+(7, 3, 'Update User', 'User details updated for user ID: 3', '2025-06-26 15:56:26.000000'),
+(8, 3, 'Update User', 'User details updated for user ID: 3', '2025-06-26 15:57:17.000000'),
+(9, 3, 'Update User', 'User details updated for user ID: 3', '2025-06-26 15:59:29.000000'),
+(10, 3, 'Login', 'User logged in with role: Admin', '2025-06-26 15:59:37.000000'),
+(11, 3, 'Login', 'User logged in with role: Admin', '2025-06-26 16:34:33.000000'),
+(12, 3, 'Login', 'User logged in with role: Admin', '2025-06-26 16:37:47.000000'),
+(13, 3, 'Login', 'User logged in with role: Admin', '2025-06-26 16:40:31.000000'),
+(14, 3, 'Login', 'User logged in with role: Admin', '2025-06-26 17:17:51.000000'),
+(15, 2, 'Update User', 'User details updated for user ID: 2', '2025-06-26 17:18:07.000000'),
+(16, 2, 'Login', 'User logged in with role: Recruiter', '2025-06-26 17:18:41.000000'),
+(17, 2, 'Login', 'User logged in with role: Recruiter', '2025-06-26 17:30:04.000000'),
+(18, 2, 'Login', 'User logged in with role: Recruiter', '2025-06-27 04:18:49.000000'),
+(19, 2, 'Login', 'User logged in with role: Recruiter', '2025-06-27 04:20:04.000000'),
+(20, 2, 'Login', 'User logged in with role: Recruiter', '2025-06-27 04:21:28.000000'),
+(21, 2, 'Login', 'User logged in with role: Recruiter', '2025-06-27 04:22:40.000000'),
+(22, 2, 'Login', 'User logged in with role: Recruiter', '2025-06-27 04:24:01.000000'),
+(23, 2, 'Login', 'User logged in with role: Recruiter', '2025-06-27 04:58:23.000000'),
+(24, 2, 'Login', 'User logged in with role: Recruiter', '2025-06-27 05:00:26.000000'),
+(25, 2, 'Login', 'User logged in with role: Recruiter', '2025-06-27 05:00:56.000000'),
+(26, 2, 'Login', 'User logged in with role: Recruiter', '2025-06-27 05:02:39.000000'),
+(27, 2, 'Login', 'User logged in with role: Recruiter', '2025-06-27 05:03:38.000000'),
+(28, 2, 'Login', 'User logged in with role: Recruiter', '2025-06-27 05:14:23.000000'),
+(29, 2, 'Login', 'User logged in with role: Recruiter', '2025-06-27 05:15:38.000000'),
+(30, 1, 'Update User', 'User details updated for user ID: 1', '2025-06-27 05:51:56.000000'),
+(31, 1, 'Login', 'User logged in with role: Job Seeker', '2025-06-27 05:52:01.000000'),
+(32, 1, 'Login', 'User logged in with role: Job Seeker', '2025-06-27 05:55:10.000000'),
+(33, 1, 'Login', 'User logged in with role: Job Seeker', '2025-06-27 06:10:18.000000'),
+(34, 1, 'Login', 'User logged in with role: Job Seeker', '2025-06-27 06:11:10.000000'),
+(35, 1, 'Login', 'User logged in with role: Job Seeker', '2025-06-27 06:12:23.000000'),
+(36, 1, 'Login', 'User logged in with role: Job Seeker', '2025-06-27 06:15:12.000000'),
+(37, 1, 'Login', 'User logged in with role: Job Seeker', '2025-06-27 06:38:15.000000'),
+(38, 1, 'Login', 'User logged in with role: Job Seeker', '2025-06-27 06:40:53.000000'),
+(39, 1, 'Login', 'User logged in with role: Job Seeker', '2025-06-27 06:41:31.000000'),
+(40, 1, 'Login', 'User logged in with role: Job Seeker', '2025-06-27 06:42:08.000000'),
+(41, 1, 'Login', 'User logged in with role: Job Seeker', '2025-06-27 06:47:58.000000'),
+(42, 1, 'Login', 'User logged in with role: Job Seeker', '2025-06-27 06:48:46.000000'),
+(43, 1, 'Login', 'User logged in with role: Job Seeker', '2025-06-27 06:49:34.000000'),
+(44, 1, 'Login', 'User logged in with role: Job Seeker', '2025-06-27 06:57:05.000000'),
+(45, 1, 'Login', 'User logged in with role: Job Seeker', '2025-06-27 07:00:18.000000'),
+(46, 1, 'Login', 'User logged in with role: Job Seeker', '2025-06-27 07:07:45.000000'),
+(47, 1, 'Login', 'User logged in with role: Job Seeker', '2025-06-27 07:09:36.000000'),
+(48, 1, 'Login', 'User logged in with role: Job Seeker', '2025-06-27 07:15:21.000000'),
+(49, 1, 'Login', 'User logged in with role: Job Seeker', '2025-06-27 07:16:42.000000'),
+(50, 1, 'Login', 'User logged in with role: Job Seeker', '2025-06-27 07:17:39.000000'),
+(51, 1, 'Login', 'User logged in with role: Job Seeker', '2025-06-27 07:17:58.000000'),
+(52, 1, 'Login', 'User logged in with role: Job Seeker', '2025-06-27 07:18:15.000000'),
+(53, 1, 'Login', 'User logged in with role: Job Seeker', '2025-06-27 07:24:00.000000'),
+(54, 1, 'Login', 'User logged in with role: Job Seeker', '2025-06-27 07:25:02.000000'),
+(55, 1, 'Login', 'User logged in with role: Job Seeker', '2025-06-27 07:28:19.000000'),
+(56, 1, 'Login', 'User logged in with role: Job Seeker', '2025-06-27 07:30:11.000000'),
+(57, 1, 'Login', 'User logged in with role: Job Seeker', '2025-06-27 07:35:11.000000'),
+(58, 1, 'Login', 'User logged in with role: Job Seeker', '2025-06-27 07:36:35.000000'),
+(59, 1, 'Login', 'User logged in with role: Job Seeker', '2025-06-27 07:37:06.000000'),
+(60, 1, 'Login', 'User logged in with role: Job Seeker', '2025-06-27 07:37:53.000000'),
+(61, 1, 'Login', 'User logged in with role: Job Seeker', '2025-06-27 08:21:17.000000'),
+(62, 1, 'Login', 'User logged in with role: Job Seeker', '2025-06-27 08:50:05.000000'),
+(63, 1, 'Login', 'User logged in with role: Job Seeker', '2025-06-27 08:55:15.000000'),
+(64, 1, 'Login', 'User logged in with role: Job Seeker', '2025-06-27 08:57:17.000000'),
+(65, 1, 'Login', 'User logged in with role: Job Seeker', '2025-06-27 09:34:09.000000'),
+(66, 1, 'Login', 'User logged in with role: Job Seeker', '2025-06-27 09:36:11.000000'),
+(67, 1, 'Login', 'User logged in with role: Job Seeker', '2025-06-27 09:37:38.000000'),
+(68, 2, 'Login', 'User logged in with role: Recruiter', '2025-06-27 10:38:59.000000'),
+(69, 2, 'Login', 'User logged in with role: Recruiter', '2025-06-27 10:40:29.000000'),
+(70, 2, 'Login', 'User logged in with role: Recruiter', '2025-06-27 10:41:40.000000'),
+(71, 2, 'Login', 'User logged in with role: Recruiter', '2025-06-27 10:42:38.000000'),
+(72, 2, 'Login', 'User logged in with role: Recruiter', '2025-06-27 10:43:58.000000'),
+(73, 2, 'Login', 'User logged in with role: Recruiter', '2025-06-27 12:22:35.000000'),
+(74, 2, 'Login', 'User logged in with role: Recruiter', '2025-06-27 12:42:10.000000'),
+(75, 2, 'Login', 'User logged in with role: Recruiter', '2025-06-27 12:53:36.000000'),
+(76, 2, 'Login', 'User logged in with role: Recruiter', '2025-06-27 12:54:17.000000'),
+(77, 2, 'Login', 'User logged in with role: Recruiter', '2025-06-27 12:55:21.000000'),
+(78, 2, 'Login', 'User logged in with role: Recruiter', '2025-06-27 13:02:31.000000'),
+(79, 1, 'Login', 'User logged in with role: Job Seeker', '2025-06-27 14:09:51.000000'),
+(80, 3, 'Login', 'User logged in with role: Admin', '2025-06-27 14:10:22.000000'),
+(81, 1, 'Login', 'User logged in with role: Job Seeker', '2025-06-27 14:10:53.000000'),
+(82, 3, 'Login', 'User logged in with role: Admin', '2025-06-27 14:11:15.000000'),
+(83, 3, 'Login', 'User logged in with role: Admin', '2025-06-27 14:17:17.000000'),
+(84, 3, 'Job Approval', 'Job ID: 1 approved.', '2025-06-27 14:18:06.000000'),
+(85, 3, 'Login', 'User logged in with role: Admin', '2025-06-27 14:19:25.000000'),
+(86, 3, 'Job Approval', 'Job ID: 1 approved.', '2025-06-27 14:19:37.000000'),
+(87, 3, 'Login', 'User logged in with role: Admin', '2025-06-27 14:22:21.000000'),
+(88, 3, 'Login', 'User logged in with role: Admin', '2025-06-27 14:28:34.000000'),
+(89, 3, 'Login', 'User logged in with role: Admin', '2025-06-27 14:30:26.000000'),
+(90, 3, 'Login', 'User logged in with role: Admin', '2025-06-27 14:31:07.000000'),
+(91, 3, 'Login', 'User logged in with role: Admin', '2025-06-27 15:00:49.000000'),
+(92, 3, 'Login', 'User logged in with role: Admin', '2025-06-27 15:01:17.000000'),
+(93, 3, 'Login', 'User logged in with role: Admin', '2025-06-27 15:01:31.000000'),
+(94, 1, 'Login', 'User logged in with role: Job Seeker', '2025-06-27 15:13:04.000000'),
+(95, 1, 'Login', 'User logged in with role: Job Seeker', '2025-06-27 15:17:13.000000'),
+(96, 1, 'Login', 'User logged in with role: Job Seeker', '2025-06-27 15:18:55.000000'),
+(97, 1, 'Login', 'User logged in with role: Job Seeker', '2025-06-27 15:23:47.000000'),
+(98, 1, 'Login', 'User logged in with role: Job Seeker', '2025-06-27 15:24:56.000000'),
+(99, 1, 'Login', 'User logged in with role: Job Seeker', '2025-06-27 15:25:11.000000'),
+(100, 1, 'Login', 'User logged in with role: Job Seeker', '2025-06-27 15:25:29.000000'),
+(101, 1, 'Login', 'User logged in with role: Job Seeker', '2025-06-27 15:43:04.000000'),
+(102, 1, 'Login', 'User logged in with role: Job Seeker', '2025-06-27 15:44:03.000000'),
+(103, 1, 'Login', 'User logged in with role: Job Seeker', '2025-06-27 15:45:16.000000'),
+(104, 1, 'Login', 'User logged in with role: Job Seeker', '2025-06-27 15:46:10.000000'),
+(105, 1, 'Login', 'User logged in with role: Job Seeker', '2025-06-28 00:04:18.000000'),
+(106, 1, 'Login', 'User logged in with role: Job Seeker', '2025-06-28 00:13:41.000000'),
+(107, 1, 'Login', 'User logged in with role: Job Seeker', '2025-06-28 00:28:45.000000'),
+(108, 1, 'Login', 'User logged in with role: Job Seeker', '2025-06-28 00:29:43.000000'),
+(109, 1, 'Login', 'User logged in with role: Job Seeker', '2025-06-28 00:31:48.000000'),
+(110, 1, 'Login', 'User logged in with role: Job Seeker', '2025-06-28 00:32:26.000000'),
+(111, 1, 'Login', 'User logged in with role: Job Seeker', '2025-06-28 00:38:55.000000'),
+(112, 1, 'Login', 'User logged in with role: Job Seeker', '2025-06-28 00:41:25.000000'),
+(113, 1, 'Login', 'User logged in with role: Job Seeker', '2025-06-28 00:57:13.000000'),
+(114, 1, 'Login', 'User logged in with role: Job Seeker', '2025-06-28 01:00:50.000000'),
+(115, 2, 'Login', 'User logged in with role: Recruiter', '2025-06-28 01:21:30.000000'),
+(116, 2, 'Login', 'User logged in with role: Recruiter', '2025-06-28 01:22:19.000000'),
+(117, 2, 'Login', 'User logged in with role: Recruiter', '2025-06-28 01:23:36.000000'),
+(118, 2, 'Login', 'User logged in with role: Recruiter', '2025-06-28 01:47:53.000000'),
+(119, 1, 'Login', 'User logged in with role: Job Seeker', '2025-06-28 02:02:45.000000'),
+(120, 1, 'Login', 'User logged in with role: Job Seeker', '2025-06-28 02:04:45.000000'),
+(121, 1, 'Login', 'User logged in with role: Job Seeker', '2025-06-28 02:05:22.000000'),
+(122, 1, 'Login', 'User logged in with role: Job Seeker', '2025-06-28 02:06:41.000000'),
+(123, 1, 'Login', 'User logged in with role: Job Seeker', '2025-06-28 02:12:35.000000'),
+(124, 1, 'Login', 'User logged in with role: Job Seeker', '2025-06-28 02:14:26.000000'),
+(125, 1, 'Login', 'User logged in with role: Job Seeker', '2025-06-28 02:16:22.000000'),
+(126, 2, 'Login', 'User logged in with role: Recruiter', '2025-06-28 02:20:00.000000'),
+(127, 2, 'Login', 'User logged in with role: Recruiter', '2025-06-28 02:31:29.000000'),
+(128, 2, 'Login', 'User logged in with role: Recruiter', '2025-06-28 02:33:11.000000'),
+(129, 2, 'Login', 'User logged in with role: Recruiter', '2025-06-28 02:33:47.000000'),
+(130, 1, 'Login', 'User logged in with role: Job Seeker', '2025-06-28 02:36:29.000000'),
+(131, 1, 'Login', 'User logged in with role: Job Seeker', '2025-06-28 02:43:31.000000'),
+(132, 1, 'Login', 'User logged in with role: Job Seeker', '2025-06-28 02:44:37.000000'),
+(133, 1, 'Login', 'User logged in with role: Job Seeker', '2025-06-28 02:52:57.000000'),
+(134, 2, 'Login', 'User logged in with role: Recruiter', '2025-06-28 04:02:33.000000'),
+(135, 2, 'Login', 'User logged in with role: Recruiter', '2025-06-28 04:04:03.000000'),
+(136, 2, 'Login', 'User logged in with role: Recruiter', '2025-06-28 04:19:53.000000'),
+(137, 1, 'Login', 'User logged in with role: Job Seeker', '2025-06-28 04:22:10.000000'),
+(138, 2, 'Login', 'User logged in with role: Recruiter', '2025-06-28 04:23:39.000000'),
+(139, 2, 'Login', 'User logged in with role: Recruiter', '2025-06-28 04:26:20.000000'),
+(140, 2, 'Login', 'User logged in with role: Recruiter', '2025-06-28 04:35:34.000000'),
+(141, 1, 'Login', 'User logged in with role: Job Seeker', '2025-06-28 04:36:09.000000'),
+(142, 1, 'Login', 'User logged in with role: Job Seeker', '2025-06-28 04:48:59.000000'),
+(143, 2, 'Login', 'User logged in with role: Recruiter', '2025-06-28 04:49:18.000000'),
+(144, 1, 'Login', 'User logged in with role: Job Seeker', '2025-06-28 04:49:46.000000'),
+(145, 1, 'Login', 'User logged in with role: Job Seeker', '2025-06-28 04:58:07.000000'),
+(146, 1, 'Login', 'User logged in with role: Job Seeker', '2025-06-28 05:02:13.000000'),
+(147, 1, 'Login', 'User logged in with role: Job Seeker', '2025-06-28 05:03:09.000000'),
+(148, 1, 'Login', 'User logged in with role: Job Seeker', '2025-06-28 05:04:50.000000'),
+(149, 1, 'Login', 'User logged in with role: Job Seeker', '2025-06-28 05:05:34.000000'),
+(150, 3, 'Login', 'User logged in with role: Admin', '2025-06-28 05:22:01.000000'),
+(151, 3, 'Login', 'User logged in with role: Admin', '2025-06-28 05:22:33.000000'),
+(152, 3, 'Job Approval', 'Job ID: 1 approved.', '2025-06-28 05:22:41.000000'),
+(153, 3, 'Login', 'User logged in with role: Admin', '2025-06-28 05:24:31.000000'),
+(154, 3, 'Job Approval', 'Job ID: 1 approved.', '2025-06-28 05:24:37.000000'),
+(155, 2, 'Login', 'User logged in with role: Recruiter', '2025-06-28 05:25:07.000000'),
+(156, 1, 'Login', 'User logged in with role: Job Seeker', '2025-06-28 05:25:41.000000'),
+(157, 2, 'Login', 'User logged in with role: Recruiter', '2025-06-28 05:28:16.000000'),
+(158, 2, 'Login', 'User logged in with role: Recruiter', '2025-06-28 05:29:40.000000'),
+(159, 2, 'Login', 'User logged in with role: Recruiter', '2025-06-28 05:35:38.000000'),
+(160, 2, 'Login', 'User logged in with role: Recruiter', '2025-06-28 05:36:53.000000');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `employee_profile`
+--
+
+CREATE TABLE `employee_profile` (
+  `user_id` int(255) NOT NULL,
+  `employee_id` int(255) NOT NULL,
+  `company_name` varchar(255) NOT NULL,
+  `description` varchar(255) NOT NULL,
+  `industry` varchar(255) NOT NULL,
+  `location` text NOT NULL,
+  `employee_name` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `employee_profile`
+--
+
+INSERT INTO `employee_profile` (`user_id`, `employee_id`, `company_name`, `description`, `industry`, `location`, `employee_name`) VALUES
+(2, 1, 'SudoTech', 'we are sudoTech1', 'Fintech Industry', 'davao city', 'WenDoe');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `jobs`
+--
+
+CREATE TABLE `jobs` (
+  `job_id` int(255) NOT NULL,
+  `employee_id` int(255) NOT NULL,
+  `job_title` varchar(255) NOT NULL,
+  `description` varchar(255) NOT NULL,
+  `requirements` varchar(255) NOT NULL,
+  `location` varchar(255) NOT NULL,
+  `job_type` varchar(255) NOT NULL,
+  `salary_min` int(255) NOT NULL,
+  `salary_max` int(255) NOT NULL,
+  `posted_at` varchar(255) NOT NULL,
+  `expires_at` varchar(255) NOT NULL,
+  `status` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `jobs`
+--
+
+INSERT INTO `jobs` (`job_id`, `employee_id`, `job_title`, `description`, `requirements`, `location`, `job_type`, `salary_min`, `salary_max`, `posted_at`, `expires_at`, `status`) VALUES
+(1, 1, 'Test', 'Test1', 'Test', 'Test', 'Test', 6000, 10000, '2025-06-27', '2025-07-27', 'Open');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `resume`
+--
+
+CREATE TABLE `resume` (
+  `seeker_id` int(255) NOT NULL,
+  `file_id` int(255) NOT NULL,
+  `filepath` blob NOT NULL,
+  `publishAt` timestamp(6) NOT NULL DEFAULT current_timestamp(6) ON UPDATE current_timestamp(6),
+  `filename` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `resume`
+--
+
+INSERT INTO `resume` (`seeker_id`, `file_id`, `filepath`, `publishAt`, `filename`) VALUES
+(1, 5, 0x504b030414000600080000002100e424894c7d01000029060000130008025b436f6e74656e745f54797065735d2e786d6c20a2040228a000020000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000b494cb6ac3301045f785fe83d1b6c44aba28a5c4c9a28f651b680add2af23811d50b699cc7df77ec24a614272e4db231c833f7dea301cd70bc363a594288cad98c0dd23e4bc04a972b3bcfd8c7f4a577cf9288c2e6423b0b19db4064e3d1f5d570baf1101352db98b105a27fe03cca05181153e7c152a570c108a46398732fe4979803bfedf7efb87416c1620f2b0f361a3e41214a8dc9f39a7e6f4902e8c892c76d63959531e1bd565220d5f9d2e6bf527abb849494754f5c281f6fa881f1d684aa723860a77ba3d10495433211015f85a12ebe7221e7b993a521657adca685d3158592d0e82b371f9c841869e646a74dc50865f7fc6d1cb28ce8cca7d15c219849703e0e4ec6694c2b3f08a8a099e1c159d8d2cc2010fdf987d158774244dc6888e727d8fa76c70322092e01b073ee4458c1ecfd62143fcc3b410aca9d8a9986f36334d69d1048ab08b6dfd35f456d732c923aeb0748ab2dfce3dafbdd55a97bfe4f2faf4924eb93ef07d55acc216fc9e6f5a21f7d030000ffff0300504b0304140006000800000021001e911ab7ef0000004e0200000b0008025f72656c732f2e72656c7320a2040228a000020000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000ac92c16ac3300c40ef83fd83d1bd51dac118a34e2f63d0db18d907085b494c13dbd86ad7fefd3cd8d8025de96147cbd2d393d07a739c4675e0945df01a96550d8abd09d6f95ec35bfbbc78009585bca53178d670e20c9be6f666fdca234929ca838b59158acf1a0691f88898cdc013e52a44f6e5a70b692229cfd46324b3a39e7155d7f7987e33a09931d5d66a485b7b07aa3d45be861dbace197e0a663fb197332d908fc2deb25dc454ea93b8328d6a29f52c1a6c302f259c9162ac0a1af0bcd1ea7aa3bfa7c589852c09a109892ffb7c665c125afee78ae6193f36ef2159b45fe16f1b9c5d41f3010000ffff0300504b030414000600080000002100d7e6089e1b010000440400001c000801776f72642f5f72656c732f646f63756d656e742e786d6c2e72656c7320a2040128a0000100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000ac93cd4ec3301084ef48bc83b577e2a44041a84e2f08a95708125737d9fc88d88eec0d90b7c7a26a928a2aeac1c71d6b673e7bbd9bed8f6ad9175ad7182d20896260a8735334ba12f09ebddc3c02732475215ba351c0800eb6e9f5d5e6155b49bec9d54de79877d14e404dd43d71eef21a957491e950fb93d25825c997b6e29dcc3f65857c15c76b6ee71e909e78b25d21c0ee8a5b60d9d0e125dea62c9b1c9f4dde2bd47426823b1a5a7f0196495b210938d491f7017e3efe21643cf95e9cd2ffca83982c31ac4232e85eedd1faf14e1ca3b404918484c87b47467df8b411228a269537846af149d621694aa32993fb76369a515a82b80f09f18dfb3724f25398fdcf99b80472177447fe511c9523023fd9fdf4170000ffff0300504b0304140006000800000021008d9e825e52190000f6cb000011000000776f72642f646f63756d656e742e786d6cec5d4b931b3972be3bc2ff01ee087ba58856bff41ccd4a0abd471b23ad2cc9a1a303ac025998ae2ad40255a438a7095f7df45ef64ff8ea93ffcc847df65f707e09d48b8f6eb2d55277b339a16193f5c02b13995f2612893f3ef992a562acacd3267fb473b877b023541e9958e7a3473bfff2e9d5ad073bc295328f656a72f56867aadcce93c77fff777f9c3c8c4d54652a2f051591bb8793227ab4939465f1707fdf4589caa4dbcb74648d33c3722f32d9be190e75a4f627c6c6fb47078707fcadb02652ce517dcf653e966e2714177d59adb4d8ca09bd8c02efec4789b4a5fad29671b8762177f77fd87f305b5036df3553a89c6e0e8dcd64493fed683f93f6b82a6e51b9852cf540a7ba9c529107f7ea62cca39dcae60f4311b79aa6e09587be29e14ffd865da55effca8b400eae71dfaa94da607297e8a219d3ecaca5d1cda42e647c5227c6595a3f37290eef7c1d43bcf054690b5ca5f9819459ea5b7e728987072b500445346facd2847e9d754b32a9f3b6e2330d4d67700fefae57c0d15c01f79c5aaf88bba1887d37cddaa93129465f47e5d7d654455b9afebad2dee4c74d5990576b9415b8a5cbc1eeeb1af33191054de52c7af866941b2b0729b588682f887c822920304b761e93341d98788abf85983c24691c7f78b4737070ffe9d1cb67473bf5a5176a28abb4c49d1f5e1c3dbb779bdfa4faccf0a5b5f454392da80657a834fd589204dbd9c703161fe5e35734d02affe33ebee3932f2f7ef9651e775fc5783c74858ce87e61955376ac761e8bb77be2ad224d21c59facf866ff1ddcdd27d63b3a38badb6b3a7d1673e31546e57cc6eb9d49f5398ed69f4c928b95ca9b6fca5b1d1d4b959e636bced890d7d2c66a9d669c9d4cab37ff6c75843bef67b9e33d57fc4b44f7c7327db413911654b6ee8bbf3bd7e59195d9fc68bdf9f4ecf9c1c16d215eab5c59792afd50ca6ae47ba64d6a46d30b1d8685f5bd3a3c7cf0f2d5a2fa8eee1d1efef0b4575fb8d4a90f3d25c1490f0d14a954eaf4e1c101def13f9f56a5098fd01d5c97436a55f314ff9a79a847b84098a751a9c784cec4e1dee943d86ff887f7f6e47ef6ef5c6c3f3f49772c0e67d80efc36db395c1f585fc46a1c7eea08754ab6a151af4c5e3a34df459af4fc279d2927dea989f8603299e37d255df9d469b9f066f23477f4dac7693630292e446efe396e9dfbb566dba33bf595e7a8b9730d3df5ed2a1fffdfbffdd70a83f49dfab7e0ce797574893499d50657a4f303fff9dc9d89e66f4e85427d717c0dc664097b948976c2910290569b5d31496429e84a992831a64b6c678a89a6c772be98998a906d618acadba04faec3dcea49cf65227649679ed220b2400bad6c7ea36dfe07d71f91d247d1dc8003fe6faea9f71734b5be96c4f5a52855d2720d28f2d18e245d829f439dd2dd57775edd7d756f76c27c22d29a3c9d8a580f87caaa3c5222a1bf352ff8d699217e682b8695fdfdb7bf3a9311439091245c616c29a448f52829c5c09a494eafc8120ca5532a9a5eb34e482a508a58a94259e112192b14c98fafafab2f01fca0cba986257a74879fc18f0f150c411e732f5bae2a5bb4806365bcb051e0e0fa20818d51fb3f99c9d9f4fe862bf98cc532e43809ee9e2cf7e25b92cc8ff80192edaeb2634dc50bd6f824ff553ed6d6e4f0182fd5f61ba2da4f68f9d5d0e36f41ce12202e91e30eb99dc8641925d07f9eca1da2fa47a518a892549c881209ed4ffca15c240bbc42ac14cb924ad913afa8733ac7aa51a4767bfade731269f89155543ffd1ba42ac76213380910523899c7533c235d8d0c62698fbb05449210e630952325262a4d851c4954e79fb3263aa6373379cca5a2e536a62693fea6af9363c22a06588459395b1f52f4b8b8be78b571c6259b705b50b10515570c547c4e74946c61c502da37408225776cc4d454800cf9b198982a8d49a3888c441ea9896345b6258433830bd213792caca2618c2b7a35f81620de837a78223e27d32ddab8e468e3c58cf25e0624cac4ea7100029ec81df8e184d378aef12c78dce01ad400d63855fd3710650b01b610600b01b610600b01ae2204e85888d702026cdc54f979c623706da4a067f79ab90304d27351419b47f1ce94bd36c41ea848621dd463d68d2771eb356ea0f9f599d7b509e27d9de0f66f6c826cad8d73242c067c6b6d6cad8defdad3af93b66f86335ddc9a1a3e5249f556ade05e1aa998ed08dc030261c58ca014e34a04b374bc461cd9e4411a6c14f5a5e0254f4312bc28548e6f2885c61ab12c887a22ab667e7d8b2a9b5db20aa64b1b1325cc9854020dc6548c38389837eb3c119fb09a4aff644ed5cbac4060cc50e4b2acac4c855329b5889edc132fbf14a9a462a9a1560058999c04735f936cc21c675b6829c5ffbc68147779ac375e06f4d97096e33c1beb3c026f5c1b136bb799ea1b4ffe39b9e3291eabeb45f13d2f32bd84768dd5b5f1e49f9def88aaa817559af888f8da403e4cfb559d88b255fabd55a65d5148deb7176c767eaab56ba161d86ef377cd70e80a0b9dbb44696f3c0bcea192cde3b6c75bd3fc5298e6db81bfc4037f95d7c34d55e2f2cfe3b419878b26d352a1bc3448639668574cd99cda2f221db5e583ca636555fc9e80cd33c2b8c7fc56d8e478f4702ba82f83bcb862ac7776c4f9cc6a3584ff48b9c8ea01b64629516815c2a2c73ae60d521c67edaa0296badf2645ff1b3bf50f99b462fb7d309d77f1881b6a6fb4b72b868630694a08363236de159c5d068e0e46b6b234d97497902fbd54a5d28a81df18be7bea06ff0bf26c7f3f744a23315286ba5924fd7df2d7ce59faf8e62a28f6f9fd1f8e9e6f8870bc4a3be7fcc755ed072b606c1aea4a29fa335632258358b8d44cd80277a59231d9e556e6ce274b0a8e4b57a84813c7b343bc24e6df8569ad60590b6e0dfcedf45c4f60c28a672949c6374ad4f84ed2d337c38958bb22955c9da6011d5a93898129136a0a559697dca488065b65249925c9e3d08c5d6abbcea981cccd7e5b2bc9f1020bb590e4a1b13296452884971810be6aaa915f052e7c02a0c58efbaf9a89bd3bdb99b89d893333b1c96b72743a9bbdba74194cae059b6d69b19df2e7aa7ce753fcaca25502b65d4bd5f84b9796ef2ead45bcaeedd58ef3f9f6f442a28abe5567be15d9962f319db6a073197a3af09f678d2a9a8dce5dcf50bef203b084f0ba1405ec8a411afc392cb8fc5e84924c995d9f16675061f57598c23e6822420769a50472ce0a99a66404881bcf6ed62b934f9a209e493215d021f4273765df46d88429b53c39d2fd6787f71fdc3fa9335704790f1c6c53954e77c12f91cc4348c23f888ff5d645112b59265433922691d51a9b0c0ffffedbdf9040a3d4160bd7339c96a6e2ee62ceb22aee33d6879b6c90de3e85f9b8f6892ee8755395bb823acbfb2e7fa99ccfff81b76ee12d7aa25bf340253a8fc36ab725fb9e5a4b2342af5959d2fd842c7ddfab7a5b2746818c692a0fbf26d821155ae2ea39b0be3dbc452e5be4b2452e5be4d2472e5f170fbda9c8c5e39225f23c48e010f65c07d08518e7a1557f81d8e685aa65eaa6cefee432e8295f1e1e5921f5e316ca5c5e8fc2126afbf852ac3fa60a40074e76308db4debfceacd0929e9105a7762296927d863af8c7addedfeafdaddedfeafd0bcee6b8a98a3f360ad1269dbccd1d53cd6f93f2f91c491823aeb9d49188ad1e9e9abd71abb02fa3c246f8f9624b5c8d913e6997c0196c6fe71d56f41ba6b9d3a35c0f357dc5463899c2a915f47dadad811309e57980d7ea7617bc002e2196e1b2a0ebbda24f8d5ffaaed9aa4911be4b25c5aa40145fce8cf7ed17c7b7fa7fabffb7fa7f83f5ff67d8245b04b080f63dad5eef8a0ac9f7526947c83c93d15b2489b123aabb33792848dc1df47c05a4dd0e7b579ab58bbeccde84d974f28e631ce5d48e6b2211e4b6f1d36c8e61e600c1b591a93730956626c3cd55b79d5e7d4ee8c1ca6b43746cae9ddd5dda03cf210a74017a9e24481cc1e7a4a0948d6790a19a7052b3588f755cc9f4da30c99e7893d79ab523181b81717070d327a6682defde64c206e2ca55bcacbaf15c92e95c67fad75337a86f8e08892b55afad5c17b800084a53c1cc9e7bb901445e655f78702fd5973aae8afe9dadab627d1260c0ebbfdb81df0efc76e0bb037fda52e9961adf941a8b17ae976f3e5fe0b8de6e3e3f9be3da7f5c1914e15317ac0d253c47ad256dbb6b5d0b8be90edcc7724a566c68f5c7d29a7c146061db99b0c0a5677af4cf9572deeef92799153f0a1a43b207dd0ad919ceda9d40f9bccafc179db6b93c4223e9de9b6685ad3e29bb79e142a6d612965d32f2dd11fe1c8edff5015b68781386d52cf5d20565b366194e0c5333995bd965825a1ea02546cba7fa78d745afaed1e4a60d8bca596630714cd11b9722a6f9294ca7f0fdd99e786d95cac540a91291c48bdc2a6b3630d323a45440bc538ea48925270bc3ef9c267808595ea7f13746dc44bf2ecc9b90112db7c4fe5bb3b13ee99bef7dc7d3b04ef34cde8ee676669ed7ccfcc94c3ac768069ef20b2a9e1d1a8e6dced26c96693279acaaa20eb69c236e9762ed4ef9334c694e988a771727495db3c7bda03edfc73abe3f93d3a5d9474f624ddd76b4c9a13ef3fea9abd3ebce7e7876b9f5ab54d4ae24ae57cdb2a9688953bea8f816cb0a84e87a265967cc4214e65c92e110a51171e0e65792baa665bbb0a889959c2e6793ab9cdcdbade0f9c68287e8dda8db4582a63dbc1d3b7aca09e62ca7259a106ef0a4e978afcf2061b040ea6b2ff91c08527a5fc97a342b90b973410fd661bdbab3bd28a68fc6cb41f4bee7b46f8007f3ea4d16670315e134fbafec8d9736be2fecec773ad3a9b46b4da35a8aaf308996e716387a7ef8e02e73663389c2c39d4954f4baf40e995bd2cf6ab03ec34e5a83ac36bb085f66d4b14cfe62eccb706da189747b667006c61c67d21eb3d0a702758c894d5f728902fff5b57926a3e360b38467496e374f86c69f3656de405a2f39831fd3d506700d1175b72fa2960cfd950c5f7c2ab2aaf428c72a9ad92c3264bda41a94da8b774f85f3608313ac498244762473edb25acbf9e7118c38501ceac8310a1ca0e14808130d06d05f85d408732c43b67828603cdc2ee7f22b2c38a10232a2b546465f9ffe979ec6725dd8af49959295621c8905c7eb7fca39b47097ea6c3a456de3254089b448dad57592c47625a1beba87b578c3761de415e615c26e37d79eea6760df33cdff35c5ce1966cdcf3454efa5959ccdeddc664e7f9c3a6db8d2d3e99d29c1a276dae34049cc8fc4f8c4d23f82e386322a59f54dc35e653e902c573405a81fbb38b3281b56f4857a92abaa449cae5fb846ec2fb12d1213da3add35f83dbcd1d6ca1b983d2c09e76770ee6d4627a4ca0ad2b3bcd119e504a08ffdc248c855621aaafcd72969b82e866da38c5b30e00c9faec4532c9a3a5c1c6ab2919df607c847890f7656569bca21d0d98322290a923526ff831389227990ec893ffb99384c75410221e66eb583d2f6cc77ca4451c5a07b406349a54bdfe398063f3505ba8809ce7bbfa9c5242f06da50eba85524970cefaea2dab2d954e57c10aef252a60e1e11b1ad4620236380bcc4a0f4c24a6a12d54dec75bd1dfddce46467f0a62cab468c7448c840b6120deac1f58294e3bec9002a95c6ae40ee99c97fffed6f65bdf7bb05977c266f1ef920ef4c49f64a316fd5aff8c0c39cd31be84849d0bd8d26430f6b31f7079f090ea27ba84b12b9eeab30cef794713d39b2a02d0bf0d6162eac29df4e4a04dc01128c023885a0ecb8f0bc0bae17ec3a08b15b816317e10cf585e631ee43e634e90f1c1195e7086f6d7489606b181300ca9dab4322433f73fc9b6ff08b5e6e5a59efb90d72d166225229c9dc00175c814b90b2a3519355620004432823a6b935e123898655590593221c804392ac75f3e8506b671838bf22611e5833243e3dd288c724a3684451219924052c139aabc770b09a0a671af908965e60319a554ba590f06164c9f4430a8a7977c4e913f9db4d9e1327f2659cb357789a6e9275f2b69eacc8270a1c15d98ad180352c50ba599c43107048e9c2cc6f75c6d9454d65834021c5863b988e735ba4c48426a40a879474fd789f693e99aaecea77affc7953b6d7b1b07aa061db150b8656f389a569124f8c3de649ba27decddfaffd36433936bd584e2fcd589987ccaa1e6590b8b00617190bf8ec2f0c2d3cb0a1d2bb87b0784ccad2819ee694aa84b0ba27b10023f9739c5c1796d6959a61c98b2b19426d4dd6ca2e0278ed10f5a4207bd52b9dc68d939d4a4e545a7421ab83501b2b4fba96aed8aa46835ae77ef58979dae3765ca54bc5c82974a8b22c3049655c0eec32330dcfd53fb3d841d5e421bdfdb0ef2e5b7304ae8e87ea7095f307fa5ae612c14516959b0817cbc7afa8eea156643cf231593c79e1770dc73ff199d4223141460473cac1806ee50dbf14ac1ec80c6fb7710ee83d810ac844624b8fcb606b281c1a1536be7a29e9c556733c32ec4f585054689bd40b0751fefedb5f819e8e854b64ece5e8c82ace109799b24cb1488435607a2e20396e0ffb9e4a884936dbbc9865f958d4a70eef89f769e560dd739e16c2c63a83293630389e9bb3746332882895137fa29518e851071bb2410a240a8f17445e4e258dfcd2b96f7f354a764595b3f94ad291061036617316328db60e6721d7c66f945223b8f6a1461368842156594118873d17e833e95d35260a521f9ee6f00478254bf6240a1b2912c90368484f8058ab127a7798127a1f682a62fa23c96bee3427573324f473d0049a16fa5795bc883934260edada05204ec485db63179a39768cef49e0596ad95851bd81c4813d06c638e698658a10bba9b1179bee9192f6864757f35d28482649c15ef2540da9bcfb4761a25e79207a1986f1c4b6ace949f88e0b0f33aae1ab9961159a2fb023168ecc776ece52b8f31cae4c382121029fda887d90e60b890f16b3c1102e09135a49e24b1c933067edd1b867bd96216b9b7545a9820681d3ad6237c644e7241483f7a1ff6ea24709244f0b93250a8416c029344ea82f702bf079c8cdc990428e24b416b7cce566722b82db8d540bd63d5d240b75ea11f62c1d27260562c60dc307d0d00ced9f6e3f7716cd2521e649ae246823b2778c90daa7b0825b98280ac32c1b540e7e74261a7c303422d336c346aab20cd01f4332d0362685f5aab2c01658f9f59648ac48a7308d6b574c55c03fcd48a2c99f05a8d1ad3c223603c379759d2898215098c179cc46cb97d21262c58e44439007c75bc0295459af85d0e2c09f891c68e2a10b56370b095e836e9d1bfb13288e1a6611396e3688bc668d856f460e5c585f7e46049de39670e65b8f5bf8da052b927574c695349bd63fa7e212a9c63a9c7bab1a41d0a521c402b1732c7d9ca9a319b174c67a6d3604c9fda5d2d6aa5e6e01206f3ef30c86cf941fcdd584641ca9a38c1315c66479201c6d7751b0f2a9e3733a5fcf8edc897c7eee23fbb83ec78cc47633869753a7967c1e77a086906436d501186d7845914c1d429fc440120f806805ce8bcad988847105e31b2a8cec42dd589619c11318487584b6b2034bf6186edf6802de9088a1e5a79a971cac3c1ccf0790161c8b302ceb9547e8e6f5f5e0b777df5c8038398f8e6f25f045cdbd7957becfd91ab25660b5bd0e9e84d729f0bf8ffc84582159ba48fe76f7aec7bc161a213aa3f159508d044d633e830d87a013741e4b9db2a3a5eb4f41854a124ae67958e71586a4f05eb42698440fdbe9da7dac8ead701dcf8bf79d79fbe4167c47708fe515fb6b9af9cfcf78df1695f28b9c88ac72115648d8a78674fc66c0f9ef95a227eba0154e9604f38abdfccb563238a522db787e5d40f633df62a923844e07437036b7b2ab5753f60459925847f6c708f89eb378f26311a23f70bc5da062c71a33f07ad597a17219f163fc774319c19be97b37507e7947c5bde67254f7084534eb1ff0a3157c7041f0da31c78caca98a3378abae8fd8dc02d7ab0c5cdf0c77c3392f1956553bd115eccef58094cdf43ed408a9b0fd24f1ab0b7ce2c6805de32582c58e69a291f8c2941c54f0a54346e746a45e3cb5e00613d20b1a25c61af27457d0042fb58fe17008131d85a432bdd91a0ea06489e455000b330fbba9dc8d44c9bc3e7be9b131e27f94ac43ea6a46e96a5b265590c3716fa700470ac2cb84a0a492e57c288417b2888726ec24822f120142b5ae6ece36add77da2449326edeab131f67906d3622bd4cfe274b938f97d5544eac7b0aa8ad86320162ff8700aafd524081b8cb9cc0fe037e0f8e0d5966f710a518d5edb7d31b04219714569157bdfe8e5940a277aa1495e679db49c2dbe6bb68d36912b884402b6665ce64de26697de08c179377b388f060607c923283925e08e65d5e76ddc2f4e6766e70c040691aaf56eb74d20ead9d225ba206c5e727010c771f38b10574edca8dfc7b2672d5c6ee2087bd03d18fd204de6b5260e8f1ee5fa575e12455f3c6cc5ee8c4a976c4e64c86fcdc49d061ccb5efa3ae6ba69dd2cad4fe04ad1f8111c292cdefc154e85eeb71a2b1cb5e7a2bb89ae0964ea09530e67ae591c9b7beba1417c7b38e1eb46a6b042cc25b635ed8997583b27f41fde60aded03be4248284c10351ab548bea5268a9de9fcdc2e562a244d67f7cb968f473203cbacf4767f13ecd2bdbcfde1835957a316d65701dbc4612342d39d2af76887bd4108ad47af92e9c0eab96dacab764e73911c08708e1d6cda47c5de5c416d2ecce3b15ca5acb4cbf542f6aace0bc91aec3ddaf9dffffcf7fff9efff60414950f6d14e7d67651dfbc38ba367f76e2f1a90fe1d1e9070a93320bf44b5acc589efa1d65e6d88e778dfc8ffd952461f21c027341047a1ff097dbffbe04e50c5c5e8ad646e31055dbfe31fb1e0ddf627d55c9aacfded2301ea5f09c96190009101f4936c74a648f839e2c4b28de68f0c1c1835f3353119b1895e633e78eabcd76544adbc7daf0e35f05de4af582de42ff44a057fcde3ff17000000ffff0300504b03041400060008000000210007b740aa240600008f1a000015000000776f72642f7468656d652f7468656d65312e786d6cec594d8b1b3718be17fa1f86b93b1edb33fe58e20de3b19db4d94d42769392a33c23cf28d68c8c24efae0981929c7a2914d2d24303bdf5504a030d34f4d21fb390d0a63fa292c6638f6cb94bba0e84d235acf5f1bcaf1ebdaff448e3b97aed2cc5d609a40c91ac6bd7ae38b605b39044288bbbf6bde361a56d5b8c832c029864b06bcf21b3afed7ffcd155b0c71398424bd8676c0f74ed84f3e95eb5ca42d10cd815328599e81b139a022eaa34ae46149c0abf29aed61da7594d01ca6c2b03a9707b7b3c4621b48ea54b7bbf703ec0e25fc6996c08313d92aea166a1b0d1a426bfd89c05985a2700776d314e444e8fe119b72d0c18171d5ddb517f7675ff6a756984f916db92dd50fd2dec1606d1a4aeec683c5a1abaaee736fda57f05c07c1337680d9a83e6d29f0280301433cdb994b15eafd3eb7b0b6c0994170dbefbad7ea3a6e14bfe1b1b78df931f0daf4079d1ddc00f87c12a8625505ef40c3169d50357c32b505e6c6ee05b8edf775b1a5e81128cb2c906daf19a8da098ed123226f88611def1dc61abbe80af50d5d2eacaed33be6dada5e021a1430150c9051c65169f4fe118840217008c46145907284ec4c29b828c30d1ecd49da1d310ffe5c755251511b00741c93a6f0ad94693e463b190a229efda9f0aaf7609f2fad5abf3272fcf9ffc7afef4e9f9939f17636fdadd00595cb67bfbc3577f3dffdcfaf397efdf3efbda8c6765fc9b9fbe78f3dbefffe49e6bb4be79f1e6e58bd7df7ef9c78fcf0c709f8251197e8c52c8ac5bf0d4ba4b523141c3007044dfcde23801a86ce167310319903606f480271afad61c6060c0f5a01ec7fb54c88509787df650237c94d0194706e0cd24d5808784e01ea1c639dd946395a330cb62f3e07456c6dd05e0c43476b096e5c16c2ad63d32b90c12a8d1bc8345ca410c33c82dd94726101acc1e20a4c5f51085943032e6d60364f5003286e4188db4d5b432ba81529197b989a0c8b7169bc3fb568f6093fb3e3cd191626f006c7209b116c6eb60c6416a640c525c461e009e98481ecd69a8059c7191e91862620d22c898c9e6369d6b746f0a9931a7fd10cf531d49399a989007809032b24f264102d2a99133ca9232f61336114b14587708379220fa0e91759107906d4df77d04b5745fbcb7ef0919322f10d933a3a62d0189be1fe7780ca0725e5dd3f51465178afc9abc7bef4fde8588befeeeb959737720e966e065c4dca7c8b89bd6257c1b6e5db8034223f4e1eb761fccb23b506c1503f47fd9fe5fb6fff3b2bd6d3fef5eac57faac2ef2c5755db949b7deddc708e3233ec7f080296567627ad15034aa8a325a3e2a4c13515c0ca7e1620a54d9a2847f8678729480a918a6a64688d9c275ccac2961e26c50cd46dfb203cfd24312e5adb55af1742a0c005fb58bb3a568172711cf5b9badd563d8d2bdaac5ea71b920206ddf854469309d44c340a255345e4042cd6c272c3a06166de97e2b0bf5b5c88ad87f16903f6c786ece48ac37806124f394db17d9dd79a6b705539f76dd30bd8ee4ba9b4c6b244acb4d27515a860988e07af38e73dd59a554a32743b149a3d57e1fb99622b2a60d38d36bd6a9d8730d4fb809c1b46b8fc5ad5014d3a9f0c7a46e021c675d3be48b40ff1b659952c6fb8025394c75e5f34f1187d4c228156bbd9c069cadb8d5ea2d39c70f945cc7f9f022a7beca4986e3310cf996965555f4e54e8cbd9704cb0a9909d24749746a8df08cde0522505eab26031821c697d18c102d2dee5514d7e46ab115b55fcd565b14e0690216274a59cc73b82a2fe994e6a198aecf4aaf2f26338a65922e7dea5e6c243b4aa2b9e50091a7a6593fdedf215f62b5d27d8d552eddeb5ad729b46edb2971f903a1446d3598464d3236505bb5ead4767821280db75c9adbce885d9f06ebab561e10c5bd52d5365e4f90d143b1f2fbe2ba3ac39c29aaf04c3c2304c50fcbb912a8d6425dceb835a3a86b3f723cdf0dea5e5071dadea0e2365ca7d2f6fc46c5f7bc466de0d59c7eaffe5804852769cdcbc71e8ae7193c5fbc7d51ed1b6f60d2e29a7d25246995a87b705519ab3730b5faf6373016129179d4ac0f3b8d4eaf59e934fc61c5edf7da954ed0ec55facda0d51ff603afdd193eb6ad130576fd46e03607ed4ab3160415b7e948faed4ea5e5d6ebbedbf2db03d77fbc88b59879f15d8457f1daff1b0000ffff0300504b0304140006000800000021004c3cc65012040000f30a000011000000776f72642f73657474696e67732e786d6cb456db6edb38107d5f60ffc1d0f33a16554976843a4522c7db1471bba8d20fa024ca26c28b4052769cc5fefb0e293176126f916ed127d373e6c6e19919bdfff0c0d9684b94a652cc0374160623222a5953b19e07dfee96e35930d2068b1a3329c83cd8131d7cb8f8fdb7f7bb4c1363404d8fc085d019afe6c1c698369b4c74b5211ceb33d91201602315c706feaaf5846375dfb5e34af2161b5a5246cd7e1285611a0c6ee43ce894c80617634e2b25b56c8c35c964d3d08a0c3fde42bd256e6fb29055c789302ee24411063948a137b4d5de1bffbfde00dc7827dbef5d62cb99d7dba1f00dd7dd49553f59bc253d6bd02a5911ade18138f3095271081cbf72f414fb0c620f5774aec01c85ee749c79f2630ea2570e524d7ecc4532b898e83d270fde91666f29490fddd25261d5136ea807afb29bb5900a970cd281ba8ce06a23975d70012c7f94928f76594b54054f3d0f666130b172a8af6c0a830d0154b78431d732152318bceeb2b5c21cc8ee25cea6260dee98b9c36561640b4a5b0cc94fa3c165b5c10a5786a8a2c51578cba5304a32af57cbcfd2e4d0380ade75b0706d644f9d26cbeb5bbc979d39428abe45c183c01caef7aced56b22636d34ed1b7bf833570d9a0e438859781248c14456b7267cb5a983d234bb84c411fc9a5a83f75da50f0e89aef2732f85e0244d8c85f800877fb962c09361d94ed1705732fb364b45d51a5a4ba113550e59705a34d431404a0c0bd15d0892ab97375fe48700d93fc27e34e8e69057ba1d6fef0554ae355c3f07c115da5effa4c2d7a40a214a1f3cb93488e66c970bb97c8f43cca4f21318ad12c3d892c227439d0f03932bd42d3d9f414f2df592f119a5d2f4f22b3384f1d3279aa08cfecbcff4bf993a5f788f71639e6a5a278b4b21b6162354a757f4585c74b0293891c2345577a703cee01cd31634b98071e7043826735d5ed8234eecc5658ad0f7e070d75520ab3e7d3932f3bca88fa53c9aeedd19dc26d4f5baf82e278b0a4c2dc52eee5ba2b0b6f2560961e419da8bf6c95abd3a13cbbcc00fd5cfbdf624763a74bc4f85b618947b036979ae279f0b819e79f07e6335558d692156edb9efce51acd0346d71b83ac99817f357c4bb83fe53a1ab0c861518fb93fb8b29705ede17090455e76a4f7cecbde1d64b197c50759e265c941967a596a651b183b0a76c23df4a13f5a792319933b527f3ce0af447d11f406b764d1af0c609cec05c30ed1a36d461e601f919a1af8446b69cdf1033c1b749f351fb499db08cf742d6695dbe71e6a6cb09f00cf8c1deb5fe46257594581a1c59e97870d75d627cea886a9d5c232335279ec0f87a138ab657503cd0527278f51383bbfccfb3646895b82e60e787f0feffe95345758937ac0bc69d29bfe1d868b748a66f0919a278b717c1d5e8f67290ac739f47f92e48b289d2eff19fad67fad5efc0b0000ffff0300504b0304140006000800000021008a2c68441a0d0000ea7b00000f000000776f72642f7374796c65732e786d6ce49d5d73dbba1186ef3bd3ffc0d1557be1d8b2653bf11ce78cedd88da78ee31339cd354442168e4942e547649f5f5f000425504b505c10753bed4d1c91dc8720dedd05969fbffcfa92c4c14f9ae58ca7e7a3f1bb835140d390472c7d3a1f7d7fbcd97b3f0af282a41189794acf47af341ffdfaf1cf7ffa65759617af31cd030148f3b3243c1f2d8a6279b6bf9f870b9a90fc1d5fd254ac9cf32c2185f8993ded27247b2e977b214f96a4603316b3e275fff0e0e064a431591f0a9fcf59483ff1b04c685a28fbfd8cc682c8d37cc196794d5bf5a1ad78162d331ed23c17079dc4152f212c5d63c613004a5898f19ccf8b77e260748b144a988f0fd4ff92780338c6010e01e024a738c4b146ece7af097d1905497876fb94f28ccc62411287148856050a3cfa28d48c78f889ce491917b9fc993d64faa7fea5fedcf0b4c883d519c943c61e452b042a6182faf922cdd948aca1242f2e7246cc95d77a995cbf901bb65a8679612cbe64111bedcb9de67f88953f497c3e3a3cac975cc9463496c5247daa97d174effbd46cccf9e88fc5ded5bd5c3413dcf311c9f6a617d2705f1f5bf5d738e2e5f62fb5e3250999da0f991754f8eaf8e44042632643e3f0f843fde35b293b999405d73b5180eaef1abb0f3a5db8b070e8691557622d9ddff1f09946d342ac381fa97d8985df6f1f32c633113be7a30f6a9f62e19426ec338b229a1a1ba60b16d11f0b9a7ecf69b459fedb8df27fbd20e4652afe7f743a568e10e7d1f54b4897329ac4da94484deea5412cb72ed966e7cafc9f356cac9568b35f5022534a30de46a8e6a31087d222378eb69d596e1dbbda0ab5a3a3b7dad1e4ad7674fc563b3a79ab1d9dbed58edebfd58e14e6dfb9239646f4a50a44b81b40ddc5b144239a63093634c7124b688e2554d01c4b24a039164747732c7e8ce658dc14c1297868f342c3d98f2cdedecddd3d46b871770f096edcdd23801b7777c277e3eeceef6edcdde9dc8dbb3b7bbb7177276b3cb79a6a05b722ccd2627094cd392f525ed0a0a02fc36924152c5567f9e1c9418f665e0ed203a6ca6c7a201e4c0b89fabddb435490ba8fe785ace8023e0fe6eca9cc44793eb4e134fd4963512807248a04cf2330a34599597ac4c5a7333aa7194d43ead3b1fd41652518a46532f3e09b4bf2e48d45d3c873f7d5442f4961edd0a27e5ec820611e9c3a2161c687378d136ff9e18ee5c3fb4a4282cb328ea927d6bd1f1753ace1b581c20c2f0d14667865a030c30b0343335f5da4699e7a4ad33c7598a679eab7ca3f7df59ba679ea374df3d46f9a36bcdf1e5911ab146fce3ac6fdcfdd5dc55c9e191fdc8e297b4a8998000c1f6ef439d3e08164e42923cb45204f4cb763cd63c6eee79247afc1a38f316d4df235af572e72258e9aa5e5f00e6dd07c05d79ae729bcd63c4f01b6e60d0fb12f629a2c27689ffdd433d37256b406ad22f50ada2989cb6a423b3cda4831dcc3360170c3b2dc5b18b4633d78f0bd9cce4a397d64be4d2b87376cc31a1e56db59c96bf334d2432b631e3efb49c39f5f97341365d9f360d20d8f63bea2913fe2b4c878e56b66c81f2a497a85fc75b25c909ca95aa981e83fd4d7d7d4832f6439f8801e62c2523fba5def2584c581bf19c4e7c72f77c1235fca3253768c1fe0252f0a9e7863ea33817ff941677ff5d3c00b5104a7af9e8ef6c2d3e92105bb621e06998ac4234f2431cd6429f332862adedfe9eb8c932cf2437bc868751b4b413d11a7245956930e0fb125f2e24ae41f0fb321c5fb07c9983c2fe42ba81ebdc08cd3867939fb9d86c353dd3d0fbc9c19fa5a16eafca39aea2a6b7fb8e1d384066ef81441a9298607e9bf1e0eb6811b7eb00d9caf83bd8a499e33eb2554679eafc3ad79be8f7778f1a7793ce6d9bc8cfd75600df4d68335d05b17f2b84cd2dce7112b9ec703563cdfc7ebd16514cfc32939c5fb5bc6226f6228982f2514cc970c0ae64b0305f32ac0f03b740cd8f0db740cd8f07b752a98a7298001f3e5675e877f4f57790c982f3f53305f7ea660befc4cc17cf9d9d1a780cee76212ec6f883190be7cce40fa1b68d282264b9e91ecd513f23aa64fc4c309d28af690f1b97cbe81a7d54ddc1e90f21c75ec71b25de17c89fc83cebc354db27cb6cbc3195112c79c7b3ab7b619709465f3deb55d66ea498ec14d78884948173c8e68663926bbada897a7d56319dbcd57cde875daf38e3d2d8a60ba589fed373127073b2deb82bd61b67b876d7d7e523fcfd266f68546ac4cea86c287294e8efa1b2b8f6e184f761b6f66120dcbe39e96709f27bb2d37b3e486e5694f4bb8cff73d2d559c362cbbe2e113c99e5b1de1b4cb7fd6359ec5f94ebbbc686ddcbadb2e475a5bb6b9e0699717354225b8084379b500aad32f66ecf6fd82c76e8f89223b05134e764aefb8b223ba02ec1bfdc9e4c88e499a6a7febbb2740de5793e85e99f3b79257e7ed1b179cfa3fd4752b264e694e8356ce51ff0b578d2c63efc7dee9c68ee89d77ec88de09c88ee89589ace6a89464a7f4ce4d7644ef246547a0b3151c1170d90adae3b215b477c95690e292ad06cc02ec88ded3013b021da810810ed40133053b0215a8c0dc295021051da810810e548840072a9c80e10215dae30215dabb042aa4b8042aa4a0031522d0810a11e840850874a042043a501de7f65673a740851474a042043a5021021da86abe382050a13d2e50a1bd4ba0428a4ba0420a3a5021021da810810e548840072a44a003152250810acc9d021552d0810a11e840850874a0568f1aba072ab4c7052ab4770954487109544841072a44a0031522d0810a11e840850874a042042a5081b953a0420a3a5021021da810810e5475b17040a0427b5ca0427b974085149740851474a042043a5021021da810810e548840072a44a00215983b052aa4a0031522d0810a115dfea92f51da6eb31fe3cf7a5aefd8ef7fe94a37ea9bf928b7893aea8faa5b6567f57f16e192f3e7a0f5c1c323556ff483b059ccb83a456db9ac6e72d52d11a80b9f5fafba9ff031e9035fbaa49f8550d74c017cd2d7129c539974b9bc69098abc4997a79b9660d639e9cabea6251806275d4957c5657d538a188e8071579a318cc716f3ae6c6d98c32eeecad18621ece1aecc6c18c20eeecac786e1712093f3b6f571cf7e3a59df5f0a085dee68104eed842eb7845ad5e91806465fd1ec84beead9097d65b413507a5a317861ed28b4c276949bd430ccb052bb07aa9d80951a129ca4061877a921ca596a8872931a2646acd4908095da3d39db094e52038cbbd410e52c3544b9490d8732acd49080951a12b0520f1c90ad1877a921ca596a8872931a4eeeb0524302566a48c04a0d094e52038cbbd410e52c3544b9490daa64b4d49080951a12b052438293d400e32e3544394b0d515d52abb3280da9510a1be6b8499861881b900d435c72360c1daa25c3dab15a32088ed512d4aad61c572d99a2d9097dd5b313faca6827a0f4b462f0c2da516885ed2837a971d5529bd4ee816a2760a5c6554b56a971d552a7d4b86aa9536a5cb564971a572db5498dab96daa4764fce768293d4b86aa9536a5cb5d42935ae5ab24b8dab96daa4c6554b6d52e3aaa536a9070ec8568cbbd4b86aa9536a5cb564971a572db5498dab96daa4c6554b6d52e3aa25abd4b86aa9536a5cb5d42935ae5ab24b8dab96daa4c6554b6d52e3aaa536a971d592556a5cb5d42935ae5aea94da522dedaf1a1f60926cf58933b171f1baa4f21ddcc6033351f50e527d11506d781bad3f94248d654b02fd492abd5835585f30acf6a80c77ec6a0dd7572b8f007ef3c922b58719c969f455f606d8b97c555dbdbcc65d2d4856addd744abd8d967dd3e6d559968b4a54af3e38383c198f3f5c545b81cf64cde42baac4e18c0fd4a33cd5cf8bb2e07a13dd7bf5d7b4aaadd42fb891fec8d664fdc5ade647b65667bc7aa7d0ddcfb86e5d2dab6e57eb57ccce478f2ca179704f57c1379e10f51cd5e6c3612d2bd527cc5ad784395c5c0952fd7b95abbfc617cd746437be68a696191f2673719189d545f4d5db0e1749e5db1bfbb9cea487eb6caeab57db35aea1ef70aed3cbf1e97bdd475ac4674a97f7a2856a99fc712734d7fd0afcae7216ed5e3af540375151b3c34dea4fd691df3b3e7627575a3f76d7b0dc7cec4e2ebe5c7fec8e55ff6a470965e25afbc5f5e9e4528d52ca542535e1fe2aa5a900518be57d36027b79d3cf8942a11f09f55bda2c294dbf6d79fdb8a07ad7f2b67b595ec96c710d9dba77b986bddd854ced1d6d56a9bf331757a383d5777b3b6f318b2b7f11ffb94da5efaef487f1aa96462fa44289f557348ebf906a6bbeb46f1ad3b98cc0954c89eae51c5beb67d57b26adf6999a905801fbcdc6543fbbfda4faf284be53c63af4c951b7a5bbd56d5b437bbaa70faf5ba35fa7badd1abdb8eac6660e6cf5734babebcf4ef61b177546314701646886652e14571393ed6e6f8ce2db87ab578aa9e12653f73eecb6b9c28e64bfb30ffe47065fa438d538691367e2491c3db4f71d89ed43edffd308d83e8daac6881f74661b3daa97f2b649664e99860c2c4d796ec6e3f7d7ea90feb3d3ecff86d9b411c2dae51b21ac96b90a2f87aacd8b11b6c55765e566355efe23dd60fbb8d1223453d30a3929903739eb696c28df39f5529424d6afbf31c4d91c74fdbffce3bf000000ffff0300504b030414000600080000002100743f397ac2000000280100001e000801637573746f6d586d6c2f5f72656c732f6974656d312e786d6c2e72656c7320a2040128a00001000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000008ccfb18ac3300c06e0fde0dec1686f9cdc50ca11a74b29743b4a0eba1a47494c63cb586a69dfbee6a62b74e82889fffb51bbbd85455d31b3a768a0a96a50181d0d3e4e067efbfd6a038ac5c6c12e14d1c01d19b6dde7477bc4c54a09f1ec13aba24436308ba46fadd9cd182c57943096cb48395829639e74b2ee6c27d45f75bdd6f9bf01dd93a90e83817c181a50fd3de13b368da377b823770918e545857617160aa7b0fc642a8daab7794231e005c3dfaaa98a09ba6bf5d37fdd030000ffff0300504b03041400060008000000210035581840180500000449000012000000776f72642f6e756d626572696e672e786d6cec9cdd6eea4610c7ef2bf51d90a55e26fe5adb800e398210aa54ed51a593aad7c62c60c5bb6bad0d84dbbe4c1fa18fd557e87ed8e6dbb001122aed95f1cece78ff339ef52f38c997af6f2869cc21cd62823b867d6f190d8823328af1a463fcf132b86b1a8d2c0ff1284c08861d630933e3ebc38f3f7c59b4f10c0d2165131b2c06ceda8b34ea18d33c4fdba699455388c2ec1ec511251919e7f7114126198fe3089a0b4247a663d996f8945212c12c63711e433c0f33a30817bd9d166d44c30573e60181194d439ac3b7550c5b398867b6cce67620b42b8da41033e3985014e6ec944e4c14d2d7597ac7e2a6611e0fe324ce972ca4e5976148c79851dc2e42dc554be12e6db994e2507ad053ae2b5dfa249a218873714593c284ad81e06c1aa7554ed17ba331e3b40c32af13314749396f91dae0bc1ba22fabb20a78caf28b52a244aebc3ea26d9d50111ea2f23865099bd72c5782c218af2efcaed4ac25d7f6d402383b01fc0caa85f08a1066b644abd658a493f3aafc3325b374152d3e2fda337ead62f10d4b215671b7acdfc1d9798bf93e0d53d6ca286a3f4f30a1e130612b62b56fb0f23544051abc4b8c07b69d86c32ca761947f9ba1c6c6d9f3a863b06d99b9b429647b31e58372e7ed8e73487b1486af7c0a8f82b378c4dce761c2463cbbe5f6bab661720b9a2579fc2b9cc3e46599c2728e184df8a89c95a334296dbd9ee5fb96ef484b32e786981dca6b89b594938babb087c2005583c35992c0bcf27f816f95e9dfbffea9c67f89cad1048e8be9e9ef54ac8725a2389673d8255836da2961c5091c8b4f37571363ccf5f338d2ca4ea6219e88e799eb97b38be8b4380c08ce339ef52c8ad9fdf77d89862411ae5d96d08d8118b3c023380e59e28a60228a29946c27cae63e39db46d95e3c87fcfcb4c48d6014a3b0a8c956e67e72ee2f90391b80bad409734deef6cb75ae21d7bd845cc7aed6bf4fae302bcb75af21175c446eb3592b979b95e5826bc8f52e21972dbf4eae302bcbf5ae21d7bf845ce0d66e7bc2ac2cd7bf86dce012723dab76ab126665b9c135e4362f2237a8ddaa8459596ef31a725b9790eb83daad4a984f906b6e30138f520b54fcc1ac0c54aeeb03009a40ca5307aae6a3fbd402e0b1ca5a559e5381aab61cf625ca71165169084a340469085296ab2148439086200d411f0c41fc49a50e4141d7b7ad6657ca538720b76f3ff6faadc27fbd3c1a8254c56a08d210a42148439086200d411a820ab98a10c4b76e650802c1a01b0c068194a75fad6dd742bf5a3b9c3a0d541aa8b6e56aa03a5fae062a0d541aa83e1fa8f85ea60c549e3de83b4ecb93f2345069a0d240a5814a039506aa7d7235509d2f5703d5ff05a878732b0355e0746dd0f38194a70e5483c0717c179c0154fa355d2956439086200d411a8234046908d21054c85584207eb7ab43d093d3075ebff885ebfd10345d0e693cfaad0685ac5ed00c6cefa9ca5d552421344f93887d0456cbb2ac53cb74feb74db7f8e5d17a26dcf3334154f3700c820e26e291cc680c69e31b5cac65636b34ca7627aa6549e2d67a96defbccaabd7ffe56cddb319a3a98b73fd96cfebf02b2b5ac6d8ea9254802da66435d2141ca0d768cbf3ea0c324cc6d76d8c553a3dc71c748edb33b4ef6d7ed75dc31e4fbb08e9314797b1d770c123fa0e32471de5ac71dc3c9cfee3809aeb7d771c7b8f48a1db78bba58202e2eff16910f6df06ea9487cfd668a993b6ece6137f11af5809be4b2bd6ea20a07dc76fe49c5cacdad71f30ebbf9356efe613750e3161c762b6b2ddce451fe04f1f01f000000ffff0300504b030414000600080000002100e883aa92e20000005501000018002800637573746f6d586d6c2f6974656d50726f7073312e786d6c20a2240028a0200000000000000000000000000000000000000000000000000000000000000000009c90c16ac3300c86ef83bd83d1ddb597acee52e2947649a0d7b1c2aeaee32486d80eb63336c6de7d0e3b75c79dc427217d3f2a0f1f6642efca07ed2c87870d05a4ac749db60387cb6b8b9f0085286c2726671507ebe050dddf955dd877228a109d57e7a80c4a0d9deab9e6f0c58e8c9db634c7f56efb8c1f0b7ac245d6d6b83d36bb22af9b8c35f937a0a4b6e94ce030c638ef0909725446848d9b954dc3de792362423f10d7f75aaadac9c5281b4946292372497af36626a8d63cbfdb2faa0fb7b8465bbcfeafe5aaaf93768317f3f809a42ac91fd5ca37afa87e000000ffff0300504b0304140006000800000021003a11e3b273010000ef02000011000801646f6350726f70732f636f72652e786d6c20a2040128a00001000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000008c92514f83301485df4dfc0fa4ef50d8823a022c51b3279798b865c6b7dade6d75d0366d37b67f6f81c144f7e0dbbd3de77e5c4e9b4e8f65e11d401b2e4586a220441e082a19179b0c2d1733ff0179c612c148210564e804064df3db9b94aa844a0daf5a2ad09683f11c499884aa0c6dad5509c6866ea12426700ee1c4b5d425b1aed51bac08dd910de05118dee1122c61c4125c037dd513d119c9688f547b5d34004631145082b0064741842f5e0bba3457071ae587b3e4f6a4e0aab5137bf7d1f0de585555508d1babdb3fc2eff397b7e6577d2eeaac28a03c6534b1dc1690a7f852bacaec3fbf80daf6b86f5c4d35102b75bee282c9ca784b03ba3175421df90e4e95d4ccb8f141e76c0c0cd55c5977912d7c70e0dc053176ee6e76cd813d9e7e7de7af5e8f6838f0fa65e451e3e8dbf41c73bb1b30cfc593b46176ca6afcf4bc98a17c148e623f8cfd285e84f7493c49c2f0a35e6f307f0196e705fe499c24513424768036a1e113cdbf010000ffff0300504b030414000600080000002100bf576743c70000003201000013002800637573746f6d586d6c2f6974656d312e786d6c20a2240028a020000000000000000000000000000000000000000000000000000000000000000000ac90c16ac3300c865fc5e8be38eba18c90a414da1edb41b69e76711c2531d852b0d591befdbc95ed097614fafe0ffdaa776bf0ea1363724c0d3c17252824cb83a3a981f7b7d3d30ba8248606e399b00162d8b5755f757c8b1693ca714a55dfc02cb2545a273b6330a9e00529ef468ec1481ee3a4791c9dc503db5b4012bd29cbadee5def1d4fd12cf31d1eb2ff5175e8d10a0e9ddc7d3efb63ffbaefdc2af3717092ab5e7e0417f28eb05893cf816ff06c4286330beafafb932db4b5fe2bdc7e010000ffff0300504b030414000600080000002100827053bcba020000fc0b000012000000776f72642f666f6e745461626c652e786d6ce496dd6ed3301886cf91b887c8e75b9c2cfd59b57662dd2a21a11dd022387553a7b5f04f643bed7a098843ae635c0012e26640bb0dbefcb195a4b429620811ab4af2d97e633fef67bb67e737823b4baa0d53b28fbc638c1c2a43356372de47af26a3a32e728c257246b892b48fd6d4a0f3c1d32767ab5ea4a4350ef497a627c23e5a581bf75cd7840b2a88395631955019292d8885573d7705d16f93f828542226964d196776edfa18b75121a3f7515151c4427aa9c2445069b3feaea61c1495340b169b526db58fda4ae959ac55488d81390b9eeb09c2e40f192fa80809166a6554648f6132c5883229e8eee1ec49f07b81563301bf22d036b49944ab9070cd5ad01be488b0f77c2e9526530e4a30250746e564c2685098e9ac7a9208a81eafc554f12c1e13a90cf5a06a49781fe116140fa793ece036dc5bb883dcb461b820dad054236fe8e7e18808c6d765542b41645e11331b2ecaf89268968e2caf326c0e15899962d0292e94473cc8d1cd885f6973b21909339dee66c47bd006bee9e6002a20264c50e35cd395f3321b791d111f4a1b9f0089007e3e3c05f544b22ffd3e912b18b37f351add131942a4d36d5d54889cfe8a48f6eae53afb1319aa4433aa53265b687480c0694625a51134a221d48cea3a1c11bba1b3fd5904278fc1e2356c18e94669b6ac94cad560a590c4aa7f68a10c096753cdb6a4c4284b85b404901c7ea394302b664cb30512549202f6743fe83cca02b9a472fe86157b05e1f61aa2e598ef6edfdd7dfa524ca642c9836d04031faf2c0d286d4997198d48c2ed1ece392fd87c61b7fa97baf67ff8977bf400c74f1e7efbf8feebe70ff51ed65cb5a4baed1d47815476a2133a59c7f420539f01dbfaf3dbc717906641616766e99f3513ffcdd3aa30abc6c63113e3a43c690e5c8af5361eb673c3ff867b447eb73b2aa7ff1091d7de8128481bed40543c98c177000000ffff0300504b0304140006000800000021006f8f8ff743020000bb16000014000000776f72642f77656253657474696e67732e786d6cec58df6f9b30107e9fb4ff01f9bdc176303fa22695b2aad3a4699ab6ee0f20e024d66c0ed96e69fad7ef0249932c7b681e56fa000f709cb98fbbef33d699eb9b27a38347699d826a4ad8889240560594aa5a4dc9affbbbab9404cee755996ba8e4946ca42337b38f1fae9b4923173fa5f7f8a40b10a57213534cc9dafb7a1286ae584b93bb11d4b2c2c12558937bbcb5abd0e4f6f7437d5580a973af164a2bbf0939a531d9c1d8d7a0c072a90a790bc58391956fe3432b352242e5d6aa767bb4e635680dd8b2b65048e7b01ea33b3c93abea05864567404615161c2cfd088bd965d4426138a3ad65f401405c06c0cf0062272f83103b88d06d8c7c228129265f5615d87ca111094b0a30aba005263394b4548f6e770d9a892aa7649c70c6524a793bbe807273db8e3de61aa70b09b75e14f4ab5cfabd97be787fa8d5fa1fee7ba8cf9d73f01ecc5f7ecc635edaade50f31154e448237ee79fbdcd6a8f342eeec0234e0fcc91f3c7410fa28b3cb221727195d166b8f2bbf24343c14dd99a77244a9a059cae27890e3ade5e8be8e4f6ba5cb534d58ccb98853ca582bca40ff5bd38f4b75c232d12d5103fd6f4c7f42051551128981fe5ee8cf18e378a603fd3dd09fa6e9388a298b06f6fb98fc3c4b38e79118e8ff8ff4effbd0eebad7a11fefb1fa4224498a4b5f32f4c2ef616b821f639a263cdbad85831e7deb11654c08dc2f0e5bf7f7a14726a231ee1345d7280f7af4ac07677860f7301e0f7af4dc526c61a1f6caa8677907766ea171d2b66fcbb586e6fbb7cf5dfcd12fe7d91f000000ffff0300504b03041400060008000000210020eddfc6e2010000e203000010000801646f6350726f70732f6170702e786d6c20a2040128a00001000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000009c53c16edb300cbd0fd83f18ba378ab32c4d0a45c59062e8615b03c46dcf9a4c27c2644990d8a0d9d78fb61b4fd9769a4f8f8ff4d3134989dbd7d6164788c978b766e564ca0a70dad7c6edd7ecb1fa7cb5644542e56a65bd83353b4162b7f2fd3bb18d3e404403a9200997d6ec80186e384ffa00ad4a134a3bca343eb60a298c7bee9bc668b8f3faa505877c369d2e38bc22b81aeaab300ab241f1e688ff2b5a7bddf94b4fd529909e1415b4c12a04f9adfbd34e6a8fade0232b2a8fca56a605793d237e8cc456ed21c985e00310cf3ed64996f325950d586c0e2a2a8dd443b99c7ffc207846884f2158a315527be557a3a34fbec1e2a1f75c740282e72582eeb103fd120d9ee454f03c145f8c230bd7440f88cc45b58f2a1cc8d1aab3388662a795850df54036ca2610fc3721ee4175f3dd2ad3393ce2cd1134fa5824f393263c63c57795a0ebdc9a1d5534ca211bca86a0c736248cb23268497b8c7b9897e5d8cc65d91710b82cec83de03e14b77fd09e9a1a1bbe13fcc96b9d9dec36035b3933b3b9ff187eac6b74139ea301f1175f8477a0c95bfebf6e3ad87976436f86783875d509a86b25a958b7c05b294d8110b35cd741cca48887bba42b4dd01f4afdb437daef93bd12dd5d3f06465b9984ce9ebb7e8ccd1268c6f49fe020000ffff0300504b01022d0014000600080000002100e424894c7d010000290600001300000000000000000000000000000000005b436f6e74656e745f54797065735d2e786d6c504b01022d00140006000800000021001e911ab7ef0000004e0200000b00000000000000000000000000b60300005f72656c732f2e72656c73504b01022d0014000600080000002100d7e6089e1b010000440400001c00000000000000000000000000d6060000776f72642f5f72656c732f646f63756d656e742e786d6c2e72656c73504b01022d00140006000800000021008d9e825e52190000f6cb0000110000000000000000000000000033090000776f72642f646f63756d656e742e786d6c504b01022d001400060008000000210007b740aa240600008f1a00001500000000000000000000000000b4220000776f72642f7468656d652f7468656d65312e786d6c504b01022d00140006000800000021004c3cc65012040000f30a000011000000000000000000000000000b290000776f72642f73657474696e67732e786d6c504b01022d00140006000800000021008a2c68441a0d0000ea7b00000f000000000000000000000000004c2d0000776f72642f7374796c65732e786d6c504b01022d0014000600080000002100743f397ac2000000280100001e00000000000000000000000000933a0000637573746f6d586d6c2f5f72656c732f6974656d312e786d6c2e72656c73504b01022d00140006000800000021003558184018050000044900001200000000000000000000000000993c0000776f72642f6e756d626572696e672e786d6c504b01022d0014000600080000002100e883aa92e2000000550100001800000000000000000000000000e1410000637573746f6d586d6c2f6974656d50726f7073312e786d6c504b01022d00140006000800000021003a11e3b273010000ef020000110000000000000000000000000021430000646f6350726f70732f636f72652e786d6c504b01022d0014000600080000002100bf576743c7000000320100001300000000000000000000000000cb450000637573746f6d586d6c2f6974656d312e786d6c504b01022d0014000600080000002100827053bcba020000fc0b00001200000000000000000000000000eb460000776f72642f666f6e745461626c652e786d6c504b01022d00140006000800000021006f8f8ff743020000bb1600001400000000000000000000000000d5490000776f72642f77656253657474696e67732e786d6c504b01022d001400060008000000210020eddfc6e2010000e203000010000000000000000000000000004a4c0000646f6350726f70732f6170702e786d6c504b0506000000000f000f00d4030000624f00000000, '2025-06-27 08:28:23.111200', 'activity_gen_bio_final.docx'),
+(0, 6, 0x41646f6c66204672616e636973204469617a6f6e0d0a44616c6970652c2052656e7a20416e67656c6f20432e0d0a5061746c696e6772616f2c2052616661656c20532e0d0a4c656f6e69646f2c2048616e63652043687269737469616e2c204d6f72616c65730d0a536f7269616e6f2c204172656e61204369656c6f2c20526970616c64610d0a457461626c652c204c796e6578204d2e0d0a517569616e7a6f6e2c204c6f72656e7a6f2c20566972747563696f0d0a436164617665726f2c4a616e64792c20482e0d0a43616c616e6f672c204a6f686e204d69636861656c2c20536174756d6972610d0a50696e61722c204b61746520446976696e650d0a4c6f70657a2c20417269616e6e652c20506f676f7361200d0a4c41535452412c20434154484552494e4520552e0d0a4a6f63736f6e2c2047697261726420416c61696e20416c6c6164696e0d0a417061726963696f2c2052616368656c6c6520436162616e69670d0a4e6f626c6574612c204d612c20436872697374696e650d0a616e67656c69636173616c616d616e636137353840676d61696c2e636f6d0d0a53616c616d616e63612c20416e67656c696361204d6573696e610d0a414a204261796c6f6e0d0a526f6d65726f2c204c65652043687269737469616e20440d0a43617264696e6f2c20204d617279204772616365200d0a45647965736361204a75616e204d696775656c20506f6c69737469636f0d0a414241532c2045524943480d0a455249434820414241530d0a4d6f6b616d61642c20496d616e20410d0a56696c6c616e756576612c20437269737469616e205061756c0d0a4c65652062657665726c79200d0a5361726f6e612c20457277696e0d0a456368616e657320456469736f6e2052756269610d0a50616c6163696f2c204d696b6b6f204d2e0d0a4461796f6e646f6e2c20417269616e68204a616b6520432e0d0a496275732c20517565656e6965204d616520432e0d0a49636f6e61732c204d656c6c204a6f686e0d0a4361c3b16574652c204a65742054696d6f7468792c20436f72646f76616e0d0a44616c6970652c2052656e7a20416e67656c6f20432e, '2025-06-27 09:37:29.000000', '5th gen list.txt');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `saved_job`
+--
+
+CREATE TABLE `saved_job` (
+  `saveId` int(255) NOT NULL,
+  `user_id` int(255) NOT NULL,
+  `job_id` int(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `saved_job`
+--
+
+INSERT INTO `saved_job` (`saveId`, `user_id`, `job_id`) VALUES
+(2, 1, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `seeker_profile`
+--
+
+CREATE TABLE `seeker_profile` (
+  `user_id` int(255) NOT NULL,
+  `seeker_id` int(255) NOT NULL,
+  `fullname` varchar(255) NOT NULL,
+  `contact_info` varchar(255) NOT NULL,
+  `location` varchar(255) NOT NULL,
+  `visibility` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `seeker_profile`
+--
+
+INSERT INTO `seeker_profile` (`user_id`, `seeker_id`, `fullname`, `contact_info`, `location`, `visibility`) VALUES
+(1, 1, 'Wenwen', '09912093870', 'Davao City', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `seeker_skills`
+--
+
+CREATE TABLE `seeker_skills` (
+  `seeker_id` int(255) NOT NULL,
+  `skill_name` varchar(255) NOT NULL,
+  `proficiency_level` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `seeker_skills`
+--
+
+INSERT INTO `seeker_skills` (`seeker_id`, `skill_name`, `proficiency_level`) VALUES
+(0, 'Coding', '1'),
+(0, 'HEHEHE', '1'),
+(1, 'UI designing', '2'),
+(1, 'Coding', '1');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `user_id` int(255) NOT NULL,
+  `username` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `role` varchar(255) NOT NULL,
+  `status` varchar(255) NOT NULL,
+  `createdAt` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`user_id`, `username`, `password`, `role`, `status`, `createdAt`) VALUES
+(1, 'WenDEVLIFE', '$2a$10$UwE/dndjGqvM.s9wvHBnr.tk3XrKYS7kSMz2bTPCA9syGpt4hdbEK', 'Job Seeker', 'Active', '2025-06-25T22:54:25.069748900'),
+(2, 'Employee123', '$2a$10$aqBCYPHh0bmWUqKajhJDbeUpyE/ISFyajJkZCOzud3p/I7hzY9JGa', 'Recruiter', 'Inactive', '2025-06-26T21:12:03.459556100'),
+(3, 'Test', '$2a$10$9PRUXeFgrxRrnZcGP1z.J.S69q3NQLqw.x5SFjKcL/tIpe8H2/Qny', 'Admin', 'Active', '2025-06-26T22:22:26.627593800'),
+(4, 'Test1', '$2a$10$ZKsgtST3By1V74zSI4DZmekbGxz.c/RaZXOEPfgebsUaiamb3Gq3W', 'Admin', 'Active', '2025-06-26T22:23:50.818543800'),
+(5, 'Testing', '$2a$10$mDlGZ5r9F357ScQ6SxFHwubcdldDRaZwhkV939JV5/xO6ME29hBgS', 'Admin', 'Active', '2025-06-26T22:25:09.506018600');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `alerts`
+--
+ALTER TABLE `alerts`
+  ADD PRIMARY KEY (`alert_id`);
+
+--
+-- Indexes for table `application`
+--
+ALTER TABLE `application`
+  ADD PRIMARY KEY (`application_id`);
+
+--
+-- Indexes for table `audit_logs`
+--
+ALTER TABLE `audit_logs`
+  ADD PRIMARY KEY (`log_id`);
+
+--
+-- Indexes for table `employee_profile`
+--
+ALTER TABLE `employee_profile`
+  ADD PRIMARY KEY (`employee_id`);
+
+--
+-- Indexes for table `jobs`
+--
+ALTER TABLE `jobs`
+  ADD PRIMARY KEY (`job_id`);
+
+--
+-- Indexes for table `resume`
+--
+ALTER TABLE `resume`
+  ADD PRIMARY KEY (`file_id`);
+
+--
+-- Indexes for table `saved_job`
+--
+ALTER TABLE `saved_job`
+  ADD PRIMARY KEY (`saveId`);
+
+--
+-- Indexes for table `seeker_profile`
+--
+ALTER TABLE `seeker_profile`
+  ADD PRIMARY KEY (`seeker_id`);
+
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`user_id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `alerts`
+--
+ALTER TABLE `alerts`
+  MODIFY `alert_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `application`
+--
+ALTER TABLE `application`
+  MODIFY `application_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `audit_logs`
+--
+ALTER TABLE `audit_logs`
+  MODIFY `log_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=161;
+
+--
+-- AUTO_INCREMENT for table `employee_profile`
+--
+ALTER TABLE `employee_profile`
+  MODIFY `employee_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `jobs`
+--
+ALTER TABLE `jobs`
+  MODIFY `job_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `resume`
+--
+ALTER TABLE `resume`
+  MODIFY `file_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `saved_job`
+--
+ALTER TABLE `saved_job`
+  MODIFY `saveId` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `seeker_profile`
+--
+ALTER TABLE `seeker_profile`
+  MODIFY `seeker_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `user_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
