@@ -382,6 +382,85 @@ public class JobService {
 	    }
 	    return false;
 	}
+	
+	// In JobService.java
+
+	public boolean saveJob(String jobId, int userId) {
+	    String checkQuery = "SELECT COUNT(*) FROM saved_job WHERE job_id = ? AND user_id = ?";
+	    String insertQuery = "INSERT INTO saved_job (job_id, user_id) VALUES (?, ?)";
+	    try (java.sql.Connection conn = MYSQL.getConnection()) {
+	        try (java.sql.PreparedStatement checkStmt = conn.prepareStatement(checkQuery)) {
+	            checkStmt.setString(1, jobId);
+	            checkStmt.setInt(2, userId);
+	            try (java.sql.ResultSet rs = checkStmt.executeQuery()) {
+	                if (rs.next() && rs.getInt(1) > 0) {
+	                    // Already saved
+	                    return false;
+	                }
+	            }
+	        }
+	        try (java.sql.PreparedStatement insertStmt = conn.prepareStatement(insertQuery)) {
+	            insertStmt.setString(1, jobId);
+	            insertStmt.setInt(2, userId);
+	            int rowsAffected = insertStmt.executeUpdate();
+	            return rowsAffected > 0;
+	        }
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+	    return false;
+	}
+
+
+	public List<JobModel> getSavedJobs(int userId) {
+	    List<JobModel> jobs = new ArrayList<>();
+	    String query = "SELECT j.*, e.company_name FROM saved_job s " +
+	                   "JOIN jobs j ON s.job_id = j.job_id " +
+	                   "JOIN employee_profile e ON j.employee_id = e.employee_id " +
+	                   "WHERE s.user_id = ?";
+	    try (java.sql.Connection conn = MYSQL.getConnection();
+	         java.sql.PreparedStatement pstmt = conn.prepareStatement(query)) {
+	        pstmt.setInt(1, userId);
+	        try (java.sql.ResultSet rs = pstmt.executeQuery()) {
+	            while (rs.next()) {
+	                JobModel job = new JobModel(
+	                    rs.getString("job_id"),
+	                    rs.getString("job_title"),
+	                    rs.getString("company_name"),
+	                    rs.getString("description"),
+	                    rs.getString("location"),
+	                    rs.getString("requirements"),
+	                    rs.getString("job_type"),
+	                    rs.getString("salary_min"),
+	                    rs.getString("salary_max"),
+	                    rs.getString("posted_at"),
+	                    rs.getString("expires_at"),
+	                    rs.getString("status")
+	                );
+	                jobs.add(job);
+	            }
+	        }
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+	    return jobs;
+	}
+
+
+
+	public void deleteSavedJob(String jobId, int userId) {
+		String query = "DELETE FROM saved_job WHERE job_id = ? AND user_id = ?";
+		try (java.sql.Connection conn = MYSQL.getConnection();
+		     java.sql.PreparedStatement pstmt = conn.prepareStatement(query)) {
+			pstmt.setString(1, jobId);
+			pstmt.setInt(2, userId);
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+
 
 
 	

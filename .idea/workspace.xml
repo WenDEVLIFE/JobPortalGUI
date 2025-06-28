@@ -4,7 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="039a69c7-22f7-43ff-9108-b213d023ee06" name="Changes" comment="Added a function where it will load the alerts" />
+    <list default="true" id="039a69c7-22f7-43ff-9108-b213d023ee06" name="Changes" comment="Added a function where it will load the alerts">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/database/JobService.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/database/JobService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/database/ViewJobDialog.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ui/JobSeekerUI$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/JobSeekerUI$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/database/JobService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/JobService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/database/ViewJobDialog.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/database/savepw.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/savepw.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/JobSeekerUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/JobSeekerUI.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -49,14 +58,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1750820923469</updated>
-    </task>
-    <task id="LOCAL-00012" summary="Done designing the My Application on JobSeekerUI 👌">
-      <option name="closed" value="true" />
-      <created>1750905035528</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1750905035528</updated>
     </task>
     <task id="LOCAL-00013" summary="Done designing the My Profile in the user 👌">
       <option name="closed" value="true" />
@@ -442,7 +443,15 @@
       <option name="project" value="LOCAL" />
       <updated>1751072485025</updated>
     </task>
-    <option name="localTasksCounter" value="61" />
+    <task id="LOCAL-00061" summary="Added a function where it will load the alerts">
+      <option name="closed" value="true" />
+      <created>1751075263680</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1751075263680</updated>
+    </task>
+    <option name="localTasksCounter" value="62" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">

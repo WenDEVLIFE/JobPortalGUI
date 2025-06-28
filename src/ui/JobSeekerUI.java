@@ -14,9 +14,9 @@ import database.ApplicationService;
 import database.JobService;
 import database.ProfileService;
 import database.UpdatePasswordDialog;
-import database.ViewJobDialog;
 import functions.AddSkillDialog;
 import functions.UpdateProfileDialog;
+import functions.ViewJobDialog;
 import functions.ViewResumeDialog;
 import model.AlertModel;
 import model.ApplicationModel;
@@ -238,6 +238,10 @@ public class JobSeekerUI extends JFrame {
 				}
 				   ViewJobDialog dialog = new ViewJobDialog(JobSeekerUI.this, jobModelInstance, seekerId, userId);
 			        dialog.setVisible(true);
+			        if (dialog.isSaved()) {
+			            JOptionPane.showMessageDialog(JobSeekerUI.this, "Job saved successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
+			            
+			        }
 			}
 		});
 		btnViewJob.setForeground(Color.WHITE);
@@ -267,6 +271,28 @@ public class JobSeekerUI extends JFrame {
 		panel_4.add(saveJobTable);
 		
 		JButton btnViewJob_1 = new JButton("View Job");
+		btnViewJob_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int selectedRow = saveJobTable.getSelectedRow();
+				if (selectedRow == -1) {
+					JOptionPane.showMessageDialog(JobSeekerUI.this, "Please select a saved job to view.", "Error", JOptionPane.ERROR_MESSAGE);
+					return;
+				}
+				
+				JobModel jobModelInstance = savedJobList.get(selectedRow);
+				if (jobModelInstance == null) {
+					JOptionPane.showMessageDialog(JobSeekerUI.this, "Selected job is not available.", "Error", JOptionPane.ERROR_MESSAGE);
+					return;
+				}
+				
+				ViewJobDialog dialog = new ViewJobDialog(JobSeekerUI.this, jobModelInstance, seekerId, userId);
+				dialog.setVisible(true);
+				if (dialog.isSaved()) {
+					JOptionPane.showMessageDialog(JobSeekerUI.this, "Job saved successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
+					LoadSavedJobData();
+				}
+			}
+		});
 		btnViewJob_1.setForeground(Color.WHITE);
 		btnViewJob_1.setFont(new Font("Verdana", Font.BOLD, 11));
 		btnViewJob_1.setBackground(new Color(195, 143, 255));
@@ -274,6 +300,31 @@ public class JobSeekerUI extends JFrame {
 		panel_4.add(btnViewJob_1);
 		
 		JButton btnViewJob_1_1 = new JButton("Delete");
+		btnViewJob_1_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				int selectedRow = saveJobTable.getSelectedRow();
+				
+				if (selectedRow == -1) {
+					JOptionPane.showMessageDialog(JobSeekerUI.this, "Please select a saved job to delete.", "Error", JOptionPane.ERROR_MESSAGE);
+					return;
+				}
+				
+				
+				JobModel jobModelInstance = savedJobList.get(selectedRow);
+				if (jobModelInstance == null) {
+					JOptionPane.showMessageDialog(JobSeekerUI.this, "Selected job is not available.", "Error", JOptionPane.ERROR_MESSAGE);
+					return;
+				}
+				
+				int confirmation = JOptionPane.showConfirmDialog(JobSeekerUI.this, "Are you sure you want to delete this saved job?", "Confirm Deletion", JOptionPane.YES_NO_OPTION);
+				if (confirmation == JOptionPane.YES_OPTION) {
+					JobService.getInstance().deleteSavedJob(jobModelInstance.getJobId(), userId);
+					JOptionPane.showMessageDialog(JobSeekerUI.this, "Saved job deleted successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
+					LoadSavedJobData(); // Refresh the saved job data
+				}
+			}
+		});
 		btnViewJob_1_1.setForeground(Color.WHITE);
 		btnViewJob_1_1.setFont(new Font("Verdana", Font.BOLD, 11));
 		btnViewJob_1_1.setBackground(new Color(195, 143, 255));
@@ -509,7 +560,7 @@ public class JobSeekerUI extends JFrame {
 		
 		LoadJobData();
 		LoadSavedJobData();
-		
+		LoadMyApplicationData();
 		
 		// This is for the search functionality
 		TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<>(tableModel);
@@ -575,13 +626,12 @@ public class JobSeekerUI extends JFrame {
 	}
 	
 	// This will load the saved job
-	void LoadSavedJobData() {
+	public void LoadSavedJobData() {
 		savedJobList.clear();
 		
-		DefaultTableModel savedTableModel = (DefaultTableModel) saveJobTable.getModel();
 		savedTableModel.setRowCount(0); // Clear existing rows in the table model
 		
-		savedJobList.add(new JobModel("1", "Software Engineer", "Tech Company", "Develop software applications", "Remote", "Java, Spring Boot", "Full-time", "50000", "70000", "2023-10-01", "2024-01-01", "Open"));
+	  savedJobList = JobService.getInstance().getSavedJobs(userId);
 		
 		for (JobModel job : savedJobList) {
 			Object[] rowData = {

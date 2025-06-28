@@ -58,6 +58,7 @@ public class LoginService {
                         jobSeekerUI.setData(userIdInt);
                         jobSeekerUI.LoadProfile();
                         jobSeekerUI.LoadMyApplicationData();
+                        jobSeekerUI.LoadSavedJobData();
                     } else if (role.equalsIgnoreCase("employer") || role.equalsIgnoreCase("recruiter")) {
                         login.dispose();
                         EmployeeUI employerUI = new EmployeeUI();
