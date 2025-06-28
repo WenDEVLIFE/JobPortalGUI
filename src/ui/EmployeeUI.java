@@ -17,12 +17,14 @@ import javax.swing.JTable;
 import javax.swing.border.LineBorder;
 import javax.swing.table.DefaultTableModel;
 
+import database.AlertService;
 import database.JobService;
 import database.ProfileService;
 import database.UpdatePasswordDialog;
 import functions.AddCreateJobDialog;
 import functions.UpdateEmployeeProfileDialog;
 import functions.UpdateJobDialog;
+import model.AlertModel;
 import model.JobModel;
 
 import javax.swing.JButton;
@@ -49,8 +51,9 @@ public class EmployeeUI extends JFrame {
 	private int userId, employeeId;
 	
 
-	DefaultTableModel jobTableModel;
+	DefaultTableModel jobTableModel, alertTableModel, applicantTableModel;
 	List<JobModel> jobList = new ArrayList<>();
+	List <AlertModel> alertList = new ArrayList<>();
 
 	/**
 	 * Launch the application.
@@ -508,6 +511,22 @@ public class EmployeeUI extends JFrame {
 	public void setData(int userId) {
 		this.userId = userId;
 		System.out.println("Employee ID set to: " + userId);
+	}
+	
+	void LoadAlertData() {
+		alertList.clear();
+		
+		alertTableModel.setRowCount(0); // Clear existing rows in the table model
+		
+		alertList = AlertService.getInstance().getAlertsByUserId(userId);
+		for (AlertModel alert : alertList) {
+			Object[] rowData = {
+				alert.getAlertId(),
+				alert.getDescription(),
+				alert.getTimestamp()
+			};
+			alertTableModel.addRow(rowData);
+		}
 	}
 	
 	// This will load the job

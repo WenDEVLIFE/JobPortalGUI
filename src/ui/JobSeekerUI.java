@@ -9,6 +9,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 
+import database.AlertService;
 import database.ApplicationService;
 import database.JobService;
 import database.ProfileService;
@@ -300,6 +301,30 @@ public class JobSeekerUI extends JFrame {
 		panel_2.add(myApplicationTable);
 		
 		JButton btnViewJob_1_1_1 = new JButton("Cancel Application");
+		btnViewJob_1_1_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				int selectedRow = myApplicationTable.getSelectedRow();
+				
+				if (selectedRow == -1) {
+					JOptionPane.showMessageDialog(JobSeekerUI.this, "Please select an application to cancel.", "Error", JOptionPane.ERROR_MESSAGE);
+					return;
+				}
+				
+				ApplicationModel applicationModelInstance = myApplicationList.get(selectedRow);
+				if (applicationModelInstance == null) {
+					JOptionPane.showMessageDialog(JobSeekerUI.this, "Selected application is not available.", "Error", JOptionPane.ERROR_MESSAGE);
+					return;
+				}
+				
+				int confirmation = JOptionPane.showConfirmDialog(JobSeekerUI.this, "Are you sure you want to cancel this application?", "Confirm Cancellation", JOptionPane.YES_NO_OPTION);
+				if (confirmation == JOptionPane.YES_OPTION) {
+					ApplicationService.getInstance().cancelApplication(applicationModelInstance.getApplicationId());
+					JOptionPane.showMessageDialog(JobSeekerUI.this, "Application cancelled successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
+					LoadMyApplicationData(); // Refresh the application data
+				}
+			}
+		});
 		btnViewJob_1_1_1.setForeground(Color.WHITE);
 		btnViewJob_1_1_1.setFont(new Font("Verdana", Font.BOLD, 11));
 		btnViewJob_1_1_1.setBackground(new Color(195, 143, 255));
@@ -576,8 +601,7 @@ public class JobSeekerUI extends JFrame {
 		
 		alertTableModel.setRowCount(0); // Clear existing rows in the table model
 		
-		alertList.add(new AlertModel("1", "New job posted: Software Engineer at Tech Company", "2023-10-01 10:00:00"));
-		
+		alertList = AlertService.getInstance().getAlertsByUserId(seekerId);
 		for (AlertModel alert : alertList) {
 			Object[] rowData = {
 				alert.getAlertId(),
