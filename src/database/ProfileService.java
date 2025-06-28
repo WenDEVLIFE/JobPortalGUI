@@ -19,6 +19,7 @@ public class ProfileService {
         return instance;
     }
 
+    // This method updates or inserts employee data into the employee_profile table.
     public boolean updateEmployeeData(java.util.Map<String, Object> employeeData) {
         String userId = (String) employeeData.get("employeeId");
         String employeeName = (String) employeeData.get("employeeName");
@@ -62,26 +63,32 @@ public class ProfileService {
         }
     }
 
+    // This method retrieves the employee name of an employee profile based on the user ID.
     public String getEmployeeName(String userId) {
         return getFieldByUserId(userId, "employee_name");
     }
 
+    // This method retrieves the company name of an employee profile based on the user ID.
     public String getCompanyName(String userId) {
         return getFieldByUserId(userId, "company_name");
     }
 
+    // This method retrieves the description of an employee profile based on the user ID.
     public String getDescription(String userId) {
         return getFieldByUserId(userId, "description");
     }
 
+    // This method retrieves the industry of an employee profile based on the user ID.
     public String getIndustry(String userId) {
         return getFieldByUserId(userId, "industry");
     }
 
+    // This method retrieves the location of an employee profile based on the user ID.
     public String getLocation(String userId) {
         return getFieldByUserId(userId, "location");
     }
 
+    // This method retrieves a specific field from the employee profile based on the user ID.
     private String getFieldByUserId(String userId, String fieldName) {
         String sql = "SELECT " + fieldName + " FROM employee_profile WHERE user_id = ?";
         try (Connection conn = MYSQL.getConnection();
@@ -97,6 +104,7 @@ public class ProfileService {
         return null;
     }
     
+    // This method updates or inserts profile data for a job seeker.
     public boolean updateProfileData(Map<String, Object> userData) {
         int userId = (int) userData.get("userId");
         String fullName = (String) userData.get("fullName");
@@ -139,18 +147,23 @@ public class ProfileService {
         }
     }
     
+    
+    // This method retrieves the full name of a profile based on the user ID.
     public String getFullName(int userId) {
 		return getProfileFieldByUserId(userId, "fullname");
 	}
     
+    // This method retrieves the contact information of a profile based on the user ID.
     public String getContactInfo(int userId) {
 		return getProfileFieldByUserId(userId, "contact_info");
 	}
 
+    // This method retrieves the location of a profile based on the user ID.
 	public String getLocation(int userId) {
 		return getProfileFieldByUserId(userId, "location");
 	}
 
+	// This method retrieves the visibility status of a profile based on the user ID.
 	public boolean isProfileVisible(int userId) {
 		String sql = "SELECT visibility FROM seeker_profile WHERE user_id = ?";
 		try (Connection conn = MYSQL.getConnection();
@@ -196,6 +209,7 @@ public class ProfileService {
 	return -1; // Return -1 if not found
 	}
 
+	// This method retrieves the employee ID based on the user ID.
 	public int getEmployeeId(String userId) {
 	    String sql = "SELECT employee_id FROM employee_profile WHERE user_id = ?";
 	    try (Connection conn = MYSQL.getConnection();
@@ -211,6 +225,7 @@ public class ProfileService {
 	    return -1; // Return -1 if not found
 	}
 
+	// This method retrieves the user ID based on the seeker ID.
 	public String getUserId(int seekerId) {
 		 	String sql = "SELECT user_id FROM seeker_profile WHERE user_id = ?";
 	try (Connection conn = MYSQL.getConnection();
