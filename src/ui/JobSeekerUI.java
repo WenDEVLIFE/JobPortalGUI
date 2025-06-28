@@ -62,6 +62,10 @@ public class JobSeekerUI extends JFrame {
 	private JLabel FullnameText;
 	private JLabel LocationText;
 	private JLabel ContactInfoText;
+	private JLabel ApplicationText;
+	private JLabel PendingApplication;
+	private JLabel saveJobText;
+	private JLabel approvedText;
 	private int userId, seekerId;
 	
 
@@ -122,7 +126,7 @@ public class JobSeekerUI extends JFrame {
 		lblWelcomeBack_1_1.setBounds(46, 39, 275, 38);
 		panel_3.add(lblWelcomeBack_1_1);
 		
-		JLabel ApplicationText = new JLabel("0");
+		ApplicationText = new JLabel("0");
 		ApplicationText.setForeground(Color.WHITE);
 		ApplicationText.setFont(new Font("Verdana", Font.BOLD, 20));
 		ApplicationText.setBounds(139, 89, 130, 38);
@@ -140,7 +144,7 @@ public class JobSeekerUI extends JFrame {
 		lblWelcomeBack_1_1_2.setBounds(46, 39, 275, 38);
 		panel_3_1.add(lblWelcomeBack_1_1_2);
 		
-		JLabel PendingApplication = new JLabel("0");
+		PendingApplication = new JLabel("0");
 		PendingApplication.setForeground(Color.WHITE);
 		PendingApplication.setFont(new Font("Verdana", Font.BOLD, 20));
 		PendingApplication.setBounds(133, 88, 130, 38);
@@ -158,7 +162,7 @@ public class JobSeekerUI extends JFrame {
 		lblWelcomeBack_1_1_2_1.setBounds(99, 40, 140, 38);
 		panel_3_1_1.add(lblWelcomeBack_1_1_2_1);
 		
-		JLabel saveJobText = new JLabel("0");
+		saveJobText = new JLabel("0");
 		saveJobText.setForeground(Color.WHITE);
 		saveJobText.setFont(new Font("Verdana", Font.BOLD, 20));
 		saveJobText.setBounds(159, 89, 130, 38);
@@ -176,7 +180,7 @@ public class JobSeekerUI extends JFrame {
 		lblWelcomeBack_1_1_3.setBounds(46, 39, 275, 38);
 		panel_3_2.add(lblWelcomeBack_1_1_3);
 		
-		JLabel approvedText = new JLabel("0");
+		approvedText = new JLabel("0");
 		approvedText.setForeground(Color.WHITE);
 		approvedText.setFont(new Font("Verdana", Font.BOLD, 20));
 		approvedText.setBounds(139, 89, 130, 38);
@@ -222,7 +226,8 @@ public class JobSeekerUI extends JFrame {
 			        dialog.setVisible(true);
 			        if (dialog.isSaved()) {
 			            JOptionPane.showMessageDialog(JobSeekerUI.this, "Job saved successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
-			            
+			            LoadDashboard();
+			            LoadSavedJobData(); // Refresh the saved job data
 			        }
 			}
 		});
@@ -272,6 +277,7 @@ public class JobSeekerUI extends JFrame {
 				if (dialog.isSaved()) {
 					JOptionPane.showMessageDialog(JobSeekerUI.this, "Job saved successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
 					LoadSavedJobData();
+					 LoadDashboard();
 				}
 			}
 		});
@@ -304,6 +310,7 @@ public class JobSeekerUI extends JFrame {
 					JobService.getInstance().deleteSavedJob(jobModelInstance.getJobId(), userId);
 					JOptionPane.showMessageDialog(JobSeekerUI.this, "Saved job deleted successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
 					LoadSavedJobData(); // Refresh the saved job data
+					 LoadDashboard();
 				}
 			}
 		});
@@ -355,6 +362,7 @@ public class JobSeekerUI extends JFrame {
 					ApplicationService.getInstance().cancelApplication(applicationModelInstance.getApplicationId());
 					JOptionPane.showMessageDialog(JobSeekerUI.this, "Application cancelled successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
 					LoadMyApplicationData(); // Refresh the application data
+					 LoadDashboard();
 				}
 			}
 		});
@@ -690,6 +698,15 @@ public class JobSeekerUI extends JFrame {
 	}
 	
 	public void LoadDashboard() {
+		
+		int totalApplications = ApplicationService.getInstance().getTotalApplicationsByUserId(userId);
+		int pendingApplications = ApplicationService.getInstance().getPendingApplicationsByUserId(userId);
+		int approvedApplications = ApplicationService.getInstance().getApprovedApplicationsByUserId(userId);
+		int savedJobs = JobService.getInstance().getSavedJobsCount(userId);
+		ApplicationText.setText(String.valueOf(totalApplications));
+		PendingApplication.setText(String.valueOf(pendingApplications));
+		approvedText.setText(String.valueOf(approvedApplications));
+		saveJobText.setText(String.valueOf(savedJobs));
 		
 	}
 }

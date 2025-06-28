@@ -108,6 +108,54 @@ public class ApplicationService {
 	    return applications;
 	}
 
+	public int getTotalApplicationsByUserId(int userId) {
+			String query = "SELECT COUNT(*) FROM application WHERE seeker_id = ?";
+	try (Connection conn = MYSQL.getConnection();
+		 PreparedStatement pstmt = conn.prepareStatement(query)) {
+		pstmt.setInt(1, userId);
+		ResultSet rs = pstmt.executeQuery();
+		if (rs.next()) {
+			return rs.getInt(1);
+		}
+	} catch (SQLException e) {
+		e.printStackTrace();
+	}
+	return 0;
+	}
+
+	public int getPendingApplicationsByUserId(int userId) {
+		
+		String query = "SELECT COUNT(*) FROM application WHERE seeker_id = ? AND status = 'Pending'";
+		try (Connection conn = MYSQL.getConnection();
+			 PreparedStatement pstmt = conn.prepareStatement(query)) {
+			pstmt.setInt(1, userId);
+			ResultSet rs = pstmt.executeQuery();
+			if (rs.next()) {
+				return rs.getInt(1);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return 0;
+	}
+
+	public int getApprovedApplicationsByUserId(int userId) {
+		String query = "SELECT COUNT(*) FROM application WHERE seeker_id = ? AND status = 'Approved'";
+		try (Connection conn = MYSQL.getConnection();
+			 PreparedStatement pstmt = conn.prepareStatement(query)) {
+			pstmt.setInt(1, userId);
+			ResultSet rs = pstmt.executeQuery();
+			if (rs.next()) {
+				return rs.getInt(1);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return 0;
+	}
+
 
 
 }

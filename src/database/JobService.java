@@ -569,4 +569,21 @@ public class JobService {
 	}
 
 
+	public int getSavedJobsCount(int userId) {
+		String query = "SELECT COUNT(*) FROM saved_job WHERE user_id = ?";
+		try (java.sql.Connection conn = MYSQL.getConnection();
+		     java.sql.PreparedStatement pstmt = conn.prepareStatement(query)) {
+			pstmt.setInt(1, userId);
+			try (java.sql.ResultSet rs = pstmt.executeQuery()) {
+				if (rs.next()) {
+					return rs.getInt(1);
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return 0;
+	}
+
+
 }
