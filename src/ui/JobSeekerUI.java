@@ -33,6 +33,7 @@ import java.awt.Color;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 import javax.swing.RowFilter;
+import javax.swing.Timer;
 import javax.swing.JTable;
 import javax.swing.border.LineBorder;
 import javax.swing.event.DocumentEvent;
@@ -592,6 +593,10 @@ public class JobSeekerUI extends JFrame {
 		LoadAlertData();
 	 
 
+		Timer notificationTimer = new Timer(5000, e -> {
+		    AlertService.getInstance().notifyUserIfNeeded(userId);
+		});
+		notificationTimer.start();
 	}
 	
 	// This will load the job
@@ -636,7 +641,7 @@ public class JobSeekerUI extends JFrame {
 		}
 	}
 	
-	void LoadAlertData() {
+	public void LoadAlertData() {
 		alertList.clear();
 		
 		alertTableModel.setRowCount(0); // Clear existing rows in the table model

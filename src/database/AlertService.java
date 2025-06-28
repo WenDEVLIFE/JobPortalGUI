@@ -41,6 +41,45 @@ public class AlertService {
         }
     }
     
+ // Java
+    public boolean insertAlertForAllJobSeekers(String description, String jobId) {
+        String getJobNameQuery = "SELECT job_title FROM jobs WHERE job_id = ?";
+        String getJobSeekerIdsQuery = "SELECT user_id FROM users WHERE role = 'Job Seeker'";
+        String insertAlertQuery = "INSERT INTO alerts (description, timestamp, isNotify, user_id) VALUES (?, ?, ?, ?)";
+        try (Connection conn = MYSQL.getConnection();
+             PreparedStatement jobStmt = conn.prepareStatement(getJobNameQuery);
+             PreparedStatement seekerStmt = conn.prepareStatement(getJobSeekerIdsQuery);
+             PreparedStatement insertStmt = conn.prepareStatement(insertAlertQuery)) {
+
+            // Get job name
+            jobStmt.setString(1, jobId);
+            ResultSet jobRs = jobStmt.executeQuery();
+            String jobTitle = "";
+            if (jobRs.next()) {
+                jobTitle = jobRs.getString("job_title");
+            }
+
+            // Get all job seeker user_ids
+            ResultSet seekerRs = seekerStmt.executeQuery();
+            int count = 0;
+            while (seekerRs.next()) {
+                int userId = seekerRs.getInt("user_id");
+                String alertDesc = description + " for job: " + jobTitle;
+                insertStmt.setString(1, alertDesc);
+                insertStmt.setTimestamp(2, new Timestamp(System.currentTimeMillis()));
+                insertStmt.setBoolean(3, false);
+                insertStmt.setInt(4, userId);
+                insertStmt.executeUpdate();
+                count++;
+            }
+            return count > 0;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    
     public List<AlertModel> getAlertsByUserId(int userId) {
 		List<AlertModel> alerts = new ArrayList<>();
 		String query = "SELECT * FROM alerts WHERE user_id = ? ORDER BY timestamp DESC";

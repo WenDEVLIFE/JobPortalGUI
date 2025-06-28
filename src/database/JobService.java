@@ -296,6 +296,12 @@ public class JobService {
 	            if (rowsAffected > 0) {
 	                AuditLogService.getInstance().InsertAuditLog(String.valueOf(adminID), "Job Approval", "Job ID: " + jobId + " approved.");
 	                AlertService.getInstance().insertAlert("Your job posting (ID: " + jobId + ") has been approved.", userId);
+	                
+	                boolean isAlertInserted = AlertService.getInstance().insertAlertForAllJobSeekers("New job approved: " + jobId, jobId);
+	                if (!isAlertInserted) {
+	                    System.err.println("Failed to insert alert for all job seekers.");
+	                }
+	                System.out.println("Job approved and alert sent to user: " + userId);
 	                return true;
 	            }
 	        }

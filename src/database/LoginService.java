@@ -60,6 +60,7 @@ public class LoginService {
                         jobSeekerUI.LoadMyApplicationData();
                         jobSeekerUI.LoadSavedJobData();
                         jobSeekerUI.LoadDashboard();
+                        jobSeekerUI.LoadAlertData();
                     } else if (role.equalsIgnoreCase("employer") || role.equalsIgnoreCase("recruiter")) {
                         login.dispose();
                         EmployeeUI employerUI = new EmployeeUI();
@@ -69,6 +70,7 @@ public class LoginService {
                         employerUI.LoadJobData();
                         employerUI.LoadApplicationData();
                         employerUI.LoadDashboard();
+                        employerUI.LoadAlertData();
                     
                          
                   
