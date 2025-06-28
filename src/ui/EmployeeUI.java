@@ -13,6 +13,7 @@ import javax.swing.JOptionPane;
 import java.awt.Font;
 import java.awt.Color;
 import javax.swing.JTextField;
+import javax.swing.Timer;
 import javax.swing.JTable;
 import javax.swing.border.LineBorder;
 import javax.swing.table.DefaultTableModel;
@@ -29,6 +30,7 @@ import functions.ViewApplicantDialog;
 import model.AlertModel;
 import model.ApplicationModel;
 import model.JobModel;
+
 
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -548,15 +550,27 @@ public class EmployeeUI extends JFrame {
 	 LoadJobData();
 	 LoadEmployeeProfile();
 	 LoadJobData();
+	 LoadAlertData();
+	 
+		Timer notificationTimer = new Timer(5000, e -> {
+		    AlertService.getInstance().notifyUserIfNeeded(userId);
+		});
+		notificationTimer.start();
 	}
 	
 	
 	public void setData(int userId) {
 		this.userId = userId;
 		System.out.println("Employee ID set to: " + userId);
+		
+		 // Start notification timer after userId is set
+	    Timer notificationTimer = new Timer(5000, e -> {
+	        AlertService.getInstance().notifyUserIfNeeded(this.userId);
+	    });
+	    notificationTimer.start();
 	}
 	
-	void LoadAlertData() {
+	public void LoadAlertData() {
 		alertList.clear();
 		
 		alertTableModel.setRowCount(0); // Clear existing rows in the table model
@@ -632,6 +646,7 @@ public class EmployeeUI extends JFrame {
 		    industryText.setText(industry != null ? industry : "N/A");
 		    locationText.setText(location != null ? location : "N/A");
 		}
+		
 		
 		
 		public void LoadDashboard() {

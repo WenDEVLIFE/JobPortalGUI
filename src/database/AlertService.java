@@ -7,6 +7,8 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.JOptionPane;
+
 import model.AlertModel;
 
 public class AlertService {
@@ -71,5 +73,29 @@ public class AlertService {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public void notifyUserIfNeeded(int userId) {
+	    String selectQuery = "SELECT alert_id, description FROM alerts WHERE user_id = ? AND isNotify = false";
+	    String updateQuery = "UPDATE alerts SET isNotify = true WHERE alert_id = ?";
+	    try (Connection conn = MYSQL.getConnection();
+	         PreparedStatement selectStmt = conn.prepareStatement(selectQuery);
+	         PreparedStatement updateStmt = conn.prepareStatement(updateQuery)) {
+	        selectStmt.setInt(1, userId);
+	        ResultSet rs = selectStmt.executeQuery();
+	        while (rs.next()) {
+	            String alertId = rs.getString("alert_id");
+	            String description = rs.getString("description");
+	            // Show alert in a dialog
+	            JOptionPane.showMessageDialog(null, description, "Notification", JOptionPane.INFORMATION_MESSAGE);
+	            // Mark as notified
+	            updateStmt.setString(1, alertId);
+	            updateStmt.executeUpdate();
+	        }
+	   
+	     
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
 	}
 }
