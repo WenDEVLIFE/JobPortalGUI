@@ -50,6 +50,11 @@ public class EmployeeUI extends JFrame {
 	 private JLabel industryText;
 	 private JTextArea descriptionArea;
 	private JTable table_1;
+	private JLabel totalJobtext;
+	private JLabel totalApprovedJob;
+	private JLabel TotalJobPending;
+	private JLabel totalJobOpenText;
+	private JLabel TotalJobClosed;
 	private int userId, employeeId;
 	
 
@@ -109,17 +114,18 @@ public class EmployeeUI extends JFrame {
 		panel_3.setBounds(41, 79, 331, 172);
 		panel.add(panel_3);
 		
+	
 		JLabel lblWelcomeBack_1_1 = new JLabel("Total Job Seeker Applied");
 		lblWelcomeBack_1_1.setForeground(Color.WHITE);
 		lblWelcomeBack_1_1.setFont(new Font("Verdana", Font.BOLD, 20));
 		lblWelcomeBack_1_1.setBounds(20, 39, 311, 38);
 		panel_3.add(lblWelcomeBack_1_1);
 		
-		JLabel lblWelcomeBack_1_1_1 = new JLabel("0");
-		lblWelcomeBack_1_1_1.setForeground(Color.WHITE);
-		lblWelcomeBack_1_1_1.setFont(new Font("Verdana", Font.BOLD, 20));
-		lblWelcomeBack_1_1_1.setBounds(139, 89, 130, 38);
-		panel_3.add(lblWelcomeBack_1_1_1);
+		totalJobtext = new JLabel("0");
+		totalJobtext.setForeground(Color.WHITE);
+		totalJobtext.setFont(new Font("Verdana", Font.BOLD, 20));
+		totalJobtext.setBounds(139, 89, 130, 38);
+		panel_3.add(totalJobtext);
 		
 		JPanel panel_3_1 = new JPanel();
 		panel_3_1.setLayout(null);
@@ -133,11 +139,11 @@ public class EmployeeUI extends JFrame {
 		lblWelcomeBack_1_1_2.setBounds(54, 40, 241, 38);
 		panel_3_1.add(lblWelcomeBack_1_1_2);
 		
-		JLabel lblWelcomeBack_1_1_1_1 = new JLabel("0");
-		lblWelcomeBack_1_1_1_1.setForeground(Color.WHITE);
-		lblWelcomeBack_1_1_1_1.setFont(new Font("Verdana", Font.BOLD, 20));
-		lblWelcomeBack_1_1_1_1.setBounds(139, 89, 130, 38);
-		panel_3_1.add(lblWelcomeBack_1_1_1_1);
+		totalApprovedJob = new JLabel("0");
+		totalApprovedJob.setForeground(Color.WHITE);
+		totalApprovedJob.setFont(new Font("Verdana", Font.BOLD, 20));
+		totalApprovedJob.setBounds(139, 89, 130, 38);
+		panel_3_1.add(totalApprovedJob);
 		
 		JPanel panel_3_2_1 = new JPanel();
 		panel_3_2_1.setLayout(null);
@@ -151,11 +157,11 @@ public class EmployeeUI extends JFrame {
 		lblWelcomeBack_1_1_3_1.setBounds(63, 40, 206, 38);
 		panel_3_2_1.add(lblWelcomeBack_1_1_3_1);
 		
-		JLabel lblWelcomeBack_1_1_1_2_1 = new JLabel("0");
-		lblWelcomeBack_1_1_1_2_1.setForeground(Color.WHITE);
-		lblWelcomeBack_1_1_1_2_1.setFont(new Font("Verdana", Font.BOLD, 20));
-		lblWelcomeBack_1_1_1_2_1.setBounds(139, 89, 130, 38);
-		panel_3_2_1.add(lblWelcomeBack_1_1_1_2_1);
+		TotalJobPending = new JLabel("0");
+		TotalJobPending.setForeground(Color.WHITE);
+		TotalJobPending.setFont(new Font("Verdana", Font.BOLD, 20));
+		TotalJobPending.setBounds(139, 89, 130, 38);
+		panel_3_2_1.add(TotalJobPending);
 		
 		JPanel panel_3_2_1_1 = new JPanel();
 		panel_3_2_1_1.setLayout(null);
@@ -169,11 +175,11 @@ public class EmployeeUI extends JFrame {
 		lblWelcomeBack_1_1_3_1_1.setBounds(63, 40, 206, 38);
 		panel_3_2_1_1.add(lblWelcomeBack_1_1_3_1_1);
 		
-		JLabel lblWelcomeBack_1_1_1_2_1_1 = new JLabel("0");
-		lblWelcomeBack_1_1_1_2_1_1.setForeground(Color.WHITE);
-		lblWelcomeBack_1_1_1_2_1_1.setFont(new Font("Verdana", Font.BOLD, 20));
-		lblWelcomeBack_1_1_1_2_1_1.setBounds(139, 89, 130, 38);
-		panel_3_2_1_1.add(lblWelcomeBack_1_1_1_2_1_1);
+		totalJobOpenText = new JLabel("0");
+		totalJobOpenText.setForeground(Color.WHITE);
+		totalJobOpenText.setFont(new Font("Verdana", Font.BOLD, 20));
+		totalJobOpenText.setBounds(139, 89, 130, 38);
+		panel_3_2_1_1.add(totalJobOpenText);
 		
 		JPanel panel_3_2_1_1_1 = new JPanel();
 		panel_3_2_1_1_1.setLayout(null);
@@ -187,11 +193,11 @@ public class EmployeeUI extends JFrame {
 		lblWelcomeBack_1_1_3_1_1_1.setBounds(63, 40, 206, 38);
 		panel_3_2_1_1_1.add(lblWelcomeBack_1_1_3_1_1_1);
 		
-		JLabel lblWelcomeBack_1_1_1_2_1_1_1 = new JLabel("0");
-		lblWelcomeBack_1_1_1_2_1_1_1.setForeground(Color.WHITE);
-		lblWelcomeBack_1_1_1_2_1_1_1.setFont(new Font("Verdana", Font.BOLD, 20));
-		lblWelcomeBack_1_1_1_2_1_1_1.setBounds(139, 89, 130, 38);
-		panel_3_2_1_1_1.add(lblWelcomeBack_1_1_1_2_1_1_1);
+		TotalJobClosed = new JLabel("0");
+		TotalJobClosed.setForeground(Color.WHITE);
+		TotalJobClosed.setFont(new Font("Verdana", Font.BOLD, 20));
+		TotalJobClosed.setBounds(139, 89, 130, 38);
+		panel_3_2_1_1_1.add(TotalJobClosed);
 		
 		JPanel panel_2 = new JPanel();
 		tabbedPane.addTab("Jobs", null, panel_2, null);
@@ -600,6 +606,25 @@ public class EmployeeUI extends JFrame {
 		    locationText.setText(location != null ? location : "N/A");
 		}
 		
+		
+		public void LoadDashboard() {
+			
+			int totalJobsCreatedByEmployee = JobService.getInstance().getTotalJobsCreatedByEmployee(employeeId);
+			int totalJobsApproved = JobService.getInstance().getTotalJobsApprovedByEmployee(employeeId);
+			int totalJobsPending = JobService.getInstance().getTotalJobsPendingByEmployee(employeeId);
+			int totalJobsOpen = JobService.getInstance().getTotalJobsOpenByEmployee(employeeId);
+			int totalJobsClosed = JobService.getInstance().getTotalJobsClosedEmployee(employeeId);
+			
+			// Update the labels with the fetched data
+			 totalJobtext.setText(String.valueOf(totalJobsCreatedByEmployee));
+			 totalApprovedJob.setText(String.valueOf(totalJobsApproved));
+			 TotalJobPending.setText(String.valueOf(totalJobsPending));
+			 totalJobOpenText.setText(String.valueOf(totalJobsOpen));
+			 TotalJobClosed.setText(String.valueOf(totalJobsClosed));
+			
+			
+			
+		}
 	
 		
 

@@ -67,6 +67,7 @@ public class LoginService {
                         employerUI.LoadEmployeeProfile();
                         employerUI.LoadJobData();
                         employerUI.LoadApplicationData();
+                        employerUI.LoadDashboard();
                     
                          
                   

@@ -122,11 +122,11 @@ public class JobSeekerUI extends JFrame {
 		lblWelcomeBack_1_1.setBounds(46, 39, 275, 38);
 		panel_3.add(lblWelcomeBack_1_1);
 		
-		JLabel lblWelcomeBack_1_1_1 = new JLabel("0");
-		lblWelcomeBack_1_1_1.setForeground(Color.WHITE);
-		lblWelcomeBack_1_1_1.setFont(new Font("Verdana", Font.BOLD, 20));
-		lblWelcomeBack_1_1_1.setBounds(139, 89, 130, 38);
-		panel_3.add(lblWelcomeBack_1_1_1);
+		JLabel ApplicationText = new JLabel("0");
+		ApplicationText.setForeground(Color.WHITE);
+		ApplicationText.setFont(new Font("Verdana", Font.BOLD, 20));
+		ApplicationText.setBounds(139, 89, 130, 38);
+		panel_3.add(ApplicationText);
 		
 		JPanel panel_3_1 = new JPanel();
 		panel_3_1.setLayout(null);
@@ -140,11 +140,11 @@ public class JobSeekerUI extends JFrame {
 		lblWelcomeBack_1_1_2.setBounds(46, 39, 275, 38);
 		panel_3_1.add(lblWelcomeBack_1_1_2);
 		
-		JLabel lblWelcomeBack_1_1_1_1 = new JLabel("0");
-		lblWelcomeBack_1_1_1_1.setForeground(Color.WHITE);
-		lblWelcomeBack_1_1_1_1.setFont(new Font("Verdana", Font.BOLD, 20));
-		lblWelcomeBack_1_1_1_1.setBounds(133, 88, 130, 38);
-		panel_3_1.add(lblWelcomeBack_1_1_1_1);
+		JLabel PendingApplication = new JLabel("0");
+		PendingApplication.setForeground(Color.WHITE);
+		PendingApplication.setFont(new Font("Verdana", Font.BOLD, 20));
+		PendingApplication.setBounds(133, 88, 130, 38);
+		panel_3_1.add(PendingApplication);
 		
 		JPanel panel_3_1_1 = new JPanel();
 		panel_3_1_1.setLayout(null);
@@ -158,16 +158,16 @@ public class JobSeekerUI extends JFrame {
 		lblWelcomeBack_1_1_2_1.setBounds(99, 40, 140, 38);
 		panel_3_1_1.add(lblWelcomeBack_1_1_2_1);
 		
-		JLabel lblWelcomeBack_1_1_1_1_1 = new JLabel("0");
-		lblWelcomeBack_1_1_1_1_1.setForeground(Color.WHITE);
-		lblWelcomeBack_1_1_1_1_1.setFont(new Font("Verdana", Font.BOLD, 20));
-		lblWelcomeBack_1_1_1_1_1.setBounds(159, 89, 130, 38);
-		panel_3_1_1.add(lblWelcomeBack_1_1_1_1_1);
+		JLabel saveJobText = new JLabel("0");
+		saveJobText.setForeground(Color.WHITE);
+		saveJobText.setFont(new Font("Verdana", Font.BOLD, 20));
+		saveJobText.setBounds(159, 89, 130, 38);
+		panel_3_1_1.add(saveJobText);
 		
 		JPanel panel_3_2 = new JPanel();
 		panel_3_2.setLayout(null);
 		panel_3_2.setBackground(new Color(255, 128, 255));
-		panel_3_2.setBounds(196, 295, 331, 172);
+		panel_3_2.setBounds(401, 291, 331, 172);
 		panel_1.add(panel_3_2);
 		
 		JLabel lblWelcomeBack_1_1_3 = new JLabel("Approved Application");
@@ -176,29 +176,11 @@ public class JobSeekerUI extends JFrame {
 		lblWelcomeBack_1_1_3.setBounds(46, 39, 275, 38);
 		panel_3_2.add(lblWelcomeBack_1_1_3);
 		
-		JLabel lblWelcomeBack_1_1_1_2 = new JLabel("0");
-		lblWelcomeBack_1_1_1_2.setForeground(Color.WHITE);
-		lblWelcomeBack_1_1_1_2.setFont(new Font("Verdana", Font.BOLD, 20));
-		lblWelcomeBack_1_1_1_2.setBounds(139, 89, 130, 38);
-		panel_3_2.add(lblWelcomeBack_1_1_1_2);
-		
-		JPanel panel_3_2_1 = new JPanel();
-		panel_3_2_1.setLayout(null);
-		panel_3_2_1.setBackground(new Color(255, 128, 255));
-		panel_3_2_1.setBounds(560, 295, 331, 172);
-		panel_1.add(panel_3_2_1);
-		
-		JLabel lblWelcomeBack_1_1_3_1 = new JLabel("Denied Application");
-		lblWelcomeBack_1_1_3_1.setForeground(Color.WHITE);
-		lblWelcomeBack_1_1_3_1.setFont(new Font("Verdana", Font.BOLD, 20));
-		lblWelcomeBack_1_1_3_1.setBounds(46, 39, 275, 38);
-		panel_3_2_1.add(lblWelcomeBack_1_1_3_1);
-		
-		JLabel lblWelcomeBack_1_1_1_2_1 = new JLabel("0");
-		lblWelcomeBack_1_1_1_2_1.setForeground(Color.WHITE);
-		lblWelcomeBack_1_1_1_2_1.setFont(new Font("Verdana", Font.BOLD, 20));
-		lblWelcomeBack_1_1_1_2_1.setBounds(139, 89, 130, 38);
-		panel_3_2_1.add(lblWelcomeBack_1_1_1_2_1);
+		JLabel approvedText = new JLabel("0");
+		approvedText.setForeground(Color.WHITE);
+		approvedText.setFont(new Font("Verdana", Font.BOLD, 20));
+		approvedText.setBounds(139, 89, 130, 38);
+		panel_3_2.add(approvedText);
 		
 		JPanel panel = new JPanel();
 		tabbedPane.addTab("Find a job", null, panel, null);
@@ -705,5 +687,9 @@ public class JobSeekerUI extends JFrame {
 	public void setData(int userId) {
 		this.userId = userId;
 		System.out.println("User ID set to: " + userId);
+	}
+	
+	public void LoadDashboard() {
+		
 	}
 }

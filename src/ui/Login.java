@@ -198,7 +198,5 @@ public class Login extends JFrame {
 				chckbxNewCheckBox.setSelected(true); // Check the remember me checkbox
 			}
 		}
-		
-
 	}
 }

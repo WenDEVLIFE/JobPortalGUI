@@ -353,9 +353,22 @@ public class JobService {
 
 
 	public boolean applyForJob(String jobId, int seekerId, int userId) {
+	    String getEmployeeIdQuery = "SELECT employee_id FROM jobs WHERE job_id = ?";
 	    String checkQuery = "SELECT COUNT(*) FROM application WHERE job_id = ? AND seeker_id = ?";
-	    String insertQuery = "INSERT INTO application (job_id, seeker_id, applied_at, status, recruiter_comments) VALUES (?, ?, NOW(), 'Pending', 'n/a')";
+	    String insertQuery = "INSERT INTO application (job_id, seeker_id, employee_id, applied_at, status, recruiter_comments) VALUES (?, ?, ?, NOW(), 'Pending', 'n/a')";
 	    try (java.sql.Connection conn = MYSQL.getConnection()) {
+	        // Get employee_id from jobs
+	        int employeeId = -1;
+	        try (java.sql.PreparedStatement empStmt = conn.prepareStatement(getEmployeeIdQuery)) {
+	            empStmt.setString(1, jobId);
+	            try (java.sql.ResultSet rs = empStmt.executeQuery()) {
+	                if (rs.next()) {
+	                    employeeId = rs.getInt("employee_id");
+	                }
+	            }
+	        }
+	        if (employeeId == -1) return false;
+
 	        // Check for existing application
 	        try (java.sql.PreparedStatement checkStmt = conn.prepareStatement(checkQuery)) {
 	            checkStmt.setString(1, jobId);
@@ -371,6 +384,7 @@ public class JobService {
 	        try (java.sql.PreparedStatement insertStmt = conn.prepareStatement(insertQuery)) {
 	            insertStmt.setString(1, jobId);
 	            insertStmt.setInt(2, seekerId);
+	            insertStmt.setInt(3, employeeId);
 	            int rowsAffected = insertStmt.executeUpdate();
 	            if (rowsAffected > 0) {
 	                AlertService.getInstance().insertAlert("Applied for job ID: " + jobId, seekerId);
@@ -382,6 +396,7 @@ public class JobService {
 	    }
 	    return false;
 	}
+
 	
 	// In JobService.java
 
@@ -462,7 +477,96 @@ public class JobService {
 	}
 
 
+	public int getTotalJobsCreatedByEmployee(int employeeId) {
+			String query = "SELECT COUNT(*) FROM jobs WHERE employee_id = ?";
+	try (java.sql.Connection conn = MYSQL.getConnection();
+		 java.sql.PreparedStatement pstmt = conn.prepareStatement(query)) {
+		pstmt.setInt(1, employeeId);
+		try (java.sql.ResultSet rs = pstmt.executeQuery()) {
+			if (rs.next()) {
+				return rs.getInt(1);
+			}
+		}
+	} catch (Exception e) {
+		e.printStackTrace();
+	}
+	return 0;
+	}
 
-	
+
+	public int getTotalJobsApprovedByEmployee(int employeeId) {
+		String query = "SELECT COUNT(*) FROM jobs WHERE employee_id = ? AND status = 'Open'";
+		try (java.sql.Connection conn = MYSQL.getConnection();
+		 java.sql.PreparedStatement pstmt = conn.prepareStatement(query)) { 
+			
+			pstmt.setInt(1, employeeId);
+			try (java.sql.ResultSet rs = pstmt.executeQuery()) {
+				if (rs.next()) {
+					return rs.getInt(1);
+				}
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return 0;
+	}
+
+
+	public int getTotalJobsPendingByEmployee(int employeeId) {
+		String query = "SELECT COUNT(*) FROM jobs WHERE employee_id = ? AND status = 'Pending'";
+		try (java.sql.Connection conn = MYSQL.getConnection();
+		 java.sql.PreparedStatement pstmt = conn.prepareStatement(query)) {
+			pstmt.setInt(1, employeeId);
+			try (java.sql.ResultSet rs = pstmt.executeQuery()) {
+				if (rs.next()) {
+					return rs.getInt(1);
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return 0;
+	}
+
+
+	public int getTotalJobsOpenByEmployee(int employeeId) {
+		String query = "SELECT COUNT(*) FROM jobs WHERE employee_id = ? AND status = 'Open'";
+		try (java.sql.Connection conn = MYSQL.getConnection();
+		 java.sql.PreparedStatement pstmt = conn.prepareStatement(query)) {
+			pstmt.setInt(1, employeeId);
+			try (java.sql.ResultSet rs = pstmt.executeQuery()) {
+				if (rs.next()) {
+					return rs.getInt(1);
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return 0;
+		
+	}
+
+
+	public int getTotalJobsClosedEmployee(int employeeId) {
+	 		String query = "SELECT COUNT(*) FROM jobs WHERE employee_id = ? AND status = 'Closed'";
+		try (java.sql.Connection conn = MYSQL.getConnection();
+		 java.sql.PreparedStatement pstmt = conn.prepareStatement(query)) {
+			pstmt.setInt(1, employeeId);
+			try (java.sql.ResultSet rs = pstmt.executeQuery()) {
+				if (rs.next()) {
+					return rs.getInt(1);
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return 0;
+	}
+
 
 }
