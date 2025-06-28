@@ -58,4 +58,18 @@ public class AlertService {
 		}
 		return alerts;
 	}
+
+	public void InsertAlert(int seekerId, String string, String string2) {
+		String query = "INSERT INTO alerts (user_id, description, timestamp, isNotify) VALUES (?, ?, ?, ?)";
+		try (Connection conn = MYSQL.getConnection();
+			 PreparedStatement pstmt = conn.prepareStatement(query)) {
+			pstmt.setInt(1, seekerId);
+			pstmt.setString(2, string);
+			pstmt.setTimestamp(3, new Timestamp(System.currentTimeMillis()));
+			pstmt.setBoolean(4, false); // isNotify default to false
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 }

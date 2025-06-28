@@ -25,6 +25,7 @@ import database.UpdatePasswordDialog;
 import functions.AddCreateJobDialog;
 import functions.UpdateEmployeeProfileDialog;
 import functions.UpdateJobDialog;
+import functions.ViewApplicantDialog;
 import model.AlertModel;
 import model.ApplicationModel;
 import model.JobModel;
@@ -339,6 +340,32 @@ public class EmployeeUI extends JFrame {
 		panel_1.add(applicantTable);
 		
 		JButton btnViewApplicant = new JButton("View Applicant");
+		btnViewApplicant.addActionListener(new ActionListener() {
+		    public void actionPerformed(ActionEvent e) {
+		        int selectedRow = applicantTable.getSelectedRow();
+		        if (selectedRow == -1) {
+		            JOptionPane.showMessageDialog(EmployeeUI.this, "Please select an applicant.", "No Applicant Selected", JOptionPane.WARNING_MESSAGE);
+		            return;
+		        }
+		        ApplicationModel selectedApp = applicationList.get(selectedRow);
+	  		        if (selectedApp == null) {
+		            JOptionPane.showMessageDialog(EmployeeUI.this, "No applicant data available for the selected row.", "Error", JOptionPane.ERROR_MESSAGE);
+		            return;
+		        }
+	  		        
+	  		    String seekerId = selectedApp.getSeekerId();
+	  		    int seekerIdInt = Integer.parseInt(seekerId);
+		        ViewApplicantDialog dialog = new ViewApplicantDialog(EmployeeUI.this, seekerIdInt, selectedApp.getJobId());
+		        dialog.setVisible(true);
+		        
+		        if (dialog.isApproved) {
+		            // If the applicant was approved, refresh the application data
+		            LoadApplicationData();
+		            JOptionPane.showMessageDialog(EmployeeUI.this, "Applicant approved successfully!");
+		        } 
+		    }
+		});
+
 		btnViewApplicant.setForeground(Color.WHITE);
 		btnViewApplicant.setFont(new Font("Verdana", Font.BOLD, 11));
 		btnViewApplicant.setBackground(new Color(195, 143, 255));

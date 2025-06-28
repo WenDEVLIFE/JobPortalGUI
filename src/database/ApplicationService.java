@@ -156,6 +156,22 @@ public class ApplicationService {
 		return 0;
 	}
 
+	public boolean updateStatus(String jobId, int seekerId, String string) {
+		 String query = "UPDATE application SET status = ? WHERE job_id = ? AND seeker_id = ?";
+		try (Connection conn = MYSQL.getConnection();
+			 PreparedStatement pstmt = conn.prepareStatement(query)) {
+			pstmt.setString(1, string);
+			pstmt.setString(2, jobId);
+			pstmt.setInt(3, seekerId);
+			int rowsAffected = pstmt.executeUpdate();
+			AlertService.getInstance().InsertAlert(seekerId, "Application Status Updated", "Your application for job ID: " + jobId + " has been updated to: " + string);
+			return rowsAffected > 0;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+
 
 
 }
