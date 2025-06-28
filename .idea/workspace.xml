@@ -4,7 +4,25 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="039a69c7-22f7-43ff-9108-b213d023ee06" name="Changes" comment="Added a function where the user will insert the application 👌" />
+    <list default="true" id="039a69c7-22f7-43ff-9108-b213d023ee06" name="Changes" comment="Added a function where the user will insert the application 👌">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/database/ApplicationService.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/database/ApplicationService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/database/LoginService.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/database/LoginService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ui/JobSeekerUI$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/JobSeekerUI$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ui/JobSeekerUI$10.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/JobSeekerUI$10.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ui/JobSeekerUI$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/JobSeekerUI$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ui/JobSeekerUI$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/JobSeekerUI$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ui/JobSeekerUI$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/JobSeekerUI$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ui/JobSeekerUI$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/JobSeekerUI$5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ui/JobSeekerUI$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/JobSeekerUI$6.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ui/JobSeekerUI$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/JobSeekerUI$7.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ui/JobSeekerUI$8.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/JobSeekerUI$8.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ui/JobSeekerUI$9.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/JobSeekerUI$9.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ui/JobSeekerUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/JobSeekerUI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/database/ApplicationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/ApplicationService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/database/LoginService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/LoginService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/JobSeekerUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/JobSeekerUI.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

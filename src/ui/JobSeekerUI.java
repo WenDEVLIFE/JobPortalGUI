@@ -9,6 +9,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 
+import database.ApplicationService;
 import database.JobService;
 import database.ProfileService;
 import database.UpdatePasswordDialog;
@@ -17,6 +18,7 @@ import functions.AddSkillDialog;
 import functions.UpdateProfileDialog;
 import functions.ViewResumeDialog;
 import model.AlertModel;
+import model.ApplicationModel;
 import model.JobModel;
 
 import javax.swing.JTabbedPane;
@@ -49,10 +51,12 @@ public class JobSeekerUI extends JFrame {
 	List<JobModel> savedJobList = new ArrayList<>();
 	DefaultTableModel alertTableModel;
 	List<AlertModel> alertList = new ArrayList<>();
+	DefaultTableModel myApplicationTableModel;
+	List<ApplicationModel> myApplicationList = new ArrayList<>();
 	private JTextField searchSavedJobField;
 	private JTable saveJobTable;
 	private JTextField textField;
-	private JTable table;
+	private JTable myApplicationTable;
 	private JTable alertTable;
 	private JLabel FullnameText;
 	private JLabel LocationText;
@@ -290,23 +294,16 @@ public class JobSeekerUI extends JFrame {
 		textField.setBounds(260, 25, 863, 38);
 		panel_2.add(textField);
 		
-		table = new JTable();
-		table.setBorder(new LineBorder(new Color(0, 0, 0)));
-		table.setBounds(53, 74, 1046, 360);
-		panel_2.add(table);
+		myApplicationTable = new JTable();
+		myApplicationTable.setBorder(new LineBorder(new Color(0, 0, 0)));
+		myApplicationTable.setBounds(53, 74, 1046, 360);
+		panel_2.add(myApplicationTable);
 		
-		JButton btnViewJob_1_2 = new JButton("View Application");
-		btnViewJob_1_2.setForeground(Color.WHITE);
-		btnViewJob_1_2.setFont(new Font("Verdana", Font.BOLD, 11));
-		btnViewJob_1_2.setBackground(new Color(195, 143, 255));
-		btnViewJob_1_2.setBounds(144, 445, 337, 53);
-		panel_2.add(btnViewJob_1_2);
-		
-		JButton btnViewJob_1_1_1 = new JButton("Delete Application");
+		JButton btnViewJob_1_1_1 = new JButton("Cancel Application");
 		btnViewJob_1_1_1.setForeground(Color.WHITE);
 		btnViewJob_1_1_1.setFont(new Font("Verdana", Font.BOLD, 11));
 		btnViewJob_1_1_1.setBackground(new Color(195, 143, 255));
-		btnViewJob_1_1_1.setBounds(642, 445, 337, 53);
+		btnViewJob_1_1_1.setBounds(401, 445, 337, 53);
 		panel_2.add(btnViewJob_1_1_1);
 		
 		JPanel panel_1_1 = new JPanel();
@@ -473,12 +470,16 @@ public class JobSeekerUI extends JFrame {
 		
 		String [] columnNames = {"Job ID", "Job Title", "Company Name", "Posted Date", "Status", "Expiration Date"};
 		String [] alertColumnNames = {"Alert ID", "Description", "Timestamp",};
+		String [] savedColumnNames = {"Job ID", "Job Title", "Company Name", "Posted Date", "Status", "Expiration Date"};
+		String [] myApplicationColumnNames = {"Application ID", "Job Title", "Company Name", "Application Date", "Status"};
 		tableModel = new DefaultTableModel(columnNames, 0);
 		savedTableModel = new DefaultTableModel(columnNames, 0);
 		alertTableModel = new DefaultTableModel(alertColumnNames, 0);
 		jobTable.setModel(tableModel);
 		saveJobTable.setModel(savedTableModel);
 		alertTable.setModel(alertTableModel);
+		myApplicationTableModel = new DefaultTableModel(myApplicationColumnNames, 0);
+		myApplicationTable.setModel(myApplicationTableModel);
 		
 		
 		LoadJobData();
@@ -588,6 +589,26 @@ public class JobSeekerUI extends JFrame {
 	}
 	
 	
+	public void LoadMyApplicationData() {
+		myApplicationList.clear();
+		
+		myApplicationTableModel.setRowCount(0); // Clear existing rows in the table model
+		
+		String convertedSeekerId = String.valueOf(seekerId);
+		myApplicationList = ApplicationService.getInstance().getApplicationsByJobId(convertedSeekerId);
+		
+		for (ApplicationModel application : myApplicationList) {
+			Object[] rowData = {
+				application.getApplicationId(),
+				application.getJobTitle(),
+				application.getCompanyName(),
+				application.getAppliedAt(),
+				application.getStatus()
+			};
+			myApplicationTableModel.addRow(rowData);
+		}
+	}
+	
 	public void LoadProfile() {
 		
 		String fullname = ProfileService.getInstance().getFullName(userId);
@@ -597,7 +618,7 @@ public class JobSeekerUI extends JFrame {
 		FullnameText.setText(fullname != null ? fullname : "N/A");
 		LocationText.setText(location != null ? location : "N/A");
 		ContactInfoText.setText(contactInfo != null ? contactInfo : "N/A");
-		int seekerId = ProfileService.getInstance().getSeekerId(String.valueOf(userId));
+		this.seekerId = ProfileService.getInstance().getSeekerId(String.valueOf(userId));
 		
 		System.out.println("Profile loaded for user ID: " + userId);
 		 System.out.println("Full Name: " + FullnameText.getText());
@@ -605,6 +626,7 @@ public class JobSeekerUI extends JFrame {
 		 System.out.println("Contact Info: " + ContactInfoText.getText());
 		  System.out.println("Seeker ID: " + seekerId);
 	}
+	
 	
 	public void setData(int userId) {
 		this.userId = userId;
