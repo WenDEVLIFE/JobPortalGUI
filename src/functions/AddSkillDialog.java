@@ -21,11 +21,16 @@ public class AddSkillDialog extends JDialog {
         setLayout(new BorderLayout());
 
         JPanel inputPanel = new JPanel(new GridLayout(3, 2));
-        inputPanel.add(new JLabel("Skill Name:"));
+        if (!visible) {
+        	 inputPanel.add(new JLabel("Skill Name:"));
+		}
         skillNameField = new JTextField();
         inputPanel.add(skillNameField);
 
+        if (!visible) {
         inputPanel.add(new JLabel("Proficiency Level:"));
+		}
+ 
         proficiencyLevelField = new JTextField();
         inputPanel.add(proficiencyLevelField);
 
@@ -42,6 +47,11 @@ public class AddSkillDialog extends JDialog {
         if(!visible) {
 			 addButton.setVisible(false);
 			 deleteButton.setVisible(false);
+			 skillNameField.setEditable(false);
+			 proficiencyLevelField.setEditable(false);
+			 skillNameField.setVisible(false);
+			 proficiencyLevelField.setVisible(false);
+			 
 		}
 
         skillsTable = new JTable();

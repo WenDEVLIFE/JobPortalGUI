@@ -13,10 +13,14 @@ import javax.swing.JOptionPane;
 import java.awt.Font;
 import java.awt.Color;
 import javax.swing.JTextField;
+import javax.swing.RowFilter;
 import javax.swing.Timer;
 import javax.swing.JTable;
 import javax.swing.border.LineBorder;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 
 import database.AlertService;
 import database.ApplicationService;
@@ -43,10 +47,10 @@ public class EmployeeUI extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-	private JTextField textField;
+	private JTextField SearchApplicantField;
 	private JTable applicantTable;
 	private JTable alertTable;
-	private JTextField textField_2;
+	private JTextField SearchJobField;
 	private JLabel employeeText;
 	private JLabel companyText;
 	private JLabel locationText;
@@ -202,25 +206,25 @@ public class EmployeeUI extends JFrame {
 		TotalJobClosed.setBounds(139, 89, 130, 38);
 		panel_3_2_1_1_1.add(TotalJobClosed);
 		
-		JPanel panel_2 = new JPanel();
-		tabbedPane.addTab("Jobs", null, panel_2, null);
-		panel_2.setLayout(null);
+		JPanel panel5 = new JPanel();
+		tabbedPane.addTab("Jobs", null, panel5, null);
+		panel5.setLayout(null);
 		
 		JLabel lblWelcomeBack_1_2_3 = new JLabel("Jobs");
 		lblWelcomeBack_1_2_3.setForeground(Color.WHITE);
 		lblWelcomeBack_1_2_3.setFont(new Font("Verdana", Font.BOLD, 30));
 		lblWelcomeBack_1_2_3.setBounds(104, 11, 88, 38);
-		panel_2.add(lblWelcomeBack_1_2_3);
+		panel5.add(lblWelcomeBack_1_2_3);
 		
-		textField_2 = new JTextField();
-		textField_2.setColumns(10);
-		textField_2.setBounds(222, 11, 863, 38);
-		panel_2.add(textField_2);
+		SearchJobField = new JTextField();
+		SearchJobField.setColumns(10);
+		SearchJobField.setBounds(222, 11, 863, 38);
+		panel5.add(SearchJobField);
 		
 		table_1 = new JTable();
 		table_1.setBorder(new LineBorder(new Color(0, 0, 0)));
 		table_1.setBounds(39, 60, 1046, 360);
-		panel_2.add(table_1);
+		panel5.add(table_1);
 		
 		
 		JButton btnViewApplicant_2 = new JButton("Create a Job");
@@ -245,7 +249,7 @@ public class EmployeeUI extends JFrame {
 		btnViewApplicant_2.setFont(new Font("Verdana", Font.BOLD, 11));
 		btnViewApplicant_2.setBackground(new Color(195, 143, 255));
 		btnViewApplicant_2.setBounds(92, 431, 229, 53);
-		panel_2.add(btnViewApplicant_2);
+		panel5.add(btnViewApplicant_2);
 		
 		// update the job
 		JButton btnViewApplicant_2_1 = new JButton("Update Job");
@@ -283,7 +287,7 @@ public class EmployeeUI extends JFrame {
 		btnViewApplicant_2_1.setFont(new Font("Verdana", Font.BOLD, 11));
 		btnViewApplicant_2_1.setBackground(new Color(195, 143, 255));
 		btnViewApplicant_2_1.setBounds(436, 431, 229, 53);
-		panel_2.add(btnViewApplicant_2_1);
+		panel5.add(btnViewApplicant_2_1);
 		
 		JButton btnViewApplicant_2_1_1 = new JButton("Delete Job");
 		btnViewApplicant_2_1_1.addActionListener(new ActionListener() {
@@ -319,7 +323,7 @@ public class EmployeeUI extends JFrame {
 		btnViewApplicant_2_1_1.setFont(new Font("Verdana", Font.BOLD, 11));
 		btnViewApplicant_2_1_1.setBackground(new Color(195, 143, 255));
 		btnViewApplicant_2_1_1.setBounds(800, 431, 229, 53);
-		panel_2.add(btnViewApplicant_2_1_1);
+		panel5.add(btnViewApplicant_2_1_1);
 		
 		JPanel panel_1 = new JPanel();
 		tabbedPane.addTab("Applicants", null, panel_1, null);
@@ -331,10 +335,10 @@ public class EmployeeUI extends JFrame {
 		lblWelcomeBack_1_2.setBounds(27, 11, 202, 38);
 		panel_1.add(lblWelcomeBack_1_2);
 		
-		textField = new JTextField();
-		textField.setColumns(10);
-		textField.setBounds(228, 11, 863, 38);
-		panel_1.add(textField);
+		SearchApplicantField = new JTextField();
+		SearchApplicantField.setColumns(10);
+		SearchApplicantField.setBounds(228, 11, 863, 38);
+		panel_1.add(SearchApplicantField);
 		
 		applicantTable = new JTable();
 		applicantTable.setBorder(new LineBorder(new Color(0, 0, 0)));
@@ -538,13 +542,76 @@ public class EmployeeUI extends JFrame {
 
 		 String [] columnNames = {"Job ID", "Job Title", "Company Name", "Posted Date", "Status", "Expiration Date"};
 		 String [] alertColumnNames = {"Alert ID", "Description", "Timestamp"};
-		 String [] applicantColumnNames = {"Application ID", "Job Title", "Company Name", "Status", "Applied At"};
+		 String [] applicantColumnNames = {"Application ID", "Job Title", "Company Name", "Seeker Name", "Status", "Applied At"};
 		 jobTableModel = new DefaultTableModel(columnNames, 0);
 		 alertTableModel = new DefaultTableModel(alertColumnNames, 0);
 		 applicantTableModel = new DefaultTableModel(applicantColumnNames, 0);
 		 table_1.setModel(jobTableModel);
 		 alertTable.setModel(alertTableModel);
 		 applicantTable.setModel(applicantTableModel);
+		 
+		 TableRowSorter<DefaultTableModel> jobSorter = new TableRowSorter<>(jobTableModel);
+		 table_1.setRowSorter(jobSorter);
+		 
+		 SearchJobField.getDocument().addDocumentListener(new DocumentListener() {
+			 @Override
+			 public void insertUpdate(DocumentEvent e) {
+				 filterJobs();
+			 }
+			 
+			 @Override
+			 public void removeUpdate(DocumentEvent e) {
+				 filterJobs();
+			 }
+			 
+			 @Override
+			 public void changedUpdate(DocumentEvent e) {
+				 filterJobs();
+			 }
+			 
+			 private void filterJobs() {
+				 String searchText = SearchJobField.getText().toLowerCase();
+				 if (searchText.trim().isEmpty()) {
+					 jobSorter.setRowFilter(null);
+				 } else {
+					 jobSorter.setRowFilter(RowFilter.regexFilter("(?i)" + searchText));
+				 }
+			 }
+		 });
+			
+	
+		
+		
+		 TableRowSorter<DefaultTableModel> applicantSorter = new TableRowSorter<>(applicantTableModel);
+		 applicantTable.setRowSorter(applicantSorter);
+		 
+		 SearchApplicantField.getDocument().addDocumentListener(new DocumentListener() {
+			 @Override
+			 public void insertUpdate(DocumentEvent e) {
+				 filterApplicants();
+			 }
+			 
+			 @Override
+			 public void removeUpdate(DocumentEvent e) {
+				 filterApplicants();
+			 }
+			 
+			 @Override
+			 public void changedUpdate(DocumentEvent e) {
+				 filterApplicants();
+			 }
+			 
+			 private void filterApplicants() {
+				 String searchText = SearchApplicantField.getText().toLowerCase();
+				 if (searchText.trim().isEmpty()) {
+					 applicantSorter.setRowFilter(null);
+				 } else {
+					 applicantSorter.setRowFilter(RowFilter.regexFilter("(?i)" + searchText));
+				 }
+			 }
+		 });
+		 
+		 
 		 
 		
 	 LoadJobData();
@@ -619,6 +686,7 @@ public class EmployeeUI extends JFrame {
 					 application.getApplicationId(),
 					 application.getJobTitle(),
 					 application.getCompanyName(),
+					 application.getSeekerName(),
 					 application.getStatus(),
 					 application.getAppliedAt()
 				 };
